@@ -546,11 +546,8 @@ footer .f3 { grid-column: 10 / span 3; justify-self: end; }
 <div class="idle" id="idle" aria-hidden="true"><div class="bouncer" id="bouncer"></div><span class="idle-hint mono m">Move to continue</span></div>
 
 <script>
-// Works. The Geomorphology Research Centre (UG6, final PDF title Time Magnificents!) is shown as two works at the user’s request (2026-11-09): Living on the Dunes (DUN, the lead) and Eroding the Cliff (CLF); both draw on img/ug6 and img/ug6p. Earlier 2019–2020 portfolio projects are not shown.
+// Works, in the order the grid shows them.
 // imgs: [file, width, height, alt]; files live in img/<dir>/, 960px covers in img/cover/<code>.jpg.
-// omii is a 2026 team product project (RCA × Imperial); it follows the lead work. CHOGA (2026, a London
-// jewellery studio: series, ceramic production, the Future Archaeology pop-up invitation, the shop) follows omii,
-// then Reliquary (CHOGA × Wedge installation, SS 2025, from the CHOGA brand book).
 // op = crop focus of the cover in its frame (object-position). The lead work also has a full-frame wide source
 // for its lead tile (lop = its crop focus there); in a 2:1 frame op 33% repeats the curated cover crop.
 // A long-form work adds intro, meta, hero, chapters and closing. A chapter's imgs is its flow: a number
@@ -867,13 +864,13 @@ const WORKS = [
         facts: [["Name", "CHOGA, Tibetan for “ritual”"], ["Based", "London"], ["Method", "Eastern philosophy as process, not motif"]],
         imgs: [
           { f: [["choga/bowl", 1344, 1800, "A bowl mended with gold seams, holding a ceramic fragment.", "Two hands in black sleeves holding a silver bowl with gold seams and a white ceramic piece inside"],
-                ["choga/packaging", 1344, 1800, "The packaging, laid out.", "A white box, cards and a wrapped piece laid out in a column on black"]] },
+                ["choga/packaging", 1344, 1392, "The packaging, laid out.", "A grey box, a card, a metal name plate, the open box and a wrapped ring laid out in a column on black"]] },
           1,
         ] },
       { n: "02", title: "Three series",
         text: [
           "The 2026 collection has three series, each named in Tibetan. NORBU means “jewel”: something cherished, luminous and enduring. RI SGRA means “echo”, an inner vibration and a perceptive presence. ZLABA means “moon”, a symbol of softness, rhythm and quiet light.",
-          "The series also divide by material. RI SGRA is pure ceramic and ZLABA is pure metal, while NORBU joins a ceramic body glazed white, pearl or silver to a band of bronze or silver-plated bronze. The pieces are photographed on the hand and the ear, in black and in shadow.",
+          "The series also divide by material. RI SGRA is pure ceramic and ZLABA is pure metal, while NORBU joins a ceramic body glazed white, pearl or silver to a band of bronze or silver-plated bronze. The pieces are shown on the hand and the ear, in black and in shadow.",
         ],
         facts: [["NORBU, “jewel”", "Rings R01, R02, earring ER01: ceramic and metal"], ["RI SGRA, “echo”", "Ring R01: white ceramic"], ["ZLABA, “moon”", "Ring R01, bracelet BC01: bronze"]],
         imgs: [
@@ -955,7 +952,7 @@ const WORKS = [
       { n: "01", title: "A vessel of ritual",
         text: [
           "A reliquary keeps what is precious. Here the precious things are jewellery, and the brand book gives each of the four materials part of the idea: “The porous sand murmurs of erosion and touch; the white ceramic gleams with quiet purity; the aluminium glints with precision; the carved wood carries the warmth of time.”",
-          "In the same text, “their geometry gestures toward the delicate tension between preservation and disappearance, between ornament and offering.” Seen from above, rings and small coloured pieces rest in mirror-finish cradles and on white and black forms, held rather than displayed.",
+          "In the same text, “their geometry gestures toward the delicate tension between preservation and disappearance, between ornament and offering.”",
         ],
         imgs: [
           { w: 9, f: [["reliquary/detail", 1070, 475, "From above: rings and small coloured pieces held in mirror-finish cradles and on white and black forms.", "Top view on oak leaves and twigs: a mirror-finish silver cradle holding a ribbed silver ring, a second silver cradle with a small silver cylinder, two matte white forms carrying small glossy red, teal and green pieces, black grainy forms with a dark ribbed ring resting on one, and the dark glossy ribbed column behind"]] },
@@ -1264,6 +1261,8 @@ function syncChap() {
   const line = sheet.querySelector(".s-bar").getBoundingClientRect().bottom + innerHeight * 0.25;
   let on = null;
   for (const c of chs) { if (c.firstElementChild.getBoundingClientRect().top <= line) on = c; else break; }
+  // A short last chapter may never reach the line: at the foot of the sheet it is the current one.
+  if (chs.length && sheet.scrollTop >= sheet.scrollHeight - sheet.clientHeight - 2) on = chs[chs.length - 1];
   if (on === chOn) return;
   const was = chOn; chOn = on;
   $("s-chap").classList.toggle("on", !!on);
