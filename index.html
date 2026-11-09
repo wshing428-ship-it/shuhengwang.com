@@ -1,0 +1,1416 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shuheng Wang</title>
+<meta name="description" content="Shuheng Wang is a designer working across buildings, products, jewellery and installations: from rooms carved into an eroding cliff and a centre half buried in moving dunes, to a clip-on device that senses what is coming from behind, 3D-printed ceramic jewellery and an installation made to hold it.">
+<meta name="theme-color" content="#ffffff">
+<link rel="canonical" href="https://shuhengwang.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Shuheng Wang">
+<meta property="og:description" content="Shuheng Wang is a designer working across buildings, products, jewellery and installations: from rooms carved into an eroding cliff and a centre half buried in moving dunes, to a clip-on device that senses what is coming from behind, 3D-printed ceramic jewellery and an installation made to hold it.">
+<meta property="og:url" content="https://shuhengwang.com/">
+<meta property="og:image" content="https://shuhengwang.com/img/cover/UG6_W.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23111'/%3E%3Ctext x='16' y='21' font-family='Helvetica,Arial,sans-serif' font-size='14' fill='%23fff' text-anchor='middle'%3Esw%3C/text%3E%3C/svg%3E">
+<style>:root{color-scheme:light}body{margin:0;font:14px system-ui}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Geist+Mono:wght@400&display=swap">
+<style>
+/* Archive grid. One 12-column grid governs everything: the header (name / nav / clock),
+   the works, the index columns, the information block and the footer all start on the same
+   four edges. The works pair a sticky preview (columns 1–3) with the covers (4–12): Living on the Dunes leads
+   across two columns and two rows (or the full grid width when that would leave one cover alone, as with
+   four works), the other works sit beside and below it in 2:1 frames, and all of them fit on the first screen. The project sheet reads as one editorial column on the same grid:
+   an opening spread with the facts and contents, then numbered chapters that alternate text with
+   uncropped, equal-height image rows, and a pill in the bar that names the chapter and jumps between them.
+   One light theme only: the page is pure white whatever the system theme. */
+:root {
+  color-scheme: only light;
+  --bg: #ffffff;
+  --fg: #1a1a1a;
+  --mute: #767676;
+  --line: #e6e6e6;
+  --chip: #efefef;
+  --chip-hi: #e5e5e5;
+  --panel: #f3f3f3;
+  --shadow: rgba(0, 0, 0, .07);
+  --sans: "Geist", "Untitled Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --mono: "Geist Mono", ui-monospace, Menlo, monospace;
+  --gut: max(16px, env(safe-area-inset-left, 0px));
+  --gutR: max(16px, env(safe-area-inset-right, 0px));
+  --gap: 16px;
+  --head: 50px;
+  /* Sheet type: the display line, the lede, the reading text. Everything else stays at the 13px base. */
+  --t-disp: clamp(28px, 2.5vw, 42px);
+  --t-lede: clamp(17px, 1.36vw, 22px);
+  --t-read: clamp(14px, 1.04vw, 16px);
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; background: #fff; }
+html.lock { overflow: hidden; }
+body {
+  margin: 0; background: var(--bg); color: var(--fg);
+  font-family: var(--sans); font-size: 13px; line-height: 1.45; letter-spacing: -0.003em;
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+}
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; margin: 0; cursor: pointer; text-align: inherit; letter-spacing: inherit; }
+:focus-visible { outline: 1px solid var(--fg); outline-offset: 2px; }
+img { display: block; max-width: 100%; }
+h1, h2, h3, p, dl, dd, figure { margin: 0; }
+.wrap { padding-left: var(--gut); padding-right: var(--gutR); }
+.m { color: var(--mute); }
+.mono { font-family: var(--mono); font-size: 11px; letter-spacing: 0.01em; }
+.num { font-variant-numeric: tabular-nums; }
+.g12 { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); }
+
+/* Pill controls */
+.pill {
+  display: inline-flex; align-items: center; gap: 8px; height: 30px; padding: 0 12px;
+  background: var(--chip); border-radius: 9px; font-size: 13px; line-height: 1; white-space: nowrap;
+  transition: background .15s;
+}
+a.pill:hover, button.pill:not(:disabled):hover { background: var(--chip-hi); }
+.pill:disabled { opacity: .35; cursor: default; }
+.pill.icon { width: 30px; padding: 0; justify-content: center; flex: none; }
+.pill svg { width: 14px; height: 14px; flex: none; }
+.pill .arr { margin-left: auto; line-height: 1; }
+.pill[aria-expanded="true"] { background: var(--chip-hi); }
+
+/* Header */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); }
+header.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--bg);
+  padding-block: 10px; align-items: center;
+}
+.logo { grid-column: 1 / span 3; font: inherit; font-weight: 500; justify-self: start; }
+nav.main { grid-column: 4 / span 6; display: flex; gap: 6px; flex-wrap: wrap; }
+.where { grid-column: 10 / span 3; justify-self: end; font-variant-numeric: tabular-nums; }
+section[id], footer[id], main[id] { scroll-margin-top: calc(var(--head) + env(safe-area-inset-top, 0px)); }
+
+/* Works: a sticky preview on the left (columns 1–3) and the covers on the right (4–12).
+   Three covers per row, each exactly three grid columns wide, in one 2:1 frame; the lead work
+   takes two columns and two rows, or the full width (.lead.full) when that would leave one cover alone. */
+#projects { padding-top: 30px; align-items: start; align-content: start; }
+.side {
+  grid-column: 1 / span 3; position: sticky; z-index: 5; align-self: start;
+  top: calc(env(safe-area-inset-top, 0px) + var(--head) + 30px);
+  display: grid; align-content: start;
+}
+.side .lbl { display: flex; gap: 6px; align-items: baseline; }
+/* The heading stays for screen readers; on tablets and desktops the preview counts the works instead. */
+@media (min-width: 600px) { .side .lbl { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; } }
+.lbl { font: inherit; margin: 0; }
+.filter { display: flex; gap: 6px; position: relative; min-width: 0; }
+.filter .sel { flex: 1; min-width: 0; }
+.filter .sel > span:first-child { overflow: hidden; text-overflow: ellipsis; }
+.menu {
+  position: absolute; left: 36px; right: 0; top: 36px; z-index: 12; background: var(--chip);
+  border-radius: 9px; padding: 4px; display: grid; gap: 2px; box-shadow: 0 8px 30px var(--shadow);
+}
+.menu button { display: flex; justify-content: space-between; gap: 12px; padding: 6px 8px; border-radius: 6px; }
+.menu button:hover, .menu button[aria-checked="true"] { background: var(--chip-hi); }
+/* Desktop: the open menu covers the preview, so the preview steps away instead of showing cut-off text around it. */
+@media (min-width: 1024px) { .side:has(#menu:not([hidden])) .pv { visibility: hidden; } }
+
+/* Preview: the work under the pointer (or keyboard focus); the last one stays when the pointer leaves. */
+.pv { display: grid; gap: 20px; margin-top: 48px; padding-right: 8px; justify-items: start; }
+.pv-c { display: grid; gap: 16px; justify-items: start; }
+.pv-h { display: grid; gap: 6px; }
+.pv-pos { display: flex; gap: 10px; align-items: baseline; }
+.pv h3 { font-size: 13px; font-weight: 500; margin: 0; }
+.pv dl { display: grid; grid-template-columns: 64px 1fr; gap: 2px 8px; }
+.pv dt { color: var(--mute); }
+.pv p { max-width: 36ch; text-wrap: pretty; }
+
+.grid { grid-column: 4 / -1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px var(--gap); }
+.tile { display: grid; gap: 8px; align-content: start; width: 100%; min-width: 0; border-radius: 4px; container-type: inline-size; }
+.tile:focus-visible { outline-offset: 4px; }
+.ph { display: block; position: relative; aspect-ratio: 2 / 1; background: var(--panel); overflow: hidden; border-radius: 2px; }
+.ph img, .ph video {
+  width: 100%; height: 100%; object-fit: cover; object-position: var(--op, 50% 50%);
+  transition: transform .9s cubic-bezier(.2, .7, .2, 1);
+}
+/* Lead: two columns by two rows. Its frame takes whatever height the two rows beside it give, so its
+   image runs from the top of the first cover on its right to the bottom of the second. */
+.grid .tile.lead { grid-column: span 2; grid-row: span 2; grid-template-rows: minmax(0, 1fr) auto; align-content: stretch; }
+.tile.lead .ph { aspect-ratio: auto; min-height: 0; }
+.tile.lead .ph img, .tile.lead .ph video { position: absolute; inset: 0; object-position: var(--lop, 50% 50%); }
+/* When a two-by-two lead would leave one cover alone in the last row (4, 7, 10 works), the lead runs the full
+   width of the grid at its own wide ratio and the others fill rows of three beneath it. */
+@media (min-width: 600px) {
+  .grid .tile.lead.full { grid-column: 1 / -1; grid-row: auto; grid-template-rows: auto auto; }
+  .grid .tile.lead.full .ph { aspect-ratio: var(--lar, 12 / 5); }
+}
+/* Desktop: the full lead gives up height (cropped top and bottom, never below 260px) so the row of covers under
+   it still ends on the first screen in a short browser window. Grid width is 75vw − 28px; a cover is
+   (75vw − 60px) / 6 tall; the rest is the header, top padding, two captions, the row gap and a 24px margin. */
+/* Desktop, short windows: the covers (and the index tile) give up height so three rows still end on the first
+   screen; the 2x2 lead follows, since it takes the height of the two rows beside it. Floor 110px. */
+@media (min-width: 1024px) {
+  .grid .tile:not(.lead) .ph { aspect-ratio: auto; height: clamp(110px, calc((100svh - 241px) / 3), calc((75vw - 60px) / 6)); }
+  .grid .tile.lead.full .ph { aspect-ratio: auto; height: clamp(260px, calc(100svh - var(--head) - 30px - 82px - (75vw - 60px) / 6 - 24px), calc((75vw - 28px) / (var(--lar, 12 / 5)))); }
+}
+/* A work with a cover loop plays it in its tile; its frame is cropped by --vop. */
+.ph video { display: block; object-position: var(--vop, 50% 50%); }
+/* When the works nearly fill the first screen (fit() sets .fill), the Index starts below the fold, never as a half row. */
+@media (min-width: 600px) { #projects.fill { min-height: calc(100svh - var(--head) - env(safe-area-inset-top, 0px)); } }
+.cap { display: flex; align-items: baseline; gap: 8px; min-width: 0; transition: color .15s; }
+.cap .code { flex: none; width: 28px; color: var(--mute); }
+.cap .t { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-decoration: underline 1px transparent; text-underline-offset: 3px; transition: text-decoration-color .15s; }
+.cap .y { flex: none; color: var(--mute); font-variant-numeric: tabular-nums; }
+/* The work shown in the preview carries a hairline under its title. */
+.tile.on .cap .t { text-decoration-color: currentColor; }
+@media (hover: hover) {
+  .grid:has(.tile:hover) .tile:not(:hover) .cap { color: var(--mute); }
+  .tile:hover .ph img, .tile:hover .ph video { transform: scale(1.03); }
+}
+/* Last slot: a quiet outlined way into the index, only when it closes the last row. It fills only on hover. */
+.itile .ph { display: flex; flex-direction: column; justify-content: space-between; padding: 10px 12px; background: transparent; box-shadow: inset 0 0 0 1px var(--line); transition: background .15s; }
+.itile .it { display: flex; justify-content: space-between; gap: 12px; }
+a.itile:hover .ph { background: var(--chip); }
+.empty { padding: 48px 0; }
+
+/* Index */
+.index-wrap { margin-top: 0; padding-top: 48px; }
+#index { scroll-margin-top: calc(var(--head) + env(safe-area-inset-top, 0px) - 18px); }
+.ihead { padding-block: 12px 10px; border-top: 1px solid var(--line); }
+.ihead > span, .irow > span { min-width: 0; }
+.ihead .lbl { grid-column: 1 / span 3; }
+.c-t { grid-column: 4 / span 3; }
+.c-c { grid-column: 7 / span 3; }
+.c-n { grid-column: 10 / span 2; }
+.c-y { grid-column: 12 / span 1; justify-self: end; font-variant-numeric: tabular-nums; }
+.index { border-top: 1px solid var(--line); }
+.irow { width: 100%; padding-block: 7px; border-bottom: 1px solid var(--line); align-items: baseline; transition: color .15s; }
+.irow .c-no { grid-column: 1 / span 3; display: flex; gap: 16px; }
+.irow:focus-visible { outline-offset: -1px; }
+.irow.out { color: var(--mute); }
+@media (hover: hover) {
+  .index:hover .irow { color: var(--mute); }
+  .index:hover .irow:hover { color: var(--fg); }
+}
+.peek { position: fixed; left: 0; top: 0; z-index: 15; width: 280px; pointer-events: none; opacity: 0; transition: opacity .12s; border-radius: 2px; overflow: hidden; background: var(--panel); }
+.peek.on { opacity: 1; }
+
+/* Information */
+.about { padding-block: 120px 120px; row-gap: 32px; align-content: end; }
+.about .lbl { grid-column: 1 / span 3; }
+.about .bio { grid-column: 4 / span 6; font-size: clamp(16px, 1.3vw, 20px); line-height: 1.32; letter-spacing: -0.014em; text-wrap: pretty; max-width: 40ch; }
+
+footer.foot { padding-block: 12px calc(24px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line); row-gap: 8px; align-items: center; }
+footer .f1 { grid-column: 1 / span 3; }
+footer .f2 { grid-column: 4 / span 6; display: flex; gap: 6px; flex-wrap: wrap; }
+footer .f3 { grid-column: 10 / span 3; justify-self: end; }
+
+/* Project sheet */
+.sheet { position: fixed; inset: 0; z-index: 50; background: var(--bg); overflow-y: auto; overscroll-behavior: contain; outline: none; display: flex; flex-direction: column; animation: fade .18s ease-out; }
+.sheet > * { flex: none; }
+.sheet > .s-body { flex: 1 0 auto; }
+.sheet::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 3; background: var(--bg); }
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+.s-bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 2; background: var(--bg); padding-block: 10px; align-items: center; }
+.s-pos { grid-column: 1 / span 3; display: flex; gap: 10px; align-items: baseline; }
+.s-nav { grid-column: 4 / span 3; display: flex; gap: 6px; }
+.s-close { grid-column: 10 / span 3; justify-self: end; }
+/* Chapters: once the first chapter is reached, a pill in the bar names the chapter being read and opens
+   the list of chapters, like the filter over the works. It stays away over the opening spread. */
+.s-chap { grid-column: 7 / span 4; position: relative; min-width: 0; display: flex; opacity: 0; visibility: hidden; transition: opacity .25s, visibility 0s .25s; }
+.s-chap.on { opacity: 1; visibility: visible; transition: opacity .25s; }
+/* The pill's four columns (7–10) share column 10 with Close; both stay on the bar's one row. The pill is only
+   as wide as its text and Close sits at the right edge, so they never meet. */
+.s-chap, .s-close { grid-row: 1; }
+.s-chb { max-width: 100%; min-width: 0; }
+.s-chb .num { flex: none; color: var(--mute); }
+#s-cht { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.s-chm { left: 0; right: auto; width: max-content; min-width: 100%; max-width: calc(100vw - 32px); }
+.s-chm button { justify-content: flex-start; }
+.s-chm .num, .s-toc .num { flex: none; width: 18px; color: var(--mute); }
+.s-chm button[aria-current="true"] { background: var(--chip-hi); }
+.s-body { padding-top: 44px; padding-bottom: 168px; }
+
+/* Opening spread: title, subtitle and intro on columns 1–7; the facts of the work and its contents on 9–12;
+   then the hero across the page. */
+.s-open { align-items: start; }
+.s-head { grid-column: 1 / span 7; }
+.s-head h2, .s-head .sub { font-size: var(--t-disp); line-height: 1.08; letter-spacing: -0.032em; font-weight: 500; }
+.s-head .sub { font-weight: 400; color: var(--mute); }
+.s-intro { margin-top: 30px; font-size: var(--t-lede); line-height: 1.36; letter-spacing: -0.012em; max-width: 35em; text-wrap: pretty; }
+.s-side { grid-column: 9 / span 4; display: grid; gap: 28px; align-content: start; padding-top: 4px; }
+.s-meta, .s-toc { display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 3px 12px; align-items: baseline; }
+.s-meta dt, .s-toc h3 { color: var(--mute); }
+.s-meta dd { text-wrap: pretty; }
+.s-toc h3 { font: inherit; margin: 0; }
+.s-toc ol { list-style: none; margin: -2px 0 0 -8px; padding: 0; display: grid; gap: 1px; justify-items: start; min-width: 0; }
+.s-toc li { max-width: 100%; }
+.s-toc button { display: flex; gap: 10px; align-items: baseline; max-width: 100%; padding: 2px 10px 2px 8px; border-radius: 7px; transition: background .15s; }
+.s-toc button:focus-visible { outline-offset: 0; }
+@media (hover: hover) { .s-toc button:hover { background: var(--chip); } }
+.s-open > .s-row { grid-column: 1 / -1; margin-top: 64px; }
+
+/* Chapters: a hairline across the page, the number and title on columns 1–3, the text on 4–9.
+   Every block sits on the 12-column grid. */
+.s-flow { align-items: start; }
+/* A work without chapters: its first row keeps the hero's distance from the opening spread. */
+.s-flow > .s-row:first-child { margin-top: 64px; }
+.s-flow > *, .s-ch > * { grid-column: 1 / -1; min-width: 0; }
+.s-ch { margin-top: 160px; padding-top: 14px; border-top: 1px solid var(--line); align-items: baseline; }
+.s-ch h3 { grid-column: 1 / span 3; display: flex; gap: 14px; align-items: baseline; padding-right: 16px; font-size: var(--t-lede); font-weight: 500; line-height: 1.25; letter-spacing: -0.012em; outline: none; }
+.s-ch h3 .mono { font-weight: 400; }
+.s-p { grid-column: 4 / span 6; font-size: var(--t-read); line-height: 1.56; max-width: 35em; text-wrap: pretty; }
+.s-row + .s-p { margin-top: 96px; }
+.s-p + .s-row, .s-facts + .s-row { margin-top: 72px; }
+.s-facts + .s-p { margin-top: 48px; }
+/* Facts: a quiet mono strip on the three column groups of the text side. */
+.s-facts { grid-column: 4 / -1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 var(--gap); margin-top: 40px; padding-top: 10px; border-top: 1px solid var(--line); line-height: 1.5; }
+.s-facts div { display: grid; gap: 3px; align-content: start; padding-right: 12px; }
+.s-facts dt { color: var(--mute); }
+.s-facts dd { text-wrap: pretty; }
+
+/* Image rows: one height across a row (each figure grows in proportion to its aspect ratio), uncropped,
+   and never taller than the screen. A row that would be too tall gives up whole grid columns (snap() in the
+   script), so both of its edges stay on the grid; the cap here is only the fallback. */
+.s-row { align-self: start; display: flex; gap: var(--gap); align-items: flex-start; justify-self: start; width: 100%; max-width: calc((100svh - var(--head) - 132px) * var(--sum) + var(--n) * var(--gap)); }
+.s-row + .s-row { margin-top: 40px; }
+.s-row figure { flex: var(--ar) 1 0; min-width: 0; display: grid; gap: 9px; align-content: start; }
+.s-row img, .s-row video { width: 100%; height: auto; border-radius: 2px; background: var(--panel); }
+/* Loops (short films cut from GIFs): they play muted while on screen; the pill pauses them. */
+.s-row .vid { position: relative; }
+.s-row video { display: block; aspect-ratio: var(--ar); object-fit: cover; }
+.vbtn { position: absolute; right: 8px; bottom: 8px; min-height: 26px; padding: 3px 10px; font-size: 11px; background: rgba(255, 255, 255, 0.86); color: #111; opacity: 0; transition: opacity .15s; }
+.vid:hover .vbtn, .vbtn:focus-visible, .vid.off .vbtn { opacity: 1; }
+@media (hover: none) {
+  /* Touch: a small icon chip (the button text stays its name), with a larger invisible tap area. */
+  .vbtn { opacity: 1; width: 26px; height: 26px; min-height: 0; padding: 0; right: 6px; bottom: 6px; border-radius: 8px; justify-content: center; font-size: 0; }
+  .vbtn::after { content: ""; position: absolute; inset: -9px; }
+  .vbtn::before { content: ""; width: 8px; height: 9px; box-sizing: border-box; border-inline: 3px solid currentColor; }
+  .vid.off .vbtn::before { width: 8px; height: 10px; margin-left: 2px; border: 0; background: currentColor; clip-path: polygon(0 0, 100% 50%, 0 100%); }
+}
+.s-row .pr { display: contents; }
+/* Drawings and models on pure white keep a hairline so they do not dissolve into the page. */
+.s-row img.ln { outline: 1px solid var(--line); outline-offset: -1px; }
+.s-row figcaption { color: var(--mute); font-size: 12px; line-height: 1.45; max-width: 62ch; text-wrap: pretty; }
+
+/* Closing: the author's conclusion, set like a chapter. */
+.s-end { margin-top: 176px; padding-top: 14px; border-top: 1px solid var(--line); align-items: baseline; }
+.s-end h3 { grid-column: 1 / span 3; font-size: var(--t-lede); font-weight: 500; line-height: 1.25; letter-spacing: -0.012em; }
+.s-end blockquote { grid-column: 4 / span 8; margin: 0; font-size: clamp(22px, 2.2vw, 36px); line-height: 1.18; letter-spacing: -0.028em; max-width: 22em; text-wrap: pretty; text-indent: -0.42em; }
+.s-more { justify-self: start; max-width: 100%; }
+.s-more > span:nth-child(3) { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.s-next { width: 100%; padding-block: 12px calc(32px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line); align-items: baseline; }
+.s-next .k { grid-column: 1 / span 3; }
+.s-next .t { grid-column: 4 / span 6; display: flex; gap: 8px; align-items: baseline; }
+.s-next .a { grid-column: 10 / span 3; justify-self: end; }
+.s-next:focus-visible { outline-offset: -1px; }
+@media (hover: hover) { .s-next:hover .t > span:last-child { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; } }
+
+/* Idle screen */
+.idle { position: fixed; inset: 0; z-index: 60; background: var(--bg); display: none; overflow: hidden; }
+.idle.on { display: block; }
+.bouncer { position: absolute; left: 0; top: 0; width: 280px; display: grid; gap: 6px; will-change: transform; }
+.bouncer img { width: 100%; height: auto; border-radius: 2px; }
+.idle-hint { position: absolute; left: var(--gut); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); }
+@media (hover: none) { .s-close .m { display: none; } }
+
+@media (max-width: 1023px) {
+  /* Tablet and phone: the side column becomes a bar above a full-width grid. */
+  .side { grid-column: 1 / -1; position: static; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); align-items: center; margin-bottom: 16px; }
+  .grid { grid-column: 1 / -1; }
+}
+@media (min-width: 600px) and (max-width: 1023px) {
+  /* The preview folds into one line beside the filter. */
+  .side .filter { grid-column: 1 / span 4; }
+  .pv { grid-column: 5 / -1; margin: 0; padding: 0; display: flex; align-items: center; gap: 12px; min-width: 0; }
+  .pv-c { display: flex; align-items: baseline; gap: 12px; min-width: 0; flex: 0 1 auto; }
+  .pv-h { display: flex; gap: 12px; align-items: baseline; min-width: 0; }
+  .pv h3 { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .pv-pos, .pv dl { flex: none; }
+  .pv dl { display: flex; gap: 8px; color: var(--mute); }
+  .pv dt, .pv dd:nth-of-type(3), #pv-d { display: none; }
+  .pv .open { margin-left: auto; flex: none; }
+}
+@media (max-width: 860px) {
+  :root { --gap: 12px; --head: 88px; }
+  #index { scroll-margin-top: calc(var(--head) + env(safe-area-inset-top, 0px) - 32px); }
+  .logo { grid-column: 1 / span 6; }
+  nav.main { grid-column: 1 / -1; grid-row: 2; margin-top: 8px; }
+  .where { grid-column: 7 / span 6; }
+  #projects { padding-top: 24px; }
+  .grid { gap: 24px var(--gap); }
+  .index-wrap { padding-top: 56px; }
+  .ihead .lbl { grid-column: 1 / span 6; }
+  .ihead .c-t, .ihead .c-c, .ihead .c-n { display: none; }
+  .ihead .c-y { grid-column: 7 / -1; }
+  .irow .c-no { grid-column: 1 / span 2; }
+  .irow .c-code { display: none; }
+  .irow .c-t { grid-column: 3 / span 7; }
+  .irow .c-c, .irow .c-n { display: none; }
+  .irow .c-y { grid-column: 10 / -1; }
+  .about { padding-block: 80px; }
+  .about .lbl, .about .bio { grid-column: 1 / -1; }
+  footer.foot { display: flex; flex-wrap: wrap; gap: 8px 6px; }
+  footer .f1 { flex: 1 0 100%; }
+  footer .f2, footer .f3 { display: contents; }
+  footer #idle-now { margin-left: auto; }
+  .peek { display: none; }
+  .bouncer { width: 180px; }
+  .s-bar { display: flex; gap: 6px; }
+  .s-pos { margin-right: auto; }
+  .s-nav .tx { display: none; }
+  .s-nav .pill { width: 30px; padding: 0; justify-content: center; }
+  /* The chapter pill hangs under the bar as a white band, full width like the filter on the works, so
+     showing it never moves the page. */
+  .s-chap { position: absolute; left: var(--gut); right: var(--gutR); top: 100%; padding-bottom: 8px; background: var(--bg); }
+  /* The band itself is opaque at once; only the pill in it fades, so the page never shows through. */
+  .s-chap, .s-chap.on { opacity: 1; }
+  .s-chap { transition: visibility 0s .25s; }
+  .s-chap.on { transition: none; }
+  .s-chb { opacity: 0; transition: opacity .25s, background .15s; }
+  .s-chap.on .s-chb { opacity: 1; }
+  .s-chb { width: 100%; }
+  .s-chb .arr { margin-left: auto; }
+  .s-chm { width: auto; right: 0; }
+  .s-body { padding-top: 24px; padding-bottom: 120px; }
+  /* The hero follows the intro straight away; the facts and contents come after it. */
+  .s-head, .s-side, .s-open > .s-row { grid-column: 1 / -1; }
+  .s-open > .s-row { order: 1; margin-top: 36px; }
+  .s-side { order: 2; margin-top: 40px; padding-top: 0; }
+  .s-flow > .s-row:first-child { margin-top: 40px; }
+  .s-ch { margin-top: 112px; }
+  .s-ch h3 { grid-column: 1 / -1; padding-right: 0; margin-bottom: 18px; }
+  .s-p, .s-facts { grid-column: 1 / -1; }
+  .s-row + .s-p { margin-top: 64px; }
+  .s-p + .s-row, .s-facts + .s-row { margin-top: 48px; }
+  .s-facts + .s-p { margin-top: 36px; }
+  .s-row + .s-row { margin-top: 32px; }
+  .s-end { margin-top: 112px; }
+  .s-end h3 { grid-column: 1 / -1; margin-bottom: 18px; }
+  .s-end blockquote { grid-column: 1 / -1; text-indent: 0; }
+  .s-next .k { grid-column: 1 / span 4; }
+  .s-next .t { grid-column: 5 / span 7; }
+  .s-next .a { grid-column: 12 / span 1; }
+}
+@media (min-width: 861px) and (max-width: 1023px) {
+  /* The nav, the preview line and the second cover column share one edge. */
+  nav.main { grid-column: 5 / span 5; }
+}
+@media (min-width: 600px) and (max-width: 860px) {
+  .cap .code { display: none; }
+  .s-side { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--gap); }
+}
+@media (min-width: 600px) and (max-width: 760px) {
+  .pv-pos .num, .pv dd:first-of-type { display: none; }
+}
+@media (max-width: 599px) {
+  /* Phone: the bar is the heading and the filter; tapping a cover opens the sheet, so the preview rests. */
+  .side .lbl { grid-column: 1 / span 4; }
+  .side .filter { grid-column: 5 / -1; }
+  .pv, .itile { display: none; }
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ph { aspect-ratio: 3 / 2; }
+  .tile.on .cap .t { text-decoration-color: transparent; }
+  .cap { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1px 8px; }
+  .cap .t { grid-column: 1 / -1; grid-row: 1; white-space: normal; }
+  .cap .code { grid-row: 2; width: auto; }
+  .cap .y { grid-row: 2; font-size: 12px; }
+  /* Phone rhythm (unfiltered only): the lead, and every fifth work after it, spans both columns. */
+  .grid .tile.wide { grid-column: 1 / -1; }
+  .grid .tile.wide .ph { aspect-ratio: 2 / 1; }
+  .grid .tile.lead { grid-row: auto; }
+  .grid .tile.lead .ph { aspect-ratio: 16 / 9; }
+  /* Footer: the address and the screensaver share one row under the copyright line. */
+  footer #mail { flex: 1 1 auto; min-width: 0; }
+  footer #mail #ok { margin-left: auto; }
+  footer #idle-now { flex: none; }
+  /* Sheet rows stack on phones (tablets keep them side by side at equal height); a strip of four becomes
+     two rows of two, each pair at one height. Long strips and the section keep the full width; no picture
+     grows past its own pixel width, and a portrait loop stays under half the screen. */
+  .s-row { display: grid; gap: 24px; }
+  .s-row figure { max-width: var(--iw); }
+  .s-row figure.tall { width: min(62%, calc(46svh * var(--ar))); }
+  .s-row.r4 { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .s-row.r4 .pr { display: flex; gap: 12px; align-items: flex-start; }
+  .s-row.r4 .pr figure { flex: var(--ar) 1 0; min-width: 0; }
+  .s-facts { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .s-facts div { grid-template-columns: 96px minmax(0, 1fr); gap: 0 12px; padding-right: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .sheet { animation: none; }
+  .s-chap, .s-chap.on, .s-chb, .s-toc button { transition: none; }
+  .ph img, .cap, .cap .t, .irow, .pill, .peek, .itile .ph, .vbtn { transition: none; }
+  .tile:hover .ph img, .tile:hover .ph video { transform: none; }
+}
+</style>
+
+<header class="top wrap g12">
+  <h1 class="logo"><a href="#top">shuheng wang</a></h1>
+  <nav class="main" aria-label="Main">
+    <a class="pill" href="#projects">Projects</a>
+    <a class="pill" href="#index">Index</a>
+    <a class="pill" href="#about">About</a>
+    <a class="pill" href="#contact">Contact</a>
+  </nav>
+  <span class="where pill"><span class="m">London</span><span id="clock">—</span></span>
+</header>
+
+<main id="top">
+  <section id="projects" class="wrap g12" aria-label="Projects">
+    <div class="side">
+      <h2 class="lbl"><span>Projects</span> <span class="m num" id="count"></span></h2>
+      <div class="filter">
+        <button class="pill icon" id="ficon" type="button" aria-label="Filter by category" aria-haspopup="true" aria-expanded="false" aria-controls="menu">
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M1 3.5h12M1 7h12M1 10.5h12"/><path d="M4.5 2v3M9.5 5.5v3M6 9v3"/></svg>
+        </button>
+        <button class="pill sel" id="fsel" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="menu"><span id="fsel-t">All works</span><span class="arr" aria-hidden="true">↘</span></button>
+        <div class="menu" id="menu" role="menu" hidden></div>
+      </div>
+      <div class="pv" id="pv">
+        <div class="pv-c" id="pv-c">
+          <div class="pv-h">
+            <p class="pv-pos"><span class="mono" id="pv-code"></span><span class="mono m num" id="pv-n"></span></p>
+            <h3 id="pv-t"></h3>
+          </div>
+          <dl id="pv-dl"></dl>
+          <p id="pv-d"></p>
+        </div>
+        <button class="pill open" id="pv-open" type="button" aria-describedby="pv-t">Open project <span class="arr" aria-hidden="true">↘</span></button>
+      </div>
+    </div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section id="index" class="wrap index-wrap" aria-label="Index">
+    <div class="ihead g12">
+      <h2 class="lbl">Index</h2>
+      <span class="c-t m">Title</span><span class="c-c m">Category</span><span class="c-n m">Images</span><span class="c-y m">Year</span>
+    </div>
+    <div class="index" id="list"></div>
+  </section>
+
+  <section id="about" class="about wrap g12" aria-label="Information">
+    <h2 class="lbl">Information</h2>
+    <p class="bio">Shuheng Wang is a designer working across buildings, products, jewellery and installations: from rooms carved into an eroding cliff and a centre half buried in moving dunes, to a clip-on device that senses what is coming from behind, 3D-printed ceramic jewellery and an installation made to hold it.</p>
+  </section>
+</main>
+
+<footer id="contact" class="foot wrap g12">
+  <span class="f1">© 2026 shuheng wang</span>
+  <div class="f2">
+    <button id="mail" class="pill" type="button"><span>hello@shuhengwang.com</span> <span class="m" id="ok" aria-live="polite">Copy</span></button>
+  </div>
+  <div class="f3"><button class="pill" id="idle-now" type="button">Screensaver</button></div>
+</footer>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="s-title" tabindex="-1" hidden>
+  <div class="s-bar wrap g12">
+    <span class="s-pos"><span class="mono" id="s-code"></span><span class="mono m num" id="s-n"></span></span>
+    <div class="s-nav">
+      <button class="pill" id="s-prev" type="button" aria-label="Previous project"><span aria-hidden="true">←</span><span class="tx">Previous</span></button>
+      <button class="pill" id="s-next" type="button" aria-label="Next project"><span class="tx">Next</span><span aria-hidden="true">→</span></button>
+    </div>
+    <div class="s-chap" id="s-chap">
+      <button class="pill s-chb" id="s-chb" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="s-chm"><span class="mono num" id="s-chn"></span><span id="s-cht"></span><span class="arr" aria-hidden="true">↘</span></button>
+      <div class="menu s-chm" id="s-chm" role="menu" aria-label="Chapters" hidden></div>
+    </div>
+    <button class="pill s-close" id="s-close" type="button" aria-label="Close project">Close <span class="m">Esc</span></button>
+  </div>
+  <div class="s-body wrap">
+    <div class="s-open g12" id="s-open">
+      <div class="s-head">
+        <h2 id="s-title"></h2>
+        <p class="sub" id="s-sub" hidden></p>
+        <p class="s-intro" id="s-d"></p>
+      </div>
+      <div class="s-side">
+        <dl class="s-meta" id="s-dl"></dl>
+        <nav class="s-toc" id="s-toc" aria-labelledby="s-toch" hidden><h3 id="s-toch">Contents</h3><ol id="s-tocl"></ol></nav>
+      </div>
+    </div>
+    <div class="s-flow g12" id="s-imgs"></div>
+  </div>
+  <button class="s-next wrap g12" id="s-foot" type="button">
+    <span class="k m">Next project</span>
+    <span class="t"><span class="mono m" id="s-fcode"></span><span id="s-ft"></span></span>
+    <span class="a" aria-hidden="true">→</span>
+  </button>
+</div>
+
+<img class="peek" id="peek" alt="" aria-hidden="true">
+<div class="idle" id="idle" aria-hidden="true"><div class="bouncer" id="bouncer"></div><span class="idle-hint mono m">Move to continue</span></div>
+
+<script>
+// Works. The Geomorphology Research Centre (UG6, final PDF title Time Magnificents!) is shown as two works at the user’s request (2026-11-09): Living on the Dunes (DUN, the lead) and Eroding the Cliff (CLF); both draw on img/ug6 and img/ug6p. Earlier 2019–2020 portfolio projects are not shown.
+// imgs: [file, width, height, alt]; files live in img/<dir>/, 960px covers in img/cover/<code>.jpg.
+// omii is a 2026 team product project (RCA × Imperial); it follows the lead work. CHOGA (2026, a London
+// jewellery studio: series, ceramic production, the Future Archaeology pop-up invitation, the shop) follows omii,
+// then Reliquary (CHOGA × Wedge installation, SS 2025, from the CHOGA brand book).
+// op = crop focus of the cover in its frame (object-position). The lead work also has a full-frame wide source
+// for its lead tile (lop = its crop focus there); in a 2:1 frame op 33% repeats the curated cover crop.
+// A long-form work adds intro, meta, hero, chapters and closing. A chapter's imgs is its flow: a number
+// places that paragraph of text; a row is { f: figures, w: 9 for columns 4–12 }, and a figure is
+// [file under img/ without .jpg, width, height, caption, alt text, 1 when it sits on pure white, 1 when it is a
+// loop: then the .jpg is its poster and .webm and .mp4 files sit beside it].
+const WORKS = [
+  { t: "Living on the Dunes", s: "Geomorphology Research Centre", c: "Architecture", y: "2024", code: "DUN", dir: "ug6", cover: [960, 480],
+    wide: [["img/cover/UG6_W.jpg", 1400, 585], ["img/ug6/U01.jpg", 2000, 836], ["img/ug6/U01_2800.jpg", 2800, 1170], ["img/ug6/U01_3800.jpg", 3800, 1588]], op: "33% 50%", lop: "45% 50%",
+    d: "A research and visitor centre half buried in moving dunes, shaped to steer the wind and grow a dune each summer, developed through smoke tests, sandboxes and CFD.",
+    intro: "Behind the cliff at Rubjerg Knude, on Denmark’s North Sea coast, the dunes move five to ten metres a year. The project treats this movement as material. A research and visitor centre, half buried in the sand, uses its own form to steer the wind. Around it, fences, navigators and a wind trap grow a dune each summer and let it wear down in winter. Change normally measured in years becomes visible in weeks. This is one half of the Geomorphology Research Centre; the other, Eroding the Cliff, has its own page.",
+    meta: [
+      ["Year", "2024 (Feb–Jun)"], ["Location", "Rubjerg Knude, Denmark"], ["School", "The Bartlett School of Architecture, UCL"],
+      ["Unit", "UG6, Year 3"], ["Tutors", "Ben Spong, Stefan Lengen"],
+      ["Part of", "Time Magnificents!, with Eroding the Cliff"], ["Programme", "Research and visitor centre, dune field"], ["Methods", "Smoke tests, sandbox tests, CFD, film"],
+      ["Shown", "Bartlett Summer Show 2024"], ["Published", "Bartlett Year Book"],
+    ],
+    hero: ["ug6/U01", 2000, 836, "Aerial view: the centre half buried in the dunes, with the rooms carved into the cliff below.", "Aerial render of the building in the dunes above the cliff"],
+    chapters: [
+      { n: "01", title: "Site: Rubjerg Knude",
+        text: [
+          "Rubjerg Knude is a sedimentary cliff about 90 m above the North Sea, near Lønstrup in North Jutland. Migrating dunes lie behind it, and at times they have buried half of the Rubjerg Knude lighthouse. The dunes, made of sand stripped from the cliff, move 5 to 10 m a year.",
+          "A “Life of Sand” drawing traces the cycle. Wind, mostly from the north-west, drives sand from the beach against the cliff, wears it down and carries the debris over the top to build the dunes. The seasons set the pace. In warm, dry summers the sand is loose, and the dunes grow and travel. In cold, wet winters they harden and are only worn back by the wind. The site is read as a process, not a fixed plot.",
+        ],
+        facts: [["Dunes", "Move about 5–10 m a year"], ["Summer", "Loose sand: the dunes grow and travel"], ["Winter", "Wet sand hardens and is worn back by the wind"]],
+        imgs: [
+          { w: 9, f: [["ug6p/site-05", 1852, 1282, "Rubjerg Knude from above: the eroding cliff, the migrating dunes and the North Sea.", "Aerial photograph of the cliff, the dunes and the sea"]] },
+          1,
+          { w: 9, f: [["ug6p/site-10", 2388, 1149, "One year on the site: the dune builds from March to August and wears down from September to January. The cycle repeats every year.", "Timeline drawing of the yearly dune cycle with a red curve", 1]] },
+        ] },
+      { n: "02", title: "Designing with the wind",
+        text: [
+          "The project grew out of P1, an apparatus for studying wind with smoke over flat, curved and bumpy surfaces. It left a short set of rules. Smooth, gentle surfaces keep the flow laminar, and laminar flow is faster and can carry more sand. Too much curvature, or a rough surface, breaks it into turbulence, and turbulence slows the wind so the sand it carries settles. Some turbulence also makes the wind feel more comfortable to people. The first moves put these rules on the site: a sketch on an aerial photograph, a masterplan drawn along a designed wind path to form a sand dune, and a terrain model tested with smoke.",
+        ],
+        facts: [["P1 wind research", "September–December 2023"]],
+        imgs: [
+          { f: [["ug6p/site-09", 2000, 1347, "Early sketch on an aerial photograph: the wind directed to build a sand dune.", "Grainy aerial photograph with hand-drawn wind lines over the dunes"],
+                ["ug6p/site-11", 2400, 1698, "Initial masterplan, 1:500: a designed wind path to form a sand dune.", "Pale line plan of the site with red wind arrows and an inset detail", 1]] },
+          { f: [["ug6p/site-13", 992, 864, "Early massing on the terrain model, tested with smoke.", "White terrain model with a grid and an eroded hollow, a smoke stick at the corner"],
+                ["ug6p/site-14", 2000, 1125, "Initial 3D massing, 1:500: visitor centre, wind dams and dune-forming device.", "Grey massing blocks on a wireframe terrain"]] },
+        ] },
+      { n: "03", title: "The building on the sand",
+        text: [
+          "The main building stands on moving sand. It has to resist erosion, keep clear of the dunes and use the wind. Precedents ranged from Sub-Saharan and Turkish vernacular building to a house made of sand and Denis Villeneuve’s Dune. Plan iterations, one of them called Sand Climber, led to a 1:200 printed model tested with smoke. It showed faces too square to the wind, spots where sand would pile up, and glass that needed cover.",
+          "Later massings gave the building a pointed nose, borrowed from car design, to split the wind. Metal walkways stand 2 to 4 m above the ground so the sand can pass beneath. Replaceable wire mesh and metal panels take the sandblasting instead of the concrete. Once the building is finished, sand is poured over it to merge it with the landscape. On the roof, rotatable wind tunnels turn with the wind and let researchers steer where the sand settles.",
+        ],
+        facts: [["Smoke-tested model", "1:200"], ["Elevated walkways", "2–4 m above the ground"]],
+        imgs: [
+          { f: [["ug6p/dune-01", 2000, 1127, "Material and form speed model: concrete main body, metal structure, timber secondary structure.", "Grey speed model of the building on a dark base"],
+                ["ug6p/dune-02", 2000, 1247, "“Sand Climber” plan iteration: interior dune, viewing terraces, researchers’ office.", "White sketch lines of a plan on a dark ground"]] },
+          { f: [["ug6p/dune-03", 2000, 1349, "Material study A: a concrete base for the main body.", "Massing model in sand, concrete body only"],
+                ["ug6p/dune-04", 2000, 1349, "Material study B: metal panels shield the concrete from sand-laden wind.", "The same model with metal panels added"],
+                ["ug6p/dune-05", 2000, 1349, "Material study C: an open roof terrace that lets heat escape.", "The same model with an open roof terrace"]] },
+          { f: [["ug6p/dune-06", 2183, 2295, "Ground floor plan, iteration 3, 1:200: wind dam, cafe, reception, offices, viewing space.", "Line drawing of a ground floor plan among contour lines", 1],
+                ["ug6p/dune-07", 2000, 1129, "Massing model of the same iteration, from above.", "Grey massing model seen from above"]] },
+          { w: 9, f: [["ug6p/dune-08", 2000, 1333, "The 1:200 printed model in smoke: faces too square to the wind would wear too fast.", "Building model in blue-lit smoke, on black"]] },
+          1,
+          { f: [["ug6p/dune-09", 2000, 1125, "Elevated walkway on metal stands, 2–4 m above the ground so the sand passes beneath.", "Render of a walkway raised on metal legs, on black"],
+                ["ug6/U11", 2000, 1333, "Sectional model of the sunken corridor: replaceable wire mesh, metal roofing, concrete.", "Sectional model of a sunken corridor with a glazed roof and a figure"],
+                ["ug6p/dune-10", 1994, 2400, "Stairwell detail section, 1:25: glass, metal frame, string structure, replaceable wire mesh.", "Detail section drawing of a glazed stair wall", 1]] },
+          { f: [["ug6p/dune-11", 2000, 1625, "Electricity room: turbines placed where the building itself speeds up the wind.", "Cutaway model of a dark room with turbines and a figure", 1],
+                ["ug6p/dune-12", 2000, 1125, "The turbine room: turbines driven by wind the building itself speeds up generate electricity.", "Dark render of a room with red-lit turbines"],
+                ["ug6/U05", 2000, 1125, "A wind turbine and its gear parts, with a figure for scale.", "Render of a wind turbine in a dark hall, with a figure"]] },
+          { f: [["ug6p/dune-13", 2000, 1125, "The washing room: accelerated wind blows the sand off visitors and researchers.", "Dark render of a room with a bright doorway and railings"],
+                ["ug6p/dune-14", 2000, 1125, "An interior dune that always stays the same, so that visitors rethink time.", "Model view from above of a room holding a small dune"]] },
+        ] },
+      { n: "04", title: "Forming a dune",
+        text: [
+          "How does a dune move, and how can it be kept in one place? A first sandbox, with steel and SLA shell pieces, suggested that dunes could be shaped, but the box was too small and the wind too weak. A longer box followed, with a hair dryer at one end and the wind falling from 90% to 30% along its length. Tests of the wind navigators and dune platform drew sand to the middle, and a groove caught it. The platform still did not hold the dune well.",
+          "The final field is a set of parts. A wind fence stops the dune being blown away. One navigator steers sand-laden wind into a wind trap, whose turbulence slows it so the sand settles on a concrete dune base. Another sends clean wind to sweep the observation platform. A CFD study of the summer wind showed a calm zone where the dune forms and faster air that keeps the walkways clear. The cycle repeats each year: renders in January, April and July follow the dune as it grows, and an animation runs through the whole year.",
+        ],
+        facts: [["Dune change", "From a few metres a year to about 5–8 m every 2 months"], ["CFD", "Summer wind, 0.5–8 m/s (Ansys Discovery Live)"], ["Timeline", "Preparation from 1 August 2024; first dune cycle 2029–30, then yearly"]],
+        imgs: [
+          { f: [["ug6p/form-01", 2000, 1333, "First sandbox test, before: steel and SLA-printed shell pieces in the sand.", "Steel and printed shell pieces standing in brown sand"],
+                ["ug6p/form-02", 2000, 1333, "After: sand blown away in places and gathered into small dunes.", "The same sandbox after the wind, with small dunes"]] },
+          { w: 9, f: [["ug6p/form-03", 2000, 691, "The longer sandbox, with a hair dryer at one end: the wind falls from 90% to 30% along the box.", "Top view of a long sandbox with a hair dryer at one end"]] },
+          { w: 9, f: [["ug6p/form-04", 2000, 1099, "Wind massing model: red arrows trace the planned path of the wind.", "Grey model with red dashed arrows marking the wind path"]] },
+          { f: [["ug6p/form-05", 1649, 867, "Physical test of the wind navigators and dune platform, starting phase.", "Black navigator models and a platform in pale sand"],
+                ["ug6p/form-06", 1653, 865, "Phase 3: the navigators steer the sand into a dune in the middle.", "Sand drifted into the middle of the platform model"]] },
+          { f: [["ug6/U08", 2000, 1000, "Massing model, fourth iteration, the nearest to the final architecture.", "White massing model of the whole scheme on grey contours"],
+                ["ug6p/form-07", 1135, 712, "Aim: sand covering the building until it merges with the dunes.", "Model render with sand covering the building"]] },
+          1,
+          { f: [["ug6p/form-08", 2400, 1419, "Dune formation design: wind fence, sand stair, wind navigators and wind trap.", "Axonometric drawing of the dune field with labelled parts and wind arrows", 1],
+                ["ug6p/form-09", 2000, 1272, "Final CFD of the summer wind: the low-speed zone where the dune forms.", "Wind speed plot in yellow, green and blue over the plan"]] },
+          { f: [["ug6/U02", 2000, 837, "January: the dune platform at dusk, under the curved wind fence.", "Render of the dune platform at dusk beneath a curved fence"]] },
+          { f: [["ug6p/form-15", 2000, 837, "April: the dune builds up on the platform.", "The same view in April, with a larger dune"]] },
+          { f: [["ug6p/form-16", 2000, 837, "July: the dune has grown since January.", "The same view in July, the dune grown high"]] },
+          { f: [["ug6p/sand-year", 1600, 900, "One year in 108 frames: sand spreads over the white model, and the dune on the platform rises and wears down.", "Looping animation of sand moving across a white model of the building and the cliff", 0, 1]] },
+        ] },
+      { n: "05", title: "Final design",
+        text: [
+          "The final drawings include an overall plan at 1:100 across six A0 sheets, three floor plans, and a section from the entrance down to the cliff. Renders made in Unreal Engine 5.4 follow a visit: the arrival across the dunes and the roof before and after the sand. A film and the animation of the sand through one year complete the set.",
+          "The building does not try to stay clean. It lets sand cover it, so it never shows its whole form, and its outline shifts with the dunes. Inside, one dune is kept constant, so visitors can rethink their sense of time. Because sand and wind are hard to model accurately on a computer, the building also works as a full-scale instrument, giving researchers first-hand data on how dunes build up and die out.",
+        ],
+        facts: [["Renders", "Unreal Engine 5.4"], ["Overall plan and section", "1:100"]],
+        imgs: [
+          { f: [["ug6p/form-10", 2400, 615, "Section, 1:100: elevated walkway, wind tunnels, cafe and the Cliff Centre below.", "Long section drawing through the building and the cliff", 1]] },
+          { f: [["ug6p/form-11", 2000, 837, "Arrival: approaching the half-buried building across the dunes.", "Render of the building low on the horizon across sand and stones"]] },
+          { w: 9, f: [["ug6p/form-12", 2000, 1126, "Late light through a slatted metal canopy, with sand drifting beneath.", "Render of sand under a slatted metal canopy"]] },
+          1,
+          { f: [["ug6p/form-13", 2000, 838, "The first-floor roof with its rotatable wind tunnels, before the sand arrives.", "Aerial render of the roof with round wind tunnels, before sand"],
+                ["ug6p/form-14", 2000, 838, "The same roof after sand has gathered, steered by the wind tunnels.", "The same roof with drifts of sand"]] },
+        ] },
+    ],
+    closing: "With the growing understanding of nature, architecture should also be more than just a shelter to protect people from nature … architecture has the ability to fill the gap between man and nature.",
+    imgs: [
+      ["U01", 2000, 836, "Aerial view of the building in the dunes"],
+      ["U02", 2000, 837, "Dune platform at dusk in January"],
+      ["U05", 2000, 1125, "A wind turbine and its gear parts, with a figure for scale"],
+      ["U07", 2000, 1125, "White model of the whole scheme with dune and cliff"],
+      ["U08", 2000, 1000, "Massing model, fourth iteration"],
+      ["U11", 2000, 1333, "Sectional model of the sunken corridor"],
+    ] },
+  { t: "Eroding the Cliff", s: "Geomorphology Research Centre", c: "Architecture", y: "2024", code: "CLF", dir: "ug6", cover: [960, 480], op: "15% 50%",
+    d: "Rooms carved into an eroding cliff by the wind itself: a cart on a track and a wind dam steer sand-laden wind into the rock. The method was developed through sandblasting tests, printed prototypes and 3D scans.",
+    intro: "At Rubjerg Knude, on Denmark’s North Sea coast, the cliff retreats by up to a metre a year. The project treats this erosion as a way to build. A cart on a track along the cliff and a wind dam direct sand-laden wind to carve rooms into the rock over about two years, among them a guest room where visitors stay the night and watch the wall change. Erosion that took one and a half to two years for half a metre takes about two months. This is one half of the Geomorphology Research Centre; the other, Living on the Dunes, has its own page.",
+    meta: [
+      ["Year", "2024 (Feb–Jun)"], ["Location", "Rubjerg Knude, Denmark"], ["School", "The Bartlett School of Architecture, UCL"],
+      ["Unit", "UG6, Year 3"], ["Tutors", "Ben Spong, Stefan Lengen"],
+      ["Part of", "Time Magnificents!, with Living on the Dunes"], ["Programme", "Wind dam, turbine hall, Cliff Nexus, guest room"], ["Methods", "Sandblasting, 3D printing, 3D scanning, smoke tests"],
+      ["Shown", "Bartlett Summer Show 2024"], ["Published", "Bartlett Year Book"],
+    ],
+    hero: ["ug6/U03", 2000, 858, "The wind dam steers the wind entering the cliff and drives turbines for electricity.", "Render of a cave lined with turbines lit red"],
+    chapters: [
+      { n: "01", title: "Site: Rubjerg Knude",
+        text: [
+          "At Rubjerg Knude, a sedimentary cliff about 90 m above the North Sea near Lønstrup, the coast is retreating: satellite images from 1985 to 2023 show it pushed about 55 m inland. The lighthouse stands between the cliff edge and the dunes.",
+          "Wind, mostly from the north-west, drives sand from the beach against the cliff, wears it down and carries the debris over the top to build the dunes behind.",
+        ],
+        facts: [["Coastline", "About 55 m inland in 40 years (1985–2023)"], ["Cliff", "About 90 m above sea level"], ["Wind", "Mostly from the north-west"]],
+        imgs: [
+          { w: 9, f: [["ug6p/site-06", 1858, 1234, "The Rubjerg Knude lighthouse between the cliff edge and the dunes.", "Black-and-white aerial view of the lighthouse on the cliff edge above the sea"]] },
+          { w: 9, f: [["ug6p/site-07", 2400, 1490, "Satellite images, 1985 to 2023: the coastline has moved about 55 m inland in 40 years.", "Satellite maps comparing the coastline in 1985 and 2023, with a row of yearly frames"]] },
+          1,
+          { w: 9, f: [["ug6/U06", 2000, 1500, "Geology of Rubjerg Knude: a terrain model of the sedimentary cliff, the dunes and the sea bed.", "Terrain model block of the cliff and dunes on black"]] },
+        ] },
+      { n: "02", title: "A wind tool box",
+        text: [
+          "The project grew out of P1, an apparatus for studying wind. Smoke was released over small flat, curved and bumpy surfaces, and each test was recorded frame by frame. What the tests showed became a design tool box: a short set of rules that guided every later stage.",
+          "Smooth, gentle surfaces keep the flow laminar, and laminar flow is faster and can carry more sand. Too much curvature, or a rough surface, breaks it into turbulence. Faces square to the wind take its full force. On the cliff the rules are used to speed the wind up, so that channels and smooth faces focus sand-laden wind where a room should be cut.",
+        ],
+        facts: [["P1 wind research", "September–December 2023"]],
+        imgs: [
+          { w: 9, f: [["ug6p/site-02", 2000, 1355, "P1, the aerodynamic design apparatus: carts, rotating parts and panels on curved tracks.", "Dark photograph of carts and panels on curved tracks with smoke"]] },
+          { f: [["ug6p/site-03", 2000, 437, "Smoke over a smooth, flat surface: the flow stays laminar from start to end.", "Three frames of smoke flowing over a flat surface"]] },
+          { f: [["ug6p/site-04", 2000, 437, "Smoke over a bumpy, curved surface: the flow breaks into strong turbulence.", "Three frames of smoke breaking up over a bumpy curved surface"]] },
+          1,
+        ] },
+      { n: "03", title: "Testing erosion",
+        text: [
+          "Erosion was tested in the Slade workshop sand blaster. Clay, plaster and plaster-and-cement blocks, covered with simple forms, showed how shape changes the wear. Geometry tests used the Venturi effect: a channel with a wide entrance and a narrow exit speeds the wind up and cuts faster, and the reverse slows it.",
+          "Three fragments turned this into a cliff cart, with rotating parts and an outer layer that can be replaced once worn. A 3D-printed prototype was blasted at grit 500 and scanned before and after. Final tests used longer sandblasting to erode spaces that can be lived in.",
+        ],
+        facts: [["Test materials", "Clay, plaster, plaster and cement"], ["Prototype 1", "SLA and SLS prints with metal bolts"]],
+        imgs: [
+          { f: [["ug6p/cliff-01", 1079, 808, "Material test, clay: a block covered with simple forms.", "Eroded clay block on a black table"],
+                ["ug6p/cliff-02", 1078, 808, "Material test, plaster.", "Eroded plaster block on a black table"],
+                ["ug6p/cliff-03", 1078, 808, "Material test, plaster and cement.", "Eroded plaster-and-cement block on a black table"],
+                ["ug6/U13", 2000, 1492, "Test pieces inside the Slade workshop sand blaster.", "Plaster test pieces on the grille of a sand blaster cabinet"]] },
+          { f: [["ug6p/cliff-04", 2000, 1486, "Eroded Space #1: a plaster surface carved by the sand blaster.", "Close-up of a pitted plaster surface carved by sand"],
+                ["ug6p/cliff-05", 1584, 773, "Geometry test: a channel form beside the plaster space it eroded.", "A square channel form beside a plaster block with an eroded hollow"]] },
+          1,
+          { w: 9, f: [["ug6p/cliff-06", 2000, 1802, "Fragment 1: the first erosion device on the cliff.", "Wireframe drawing of a device fixed to a cliff, on black"],
+                ["ug6p/cliff-07", 1333, 2000, "Prototype 1, printed in SLA and SLS with metal bolts, on a model cliff.", "White 3D-printed prototype fixed to a model cliff"]] },
+          { f: [["ug6/U09", 2000, 971, "Fragment 3: the cliff cart assembled.", "Model of the cliff cart with curved ends and timber roof panels"],
+                ["ug6/U10", 2000, 1333, "Fragment 3 exploded: inner layer, outer layer, roof and track.", "Exploded view of the cliff cart parts"]] },
+          { f: [["ug6/U12", 1200, 1600, "Physical model of the cliff cart on a plaster cliff: SLS, PLA and SLA prints, bolts and plaster.", "White model of the cliff cart above a plaster cliff"],
+                ["ug6p/cliff-08", 2000, 1229, "The first moving part slides open to control the first stage of erosion.", "Hands sliding open a panel of the cart model"]] },
+          { w: 9, f: [["ug6p/cliff-09", 2000, 1296, "Final erosion tests #1 and #2: longer sandblasting to erode spaces that can be lived in.", "Two eroded plaster blocks with hollow rooms, on black"]] },
+        ] },
+      { n: "04", title: "The cliff cart and its rooms",
+        text: [
+          "The final cart runs on a track along the cliff. Its first opening takes the full wind for mass erosion, the second about 80% for controlled cutting, and the third about 30% to smooth the surface. A room takes about 24 months to form, and the cart also carries visitors and researchers along the cliff.",
+          "The scans became a cave model, and the method produced three spaces: a wind dam that steers erosion and drives turbines, the Cliff Nexus, which links the cliff to the ground above, and a guest room where visitors stay the night and watch the wall change.",
+        ],
+        facts: [["Cliff erosion", "From about 0.5 m every 1.5–2 years to about 0.5 m every 2 months"], ["Cart openings", "100%, 80% and 30% of the wind"], ["One room", "About 24 months to erode"]],
+        imgs: [
+          { f: [["ug6p/cliff-13", 2000, 837, "The cliff cart: the erosion machine also carries visitors and researchers along the cliff.", "Render inside the cart: steel walls, a stair and a figure, the cliff beside"]] },
+          { w: 9, f: [["ug6p/cliff-10", 2400, 862, "Erosion sequence over about 24 months: mass erosion, rationalisation, smoothing.", "Drawing of four cliff sections with rooms eroding in stages"]] },
+          1,
+          { w: 9, f: [["ug6p/cliff-11", 2000, 1125, "The Cliff Centre: a hall for visitors and researchers inside the eroded cliff.", "Render of a hall inside a rough rock cave, with glass and lamps"]] },
+          { w: 9, f: [["ug6p/cliff-12", 2400, 1693, "Erosion lab and stair, section 1:25: rock-bolt connections and holed metal panels.", "Line drawing: section of a stair and lab against the cliff, with details", 1]] },
+          { f: [["ug6/U04", 2000, 839, "The guest room at 10:00 the next morning, the erosion visible on the wall.", "Render of a dim room with a rough sandstone wall in morning light"]] },
+        ] },
+      { n: "05", title: "Final design",
+        text: [
+          "The final drawings include a plan of the cliff part at 1:100 and a section from the entrance down to the Cliff Centre. The renders on this page, made in Unreal Engine 5.4, follow a visit through the cliff cart, the guest room in the morning and the wind dam.",
+          "Sand and wind are hard to model accurately on a computer, so the cliff rooms also serve as a full-scale instrument, with first-hand data on erosion as it happens.",
+        ],
+        facts: [["Plan and section", "1:100"], ["Renders", "Unreal Engine 5.4"]],
+        imgs: [
+          { w: 9, f: [["ug6p/cliff-15", 2400, 1368, "Plan of the cliff part, 1:100: wind dam, turbine hall, Cliff Nexus, cart and guest room.", "Line plan of rooms and a long walkway cut into the cliff", 1]] },
+          1,
+          { f: [["ug6p/form-10", 2400, 615, "Section, 1:100: elevated walkway, wind tunnels, cafe and the Cliff Centre below.", "Long section drawing through the building and the cliff", 1]] },
+        ] },
+    ],
+    imgs: [
+      ["U03", 2000, 858, "Wind dam with turbines inside the cliff"],
+      ["U04", 2000, 839, "Guest room carved in the cliff, in the morning"],
+      ["U06", 2000, 1500, "Terrain model of the cliff, the dunes and the sea bed"],
+      ["U09", 2000, 971, "Fragment 3: the cliff cart assembled"],
+      ["U10", 2000, 1333, "Fragment 3 exploded: inner layer, outer layer, roof and track"],
+      ["U12", 1200, 1600, "Physical model of the cliff cart on a plaster cliff"],
+      ["U13", 2000, 1492, "Plaster test pieces inside the Slade sand blaster"],
+    ] },
+  { t: "omii", s: "Peripheral Pedestrian Awareness", c: "Product", y: "2026", code: "OMI", dir: "omii", cover: [960, 517], op: "50% 15%", loop: ["omii/face", 800, 450, "50% 72%"],
+    d: "A pair of clip-on units for the shoulder straps of a bag that sense what is coming from behind and say which side, and how urgently, with a vibration on that shoulder. A team project at the RCA and Imperial.",
+    intro: "On London’s pavements, what catches people out often comes from behind: e-bikes, scooters, cyclists. omii is a pair of clip-on units for the shoulder straps of a bag. Two small radars watch the space behind the wearer, work out what is closing in and how soon, and answer with a vibration on the matching shoulder: two taps for awareness, a rising buzz for attention, a continuous buzz and a beep when it is urgent. We built and tested tap, sound and vibration prototypes, and vibration was the fastest and clearest.",
+    meta: [
+      ["Year", "2026 (Sep–Oct)"], ["Location", "London"], ["School", "Royal College of Art and Imperial College London"],
+      ["Module", "IDE Fundamentals, Innovation Design Engineering"], ["Team", "Eddie, Eugene, Sejal, Shuheng, Val, Yuying"],
+      ["My role", "R&D, design and prototyping"], ["Methods", "Survey, filmed scenarios, Arduino prototypes, reaction tests, radar concept"],
+    ],
+    hero: ["omii/hero", 1811, 976, "omii: a clip-on unit with a swivel clip and a dot-matrix face.", "Render of a white rounded device with a lit dot-matrix face, on black"],
+    chapters: [
+      { n: "01", title: "Caught out from behind",
+        text: [
+          "Traffic, theft and harassment are different problems, but all of them approach from where you can’t see. Of 18 people we surveyed who walk in London, 16 (89%) had been surprised by a person, bike or vehicle in the last six months, and 13 of those 16 (81%) said it came from behind or they never saw it coming. E-bikes and bicycles were named most often; pavements and road crossings were the most common places.",
+          "We staged and filmed six short scenes of how it happens: looking at a phone, a blind spot, a conversation, an approach from behind, headphones, and a street at night. Streets rely on eyes and ears alone, and nothing extends awareness behind you.",
+        ],
+        facts: [["Surprised in six months", "16 of 18 people who walk in London (89%)"], ["From behind, or never seen", "13 of those 16 (81%)"], ["Named most, by those 16", "E-bikes (13), bicycles (11)"]],
+        imgs: [
+          1,
+          { f: [["omii/sc-phone", 712, 400, "Looking at a phone.", "A woman walks while looking at her phone", 0, 1],
+                ["omii/sc-blind-spot", 712, 400, "A blind spot: a man carrying a large board walks into someone on her phone.", "A man carrying a large white board walks towards a woman on her phone", 0, 1],
+                ["omii/sc-distracted", 712, 400, "A conversation: one of two friends turns round, startled.", "Two people talking; one turns round, startled", 0, 1]] },
+          { f: [["omii/sc-behind", 712, 400, "From behind: a cyclist knocks into a man looking at his phone.", "A cyclist comes from behind towards a man looking at his phone", 0, 1],
+                ["omii/sc-headphones", 712, 400, "Headphones and music.", "A woman in headphones dancing in the street", 0, 1],
+                ["omii/sc-night", 400, 712, "A street at night: someone close behind.", "A night street, one person close behind another", 0, 1]] },
+        ] },
+      { n: "02", title: "Six requirements",
+        text: [
+          "Desk research covered conflicts between pedestrians and cyclists, phone snatching from behind, and how fast people react to touch, light and sound. With the team’s Miro board it led to three directions, and we took peripheral awareness forward: how might we help people sense what is outside their field of view, and make walking safer? The answer had to be early, quiet, hands-free and directional.",
+          "We set six requirements: sense about 15–20 m behind, alert before contact, say which side, work without relying on sound, stay silent by default, and use no camera, so no faces. The research also set two limits. Sensing an approach is not sensing intent, so cyclists must not be profiled as thieves. And a cue on one side can be read as “danger here” or as “go here”.",
+        ],
+        facts: [["Reaction to a cue", "Touch about 337 ms, light 443 ms, sound 597 ms (published study)"], ["Directions", "Urban encumbrance, peripheral awareness, gait rhythm"], ["Design criteria", "Early, quiet, hands-free, directional"]],
+        imgs: [
+          { w: 9, f: [["omii/p-sticky-notes", 294, 305, "Clustering findings.", "Pink, yellow and green sticky notes on a white board"],
+                      ["omii/p-mind-map", 286, 228, "A hand-drawn mind map.", "A mind map drawn in black pen"],
+                      ["omii/p-miro-research", 315, 282, "The research board on Miro.", "Screenshot of a Miro board with notes and photos", 1],
+                      ["omii/p-miro-ideation", 287, 277, "Timed ideation rounds.", "Screenshot of Miro prompts with coloured notes", 1]] },
+          1,
+        ] },
+      { n: "03", title: "Three builds",
+        text: [
+          "The first electronics paired an Arduino Nano ESP32 with an ultrasonic distance sensor. The aim was an indoor demo: as a piece of cardboard or a toy car came up from behind, the falling distance would trigger a light and a sound. The distance readings worked, though they jumped around at about 30 cm. Boards and wires were taped to a backpack strap and to a shoulder for wearing tests.",
+          "Three builds then sent the same message through different senses: something is coming, from this side. Spatial audio played a directional alert in the headphones. BirdTap put a 3D-printed bird on each shoulder, where a 9 g micro servo turned its head to tap twice on the side of the approach. It was refined over many printed versions and gave a clear signal, but it was too visible. The strap unit buzzed on the left or right shoulder: hidden, and coupled to the body.",
+        ],
+        facts: [["Controller", "Arduino Nano ESP32"], ["First sensor", "Ultrasonic distance sensor"], ["Builds", "Sound, tap, vibration"]],
+        imgs: [
+          { f: [["omii/p-backpack-sensors", 1600, 1200, "Sensor boards and wires taped to a backpack strap.", "Circuit boards and coloured wires taped onto a black backpack"],
+                ["omii/p-electronics", 294, 352, "Boards, wires and printed bird parts.", "Boards, wires and white printed parts on a desk"],
+                ["omii/p-wiring", 294, 352, "Wiring the sensors and the birds.", "A team member wiring sensors at a desk"],
+                ["omii/p-shoulder-sensors", 1200, 1437, "Sensors taped to a shoulder for a wearing test.", "Coloured wires and small boards taped to the shoulder of a checked shirt"]] },
+          1,
+          { f: [["omii/proto-audio", 1138, 640, "01 Spatial audio: a directional alert in the headphones.", "A woman in headphones turns her head", 0, 1],
+                ["omii/proto-birdtap", 1138, 640, "02 BirdTap: a printed bird taps twice on the side of the approach. Clear, but too visible.", "A white 3D-printed bird on a shoulder, tapping", 0, 1],
+                ["omii/proto-buzz", 1138, 640, "03 Strap unit: a buzz on the left or right shoulder. Hidden, and coupled to the body.", "A small taped vibration unit on a shoulder", 0, 1]] },
+        ] },
+      { n: "04", title: "Testing the signal",
+        text: [
+          "Six people wearing headphones tried all three builds, first with no distraction and then while distracted by music, a conversation, a phone or exercise: 104 alerts in all. For each alert we recorded the reaction time, whether the signal felt clear or faint, and where it seemed to come from.",
+          "Vibration was the fastest for all six, with a mean reaction of 1.10 s against 1.51 s for sound and 1.67 s for the tap, and none of its 34 alerts was missed. So touch leads, and sound becomes a back-up for urgent alerts. One person moved toward the buzz, so the buzz marks the threat, not the escape route. Vibration also felt weaker while walking and turning, so its strength is set while walking.",
+        ],
+        facts: [["Mean reaction", "Vibration 1.10 s, sound 1.51 s, tap 1.67 s"], ["Missed alerts", "Vibration 0 of 34, sound 2 of 42, tap 0 of 28"], ["Warning needed", "3–4 s, so a detection range of about 8–15 m"]],
+        imgs: [1] },
+      { n: "05", title: "Form and sensing",
+        text: [
+          "Sketches set the constraints for the final form: the vibration module close to the body, a sensor that can be angled, and a low-res screen, with a swivel clip, soft silicone and a magnetic clasp. Two FMCW mmWave radars, one on each shoulder, each cover ±60° behind the wearer, the space that human vision misses. There is no camera, so no faces are recorded.",
+          "The radar data runs through range, Doppler and angle processing into target tracking. omii works out whether something is approaching, on which side, and whether its path will cross the wearer’s, then turns that into an urgency score, and thresholds sort that score into alert levels. Direction becomes a place on the body, and urgency becomes the density of the pulses. An IMU would take out the wearer’s own movement. The thresholds and this correction are design hypotheses, still to be calibrated in road tests.",
+        ],
+        facts: [["Sensing", "Two FMCW mmWave radars, ±60° each"], ["Range rings", "8 m and 15 m"], ["Privacy", "No camera, no faces"]],
+        imgs: [
+          { w: 9, f: [["omii/sketch", 552, 817, "Sketch of the constraints: swivel clip, haptics, soft silicone, magnetic clasp, low-res screen.", "Pen sketch of the device with notes", 1],
+                      ["omii/field-of-view", 558, 440, "Top view: human vision against the two shoulder radars, with 8 m and 15 m rings.", "Diagram of a head from above with blue vision and orange radar sectors", 1],
+                      ["omii/radar-coverage", 280, 359, "Each radar covers ±60° behind the wearer.", "Diagram of a standing figure inside a sphere with an orange sector behind", 1]] },
+          1,
+          { w: 9, f: [["omii/exploded-front", 522, 772, "Exploded view: clip, display, circuit boards and housing.", "Exploded render of the device with a red face, boards and shell parts", 1],
+                      ["omii/exploded-side", 543, 876, "Exploded view from the side.", "Side exploded render of the device parts", 1],
+                      ["omii/face", 800, 450, "The face cycles through its states.", "Animation of a dot-matrix face changing expression", 0, 1]] },
+        ] },
+      { n: "06", title: "omii",
+        text: [
+          "omii clips onto the shoulder straps of a bag, or onto clothing. Its alerts escalate with the time to collision: two short taps on the matching side at 3–6 s, a vibration that ramps up at 1.5–3 s, and a continuous buzz and a beep under 1.5 s. A nudge also warns the wearer when they are about to turn into someone’s path. A small dot-matrix face shows the same states.",
+          "In one journey a cyclist comes up fast from behind on the left. The left omii vibrates, the wearer steps slightly right, and the cyclist passes safely. In another, the wearer starts to turn right while someone behind is looking at their phone. The right omii gives two short taps, and the wearer stops to let them pass.",
+        ],
+        facts: [["Awareness", "3–6 s to collision: two short taps"], ["Attention", "1.5–3 s: the vibration ramps up"], ["Urgent", "Under 1.5 s: a continuous buzz and a beep"]],
+        imgs: [
+          { f: [["omii/backpack", 1983, 1115, "Two omii units on the shoulder straps of a backpack.", "Render of the back of a backpack with a blue device on each strap"]] },
+          1,
+          { w: 9, f: [["omii/storyboard", 1690, 591, "Storyboard of the two journeys.", "Line drawings of a pedestrian, a cyclist and a person on a phone", 1]] },
+        ] },
+    ],
+    imgs: [
+      ["hero", 1811, 976, "omii, a clip-on unit with a dot-matrix face"],
+      ["backpack", 1983, 1115, "Two omii units on a backpack"],
+    ] },
+  { t: "CHOGA", s: "Ritual in Form", c: "Product", y: "2026", code: "CHG", dir: "choga", cover: [960, 480], op: "50% 50%",
+    d: "A London jewellery studio whose name is Tibetan for “ritual”: 3D-printed ceramic and metal pieces in three series, an online shop, and a pop-up where visitors excavate a relic from 2050.",
+    intro: "In Tibetan, CHOGA means “ritual”. The studio, based in London, makes jewellery as small anchors for modern rituals, and uses Eastern philosophy as a method rather than a motif: the void, the movement of ritual, the relation between object and body, and honesty to material. Its 2026 collection has three series, NORBU, RI SGRA and ZLABA, in 3D-printed ceramic glazed white, pearl or silver, and in bronze. The work runs from SubD models to a production batch with a ceramic workshop, a new online shop, and Future Archaeology, a month-long pop-up on Neal Street whose invitation lives on the visitor’s phone.",
+    meta: [
+      ["Year", "2026"], ["Location", "London"], ["Studio", "CHOGA, jewellery and objects"],
+      ["Collection", "NORBU, RI SGRA, ZLABA"], ["Materials", "3D-printed ceramic, silver-plated bronze, bronze"],
+      ["Pop-up", "Future Archaeology, WEVE 2050, Neal Street, Aug–Sep 2026"],
+      ["My role", "Co-founder and director"], ["Tools", "Rhino SubD, Framer, Shopify, HTML and JavaScript"],
+    ],
+    hero: ["choga/hero", 1280, 688, "RI SGRA, a ribbed ceramic piece, turning: one of the object films made for the shop.", "A pale green ribbed ceramic form turning slowly on black", 0, 1],
+    chapters: [
+      { n: "01", title: "Ritual",
+        text: [
+          "CHOGA means “ritual” in Tibetan: “a reverence for time, a celebration of being”. The studio treats accessories not as adornment but as tangible anchors of modern rituals. It avoids literal Eastern motifs and figurative symbols, and works instead from the void, the dynamics of ritual, the relation between object and body, and material honesty.",
+          "For CHOGA, ritual is not tied to a scale. Its spatial installations are meant as sanctuaries, and the jewellery distils them into something the body can carry, a small fragment of the same ritual wherever the wearer goes. One of these installations, Reliquary, conceived with Wedge for the SS 2025 series Naturafacture, has its own page.",
+        ],
+        facts: [["Name", "CHOGA, Tibetan for “ritual”"], ["Based", "London"], ["Method", "Eastern philosophy as process, not motif"]],
+        imgs: [
+          { f: [["choga/bowl", 1344, 1800, "A bowl mended with gold seams, holding a ceramic fragment.", "Two hands in black sleeves holding a silver bowl with gold seams and a white ceramic piece inside"],
+                ["choga/packaging", 1344, 1800, "The packaging, laid out.", "A white box, cards and a wrapped piece laid out in a column on black"]] },
+          1,
+        ] },
+      { n: "02", title: "Three series",
+        text: [
+          "The 2026 collection has three series, each named in Tibetan. NORBU means “jewel”: something cherished, luminous and enduring. RI SGRA means “echo”, an inner vibration and a perceptive presence. ZLABA means “moon”, a symbol of softness, rhythm and quiet light.",
+          "The series also divide by material. RI SGRA is pure ceramic and ZLABA is pure metal, while NORBU joins a ceramic body glazed white, pearl or silver to a band of bronze or silver-plated bronze. The pieces are photographed on the hand and the ear, in black and in shadow.",
+        ],
+        facts: [["NORBU, “jewel”", "Rings R01, R02, earring ER01: ceramic and metal"], ["RI SGRA, “echo”", "Ring R01: white ceramic"], ["ZLABA, “moon”", "Ring R01, bracelet BC01: bronze"]],
+        imgs: [
+          { f: [["choga/norbu-r02", 1344, 1800, "NORBU R02: white ceramic and silver-plated bronze.", "A hand against a black dress wearing a white sculptural ring"],
+                ["choga/norbu-r01", 1344, 1800, "NORBU R01: pearl ceramic and bronze.", "Two hands in warm light, one wearing a white sculptural ring"],
+                ["choga/norbu-er01", 1344, 1800, "NORBU ER01, an earring in white ceramic and silver-plated bronze.", "Close-up of an ear wearing a white folded earring"]] },
+          1,
+          { f: [["choga/risgra-r01", 1344, 1800, "RI SGRA R01: white ceramic.", "A hand in a black sleeve wearing a white ring, on black"],
+                ["choga/zlaba-r01", 1344, 1800, "ZLABA R01: silver-plated bronze.", "Crossed hands, one wearing a silver ring, against white"],
+                ["choga/zlaba-bc01", 1344, 1800, "ZLABA BC01, a bracelet in bronze.", "Two raised arms against pale grey, one wearing a coiled bronze bracelet"]] },
+        ] },
+      { n: "03", title: "SubD forms",
+        text: [
+          "The pieces are modelled in Rhino as SubD surfaces, which keep a form soft and continuous while a light cage of control points shapes it. A folded stud went through four versions, alongside a twisted ribbon stud, a crumpled ribbon stud and two flower rings.",
+          "Renders come before printing. They test how a glazed ceramic body sits against polished metal, how a post meets the back of a stud, and how a pale green stone sits in a ceramic flower.",
+        ],
+        facts: [["Modelling", "Rhino SubD"], ["Studies", "Folded stud v1–v4, twisted and crumpled ribbon studs, two flower rings"], ["Checked in", "Renders of glaze against metal"]],
+        imgs: [
+          { f: [["choga/stud-cage", 900, 800, "Folded stud v4 with its SubD control cage.", "A grey twisted ring-like stud with white control points and curves over it", 1],
+                ["choga/stud-34", 1600, 1000, "Folded stud v4, a pair.", "Two grey twisted studs on a pale grey ground", 1]] },
+          1,
+          { w: 9, f: [["choga/stud-white", 1240, 1269, "A white ceramic stud on a silver post.", "Render of an earring: a white ceramic leaf on a polished silver post", 1],
+                      ["choga/flower-gem", 1419, 1109, "A ceramic flower set with a pale green stone.", "Render of a white ceramic flower with a small green stone at its centre"]] },
+        ] },
+      { n: "04", title: "Printed in ceramic",
+        text: [
+          "The collection is made with a ceramic 3D-printing workshop. Each piece is printed, bisque-fired, coated in slip and glazed white, pearl or silver, then fitted with sterling silver. The holes for posts and hooks are kept free of glaze; in the first samples glaze still closed them, so they were made larger.",
+          "The November 2026 batch has 23 models. Ten run as production pieces, 10 to 25 of each, and thirteen are one-off samples that try new forms, two of them set with jade. The sheet sent to the workshop gives every model its quantity and its size to a tenth of a millimetre.",
+        ],
+        facts: [["Process", "Print, bisque firing, slip, glaze"], ["Glazes", "White, pearl, silver"], ["November batch", "23 models: 10 runs (165 pieces), 13 samples"]],
+        imgs: [
+          { f: [["choga/batch", 2400, 800, "Twelve of the 23 models in the November batch, as sent to the workshop.", "Twelve grey renders of small soft ceramic forms, several with a hole for a post", 1]] },
+          1,
+        ] },
+      { n: "05", title: "Future Archaeology",
+        text: [
+          "For a month in summer 2026 the collection was shown at WEVE 2050 on Neal Street, in a pop-up called Future Archaeology. It fixes its coordinates at the year 2050 and treats each piece as a relic excavated from an imagined future and brought back to Neal Street. Clay and metal, humanity’s oldest materials, are the link between the two.",
+          "The invitation is a web page on the visitor’s phone, laid out as an archaeological record. Three questions weigh ceramic against metal and choose a series: “When everything else is lost, what do you keep?”, “Buried a thousand years, how would you want to be found?” and “Which surface do you trust?”. As they are answered, redacted fields open and the relic appears as a dithered image of its turning object.",
+          "The record stays open until the visitor comes to the shop and scans the site marker with the phone’s camera. Then it becomes a Future Relic Discovery Report, with a record code worth 20% off the matching series in the shop and a card to download whose QR code restores the record.",
+        ],
+        facts: [["Where", "WEVE 2050, 38 Neal Street, London"], ["When", "5 August – 5 September 2026"], ["Reward", "20% off the matching series"]],
+        imgs: [
+          { f: [["choga/inv-1", 740, 1336, "1 The sealed record and the first question.", "A cream phone page titled Archaeological Invitation, with redacted fields, a pixel question mark and three answers"],
+                ["choga/inv-2", 740, 1336, "2 Fields open as the questions are answered.", "The same page with more fields filled in and the third question"],
+                ["choga/inv-3", 740, 1336, "3 The series revealed; the record waits for the site marker.", "The page with a grey dithered object and a camera panel to scan the shop’s marker"],
+                ["choga/inv-4", 740, 1336, "4 After the scan: the discovery report and its record code.", "The page retitled Future Relic Discovery Report, with the series name, a record code and a QR code"]] },
+          1,
+          { w: 9, f: [["choga/inv-flow", 500, 902, "The invitation from the first question to the report.", "Screen recording of the phone page answering questions, revealing a dithered object and turning into a report", 0, 1],
+                      ["choga/qr-relief", 1400, 900, "A study for the site marker: the QR code as an eroded relief, generated as a printable model.", "Render of a sand-coloured slab whose surface is a weathered QR code pattern", 1]] },
+          2,
+        ] },
+      { n: "06", title: "The shop",
+        text: [
+          "The online shop was redesigned in Framer on Shopify. Three directions were compared: a ritual gallery, an object index and a set of series chapters. The ritual gallery was chosen: a black page where the pieces turn slowly, under the line “Ritual in form. Sculptural jewelry by CHOGA.”, with ten products under Shop, Series and About.",
+          "Each piece has its own film, a slow turn on black. The same films feed the pop-up invitation, which dithers them into its relics.",
+        ],
+        facts: [["Platform", "Framer and Shopify"], ["Directions", "Ritual gallery, object index, series chapters"], ["Chosen", "Ritual gallery: pieces turning on black"]],
+        imgs: [
+          { w: 9, f: [["choga/shop", 1424, 1212, "The ritual gallery home page.", "A black web page with the CHOGA logo, a pale green ribbed object, the words Ritual in Form and four selected objects"]] },
+          1,
+          { w: 9, f: [["choga/obj-norbu", 720, 720, "NORBU, turning.", "A white ceramic piece with a silver band turning on black", 0, 1],
+                      ["choga/obj-zlaba", 720, 720, "A green glazed piece with silver, turning.", "A dark green glazed ceramic form wrapped in silver turning on black", 0, 1]] },
+        ] },
+    ],
+    imgs: [
+      ["norbu-r02-wide", 1792, 896, "NORBU R02, white ceramic and silver-plated bronze, worn on the hand"],
+      ["hero", 1280, 688, "RI SGRA, a ribbed ceramic piece, turning on black"],
+      ["shop", 1424, 1212, "The CHOGA shop home page"],
+    ] },
+  { t: "Reliquary", s: "CHOGA × Wedge", c: "Installation", y: "2025", code: "RLQ", dir: "reliquary", cover: [960, 517], op: "50% 50%",
+    d: "A jewellery installation of silica sand, white ceramic, aluminium and CNC-carved wood, conceived with Wedge for Naturafacture, CHOGA’s SS 2025 series.",
+    intro: "Reliquary is a jewellery installation from Naturafacture, CHOGA’s SS 2025 series, conceived with Wedge. In the brand book’s words, it is “composed of silica sand, white ceramic, aluminium, and CNC carved wood, where matter itself becomes a vessel of ritual. Suspended between fragility and endurance, it cradles adornment as if holding memory and breath.”",
+    meta: [
+      ["Year", "2025"], ["Type", "Jewellery installation"], ["Series", "Naturafacture, CHOGA SS 2025"],
+      ["Credit", "CHOGA × Wedge"], ["Materials", "Silica sand, white ceramic, aluminium, CNC-carved wood"],
+    ],
+    hero: ["reliquary/forest", 2400, 1350, "Reliquary in a night forest scene, between truss towers and studio lights.", "A tall dark crumpled column on a black base, lit by an octagonal softbox and two strip lights, between two silver truss towers in a forest at night"],
+    chapters: [
+      { n: "01", title: "A vessel of ritual",
+        text: [
+          "A reliquary keeps what is precious. Here the precious things are jewellery, and the brand book gives each of the four materials part of the idea: “The porous sand murmurs of erosion and touch; the white ceramic gleams with quiet purity; the aluminium glints with precision; the carved wood carries the warmth of time.”",
+          "In the same text, “their geometry gestures toward the delicate tension between preservation and disappearance, between ornament and offering.” Seen from above, rings and small coloured pieces rest in mirror-finish cradles and on white and black forms, held rather than displayed.",
+        ],
+        imgs: [
+          { w: 9, f: [["reliquary/detail", 1070, 475, "From above: rings and small coloured pieces held in mirror-finish cradles and on white and black forms.", "Top view on oak leaves and twigs: a mirror-finish silver cradle holding a ribbed silver ring, a second silver cradle with a small silver cylinder, two matte white forms carrying small glossy red, teal and green pieces, black grainy forms with a dark ribbed ring resting on one, and the dark glossy ribbed column behind"]] },
+          1,
+        ] },
+      { n: "02", title: "Naturafacture",
+        text: [
+          "Naturafacture, the SS 2025 series Reliquary belongs to, is introduced in the brand book as “a manufactured ritual of nature and form”. The series text speaks of organic life “meticulously constructed, layer by layer, through the precision of ceramic 3D printing”, where “cracks resemble veins; curves echo roots” and each piece “emerges as a relic from a future ceremony”.",
+        ],
+        imgs: [] },
+    ],
+    imgs: [
+      ["forest", 2400, 1350, "Reliquary in a night forest scene"],
+    ] },
+];
+const CATS = ["All works", ...new Set(WORKS.map(w => w.c))];
+const imgSrc = (w, f) => `img/${w.dir}/${f}.jpg`;
+// Images a sheet shows: a long-form work counts its hero and every figure in its chapters.
+const nImgs = w => w.chapters ? (w.hero ? 1 : 0) + w.chapters.reduce((n, c) => n + c.imgs.reduce((m, r) => m + (r.f ? r.f.length : 0), 0), 0) : w.imgs.length;
+// 960px-wide cover derivatives for grid, peek and screensaver; full files stay for the sheet.
+const coverSrc = w => `img/cover/${w.code}.jpg`;
+// A cover loop: [file under img/ without extension, width, height, crop focus]; muted, so it may start by itself.
+// With reduced motion the tile keeps its still cover instead.
+const coverLoop = ([f, iw, ih, vop]) => `<video muted loop playsinline autoplay preload="auto" poster="img/${f}.jpg" width="${iw}" height="${ih}" aria-hidden="true"${vop ? ` style="--vop:${vop}"` : ""}><source src="img/${f}.webm" type="video/webm"><source src="img/${f}.mp4" type="video/mp4"></video>`;
+// Sources for a tile, smallest first: the cover and the first full image, or the wide pair when a work has one.
+const tileSrcs = w => w.wide || [[coverSrc(w), ...w.cover], [imgSrc(w, w.imgs[0][0]), w.imgs[0][1], w.imgs[0][2]]];
+// The rendered image is wider than its frame when a wide picture is cropped to fill it, so sizes reports
+// that width; high-density screens then take the full file instead of upscaling the small one.
+function coverSizes(ar, lead, wide, full) {
+  const k = fr => Math.max(1, ar / fr).toFixed(3), a = ar.toFixed(3);
+  // Full-width lead: the whole grid wide (columns 4–12 on desktop, the page on tablets), 16:9 on phones.
+  if (full) return `(min-width: 1024px) calc(75vw - 20px), (min-width: 600px) calc(100vw - 32px), calc((100vw - 32px) * ${(ar * 9 / 16).toFixed(3)})`;
+  // Lead: its frame is two covers, a row gap and a caption tall (a quarter of the page plus 35px on desktop).
+  if (lead) return `(min-width: 1024px) calc((25vw + 35px) * ${a}), (min-width: 600px) calc(((100vw - 64px) / 3 + 53px) * ${a}), calc((100vw - 32px) * ${(ar * 9 / 16).toFixed(3)})`;
+  const phone = wide ? `calc((100vw - 32px) * ${k(2)})` : `calc((100vw - 44px) * ${k(1.5)} / 2)`;
+  // Desktop: three grid columns of twelve (a quarter of the page less 20px); tablet: a third of the page.
+  return `(min-width: 1024px) calc((25vw - 20px) * ${k(2)}), (min-width: 600px) calc((100vw - 64px) * ${k(2)} / 3), ${phone}`;
+}
+const pad = n => String(n).padStart(2, "0");
+const $ = id => document.getElementById(id);
+let cat = "All works";
+try { const s = localStorage.getItem("sw-cat"); if (CATS.includes(s)) cat = s; } catch (e) {}
+const visible = () => WORKS.map((w, i) => ({ ...w, i })).filter(w => cat === "All works" || w.c === cat);
+
+/* Filter */
+const menu = $("menu"), ficon = $("ficon"), fsel = $("fsel");
+function openMenu(open) {
+  menu.hidden = !open;
+  [ficon, fsel].forEach(b => b.setAttribute("aria-expanded", open));
+  if (open) (menu.querySelector('[aria-checked="true"]') || menu.firstElementChild).focus();
+}
+let menuFrom = fsel;
+ficon.onclick = fsel.onclick = e => { e.stopPropagation(); menuFrom = e.currentTarget; openMenu(menu.hidden); };
+document.addEventListener("click", e => { if (!menu.hidden && !menu.contains(e.target)) openMenu(false); });
+menu.addEventListener("keydown", e => {
+  const items = [...menu.querySelectorAll("button")], k = items.indexOf(document.activeElement);
+  if (e.key === "ArrowDown") { e.preventDefault(); items[(k + 1) % items.length].focus(); }
+  if (e.key === "ArrowUp") { e.preventDefault(); items[(k - 1 + items.length) % items.length].focus(); }
+  if (e.key === "Tab") openMenu(false);
+});
+
+function renderGrid() {
+  menu.innerHTML = CATS.map(c => {
+    const n = c === "All works" ? WORKS.length : WORKS.filter(w => w.c === c).length;
+    return `<button type="button" role="menuitemradio" aria-checked="${c === cat}" data-c="${c}"><span>${c}</span><span class="m num">${n}</span></button>`;
+  }).join("");
+  menu.querySelectorAll("button").forEach(b => b.onclick = () => {
+    cat = b.dataset.c; try { localStorage.setItem("sw-cat", cat); } catch (e) {}
+    openMenu(false); renderGrid(); fsel.focus();
+  });
+  $("fsel-t").textContent = cat;
+  const items = visible();
+  $("count").textContent = items.length;
+  const all = cat === "All works";
+  // Unfiltered, the first work leads across two columns and two rows (full width on phones).
+  const lead = all && items.length > 3 && !!items[0].wide;
+  // A count that would leave one cover alone after a two-by-two lead gets a full-width lead instead.
+  const full = lead && items.length % 3 === 1;
+  // Phone rhythm, unfiltered only: every fifth tile runs full width; one more if the pairs would leave an orphan.
+  const wide = new Set();
+  if (all) {
+    items.forEach((_, k) => { if (k % 5 === 0) wide.add(k); });
+    if ((items.length - wide.size) % 2) wide.add(items.length - 1);
+  }
+  $("grid").innerHTML = items.map((w, k) => {
+    const isLead = lead && k === 0, srcs = tileSrcs(w), [s0, w0, h0] = srcs[0];
+    const vars = [w.op && `--op:${w.op}`, isLead && w.lop && `--lop:${w.lop}`, isLead && full && `--lar:${w0} / ${h0}`].filter(Boolean).join(";");
+    return `<button class="tile${isLead ? " lead" : ""}${isLead && full ? " full" : ""}${wide.has(k) ? " wide" : ""}" type="button" data-i="${w.i}">
+      <span class="ph"${vars ? ` style="${vars}"` : ""}>${w.loop && !reduce ? coverLoop(w.loop) : `<img src="${s0}" srcset="${srcs.map(([u, iw]) => `${u} ${iw}w`).join(", ")}" sizes="${coverSizes(w0 / h0, isLead, wide.has(k), isLead && full)}" alt="" width="${w0}" height="${h0}" decoding="async"${k < 6 ? ' fetchpriority="high"' : ""}>`}</span>
+      <span class="cap"><span class="code mono">${w.code}</span><span class="t">${w.t}</span><span class="y">${w.y}</span></span>
+    </button>`;
+  }).join("");
+  // The index tile only closes a row: the lead counts as four cells of the three-column grid (three when full width).
+  const cells = items.length + (lead ? (full ? 2 : 3) : 0);
+  $("grid").insertAdjacentHTML("beforeend", items.length ? (all && cells % 3 === 2 ? indexTile() : "") : `<p class="empty m">Nothing in this category yet.</p>`);
+  // The preview keeps its work while it is still in view; otherwise it shows the first one.
+  if (!items.some(w => w.i === act)) act = items.length ? items[0].i : -1;
+  showPv(act, false);
+  syncIndex();
+  fit();
+}
+const years = WORKS.map(w => +w.y);
+const indexTile = () => `<a class="tile itile" href="#index"><span class="ph"><span class="it"><span>Index</span><span aria-hidden="true">↘</span></span><span class="it mono m"><span class="num">${pad(WORKS.length)} works</span><span class="num">${Math.min(...years)}–${Math.max(...years)}</span></span></span></a>`;
+
+/* Preview: follows the pointer and keyboard focus over the covers, and keeps the last one when the pointer leaves. */
+let act = -1;
+function showPv(i, fade = true) {
+  const pv = $("pv"); pv.hidden = i < 0;
+  $("grid").querySelectorAll(".tile[data-i]").forEach(t => t.classList.toggle("on", +t.dataset.i === i));
+  if (i < 0) return;
+  const w = WORKS[i], list = visible(), k = list.findIndex(x => x.i === i);
+  $("pv-code").textContent = w.code;
+  $("pv-n").textContent = `${pad(k + 1)} / ${pad(list.length)}`;
+  $("pv-t").textContent = w.t;
+  $("pv-dl").innerHTML = `<dt>Category</dt><dd>${w.c}</dd><dt>Year</dt><dd class="num">${w.y}</dd><dt>Images</dt><dd class="num">${nImgs(w)}</dd>`;
+  $("pv-d").textContent = w.d || "";
+  if (fade && !reduce && $("pv-c").animate) $("pv-c").animate([{ opacity: 0.2 }, { opacity: 1 }], { duration: 260, easing: "ease-out" });
+}
+// After the sheet closes, the browser re-hovers the tile under a resting pointer; that must not undo the
+// hand-back to the last-viewed work, so the pointer takes over again only once it actually moves.
+let rest = false;
+function pointTo(e) {
+  if (rest && e.type === "mouseover") return;
+  const t = e.target.closest(".tile[data-i]"), i = t ? +t.dataset.i : act;
+  if (i !== act) { act = i; showPv(i); }
+}
+$("grid").addEventListener("mouseover", pointTo);
+$("grid").addEventListener("mousemove", e => { if (rest) { rest = false; pointTo(e); } });
+$("grid").addEventListener("focusin", pointTo);
+$("pv-open").onclick = e => { if (act >= 0) openSheet(act, e.currentTarget); };
+/* The description keeps the height of the longest one, so the Open project pill never moves between works.
+   On tablets and phones the description is hidden, measures 0 and reserves nothing. */
+function pvReserve() {
+  const d = $("pv-d"), keep = d.textContent; let h = 0;
+  d.style.minHeight = "";
+  WORKS.forEach(w => { d.textContent = w.d || ""; h = Math.max(h, d.getBoundingClientRect().height); });
+  d.textContent = keep; d.style.minHeight = h ? h + "px" : "";
+}
+/* Tablet and desktop: when the works end on the first screen but the Index would not fit whole beneath them,
+   the works hold the screen and the Index starts below the fold, never as a half-cut row. */
+function fit() {
+  pvReserve();
+  const pr = $("projects"); pr.classList.remove("fill");
+  const end = $("grid").getBoundingClientRect().bottom + scrollY, ix = $("index").offsetHeight;
+  pr.classList.toggle("fill", end < innerHeight && end + ix > innerHeight);
+  // The short index must still be able to reach the top of the screen (Index link, index tile), so the
+  // information block grows when the page below the index is shorter than the screen.
+  const ab = $("about"); ab.style.minHeight = ""; ab.style.marginTop = "";
+  const need = innerHeight - parseFloat(getComputedStyle($("index")).scrollMarginTop) - ix - $("contact").offsetHeight;
+  if (ab.offsetHeight < need) ab.style.minHeight = Math.ceil(need) + "px";
+  // When the works and the whole Index fit but the Information text would still be cut by the fold, it starts at the fold.
+  if (!pr.classList.contains("fill") && innerWidth >= 600) {
+    const y = el => el.getBoundingClientRect(), lt = y(ab.querySelector(".lbl")).top + scrollY, bb = y(ab.querySelector(".bio")).bottom + scrollY;
+    if (lt < innerHeight && bb > innerHeight) ab.style.marginTop = Math.ceil(innerHeight - (y(ab).top + scrollY)) + "px";
+  }
+}
+addEventListener("resize", fit); document.fonts?.ready.then(fit);
+$("grid").addEventListener("click", e => { const t = e.target.closest(".tile[data-i]"); if (t) openSheet(+t.dataset.i, t); });
+
+/* Index: rows outside the active category step back to the muted colour. */
+function syncIndex() {
+  $("list").querySelectorAll(".irow").forEach(r => r.classList.toggle("out", cat !== "All works" && WORKS[+r.dataset.i].c !== cat));
+}
+function renderIndex() {
+  $("list").innerHTML = WORKS.map((w, i) => `
+    <button class="irow g12" type="button" data-i="${i}" data-img="${coverSrc(w)}">
+      <span class="c-no mono m"><span class="num">${pad(i + 1)}</span><span class="c-code">${w.code}</span></span>
+      <span class="c-t">${w.t}</span><span class="c-c m">${w.c}</span><span class="c-n m num">${pad(nImgs(w))}</span><span class="c-y m">${w.y}</span>
+    </button>`).join("");
+  $("list").querySelectorAll(".irow").forEach(row => {
+    row.onclick = () => openSheet(+row.dataset.i, row);
+    row.addEventListener("mouseenter", () => { peek.src = row.dataset.img; peek.classList.add("on"); });
+    row.addEventListener("mouseleave", () => peek.classList.remove("on"));
+  });
+  syncIndex();
+}
+const peek = $("peek");
+addEventListener("mousemove", e => {
+  if (!peek.classList.contains("on")) return;
+  const x = Math.min(e.clientX + 24, innerWidth - 296), y = Math.min(e.clientY - 40, innerHeight - (peek.offsetHeight || 190) - 16);
+  peek.style.transform = `translate(${x}px, ${Math.max(8, y)}px)`;
+});
+
+/* Project sheet */
+const sheet = $("sheet"), bg = [document.querySelector("header.top"), $("top"), $("contact")];
+let cur = -1, opener = null;
+// The works the sheet steps through, fixed when it opens: the filtered set if the opened work is in it, else all.
+let walk = [];
+// Escapes text for HTML and keeps a number with its unit of length, and a range ("1.5–2"), on one line.
+const esc = t => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/(\d) (?=m\b|m\/s\b)/g, "$1\u00a0").replace(/(\d)–(?=\d)/g, "$1–\u2060");
+/* Sheet figures and rows. A figure is [file under img/, width, height, caption, alt, on white]; the first one
+   of a sheet loads at once, the rest lazily. A row's images share one height (each grows with its aspect
+   ratio); it starts on column 1 (w 12) or on column 4 with the text (w 9), and snap() narrows it by whole
+   columns when it would be taller than the screen. */
+let nFig = 0;
+function figure([f, iw, ih, cap, alt, ln, vid]) {
+  const first = nFig++ === 0;
+  const st = `--ar:${(iw / ih).toFixed(4)};--iw:${iw}px`;
+  if (vid) return `<figure${iw / ih < 0.8 ? ' class="tall"' : ""} style="${st}"><div class="vid${reduce ? " off" : ""}"><video muted loop playsinline preload="none" poster="img/${f}.jpg" width="${iw}" height="${ih}" aria-label="${esc(alt || cap)}"><source src="img/${f}.webm" type="video/webm"><source src="img/${f}.mp4" type="video/mp4"></video><button class="pill vbtn" type="button">${reduce ? "Play" : "Pause"}</button></div><figcaption>${esc(cap)}</figcaption></figure>`;
+  return `<figure${ln && iw / ih < 0.8 ? ' class="tall"' : ""} style="${st}"><img${ln ? ' class="ln"' : ""} src="img/${f}.jpg" alt="${esc(alt ?? cap)}" width="${iw}" height="${ih}" decoding="async"${first ? ' fetchpriority="high"' : ' loading="lazy"'}><figcaption>${esc(cap)}</figcaption></figure>`;
+}
+/* Loops play while at least a third of them is on screen and stop when the sheet closes or scrolls past.
+   With reduced motion they wait on their poster until the pill starts them; a paused loop stays paused. */
+const vio = "IntersectionObserver" in window ? new IntersectionObserver(es => es.forEach(e => {
+  const v = e.target, off = v.parentElement.classList.contains("off");
+  if (e.isIntersecting && !off && !sheet.hidden) { v.preload = "auto"; v.play().catch(() => {}); } else v.pause();
+}), { threshold: 0.33 }) : null;
+function wireVids() {
+  vio?.disconnect();
+  sheet.querySelectorAll(".vid video").forEach(v => vio ? vio.observe(v) : (!reduce && v.play().catch(() => {})));
+}
+document.addEventListener("click", e => {
+  const b = e.target.closest(".vbtn"); if (!b) return;
+  const box = b.parentElement, v = box.querySelector("video"), off = !box.classList.contains("off");
+  box.classList.toggle("off", off); b.textContent = off ? "Play" : "Pause";
+  if (off) v.pause(); else { v.preload = "auto"; v.play().catch(() => {}); }
+});
+function row({ f, w = 12 }) {
+  const sum = f.reduce((s, [, iw, ih]) => s + iw / ih, 0), s = w === 12 ? 1 : 13 - w;
+  const mh = Math.min(...f.map(x => x[2]));
+  const figs = f.length === 4 ? `<div class="pr">${f.slice(0, 2).map(figure).join("")}</div><div class="pr">${f.slice(2).map(figure).join("")}</div>` : f.map(figure).join("");
+  return `<div class="s-row r${f.length}" data-s="${s}" data-k="${w}" data-sum="${sum.toFixed(4)}" data-mh="${mh}" data-n="${f.length - 1}" style="--sum:${sum.toFixed(3)};--n:${f.length - 1};grid-column:${s} / span ${w}">${figs}</div>`;
+}
+/* Keeps every row on whole grid columns: a row that would be taller than the screen gives up a column at a
+   time from its right edge. Tablets and phones run every row across the full width; phones stack them. */
+function snap() {
+  if (sheet.hidden) return;
+  const narrow = innerWidth <= 860, stack = innerWidth < 600;
+  const maxH = document.documentElement.clientHeight - (narrow ? 88 : 50) - 132;
+  sheet.querySelectorAll(".s-row[data-k]").forEach(r => {
+    const g = parseFloat(getComputedStyle(r.parentElement).columnGap) || 16, col = (r.parentElement.clientWidth - 11 * g) / 12;
+    const sum = +r.dataset.sum, n = +r.dataset.n, s = narrow ? 1 : +r.dataset.s;
+    let k = narrow ? 12 : +r.dataset.k;
+    if (!stack) while (k > 4 && (k * col + (k - 1) * g - n * g) / sum > maxH) k--;
+    // A row also stops at the width where its smallest picture is shown at its own pixel size.
+    r.style.gridColumn = `${s} / span ${k}`; r.style.maxWidth = stack ? "none" : `${Math.round(+r.dataset.mh * sum + n * g)}px`;
+  });
+}
+// Long form: each chapter (a hairline, number, title, first paragraph, facts) and its flow of rows and later
+// paragraphs, then the closing words. The hero sits in the opening spread.
+function longForm(w) {
+  let h = w.chapters.map(ch => {
+    const id = `ch-${ch.n}`;
+    const facts = ch.facts && ch.facts.length ? `<dl class="s-facts mono">${ch.facts.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>` : "";
+    const flow = ch.imgs.map(r => typeof r === "number" ? `<p class="s-p">${esc(ch.text[r])}</p>` : row(r)).join("");
+    return `<section class="s-ch g12" id="${id}" aria-labelledby="${id}-t" data-n="${ch.n}" data-t="${esc(ch.title)}">
+      <h3 id="${id}-t" tabindex="-1"><span class="mono m num">${ch.n}</span><span>${esc(ch.title)}</span></h3>
+      <p class="s-p">${esc(ch.text[0])}</p>${facts}${flow}</section>`;
+  }).join("");
+  if (w.closing) h += `<section class="s-end g12" aria-labelledby="s-end-t"><h3 id="s-end-t">Conclusion</h3><blockquote><p>“${esc(w.closing)}”</p></blockquote></section>`;
+  return h;
+}
+// Short form: the images in equal-height pairs (an odd count opens with one alone, so no sheet ends on a lone
+// picture). A row stays full width while it is wide enough to stay well under the screen; taller ones take
+// columns 4–12, the same edge as the text.
+function shortForm(w) {
+  const fs = w.imgs.map(([f, iw, ih, alt]) => [`${w.dir}/${f}`, iw, ih, /[.!?]$/.test(alt) ? alt : `${alt}.`, ""]), rows = [];
+  let j = fs.length % 2;
+  if (j) rows.push([fs[0]]);
+  for (; j < fs.length; j += 2) rows.push(fs.slice(j, j + 2));
+  return rows.map(f => row({ f, w: f.reduce((s, [, iw, ih]) => s + iw / ih, 0) < 2.4 ? 9 : 12 })).join("");
+}
+function fill(i) {
+  cur = i; const w = WORKS[i], list = walk, k = list.findIndex(x => x.i === i);
+  const nxt = list[(k + 1) % list.length];
+  $("s-code").textContent = w.code;
+  $("s-n").textContent = `${pad(k + 1)} / ${pad(list.length)}`;
+  $("s-title").textContent = w.t;
+  $("s-sub").textContent = w.s || ""; $("s-sub").hidden = !w.s;
+  const meta = w.meta || [["Category", w.c], ["Year", w.y], ["Images", nImgs(w)]];
+  $("s-dl").innerHTML = meta.map(([dt, dd]) => `<dt>${esc(dt)}</dt><dd>${esc(dd)}</dd>`).join("");
+  const intro = (w.intro || w.d || "").replace(/(\d) (?=m\b)/g, "$1 ");
+  $("s-d").textContent = intro; $("s-d").hidden = !intro;
+  // Contents: in the opening spread and in the bar's chapter menu.
+  const chl = w.chapters || [];
+  $("s-tocl").innerHTML = chl.map(c => `<li><button type="button" data-n="${c.n}"><span class="mono num">${c.n}</span><span>${esc(c.title)}</span></button></li>`).join("");
+  $("s-chm").innerHTML = chl.map(c => `<button type="button" role="menuitem" data-n="${c.n}"><span class="mono num">${c.n}</span><span>${esc(c.title)}</span></button>`).join("");
+  $("s-toc").hidden = !chl.length; chMenu(false);
+  nFig = 0;
+  $("s-open").querySelector(".s-row")?.remove();
+  if (w.hero) $("s-open").insertAdjacentHTML("beforeend", row({ f: [w.hero] }));
+  let html = w.chapters ? longForm(w) : shortForm(w);
+  // Thin sheet (one image): a quiet end link sits under the picture and stands in for the footer bar.
+  const many = list.length > 1, thin = !w.chapters && w.imgs.length === 1 && many;
+  if (thin) html += `<button class="pill s-more" type="button"><span class="m">Next</span><span class="mono m">${nxt.code}</span><span>${nxt.t}</span><span aria-hidden="true">→</span></button>`;
+  $("s-imgs").innerHTML = html;
+  $("s-foot").hidden = thin || !many;
+  $("s-fcode").textContent = nxt.code; $("s-ft").textContent = nxt.t;
+  [$("s-prev"), $("s-next")].forEach(b => b.disabled = !many);
+  sheet.scrollTop = 0;
+  // A smooth scroll still running in the sheet (a Contents jump, Space or Page Down) would carry the next
+  // project on down; keep it at the top until the sheet has been still for a few frames.
+  let hold = 0, still = 0;
+  const pin = () => { if (sheet.hidden || cur !== i) return; if (sheet.scrollTop) { sheet.scrollTop = 0; still = 0; } else still++; if (++hold < 30 && still < 3) requestAnimationFrame(pin); };
+  requestAnimationFrame(pin);
+  chs = [...$("s-imgs").querySelectorAll(".s-ch")]; chOn = null; $("s-chap").classList.remove("on"); $("s-chn").textContent = $("s-cht").textContent = "";
+  if (!sheet.hidden) { snap(); syncChap(); wireVids(); }
+}
+/* Chapter in view: the last chapter whose title has passed a reading line a quarter of the way down the
+   screen. The bar's pill names it and the menu marks it; the pill stays away over the opening spread and on
+   sheets without chapters. */
+let chs = [], chOn = null, chRaf = 0;
+function syncChap() {
+  chRaf = 0;
+  if (sheet.hidden) return;
+  const line = sheet.querySelector(".s-bar").getBoundingClientRect().bottom + innerHeight * 0.25;
+  let on = null;
+  for (const c of chs) { if (c.firstElementChild.getBoundingClientRect().top <= line) on = c; else break; }
+  if (on === chOn) return;
+  const was = chOn; chOn = on;
+  $("s-chap").classList.toggle("on", !!on);
+  $("s-chm").querySelectorAll("button").forEach(b => on && b.dataset.n === on.dataset.n ? b.setAttribute("aria-current", "true") : b.removeAttribute("aria-current"));
+  if (!on) {
+    // Back over the opening spread: the menu closes with its pill; focus inside it moves to the sheet.
+    if (!$("s-chm").hidden) { const had = $("s-chap").contains(document.activeElement); chMenu(false); if (had) sheet.focus({ preventScroll: true }); }
+    else if ($("s-chap").contains(document.activeElement)) sheet.focus({ preventScroll: true });
+    return;
+  }
+  $("s-chn").textContent = on.dataset.n; $("s-cht").textContent = on.dataset.t;
+  if (was && !reduce && $("s-chb").animate) $("s-chb").animate([{ opacity: 0.25 }, { opacity: 1 }], { duration: 260, easing: "ease-out" });
+}
+sheet.addEventListener("scroll", () => { if (!chRaf) chRaf = requestAnimationFrame(syncChap); }, { passive: true });
+addEventListener("resize", () => { snap(); if (!chRaf) chRaf = requestAnimationFrame(syncChap); });
+document.fonts?.ready.then(snap);
+/* Going to a chapter: the sheet scrolls until its hairline sits a little under the bar (and under the
+   chapter pill's band on tablets and phones), smoothly unless motion is reduced, and focus moves to its title. */
+function goChap(n) {
+  const c = $("ch-" + n); if (!c) return;
+  const bar = sheet.querySelector(".s-bar"), band = innerWidth <= 860 ? 46 : 0;
+  const top = c.getBoundingClientRect().top - sheet.getBoundingClientRect().top + sheet.scrollTop - bar.offsetHeight - band - 24;
+  sheet.scrollTo({ top: Math.max(0, top), behavior: reduce ? "auto" : "smooth" });
+  c.querySelector("h3").focus({ preventScroll: true });
+}
+const chb = $("s-chb"), chm = $("s-chm");
+function chMenu(open) {
+  chm.hidden = !open; chb.setAttribute("aria-expanded", open);
+  if (open) (chm.querySelector('[aria-current="true"]') || chm.firstElementChild)?.focus();
+}
+chb.onclick = e => { e.stopPropagation(); if ($("s-chap").classList.contains("on")) chMenu(chm.hidden); };
+document.addEventListener("click", e => { if (!chm.hidden && !chm.contains(e.target)) chMenu(false); });
+chm.addEventListener("keydown", e => {
+  const items = [...chm.querySelectorAll("button")], k = items.indexOf(document.activeElement);
+  if (e.key === "ArrowDown") { e.preventDefault(); items[(k + 1) % items.length].focus(); }
+  if (e.key === "ArrowUp") { e.preventDefault(); items[(k - 1 + items.length) % items.length].focus(); }
+  if (e.key === "Home" || e.key === "End") { e.preventDefault(); items[e.key === "Home" ? 0 : items.length - 1].focus(); }
+  if (e.key === "Tab") { e.preventDefault(); chMenu(false); chb.focus(); }
+});
+chm.addEventListener("click", e => { const b = e.target.closest("button[data-n]"); if (b) { e.stopPropagation(); chMenu(false); goChap(b.dataset.n); } });
+$("s-tocl").addEventListener("click", e => { const b = e.target.closest("button[data-n]"); if (b) goChap(b.dataset.n); });
+function step(d) {
+  if (walk.length < 2) return;
+  const list = walk, k = list.findIndex(x => x.i === cur); fill(list[(k + d + list.length) % list.length].i);
+  // The focused end link can be replaced or hidden by fill(); keep focus inside the dialog.
+  if (!sheet.contains(document.activeElement) || !document.activeElement.getClientRects().length) $("s-close").focus({ preventScroll: true });
+}
+function openSheet(i, from) {
+  opener = from || document.activeElement;
+  const v = visible(); walk = v.some(w => w.i === i) ? v : WORKS.map((w, j) => ({ ...w, i: j }));
+  fill(i);
+  sheet.hidden = false; sheet.scrollTop = 0; document.documentElement.classList.add("lock");
+  bg.forEach(el => el.inert = true); peek.classList.remove("on");
+  snap(); syncChap(); wireVids();
+  $("s-close").focus({ preventScroll: true });
+}
+function closeSheet() {
+  chMenu(false); sheet.hidden = true; document.documentElement.classList.remove("lock");
+  vio?.disconnect(); sheet.querySelectorAll(".vid video").forEach(v => v.pause());
+  bg.forEach(el => el.inert = false);
+  // Return to the work last viewed in the sheet: its tile takes focus (and the preview through focusin),
+  // or, when the pill or an index row opened the sheet, the preview switches to it directly.
+  const last = cur;
+  if (opener && opener.matches && opener.matches(".tile[data-i]")) opener = $("grid").querySelector(`.tile[data-i="${last}"]`) || opener;
+  else if (visible().some(w => w.i === last)) { act = last; showPv(last, false); }
+  cur = -1; rest = true;
+  if (opener && opener.isConnected) opener.focus({ preventScroll: true });
+}
+$("s-close").onclick = closeSheet;
+$("s-prev").onclick = () => step(-1);
+$("s-next").onclick = () => step(1);
+$("s-foot").onclick = () => { step(1); $("s-close").focus({ preventScroll: true }); };
+$("s-imgs").addEventListener("click", e => { if (e.target.closest(".s-more")) { step(1); $("s-close").focus({ preventScroll: true }); } });
+document.addEventListener("keydown", e => {
+  // While the screensaver shows, a key only dismisses it (resetIdle on window); nothing underneath acts on it.
+  if (idle.classList.contains("on")) { e.preventDefault(); return; }
+  if (e.key === "Escape") {
+    if (!menu.hidden) { openMenu(false); menuFrom.focus(); }
+    else if (!chm.hidden) { chMenu(false); chb.focus(); }
+    else if (!sheet.hidden) closeSheet();
+  }
+  if (!sheet.hidden && chm.hidden && (e.key === "ArrowRight" || e.key === "ArrowLeft") && !e.altKey && !e.metaKey) { e.preventDefault(); step(e.key === "ArrowRight" ? 1 : -1); }
+  if (!sheet.hidden && e.key === "Tab" && !e.defaultPrevented) {
+    // Wrap at either end, and also when focus sits on the dialog itself (a click on a blank area). From a
+    // chapter title (focused by the contents) Tab carries on from its place in the page.
+    const f = [...sheet.querySelectorAll("button:not([disabled])")].filter(b => b.getClientRects().length && getComputedStyle(b).visibility !== "hidden");
+    const a = document.activeElement, i = f.indexOf(a);
+    if (i < 0 && a !== sheet && sheet.contains(a)) {
+      const nx = f.findIndex(b => a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING);
+      if (e.shiftKey ? nx === 0 : nx < 0) { e.preventDefault(); (e.shiftKey ? f[f.length - 1] : f[0]).focus(); }
+    } else if (e.shiftKey ? i <= 0 : (i === -1 || i === f.length - 1)) { e.preventDefault(); (e.shiftKey ? f[f.length - 1] : f[0]).focus(); }
+  }
+});
+
+/* Clock */
+function tick() {
+  $("clock").textContent = new Date().toLocaleTimeString("en-GB", { timeZone: "Europe/London", hour: "2-digit", minute: "2-digit", second: "2-digit" });
+}
+tick(); setInterval(tick, 1000);
+
+/* Copy email */
+let okT;
+$("mail").onclick = async () => {
+  const ok = $("ok");
+  try { await navigator.clipboard.writeText("hello@shuhengwang.com"); ok.textContent = "Copied"; }
+  catch (e) { const s = getSelection(), rg = document.createRange(); rg.selectNodeContents($("mail").firstChild); s.removeAllRanges(); s.addRange(rg); ok.textContent = "Selected"; }
+  clearTimeout(okT); okT = setTimeout(() => ok.textContent = "Copy", 1600);
+};
+
+/* Idle screen: one work drifts and bounces like an old DVD player. */
+const idle = $("idle"), bouncer = $("bouncer");
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+let idleT, raf, bx = 0, by = 0, vx = 1.4, vy = 1.1, shownAt = 0;
+// A tap or key that dismisses the screensaver must not also act on the page beneath it.
+let swallow = 0;
+addEventListener("click", e => { if (Date.now() < swallow) { e.preventDefault(); e.stopPropagation(); } }, true);
+function startIdle() {
+  if (!sheet.hidden) { idleT = setTimeout(startIdle, 45000); return; }
+  const w = WORKS[Math.floor(Math.random() * WORKS.length)], [cw, ch] = w.cover;
+  bouncer.innerHTML = `<img src="${coverSrc(w)}" alt="" width="${cw}" height="${ch}"><span class="mono m">${w.imgs[0][0]}.jpg</span><span>${w.t}, ${w.y}</span>`;
+  document.querySelector(".idle-hint").textContent = matchMedia("(hover: none)").matches ? "Tap to continue" : "Move to continue";
+  idle.classList.add("on"); shownAt = Date.now();
+  bx = Math.random() * Math.max(1, innerWidth - 300); by = Math.random() * Math.max(1, innerHeight - 260);
+  const go = () => {
+    const bw = bouncer.offsetWidth, bh = bouncer.offsetHeight; bx += vx; by += vy;
+    if (bx <= 0 || bx + bw >= innerWidth) { vx *= -1; bx = Math.max(0, Math.min(bx, innerWidth - bw)); }
+    if (by <= 0 || by + bh >= innerHeight) { vy *= -1; by = Math.max(0, Math.min(by, innerHeight - bh)); }
+    bouncer.style.transform = `translate(${bx}px, ${by}px)`;
+    if (!reduce) raf = requestAnimationFrame(go);
+  };
+  go();
+}
+function resetIdle(e) {
+  if (idle.classList.contains("on")) {
+    if (Date.now() - shownAt < 400) return;
+    idle.classList.remove("on"); cancelAnimationFrame(raf);
+    if (e && (e.type === "touchstart" || e.type === "keydown")) swallow = Date.now() + 700;
+  }
+  clearTimeout(idleT); idleT = setTimeout(startIdle, 45000);
+}
+["mousemove", "keydown", "scroll", "touchstart", "click"].forEach(ev => addEventListener(ev, resetIdle, { passive: true }));
+sheet.addEventListener("scroll", resetIdle, { passive: true });
+$("idle-now").onclick = e => { e.stopPropagation(); clearTimeout(idleT); startIdle(); };
+resetIdle();
+
+renderGrid(); renderIndex();
+</script>
+
+</body>
+</html>
