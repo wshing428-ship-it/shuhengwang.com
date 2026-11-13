@@ -1158,72 +1158,19 @@ const WORKS = [
       ["street3-gaze", 2000, 1872, "The three-minute street scan"],
       ["flat-focus", 1422, 1118, "Scanning only what was of interest"],
     ] },
-  { t: "Mycelium Lab", s: "Gyroid Scaffolds for Mycelium", c: "Research", y: "2026", code: "MYL", dir: "mycelium", cover: [960, 480], op: "50% 50%",
-    d: "A web tool that turns a designer’s own 3D model into a printable gyroid scaffold for growing mycelium, set by porosity, thickness and the conditions where it will grow.",
-    intro: "How can bio-integrated material combined with parametric design be used by every designer? Rather than treat mycelium as a fixed material product, this independent project treats it as a system to design, linking biological growth, computational modelling and fabrication. It was inspired by published research on growing mycelium on 3D-printed wood-PLA gyroid scaffolds, and became a web tool, the Mycelium Lab, that converts a designer’s own geometry into a gyroid scaffold for FDM printing. Porosity, thickness and resolution can be set, along with the local conditions the mycelium will grow in. It is one half of Mycelium Self-Build; the other half is The Mycelium Factory, an architecture project from 2023.",
+  { t: "Mycelium Self-Build", s: "From Soil Remediation to Gyroid Scaffolds", c: "Architecture", y: "2023–26", code: "MYC", dir: "mycelium", cover: [960, 480], op: "50% 50%",
+    d: "A mycelium project in two parts: a factory in Poplar, East London, that cleans contaminated soil and is built partly by its neighbours, and a web tool that turns a designer’s own 3D model into a printable gyroid scaffold for growing mycelium.",
+    intro: "Can mycelium clean contaminated soil while empowering a community to build for itself? And how can bio-integrated material combined with parametric design be used by every designer? The project has two parts. The Mycelium Factory (2023) is designed for a site in Poplar, East London, close to the DLR and the West India Docks, in an area bombed in the Blitz; the site’s soil is too contaminated to build on. It remediates other contaminated soils in London, gives nearby residents a mycelium studio, and is partly self-built: families, parents and children take part, so the programme for the neighbourhood starts while the building goes up. Mycelium Lab (2026) is a web tool that converts a designer’s own geometry into a gyroid scaffold for FDM printing, set by porosity, thickness, resolution and the local conditions the mycelium will grow in.",
     meta: [
-      ["Year", "2026"], ["Type", "Independent project"], ["Part of", "Mycelium Self-Build, with The Mycelium Factory"],
-      ["Key words", "Bio-integrated material, algorithm"],
-      ["Made with", "AI-assisted coding in Cursor, a Python script for custom meshes"],
-      ["Exports", "STL and G-code for FDM printing"],
-    ],
-    hero: ["mycelium/print-egg", 2000, 1734, "A gyroid scaffold printed in white PLA.", "An egg-shaped white print made of a curving lattice with round holes and a large opening, on black"],
-    chapters: [
-      { n: "01", title: "The research base",
-        text: [
-          "The project is based on research into mycelium-bound composites grown on 3D-printed wood-PLA gyroid scaffolds. The study shows that the gyroid can guide mycelium growth while improving the mechanical performance of conventional mycelium-based materials. Its porous geometry gives both structural support and space for biological colonisation: a precedent for combining digital fabrication with bio-based material development.",
-        ],
-        facts: [["Research base", "D. Sharma and H. Le Ferrand, “3D printed gyroid scaffolds enabling strong and thermally insulating mycelium-bound composites for greener infrastructures”, Nature Communications, 2025"]],
-        imgs: [] },
-      { n: "02", title: "From cube to scaffold",
-        text: [
-          "The algorithm was developed step by step. A basic form, such as a cube, is infilled with a gyroid structure. A base is then added, and curved-surface optimisation rounds the corners. Where the form overhangs, a solid surface is added so that print supports can be generated more easily: first under one overhang, then across several areas and under lifted overhangs, and finally on complex forms with discontinuous overhangs.",
-        ],
-        facts: [["Steps", "Gyroid infill, rounded corners, support-generating surfaces under overhangs"]],
-        imgs: [
-          { f: [["mycelium/form-gyroid", 935, 814, "The basic form, infilled with a gyroid.", "White cube made of a gyroid lattice with round holes, on light grey"],
-                ["mycelium/form-corner", 935, 814, "A base and rounded corners.", "The gyroid cube with rounded corners, standing on a thin solid base, on light grey"],
-                ["mycelium/form-overhang", 935, 814, "A surface added under the overhang.", "A slanted gyroid block whose overhanging underside is closed by a smooth solid surface, on light grey"]] },
-          { f: [["mycelium/form-double", 935, 814, "Double overhang.", "A gyroid block that flares out above its base, with solid surfaces closing the undersides of its two overhangs, on light grey"],
-                ["mycelium/form-lifted", 935, 813, "Lifted overhang.", "A gyroid block with a raised, curving overhang and a solid surface beneath it, on light grey"],
-                ["mycelium/form-hole", 935, 813, "Hole and overhang: a complex form with discontinuous overhangs.", "A gyroid block with a large hole through its top and solid surfaces below it, on light grey"]] },
-        ] },
-      { n: "03", title: "The Mycelium Lab",
-        text: [
-          "The workflow was then turned into an HTML-based program, written with AI-assisted coding in Cursor, with a separate Python script for high-quality scaffolds from custom meshes. The Mycelium Lab combines environmental sensing, computational geometry and cultivation guidance. A user records the site through GPS and a photo; the light level read from the photo suggests how open the pores should be. They upload or generate a 3D model, preview the gyroid scaffold, adjust porosity, cell size, thickness and resolution, and export it as STL or G-code for FDM printing.",
-          "Cultivation is then guided step by step, from sterilisation and inoculation to environmental control, over a 28-day schedule. Each experiment is archived as a project with its model, settings and cultivation records, so that it can feed back into the next material test.",
-        ],
-        facts: [["Parameters", "Porosity, cell size, thickness, resolution"], ["Site input", "GPS and a photo"], ["Cultivation guide", "28 days"]],
-        imgs: [
-          { f: [["mycelium/desktop-ui", 1234, 1600, "Desktop: preview the scaffold, set its parameters and export STL or G-code.", "The app on desktop: on the left, a G-code layer preview of an egg-shaped gyroid scaffold in white lines on black; on the right, a light panel of parameter sliders with Generate Gyroid, Download STL and Export G-code buttons"],
-                ["mycelium/phone-model", 827, 1600, "Mobile: choosing the mesh resolution.", "Phone screen with a grey egg-shaped model and three resolution options, the last one selected"],
-                ["mycelium/phone-guide", 828, 1600, "The cultivation guide, day 0 of 28.", "Phone screen headed Oyster mushroom on VASE4, with a dark gyroid model, Day 0 of 28, a five-day weather strip, a grid of day markers and the first cultivation tasks, none ticked"],
-                ["mycelium/phone-projects", 827, 1600, "My projects: each experiment archived.", "Phone screen listing three projects as cards with dark gyroid models"]] },
-          1,
-        ] },
-      { n: "04", title: "Test prints",
-        text: [
-          "The egg-shaped scaffold at the top of the page was printed in white PLA, and the bone shape below is another test print in white. Wood-PLA compatible with Bambu printers, the material used in the research, was not readily available.",
-        ],
-        imgs: [
-          { w: 9, f: [["mycelium/print-bone", 2000, 1126, "A bone-shaped test print, also in white.", "A white bone-shaped print made of a gyroid lattice, with four openings along its middle, on black"]] },
-        ] },
-    ],
-    imgs: [
-      ["forms", 2000, 1094, "Three forms and their gyroid scaffolds"],
-      ["print-egg", 2000, 1734, "A gyroid scaffold printed in white PLA"],
-      ["desktop-ui", 1234, 1600, "The Mycelium Lab on desktop"],
-    ] },
-  { t: "The Mycelium Factory", s: "Soil Remediation and Self-Build", c: "Architecture", y: "2023", code: "MYF", dir: "mycelium", cover: [960, 480], op: "50% 50%",
-    d: "A factory in Poplar, East London, that cleans contaminated soil with mycelium and is built partly by its neighbours: a construction team puts up the timber frame and local children make the mycelium blocks.",
-    intro: "Can mycelium clean contaminated soil while empowering a community to build for itself? The site, in Poplar in East London, lies close to the DLR and the West India Docks, in an area bombed in the Blitz, and its soil is too contaminated to build on. The project proposes a mycelium factory with two aims: to remediate other contaminated soils in London, and to give nearby residents a mycelium studio. It is partly self-built: families, parents and children take part, so the programme for the neighbourhood starts while the building goes up. This is one half of Mycelium Self-Build; the other half is Mycelium Lab, a web tool from 2026.",
-    meta: [
-      ["Year", "2023 (Feb–Jun)"], ["Location", "Poplar, East London"], ["School", "The Bartlett School of Architecture, UCL"],
-      ["Unit", "UG2, Year 2"], ["Tutors", "Zach Fluker, Jhono Bennett"], ["Part of", "Mycelium Self-Build, with Mycelium Lab"],
+      ["Year", "2023 and 2026"],
+      ["The Mycelium Factory", "2023 (Feb–Jun), The Bartlett School of Architecture, UCL, UG2, Year 2"],
+      ["Location", "Poplar, East London"], ["Tutors", "Zach Fluker, Jhono Bennett"],
       ["Programme", "Reception and exhibition, lab and workshop, soil remediation factory"],
       ["Model", "1:50, with mycelium cast in 3D-printed moulds"],
+      ["Mycelium Lab", "2026, independent project, AI-assisted coding in Cursor"],
+      ["Exports", "STL and G-code for FDM printing"],
     ],
-    hero: ["mycelium/factory-model", 2000, 1261, "The 1:50 final model from above, with the line drawing of its moulds laid over it.", "Top view of a long architectural model of timber, plaster and mycelium parts, overlaid with fine white line drawings on black"],
+    hero: ["mycelium/factory-model", 2000, 1261, "The 1:50 final model of the factory from above, with the line drawing of its moulds laid over it.", "Top view of a long architectural model of timber, plaster and mycelium parts, overlaid with fine white line drawings on black"],
     chapters: [
       { n: "01", title: "Contaminated ground",
         text: [
@@ -1270,12 +1217,49 @@ const WORKS = [
           1,
           { w: 9, f: [["mycelium/model-parts", 2000, 1086, "The 1:50 model taken apart.", "Parts of an architectural model laid out on a white table: timber floor plates, concrete and plaster blocks, ribbed panels, a fibrous mycelium tube and a smaller tapered mycelium piece held in a hand"]] },
         ] },
+      { n: "05", title: "Mycelium Lab: the gyroid",
+        text: [
+          "The second part, Mycelium Lab, is an independent project from 2026 that treats mycelium not as a fixed material product but as a system to design, linking biological growth, computational modelling and fabrication. It is based on research into mycelium-bound composites grown on 3D-printed wood-PLA gyroid scaffolds. The study shows that the gyroid can guide mycelium growth while improving the mechanical performance of conventional mycelium-based materials. Its porous geometry gives both structural support and space for biological colonisation: a precedent for combining digital fabrication with bio-based material development.",
+          "The algorithm was developed step by step. A basic form, such as a cube, is infilled with a gyroid structure. A base is then added, and curved-surface optimisation rounds the corners. Where the form overhangs, a solid surface is added so that print supports can be generated more easily: first under one overhang, then across several areas and under lifted overhangs, and finally on complex forms with discontinuous overhangs.",
+        ],
+        facts: [["Research base", "D. Sharma and H. Le Ferrand, “3D printed gyroid scaffolds enabling strong and thermally insulating mycelium-bound composites for greener infrastructures”, Nature Communications, 2025"], ["Steps", "Gyroid infill, rounded corners, support-generating surfaces under overhangs"]],
+        imgs: [
+          1,
+          { f: [["mycelium/form-gyroid", 935, 814, "The basic form, infilled with a gyroid.", "White cube made of a gyroid lattice with round holes, on light grey"],
+                ["mycelium/form-corner", 935, 814, "A base and rounded corners.", "The gyroid cube with rounded corners, standing on a thin solid base, on light grey"],
+                ["mycelium/form-overhang", 935, 814, "A surface added under the overhang.", "A slanted gyroid block whose overhanging underside is closed by a smooth solid surface, on light grey"]] },
+          { f: [["mycelium/form-double", 935, 814, "Double overhang.", "A gyroid block that flares out above its base, with solid surfaces closing the undersides of its two overhangs, on light grey"],
+                ["mycelium/form-lifted", 935, 813, "Lifted overhang.", "A gyroid block with a raised, curving overhang and a solid surface beneath it, on light grey"],
+                ["mycelium/form-hole", 935, 813, "Hole and overhang: a complex form with discontinuous overhangs.", "A gyroid block with a large hole through its top and solid surfaces below it, on light grey"]] },
+        ] },
+      { n: "06", title: "The web tool",
+        text: [
+          "The workflow was then turned into an HTML-based program, written with AI-assisted coding in Cursor, with a separate Python script for high-quality scaffolds from custom meshes. The Mycelium Lab combines environmental sensing, computational geometry and cultivation guidance. A user records the spot where the mycelium will grow through GPS and a photo; the light level read from the photo suggests how open the pores should be. They upload or generate a 3D model, preview the gyroid scaffold, adjust porosity, cell size, thickness and resolution, and export it as STL or G-code for FDM printing.",
+          "Cultivation is then guided step by step, from sterilisation and inoculation to environmental control, over a 28-day schedule. Each experiment is archived as a project with its model, settings and cultivation records, so that it can feed back into the next material test.",
+        ],
+        facts: [["Parameters", "Porosity, cell size, thickness, resolution"], ["Site input", "GPS and a photo"], ["Cultivation guide", "28 days"]],
+        imgs: [
+          { f: [["mycelium/desktop-ui", 1234, 1600, "Desktop: preview the scaffold, set its parameters and export STL or G-code.", "The app on desktop: on the left, a G-code layer preview of an egg-shaped gyroid scaffold in white lines on black; on the right, a light panel of parameter sliders with Generate Gyroid, Download STL and Export G-code buttons"],
+                ["mycelium/phone-model", 827, 1600, "Mobile: choosing the mesh resolution.", "Phone screen with a grey egg-shaped model and three resolution options, the last one selected"],
+                ["mycelium/phone-guide", 828, 1600, "The cultivation guide, day 0 of 28.", "Phone screen headed Oyster mushroom on VASE4, with a dark gyroid model, Day 0 of 28, a five-day weather strip, a grid of day markers and the first cultivation tasks, none ticked"],
+                ["mycelium/phone-projects", 827, 1600, "My projects: each experiment archived.", "Phone screen listing three projects as cards with dark gyroid models"]] },
+          1,
+        ] },
+      { n: "07", title: "Test prints",
+        text: [
+          "Two scaffolds were printed as tests in white PLA: an egg shape and a bone shape. Wood-PLA compatible with Bambu printers, the material used in the research, was not readily available.",
+        ],
+        imgs: [
+          { f: [["mycelium/print-egg", 2000, 1734, "A gyroid scaffold printed in white PLA.", "An egg-shaped white print made of a curving lattice with round holes and a large opening, on black"],
+                ["mycelium/print-bone", 2000, 1126, "A bone-shaped test print, also in white.", "A white bone-shaped print made of a gyroid lattice, with four openings along its middle, on black"]] },
+        ] },
     ],
     imgs: [
-      ["factory-model", 2000, 1261, "The 1:50 final model from above"],
+      ["factory-model", 2000, 1261, "The 1:50 final model of the factory from above"],
       ["r-entrance", 2000, 1117, "Final render of the soil entrance"],
-      ["r-kiln", 2000, 988, "Final render of the B1 kiln"],
       ["model-parts", 2000, 1086, "The 1:50 model taken apart"],
+      ["forms", 2000, 1094, "Three forms and their gyroid scaffolds"],
+      ["print-egg", 2000, 1734, "A gyroid scaffold printed in white PLA"],
     ] },
 ];
 const CATS = ["All works", ...new Set(WORKS.map(w => w.c))];
@@ -1364,7 +1348,7 @@ function renderGrid() {
   syncIndex();
   fit();
 }
-const years = WORKS.map(w => +w.y);
+const years = WORKS.flatMap(w => w.y.split("–").map(v => +(v.length === 2 ? w.y.slice(0, 2) + v : v)));
 const indexTile = () => `<a class="tile itile" href="#index"><span class="ph"><span class="it"><span>Index</span><span aria-hidden="true">↘</span></span><span class="it mono m"><span class="num">${pad(WORKS.length)} works</span><span class="num">${Math.min(...years)}–${Math.max(...years)}</span></span></span></a>`;
 
 /* Preview: follows the pointer and keyboard focus over the covers, and keeps the last one when the pointer leaves. */
