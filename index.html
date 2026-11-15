@@ -207,7 +207,6 @@ a.itile:hover .ph { background: var(--chip); }
 footer.foot { padding-block: 12px calc(24px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line); row-gap: 8px; align-items: center; }
 footer .f1 { grid-column: 1 / span 3; }
 footer .f2 { grid-column: 4 / span 6; display: flex; gap: 6px; flex-wrap: wrap; }
-footer .f3 { grid-column: 10 / span 3; justify-self: end; }
 
 /* Project sheet */
 .sheet { position: fixed; inset: 0; z-index: 50; background: var(--bg); overflow-y: auto; overscroll-behavior: contain; outline: none; display: flex; flex-direction: column; animation: fade .18s ease-out; }
@@ -310,12 +309,6 @@ footer .f3 { grid-column: 10 / span 3; justify-self: end; }
 .s-next:focus-visible { outline-offset: -1px; }
 @media (hover: hover) { .s-next:hover .t > span:last-child { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; } }
 
-/* Idle screen */
-.idle { position: fixed; inset: 0; z-index: 60; background: var(--bg); display: none; overflow: hidden; }
-.idle.on { display: block; }
-.bouncer { position: absolute; left: 0; top: 0; width: 280px; display: grid; gap: 6px; will-change: transform; }
-.bouncer img { width: 100%; height: auto; border-radius: 2px; }
-.idle-hint { position: absolute; left: var(--gut); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); }
 @media (hover: none) { .s-close .m { display: none; } }
 
 @media (max-width: 1023px) {
@@ -356,10 +349,8 @@ footer .f3 { grid-column: 10 / span 3; justify-self: end; }
   .about .lbl, .about .bio { grid-column: 1 / -1; }
   footer.foot { display: flex; flex-wrap: wrap; gap: 8px 6px; }
   footer .f1 { flex: 1 0 100%; }
-  footer .f2, footer .f3 { display: contents; }
-  footer #idle-now { margin-left: auto; }
+  footer .f2 { display: contents; }
   .peek { display: none; }
-  .bouncer { width: 180px; }
   .s-bar { display: flex; gap: 6px; }
   .s-pos { margin-right: auto; }
   .s-nav .tx { display: none; }
@@ -424,10 +415,9 @@ footer .f3 { grid-column: 10 / span 3; justify-self: end; }
   .grid .tile.wide .ph { aspect-ratio: 2 / 1; }
   .grid .tile.lead { grid-row: auto; }
   .grid .tile.lead .ph { aspect-ratio: 16 / 9; }
-  /* Footer: the address and the screensaver share one row under the copyright line. */
+  /* Footer: the address takes its own row under the copyright line. */
   footer #mail { flex: 1 1 auto; min-width: 0; }
   footer #mail #ok { margin-left: auto; }
-  footer #idle-now { flex: none; }
   /* Sheet rows stack on phones (tablets keep them side by side at equal height); a strip of four becomes
      two rows of two, each pair at one height. Long strips and the section keep the full width; no picture
      grows past its own pixel width, and a portrait loop stays under half the screen. */
@@ -503,9 +493,8 @@ footer .f3 { grid-column: 10 / span 3; justify-self: end; }
 <footer id="contact" class="foot wrap g12">
   <span class="f1">© 2026 shuheng wang</span>
   <div class="f2">
-    <button id="mail" class="pill" type="button"><span>hello@shuhengwang.com</span> <span class="m" id="ok" aria-live="polite">Copy</span></button>
+    <button id="mail" class="pill" type="button"><span>wshing428@gmail.com</span> <span class="m" id="ok" aria-live="polite">Copy</span></button>
   </div>
-  <div class="f3"><button class="pill" id="idle-now" type="button">Screensaver</button></div>
 </footer>
 
 <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="s-title" tabindex="-1" hidden>
@@ -543,7 +532,6 @@ footer .f3 { grid-column: 10 / span 3; justify-self: end; }
 </div>
 
 <img class="peek" id="peek" alt="" aria-hidden="true">
-<div class="idle" id="idle" aria-hidden="true"><div class="bouncer" id="bouncer"></div><span class="idle-hint mono m">Move to continue</span></div>
 
 <script>
 // Works, in the order the grid shows them.
@@ -1266,7 +1254,7 @@ const CATS = ["All works", ...new Set(WORKS.map(w => w.c))];
 const imgSrc = (w, f) => `img/${w.dir}/${f}.jpg`;
 // Images a sheet shows: a long-form work counts its hero and every figure in its chapters.
 const nImgs = w => w.chapters ? (w.hero ? 1 : 0) + w.chapters.reduce((n, c) => n + c.imgs.reduce((m, r) => m + (r.f ? r.f.length : 0), 0), 0) : w.imgs.length;
-// 960px-wide cover derivatives for grid, peek and screensaver; full files stay for the sheet.
+// 960px-wide cover derivatives for grid and peek; full files stay for the sheet.
 const coverSrc = w => `img/cover/${w.code}.jpg`;
 // A cover loop: [file under img/ without extension, width, height, crop focus]; muted, so it may start by itself.
 // With reduced motion the tile keeps its still cover instead.
@@ -1631,8 +1619,6 @@ $("s-next").onclick = () => step(1);
 $("s-foot").onclick = () => { step(1); $("s-close").focus({ preventScroll: true }); };
 $("s-imgs").addEventListener("click", e => { if (e.target.closest(".s-more")) { step(1); $("s-close").focus({ preventScroll: true }); } });
 document.addEventListener("keydown", e => {
-  // While the screensaver shows, a key only dismisses it (resetIdle on window); nothing underneath acts on it.
-  if (idle.classList.contains("on")) { e.preventDefault(); return; }
   if (e.key === "Escape") {
     if (!menu.hidden) { openMenu(false); menuFrom.focus(); }
     else if (!chm.hidden) { chMenu(false); chb.focus(); }
@@ -1661,46 +1647,13 @@ tick(); setInterval(tick, 1000);
 let okT;
 $("mail").onclick = async () => {
   const ok = $("ok");
-  try { await navigator.clipboard.writeText("hello@shuhengwang.com"); ok.textContent = "Copied"; }
+  try { await navigator.clipboard.writeText("wshing428@gmail.com"); ok.textContent = "Copied"; }
   catch (e) { const s = getSelection(), rg = document.createRange(); rg.selectNodeContents($("mail").firstChild); s.removeAllRanges(); s.addRange(rg); ok.textContent = "Selected"; }
   clearTimeout(okT); okT = setTimeout(() => ok.textContent = "Copy", 1600);
 };
 
-/* Idle screen: one work drifts and bounces like an old DVD player. */
-const idle = $("idle"), bouncer = $("bouncer");
+/* Visitors who ask for less motion get still posters, no fades and no smooth scrolling. */
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-let idleT, raf, bx = 0, by = 0, vx = 1.4, vy = 1.1, shownAt = 0;
-// A tap or key that dismisses the screensaver must not also act on the page beneath it.
-let swallow = 0;
-addEventListener("click", e => { if (Date.now() < swallow) { e.preventDefault(); e.stopPropagation(); } }, true);
-function startIdle() {
-  if (!sheet.hidden) { idleT = setTimeout(startIdle, 45000); return; }
-  const w = WORKS[Math.floor(Math.random() * WORKS.length)], [cw, ch] = w.cover;
-  bouncer.innerHTML = `<img src="${coverSrc(w)}" alt="" width="${cw}" height="${ch}"><span class="mono m">${w.imgs[0][0]}.jpg</span><span>${w.t}, ${w.y}</span>`;
-  document.querySelector(".idle-hint").textContent = matchMedia("(hover: none)").matches ? "Tap to continue" : "Move to continue";
-  idle.classList.add("on"); shownAt = Date.now();
-  bx = Math.random() * Math.max(1, innerWidth - 300); by = Math.random() * Math.max(1, innerHeight - 260);
-  const go = () => {
-    const bw = bouncer.offsetWidth, bh = bouncer.offsetHeight; bx += vx; by += vy;
-    if (bx <= 0 || bx + bw >= innerWidth) { vx *= -1; bx = Math.max(0, Math.min(bx, innerWidth - bw)); }
-    if (by <= 0 || by + bh >= innerHeight) { vy *= -1; by = Math.max(0, Math.min(by, innerHeight - bh)); }
-    bouncer.style.transform = `translate(${bx}px, ${by}px)`;
-    if (!reduce) raf = requestAnimationFrame(go);
-  };
-  go();
-}
-function resetIdle(e) {
-  if (idle.classList.contains("on")) {
-    if (Date.now() - shownAt < 400) return;
-    idle.classList.remove("on"); cancelAnimationFrame(raf);
-    if (e && (e.type === "touchstart" || e.type === "keydown")) swallow = Date.now() + 700;
-  }
-  clearTimeout(idleT); idleT = setTimeout(startIdle, 45000);
-}
-["mousemove", "keydown", "scroll", "touchstart", "click"].forEach(ev => addEventListener(ev, resetIdle, { passive: true }));
-sheet.addEventListener("scroll", resetIdle, { passive: true });
-$("idle-now").onclick = e => { e.stopPropagation(); clearTimeout(idleT); startIdle(); };
-resetIdle();
 
 renderGrid(); renderIndex();
 </script>
