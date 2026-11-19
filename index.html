@@ -1249,6 +1249,78 @@ const WORKS = [
       ["forms", 2000, 1094, "Three forms and their gyroid scaffolds"],
       ["print-egg", 2000, 1734, "A gyroid scaffold printed in white PLA"],
     ] },
+  { t: "SPECIMEN51", s: "A Soft Jellyfish Robot", c: "Installation", y: "2026", code: "SPC", dir: "specimen", cover: [960, 480], op: "50% 61%",
+    d: "A soft jellyfish robot that answers a shape wound in red yarn: a webcam and a trained classifier recognise the shape, the hood closes and four tentacles perform the dance that belongs to it. A team project at the RCA and Imperial.",
+    intro: "SPECIMEN51 is a soft jellyfish robot. Four tentacles hang from a round black body, and on top a clear hood folds open and shut like the hood of a pram. While the hood is open, a visitor winds a piece of red yarn around the pegs on a white disc. A webcam above the robot looks at the shape, and a classifier trained in Wekinator decides which of five shapes it is. Then the hood closes and the tentacles perform the dance that belongs to that shape. The exhibit is staged like a small surgery: the jellyfish lies on an operating table under the camera like a specimen being examined, and winding the yarn is like wiring up its nerves.",
+    meta: [
+      ["Year", "2026"], ["School", "Royal College of Art and Imperial College London"],
+      ["Module", "Cyberphysical Systems, Innovation Design Engineering"], ["Team", "Ismail Kale, Siyu Sun, Shuheng Wang"],
+      ["Built with", "Webcam, Processing, Wekinator, Arduino Nano Every, nine servos"],
+      ["Size", "About 66 cm tall and 53 cm wide at the feet"],
+      ["Repository", "github.com/ismailk1/cps_group11"],
+    ],
+    hero: ["specimen/whole", 897, 1450, "SPECIMEN51 on its display stand, with the webcam on the mast behind it.", "A round black robot body with four ribbed tentacles on a clear acrylic stand, a clear hood folded open on top and a tall clear mast with a webcam on an arm, on white"],
+    chapters: [
+      { n: "01", title: "A specimen on the table",
+        text: [
+          "The input is something made by hand. The yarn stays on the disc, so the camera can watch it the whole time the hood is open, and winding a new shape, or fixing an old one, takes only a few seconds. Red yarn on a white disc is also easy for the camera to pick out.",
+          "One round lasts 45 seconds and then starts again: 25 seconds for the hood to open, stay open and close, 5 seconds of rest and 15 seconds of dancing. The display stand is based on an operating table. The whole exhibit is about 66 cm tall and 53 cm wide at the feet, and the robot body sits 23 cm above the deck.",
+        ],
+        facts: [["Shapes", "Five, each with its own dance"], ["One round", "45 s: hood 25 s, rest 5 s, dance 15 s"]],
+        imgs: [
+          { f: [["specimen/manual", 2000, 1021, "The instruction manual: the five shapes and the dance each one starts. Mode 0 is the rest pose.", "Line drawing of a person winding red yarn on the disc under the camera, beside six small diagrams labelled MODE_0 to MODE_5: the rest pose, then five yarn shapes, each with arrows for the tentacle movement", 1]] },
+          1,
+        ] },
+      { n: "02", title: "Soft tentacles",
+        text: [
+          "The software pipeline came from the course’s robot arm exercise (webcam, Wekinator, Processing, Arduino and servos), but the rigid four-joint arm was replaced with a soft mechanism. Each tentacle is a soft TPU spine with 15 hard ribs, 10 mm apart, getting smaller from 26 mm at the root to 20 mm at the tip. Four fishing lines run through the ribs and are locked at the tip. At the root, each pair of opposite lines goes round the pulley of one servo, so with two servos a tentacle can bend in any direction.",
+          "The spine went through four iterations. The first was solid TPU and hardly bent; the second had hollow chambers inside and was still too stiff. The third, with thin ring slits between the ribs that leave only a round core, is the one on the robot; the fourth has an even thinner core in case it needs to be softer. The pulleys were remodelled around the real servo horns, and a bigger groove let the tentacle bend all the way.",
+        ],
+        facts: [["Servos", "Nine: two per tentacle, one for the hood"], ["Spine", "TPU 90A, 15 ribs from 26 to 20 mm"]],
+        imgs: [
+          { f: [["specimen/bend", 1600, 891, "A tentacle bending sideways in front of the camera mast.", "A black ribbed tentacle curving sideways from the robot body towards the black base of the camera mast, on a white table"],
+                ["specimen/tentacle", 876, 1586, "One tentacle: a TPU spine threaded through 15 ribs.", "Close-up of a black ribbed tentacle hanging from the robot body, the white spine visible between the ribs"]] },
+          1,
+          { w: 9, f: [["specimen/spines", 1200, 510, "The four spine iterations: solid, hollow inside, ring slits (used) and a thinner core.", "Line drawings of four ribbed spines, labelled Iteration 1 too stiff, Iteration 2 still too stiff, Iteration 3 used and Iteration 4 softer option", 1]] },
+        ] },
+      { n: "03", title: "The hood",
+        text: [
+          "The hood is four 1.5 mm steel half-circle wires on one hinge, joined by clear film. A servo swings the outer wire forward, which pulls the others into a closed dome. The film is polythene: three panels of a sphere pattern drawn in Onshape, stitched together with channels through which the wires are threaded. Under it sits the white winding disc with eight clear acrylic pegs.",
+        ],
+        facts: [["Wires", "Four, 1.5 mm steel, on one hinge"], ["Film", "Polythene, three stitched panels"]],
+        imgs: [
+          { f: [["specimen/triangle", 1596, 1232, "A triangle wound on the pegs, under the closing hood.", "Red yarn wound in a triangle around clear acrylic pegs on a white disc, with the clear film and steel wires of the hood folding down over it"],
+                ["specimen/closed", 926, 1564, "The hood closed over the disc.", "The robot body seen from the side through the clear hood film, with red yarn on the disc, black tentacle stands, servos and wires below"]] },
+        ] },
+      { n: "04", title: "Reading the yarn",
+        text: [
+          "A Processing sketch cuts a circle out of the webcam image that just covers the disc and blacks out everything else, then samples a 44 × 44 grid of brightness values: 1,936 inputs for Wekinator. A classifier with five classes decides which shape is on the disc, so that each shape starts exactly one dance. About 2,500 examples of the five shapes were recorded, moving or rewinding the yarn between recordings, to train Wekinator’s k-nearest-neighbour classifier.",
+          "In tests the triangle, the long thin loop and the half circle were classified correctly about 90% of the time; the square and the circle were often mixed up. A second Processing sketch passes the class on to the Arduino Nano Every once it has held for 200 ms, and the Arduino runs the round. It takes the latest class two seconds before the hood starts to close, so the closing hood cannot change the dance.",
+        ],
+        facts: [["Input", "44 × 44 brightness grid, 1,936 values"], ["Model", "k-nearest neighbour, about 2,500 examples"], ["Dances", "Up/down wave, left/right wave, diagonal twitch, cross-step, relay"]],
+        imgs: [
+          { w: 9, f: [["specimen/camera", 824, 1456, "The webcam on its sliding arm.", "A black webcam clamped to a printed bracket on a clear acrylic arm, against a pale background"],
+                      ["specimen/square", 916, 1278, "A square wound on the pegs.", "Red yarn wound in a square around clear acrylic pegs on a white disc, on the black robot body"]] },
+          1,
+        ] },
+      { n: "05", title: "Drawn to be rebuilt",
+        text: [
+          "The whole exhibit is drawn on four sheets: an exploded view, a parts list and 15 assembly steps. Steps 1–5 build the display stand, 6–9 the robot, 10–14 the hood, and step 15 sets the camera height. The printed and laser-cut parts, from the 225 mm chassis to the clear acrylic leg blades, are in the repository with print settings for the PLA and the TPU, and the simpler parts (the winding disc, pegs, hood wires and film) are given by their sizes on the parts list, so the exhibit can be built again.",
+        ],
+        facts: [["Drawings", "Exploded view, parts list, 15 steps"], ["Materials", "Black PLA, TPU 90A, 3 mm clear acrylic, 1.5 mm steel wire"]],
+        imgs: [
+          { f: [["specimen/exploded", 1414, 2000, "Exploded view of the whole exhibit: stand, robot and hood.", "Exploded line drawing: the stand with its deck, legs and camera mast on the left, and the robot body, head, winding disc, four hood wires and film stacked above each other on the right", 1],
+                ["specimen/parts", 2000, 1414, "Parts and hardware, coded A, P, R and T.", "Sheet of black silhouettes of every stand, robot and hood part with code numbers, beside a parts list and a hardware list", 1]] },
+          { f: [["specimen/steps-1", 2000, 1414, "Assembly steps 1–8: the display stand and the robot.", "Eight numbered line drawings showing the legs, deck, mast, camera arm, support, tentacle stands and chassis being put together, with screw lists", 1]] },
+          { f: [["specimen/steps-2", 2000, 1414, "Assembly steps 9–15: the robot on its support, the hood and the camera height.", "Eight line drawings showing the robot fixed to its support, the disc and pegs, the four hood wires, the film, the hood open and closed, the camera height and a detail of the hinge", 1]] },
+        ] },
+    ],
+    imgs: [
+      ["whole", 897, 1450, "SPECIMEN51 on its display stand"],
+      ["bend", 1600, 891, "A tentacle bending sideways"],
+      ["triangle", 1596, 1232, "A triangle wound on the pegs, under the closing hood"],
+      ["exploded", 1414, 2000, "Exploded view of the whole exhibit"],
+    ] },
 ];
 const CATS = ["All works", ...new Set(WORKS.map(w => w.c))];
 const imgSrc = (w, f) => `img/${w.dir}/${f}.jpg`;
