@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Shuheng Wang</title>
-<meta name="description" content="Shuheng Wang is a designer working across buildings, products, jewellery and installations: from rooms carved into an eroding cliff and a centre half buried in moving dunes, to a clip-on device that senses what is coming from behind, 3D-printed ceramic jewellery and an installation made to hold it.">
+<meta name="description" content="Shuheng Wang is a designer working across buildings, products, jewellery and installations: from rooms carved into an eroding cliff and a centre half buried in moving dunes, to a clip-on device designed to sense what is coming from behind, 3D-printed ceramic jewellery and an installation made to display it.">
 <meta name="theme-color" content="#ffffff">
 <link rel="canonical" href="https://shuhengwang.com/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Shuheng Wang">
-<meta property="og:description" content="Shuheng Wang is a designer working across buildings, products, jewellery and installations: from rooms carved into an eroding cliff and a centre half buried in moving dunes, to a clip-on device that senses what is coming from behind, 3D-printed ceramic jewellery and an installation made to hold it.">
+<meta property="og:description" content="Shuheng Wang is a designer working across buildings, products, jewellery and installations: from rooms carved into an eroding cliff and a centre half buried in moving dunes, to a clip-on device designed to sense what is coming from behind, 3D-printed ceramic jewellery and an installation made to display it.">
 <meta property="og:url" content="https://shuhengwang.com/">
 <meta property="og:image" content="https://shuhengwang.com/img/cover/UG6_W.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Geist+Mono:wght@400&display=swap">
 <style>
-/* Archive grid. One 12-column grid governs everything: the header (name / nav / clock),
+/* Archive grid. One 12-column grid governs everything: the header (name / nav),
    the works, the index columns, the information block and the footer all start on the same
    four edges. The works pair a sticky preview (columns 1–3) with the covers (4–12): Living on the Dunes leads
    across two columns and two rows (or the full grid width when that would leave one cover alone, as with
@@ -81,6 +81,11 @@ a.pill:hover, button.pill:not(:disabled):hover { background: var(--chip-hi); }
 .pill.icon { width: 30px; padding: 0; justify-content: center; flex: none; }
 .pill svg { width: 14px; height: 14px; flex: none; }
 .pill .arr { margin-left: auto; line-height: 1; }
+/* Arrows are drawn as SVG, never as text: iOS shows some arrow characters as emoji icons. */
+.ic { width: 12px; height: 12px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; overflow: visible; }
+.pill svg.ic { width: 12px; height: 12px; }
+.pill .arr { display: inline-flex; }
+.s-next .a { display: inline-flex; align-items: center; }
 .pill[aria-expanded="true"] { background: var(--chip-hi); }
 
 /* Header */
@@ -91,7 +96,6 @@ header.top {
 }
 .logo { grid-column: 1 / span 3; font: inherit; font-weight: 500; justify-self: start; }
 nav.main { grid-column: 4 / span 6; display: flex; gap: 6px; flex-wrap: wrap; }
-.where { grid-column: 10 / span 3; justify-self: end; font-variant-numeric: tabular-nums; }
 section[id], footer[id], main[id] { scroll-margin-top: calc(var(--head) + env(safe-area-inset-top, 0px)); }
 
 /* Works: a sticky preview on the left (columns 1–3) and the covers on the right (4–12).
@@ -333,7 +337,6 @@ footer .f2 { grid-column: 4 / span 6; display: flex; gap: 6px; flex-wrap: wrap; 
   #index { scroll-margin-top: calc(var(--head) + env(safe-area-inset-top, 0px) - 32px); }
   .logo { grid-column: 1 / span 6; }
   nav.main { grid-column: 1 / -1; grid-row: 2; margin-top: 8px; }
-  .where { grid-column: 7 / span 6; }
   #projects { padding-top: 24px; }
   .grid { gap: 24px var(--gap); }
   .index-wrap { padding-top: 56px; }
@@ -430,12 +433,144 @@ footer .f2 { grid-column: 4 / span 6; display: flex; gap: 6px; flex-wrap: wrap; 
   .s-facts { grid-template-columns: minmax(0, 1fr); gap: 10px; }
   .s-facts div { grid-template-columns: 96px minmax(0, 1fr); gap: 0 12px; padding-right: 0; }
 }
+/* About: a sheet like a project's, opened from About in the header and from the Information block. The CV
+   sections sit where a project's chapters do; each entry puts the name and what was done on columns 4–9,
+   the place on 10–11 and the years on 12. */
+.cv { grid-column: 4 / -1; display: grid; }
+.s-ch > .cv { grid-column: 4 / -1; }
+.cv-e { display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); column-gap: var(--gap); padding-block: 13px 15px; border-top: 1px solid var(--line); align-items: baseline; }
+.cv-e:first-child { border-top: 0; padding-top: 0; }
+.cv-e .w { grid-column: 1 / span 6; display: grid; gap: 2px; min-width: 0; }
+.cv-e h4 { font-size: var(--t-read); font-weight: 500; line-height: 1.4; margin: 0; }
+.cv-e .r { font-size: var(--t-read); color: var(--mute); line-height: 1.4; }
+.cv-e p { font-size: var(--t-read); line-height: 1.56; max-width: 35em; margin-top: 6px; text-wrap: pretty; }
+.cv-e .pl { grid-column: 7 / span 2; color: var(--mute); }
+.cv-e .yr { grid-column: 9 / span 1; justify-self: end; color: var(--mute); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.cv-e a { text-decoration: underline 1px; text-underline-offset: 3px; text-decoration-color: var(--line); }
+.cv-e a:hover { text-decoration-color: currentColor; }
+.cv.sk .cv-e .w { grid-column: 1 / span 3; }
+.cv.sk .cv-e .v { grid-column: 4 / -1; font-size: var(--t-read); line-height: 1.5; }
+.ab .s-pos { font-weight: 500; }
+.about .more { grid-column: 4 / span 6; justify-self: start; }
+@media (max-width: 860px) {
+  .s-ch > .cv { grid-column: 1 / -1; }
+  .cv-e { grid-template-columns: minmax(0, 1fr) auto; row-gap: 2px; }
+  .cv-e .w { grid-column: 1 / -1; }
+  .cv-e .pl { grid-column: 1; grid-row: 2; }
+  .cv-e .yr { grid-column: 2; grid-row: 2; }
+  .cv-e .w + .pl, .cv-e .w + .yr { margin-top: 6px; }
+  .cv.sk .cv-e .w, .cv.sk .cv-e .v { grid-column: 1 / -1; }
+  .about .more { grid-column: 1 / -1; }
+}
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .sheet { animation: none; }
   .s-chap, .s-chap.on, .s-chb, .s-toc button { transition: none; }
   .ph img, .cap, .cap .t, .irow, .pill, .peek, .itile .ph, .vbtn { transition: none; }
   .tile:hover .ph img, .tile:hover .ph video { transform: none; }
+}
+
+/* Quiet layer: no three-letter codes, one filter pill, a one-line preview heading and few hairlines.
+   These rules come last and are written as html:root, which gives each one more weight than the matching rule above. */
+/* 1. Tokens: soft pill fills and hairlines. --mute already sits at the contrast floor for small text on white. */
+html:root {
+  --line: #ececec;
+  --chip: #f1f1f1;
+  --chip-hi: #e7e7e7;
+}
+
+/* 2. The three-letter codes (DUN, CLF ...) and the "DUN 01 / 09" line are hidden everywhere: tile captions, the
+   preview, the index rows, the sheet bar, the next-project footer and the thin sheet's end pill. */
+html:root .cap .code,
+html:root .pv-pos,
+html:root .irow .c-code,
+html:root #s-code,
+html:root #s-fcode,
+html:root .s-more > .mono { display: none; }
+
+/* 3. Filter: one pill. The icon pill is hidden (the words pill opens the same menu) and the menu starts under
+   the words pill, which is as wide as the menu (168px) so the two read as one control; on tablets it fills the
+   bar's first four columns (below). */
+html:root #ficon { display: none; }
+html:root .side .filter { justify-self: start; }
+html:root .filter .sel { flex: none; gap: 10px; min-width: 168px; }
+html:root #menu { left: 0; right: auto; width: max-content; min-width: max(100%, 168px); max-width: calc(100vw - 32px); }
+/* The arrow is the cue that a pill opens a list: on the filter and on the sheet's chapter pill it points down
+   (the corner arrow turned 45°), and up while the list is open. Link pills keep the corner arrow. */
+html:root #fsel .ic,
+html:root #s-chb .ic { transform: rotate(45deg); transition: transform .15s; }
+html:root #fsel[aria-expanded="true"] .ic,
+html:root #s-chb[aria-expanded="true"] .ic { transform: rotate(225deg); }
+@media (prefers-reduced-motion: reduce) {
+  html:root #fsel .ic,
+  html:root #s-chb .ic { transition: none; }
+}
+@media (min-width: 600px) and (max-width: 1023px) {
+  html:root .side .filter { justify-self: stretch; }
+  html:root .filter .sel { flex: 1 1 auto; min-width: 0; }
+  html:root #menu { left: 0; right: 0; width: auto; min-width: 0; }
+}
+
+/* 4. Desktop preview: the title, then category and year in grey on the same line (no labels or image count),
+   then the description. It wraps to a second line only when the column is too narrow. */
+@media (min-width: 1024px) {
+  html:root .pv-c { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 10px; }
+  html:root .pv-h { display: contents; }
+  html:root .pv dl { display: flex; gap: 10px; color: var(--mute); }
+  html:root .pv dt,
+  html:root .pv dd:nth-of-type(3) { display: none; }
+  html:root #pv-d { flex: 1 0 100%; margin-top: 12px; }
+}
+
+/* 5. Index: on phones and tablets (three short columns) one rule opens the section and the rows stand on
+   spacing alone. On wide screens the five columns sit far apart, so the rows keep their soft rules for the eye
+   to follow across. */
+@media (max-width: 860px) {
+  html:root .index { border-top: 0; }
+  html:root .irow { border-bottom: 0; }
+}
+
+/* The footer needs no rule of its own: the space above it already closes the page. */
+html:root footer.foot { border-top: 0; }
+
+/* 6. Project sheet: chapters, the facts strip and the closing words are set apart by space and their titles,
+   not by a rule. The bar shows only a grey "09 / 09", and Close has no Esc hint. */
+html:root .s-ch,
+html:root .s-end { border-top: 0; padding-top: 0; }
+html:root .s-facts { border-top: 0; padding-top: 0; }
+html:root .s-close .m { display: none; }
+/* The About sheet is a CV, closer to a table than to a story: its sections keep the rule above them, so the
+   section break stays stronger than the hairlines between entries. */
+html:root .ab .s-ch { border-top: 1px solid var(--line); padding-top: 14px; }
+
+/* 7. Tablets and phones: the header is one row (name on the left, pills on the right); --head follows the
+   header's real height. */
+@media (max-width: 860px) {
+  html:root { --head: 50px; }
+  html:root .logo { grid-column: 1 / span 4; }
+  html:root nav.main { grid-column: 5 / -1; grid-row: 1; margin-top: 0; justify-content: flex-end; }
+}
+
+/* 8. Phones. */
+@media (max-width: 599px) {
+  /* The name already leads to the works, so the Projects pill is hidden and the other three sit on the
+     name's row, pushed to the right edge. */
+  html:root header.top { display: flex; align-items: center; gap: 8px; }
+  html:root .logo { margin-right: auto; white-space: nowrap; }
+  html:root nav.main a[href="#projects"] { display: none; }
+  /* Filter bar: "Projects 9" on the left, the one pill on the right, its menu opening from the right edge. */
+  html:root .side .filter { justify-self: end; }
+  html:root #menu { left: auto; right: 0; }
+  /* Captions: the title on its own line, the grey year under it. */
+  html:root .cap { grid-template-columns: minmax(0, 1fr); row-gap: 1px; }
+  html:root .cap .t { grid-column: 1; grid-row: 1; }
+  html:root .cap .y { grid-column: 1; grid-row: 2; font-size: 12px; }
+}
+
+/* Very narrow phones (320–359px): the pills tighten a little so the header still holds one row. */
+@media (max-width: 359px) {
+  html:root nav.main { gap: 4px; }
+  html:root nav.main .pill { padding: 0 9px; }
 }
 </style>
 
@@ -447,7 +582,6 @@ footer .f2 { grid-column: 4 / span 6; display: flex; gap: 6px; flex-wrap: wrap; 
     <a class="pill" href="#about">About</a>
     <a class="pill" href="#contact">Contact</a>
   </nav>
-  <span class="where pill"><span class="m">London</span><span id="clock">—</span></span>
 </header>
 
 <main id="top">
@@ -458,7 +592,7 @@ footer .f2 { grid-column: 4 / span 6; display: flex; gap: 6px; flex-wrap: wrap; 
         <button class="pill icon" id="ficon" type="button" aria-label="Filter by category" aria-haspopup="true" aria-expanded="false" aria-controls="menu">
           <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M1 3.5h12M1 7h12M1 10.5h12"/><path d="M4.5 2v3M9.5 5.5v3M6 9v3"/></svg>
         </button>
-        <button class="pill sel" id="fsel" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="menu"><span id="fsel-t">All works</span><span class="arr" aria-hidden="true">↘</span></button>
+        <button class="pill sel" id="fsel" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="menu"><span id="fsel-t">All works</span><span class="arr" aria-hidden="true"><svg class="ic" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 3l6 6M9.5 4.5v5h-5"/></svg></span></button>
         <div class="menu" id="menu" role="menu" hidden></div>
       </div>
       <div class="pv" id="pv">
@@ -470,7 +604,7 @@ footer .f2 { grid-column: 4 / span 6; display: flex; gap: 6px; flex-wrap: wrap; 
           <dl id="pv-dl"></dl>
           <p id="pv-d"></p>
         </div>
-        <button class="pill open" id="pv-open" type="button" aria-describedby="pv-t">Open project <span class="arr" aria-hidden="true">↘</span></button>
+        <button class="pill open" id="pv-open" type="button" aria-describedby="pv-t">Open project <span class="arr" aria-hidden="true"><svg class="ic" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 3l6 6M9.5 4.5v5h-5"/></svg></span></button>
       </div>
     </div>
     <div class="grid" id="grid"></div>
@@ -486,7 +620,8 @@ footer .f2 { grid-column: 4 / span 6; display: flex; gap: 6px; flex-wrap: wrap; 
 
   <section id="about" class="about wrap g12" aria-label="Information">
     <h2 class="lbl">Information</h2>
-    <p class="bio">Shuheng Wang is a designer working across buildings, products, jewellery and installations: from rooms carved into an eroding cliff and a centre half buried in moving dunes, to a clip-on device that senses what is coming from behind, 3D-printed ceramic jewellery and an installation made to hold it.</p>
+    <p class="bio">Shuheng Wang is a designer working across buildings, products, jewellery and installations: from rooms carved into an eroding cliff and a centre half buried in moving dunes, to a clip-on device designed to sense what is coming from behind, 3D-printed ceramic jewellery and an installation made to display it.</p>
+    <button class="pill more" id="ab-more" type="button">About and CV <span class="arr" aria-hidden="true"><svg class="ic" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 3l6 6M9.5 4.5v5h-5"/></svg></span></button>
   </section>
 </main>
 
@@ -501,11 +636,11 @@ footer .f2 { grid-column: 4 / span 6; display: flex; gap: 6px; flex-wrap: wrap; 
   <div class="s-bar wrap g12">
     <span class="s-pos"><span class="mono" id="s-code"></span><span class="mono m num" id="s-n"></span></span>
     <div class="s-nav">
-      <button class="pill" id="s-prev" type="button" aria-label="Previous project"><span aria-hidden="true">←</span><span class="tx">Previous</span></button>
-      <button class="pill" id="s-next" type="button" aria-label="Next project"><span class="tx">Next</span><span aria-hidden="true">→</span></button>
+      <button class="pill" id="s-prev" type="button" aria-label="Previous project"><svg class="ic" viewBox="0 0 12 12" aria-hidden="true"><path d="M10.5 6h-9M5 2.5L1.5 6 5 9.5"/></svg><span class="tx">Previous</span></button>
+      <button class="pill" id="s-next" type="button" aria-label="Next project"><span class="tx">Next</span><svg class="ic" viewBox="0 0 12 12" aria-hidden="true"><path d="M1.5 6h9M7 2.5L10.5 6 7 9.5"/></svg></button>
     </div>
     <div class="s-chap" id="s-chap">
-      <button class="pill s-chb" id="s-chb" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="s-chm"><span class="mono num" id="s-chn"></span><span id="s-cht"></span><span class="arr" aria-hidden="true">↘</span></button>
+      <button class="pill s-chb" id="s-chb" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="s-chm"><span class="mono num" id="s-chn"></span><span id="s-cht"></span><span class="arr" aria-hidden="true"><svg class="ic" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 3l6 6M9.5 4.5v5h-5"/></svg></span></button>
       <div class="menu s-chm" id="s-chm" role="menu" aria-label="Chapters" hidden></div>
     </div>
     <button class="pill s-close" id="s-close" type="button" aria-label="Close project">Close <span class="m">Esc</span></button>
@@ -527,8 +662,75 @@ footer .f2 { grid-column: 4 / span 6; display: flex; gap: 6px; flex-wrap: wrap; 
   <button class="s-next wrap g12" id="s-foot" type="button">
     <span class="k m">Next project</span>
     <span class="t"><span class="mono m" id="s-fcode"></span><span id="s-ft"></span></span>
-    <span class="a" aria-hidden="true">→</span>
+    <span class="a" aria-hidden="true"><svg class="ic" viewBox="0 0 12 12" aria-hidden="true"><path d="M1.5 6h9M7 2.5L10.5 6 7 9.5"/></svg></span>
   </button>
+</div>
+
+<div class="sheet ab" id="ab" role="dialog" aria-modal="true" aria-labelledby="ab-title" tabindex="-1" hidden>
+  <div class="s-bar wrap g12">
+    <span class="s-pos">About</span>
+    <button class="pill s-close" id="ab-close" type="button" aria-label="Close About">Close <span class="m">Esc</span></button>
+  </div>
+  <div class="s-body wrap">
+    <div class="s-open g12">
+      <div class="s-head">
+        <h2 id="ab-title">Shuheng Wang</h2>
+        <p class="sub">Designer, London</p>
+        <p class="s-intro">Shuheng Wang is a designer working across buildings, products, jewellery and installations. After a BSc in Architecture at the Bartlett, UCL, Shuheng now studies Innovation Design Engineering at the Royal College of Art and Imperial College London. Shuheng is also co-founder and director of CHOGA, a London jewellery studio developing a recycled, ceramic-like material for 3D printing, and works on materials and sustainability at WEDGE.</p>
+      </div>
+      <div class="s-side">
+        <dl class="s-meta"><dt>Based in</dt><dd>London</dd><dt>Studying</dt><dd>Innovation Design Engineering, Royal College of Art and Imperial College London</dd><dt>Contact</dt><dd><a href="mailto:wshing428@gmail.com">wshing428@gmail.com</a></dd></dl>
+        <nav class="s-toc" aria-labelledby="ab-toch"><h3 id="ab-toch">Contents</h3><ol><li><button type="button" data-a="01"><span class="mono num">01</span><span>Education</span></button></li><li><button type="button" data-a="02"><span class="mono num">02</span><span>Practice</span></button></li><li><button type="button" data-a="03"><span class="mono num">03</span><span>Research</span></button></li><li><button type="button" data-a="04"><span class="mono num">04</span><span>Awards</span></button></li><li><button type="button" data-a="05"><span class="mono num">05</span><span>Skills</span></button></li></ol></nav>
+      </div>
+    </div>
+    <div class="s-flow g12">
+      <section class="s-ch g12" id="ab-01" aria-labelledby="ab-01-t">
+        <h3 id="ab-01-t" tabindex="-1"><span class="mono m num">01</span><span>Education</span></h3>
+        <div class="cv">
+          <div class="cv-e"><div class="w"><h4>Royal College of Art and Imperial College London</h4><span class="r">MA Innovation Design Engineering</span></div><span class="pl">London</span><span class="yr">2026–</span></div>
+          <div class="cv-e"><div class="w"><h4>The Bartlett School of Architecture, UCL</h4><span class="r">BSc Architecture, First-Class Honours</span></div><span class="pl">London</span><span class="yr">2021–24</span></div>
+        </div>
+      </section>
+      <section class="s-ch g12" id="ab-02" aria-labelledby="ab-02-t">
+        <h3 id="ab-02-t" tabindex="-1"><span class="mono m num">02</span><span>Practice</span></h3>
+        <div class="cv">
+          <div class="cv-e"><div class="w"><h4>CHOGA</h4><span class="r">Co-founder and director</span><p>Leads the development of BrightOrb, a recycled, ceramic-like 3D-printing material, including new manufacturing and post-processing steps, and the studio’s business model and strategy. Ran CHOGA’s first showcase at London Design Festival 2025, from curation and spatial planning to the build. Also works on the products and the brand, and with manufacturers and suppliers in different regions.</p></div><span class="pl">London</span><span class="yr">2025–</span></div>
+          <div class="cv-e"><div class="w"><h4>WEDGE Design Solution</h4><span class="r">Sustainability specialist, early-stage core team</span><p>Researches manufacturing, materials and production methods to improve processes, and the market, and leads research into acoustic uses of WEDGE’s products. Helped WEDGE take part in exhibitions including London Design Festival and Material Matters; the work was later featured in ELLE Decoration.</p></div><span class="pl">London</span><span class="yr">2025–</span></div>
+          <div class="cv-e"><div class="w"><h4>Private residence</h4><span class="r">Overseas design lead (client side)</span><p>Leads the project for the client: takes design and concept development through stages 1–3, coordinates local architects and builders, and represents the client. A preliminary concept design is complete, and talks with the local contractor on early contractor involvement are under way.</p></div><span class="pl">Queenstown, New Zealand</span><span class="yr">2024–</span></div>
+          <div class="cv-e"><div class="w"><h4>Freelance</h4><span class="r">Architectural designer, remote</span><p>Modelling and rendering for the early design of a hotel.</p></div><span class="pl">London</span><span class="yr">2024</span></div>
+          <div class="cv-e"><div class="w"><h4>Shanghai Bolman Architectural Decoration Design Engineering</h4><span class="r">Assistant architectural planner</span><p>Helped develop architectural proposals: research on materials and construction, project drawings, models and documentation, and coordination with contractors and suppliers.</p></div><span class="pl">Shanghai</span><span class="yr">2024–25</span></div>
+          <div class="cv-e"><div class="w"><h4>Shanghai ZF Architectural Design</h4><span class="r">Architectural assistant, internship</span></div><span class="pl">Shanghai</span><span class="yr">2023</span></div>
+          <div class="cv-e"><div class="w"><h4>Three Lives Arts</h4><span class="r">Product design assistant, internship, remote</span></div><span class="pl">Malvern, Australia</span><span class="yr">2022</span></div>
+        </div>
+      </section>
+      <section class="s-ch g12" id="ab-03" aria-labelledby="ab-03-t">
+        <h3 id="ab-03-t" tabindex="-1"><span class="mono m num">03</span><span>Research</span></h3>
+        <div class="cv">
+          <div class="cv-e"><div class="w"><h4><a href="https://doi.org/10.54254/2754-1169/2025.21587" target="_blank" rel="noopener">An Analysis of the Relationship Between Social Factors and Noise Complaint in London</a></h4><span class="r">Advances in Economics, Management and Political Sciences 165(1): 95–99</span><p>A regression across London’s boroughs: average income, green space and car ownership correlate more strongly with complaint rates than measured noise levels do.</p></div><span class="pl">Independent</span><span class="yr">2025</span></div>
+          <div class="cv-e"><div class="w"><h4><a href="https://doi.org/10.54254/2753-7064/2025.LC25745" target="_blank" rel="noopener">Urban Spatial Strategies and Health Resilience: A Case Study of New Jiangwan City</a></h4><span class="r">Communications in Humanities Research 74(1): 122–128</span><p>A case study of New Jiangwan City, Shanghai, built on interviews with urban planners and residents and read through Henri Lefebvre’s ‘production of space’: how green corridors, adaptable public spaces and low-density layouts supported well-being, exercise and social ties under lockdown.</p></div><span class="pl">Independent</span><span class="yr">2025</span></div>
+        </div>
+      </section>
+      <section class="s-ch g12" id="ab-04" aria-labelledby="ab-04-t">
+        <h3 id="ab-04-t" tabindex="-1"><span class="mono m num">04</span><span>Awards</span></h3>
+        <div class="cv">
+          <div class="cv-e"><div class="w"><h4>First Class Honours Award, dissertation project</h4><span class="r">The Bartlett School of Architecture, UCL</span></div><span class="pl">London</span><span class="yr">2024</span></div>
+          <div class="cv-e"><div class="w"><h4>Bartlett Group Project Award, Year 1</h4><span class="r">The Bartlett School of Architecture, UCL</span></div><span class="pl">London</span><span class="yr">2022</span></div>
+          <div class="cv-e"><div class="w"><h4>OSSD Distinction Student Award</h4><span class="r">Shanghai Pinghe Bilingual School</span></div><span class="pl">Shanghai</span><span class="yr">2021</span></div>
+        </div>
+      </section>
+      <section class="s-ch g12" id="ab-05" aria-labelledby="ab-05-t">
+        <h3 id="ab-05-t" tabindex="-1"><span class="mono m num">05</span><span>Skills</span></h3>
+        <div class="cv sk">
+          <div class="cv-e"><div class="w"><h4>3D modelling</h4></div><span class="v">Rhino, Grasshopper, SketchUp, Blender</span></div>
+          <div class="cv-e"><div class="w"><h4>Rendering</h4></div><span class="v">V-Ray, Blender, Unreal Engine 5, Enscape</span></div>
+          <div class="cv-e"><div class="w"><h4>Making</h4></div><span class="v">3D printing, CNC (Fusion 360), laser cutting, model making, basic woodworking and metalworking</span></div>
+          <div class="cv-e"><div class="w"><h4>3D scanning</h4></div><span class="v">FARO lidar scanner, Creaform scanner, CloudCompare</span></div>
+          <div class="cv-e"><div class="w"><h4>Graphics</h4></div><span class="v">Photoshop, Illustrator, InDesign, Figma</span></div>
+          <div class="cv-e"><div class="w"><h4>Web</h4></div><span class="v">Framer</span></div>
+        </div>
+      </section>
+    </div>
+  </div>
 </div>
 
 <img class="peek" id="peek" alt="" aria-hidden="true">
@@ -1409,7 +1611,7 @@ function renderGrid() {
   fit();
 }
 const years = WORKS.flatMap(w => w.y.split("–").map(v => +(v.length === 2 ? w.y.slice(0, 2) + v : v)));
-const indexTile = () => `<a class="tile itile" href="#index"><span class="ph"><span class="it"><span>Index</span><span aria-hidden="true">↘</span></span><span class="it mono m"><span class="num">${pad(WORKS.length)} works</span><span class="num">${Math.min(...years)}–${Math.max(...years)}</span></span></span></a>`;
+const indexTile = () => `<a class="tile itile" href="#index"><span class="ph"><span class="it"><span>Index</span><svg class="ic" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 3l6 6M9.5 4.5v5h-5"/></svg></span><span class="it mono m"><span class="num">${pad(WORKS.length)} works</span><span class="num">${Math.min(...years)}–${Math.max(...years)}</span></span></span></a>`;
 
 /* Preview: follows the pointer and keyboard focus over the covers, and keeps the last one when the pointer leaves. */
 let act = -1;
@@ -1591,7 +1793,7 @@ function fill(i) {
   let html = w.chapters ? longForm(w) : shortForm(w);
   // Thin sheet (one image): a quiet end link sits under the picture and stands in for the footer bar.
   const many = list.length > 1, thin = !w.chapters && w.imgs.length === 1 && many;
-  if (thin) html += `<button class="pill s-more" type="button"><span class="m">Next</span><span class="mono m">${nxt.code}</span><span>${nxt.t}</span><span aria-hidden="true">→</span></button>`;
+  if (thin) html += `<button class="pill s-more" type="button"><span class="m">Next</span><span class="mono m">${nxt.code}</span><span>${nxt.t}</span><svg class="ic" viewBox="0 0 12 12" aria-hidden="true"><path d="M1.5 6h9M7 2.5L10.5 6 7 9.5"/></svg></button>`;
   $("s-imgs").innerHTML = html;
   $("s-foot").hidden = thin || !many;
   $("s-fcode").textContent = nxt.code; $("s-ft").textContent = nxt.t;
@@ -1695,6 +1897,7 @@ document.addEventListener("keydown", e => {
     if (!menu.hidden) { openMenu(false); menuFrom.focus(); }
     else if (!chm.hidden) { chMenu(false); chb.focus(); }
     else if (!sheet.hidden) closeSheet();
+    else if (!ab.hidden) closeAbout();
   }
   if (!sheet.hidden && chm.hidden && (e.key === "ArrowRight" || e.key === "ArrowLeft") && !e.altKey && !e.metaKey) { e.preventDefault(); step(e.key === "ArrowRight" ? 1 : -1); }
   if (!sheet.hidden && e.key === "Tab" && !e.defaultPrevented) {
@@ -1709,11 +1912,6 @@ document.addEventListener("keydown", e => {
   }
 });
 
-/* Clock */
-function tick() {
-  $("clock").textContent = new Date().toLocaleTimeString("en-GB", { timeZone: "Europe/London", hour: "2-digit", minute: "2-digit", second: "2-digit" });
-}
-tick(); setInterval(tick, 1000);
 
 /* Copy email */
 let okT;
@@ -1726,6 +1924,35 @@ $("mail").onclick = async () => {
 
 /* Visitors who ask for less motion get still posters, no fades and no smooth scrolling. */
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* About: opened from About in the header and from the Information block; Esc or Close returns to where it was opened. */
+const ab = $("ab"); let abFrom = null;
+function openAbout(from) {
+  if (!sheet.hidden) closeSheet();
+  abFrom = from || document.activeElement;
+  ab.hidden = false; ab.scrollTop = 0; document.documentElement.classList.add("lock");
+  bg.forEach(el => el.inert = true); peek.classList.remove("on");
+  $("ab-close").focus({ preventScroll: true });
+}
+function closeAbout() {
+  ab.hidden = true; document.documentElement.classList.remove("lock");
+  bg.forEach(el => el.inert = false);
+  if (abFrom && abFrom.isConnected) abFrom.focus({ preventScroll: true });
+}
+document.querySelectorAll('a[href="#about"]').forEach(a => a.addEventListener("click", e => { e.preventDefault(); openAbout(a); }));
+$("ab-more").onclick = e => openAbout(e.currentTarget);
+$("ab-close").onclick = closeAbout;
+ab.querySelector(".s-toc ol").addEventListener("click", e => {
+  const b = e.target.closest("button[data-a]"); if (!b) return;
+  const c = $("ab-" + b.dataset.a), bar = ab.querySelector(".s-bar");
+  ab.scrollTo({ top: Math.max(0, c.getBoundingClientRect().top - ab.getBoundingClientRect().top + ab.scrollTop - bar.offsetHeight - 24), behavior: reduce ? "auto" : "smooth" });
+  c.querySelector("h3").focus({ preventScroll: true });
+});
+ab.addEventListener("keydown", e => {
+  if (e.key !== "Tab") return;
+  const f = [...ab.querySelectorAll("button, a[href]")].filter(b => b.getClientRects().length), i = f.indexOf(document.activeElement);
+  if (e.shiftKey ? i <= 0 : (i === -1 || i === f.length - 1)) { e.preventDefault(); (e.shiftKey ? f[f.length - 1] : f[0]).focus(); }
+});
 
 renderGrid(); renderIndex();
 </script>
