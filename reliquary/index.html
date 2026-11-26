@@ -1,0 +1,2088 @@
+<!doctype html>
+<html lang="en" data-routes="path" data-deep>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<base href="/">
+<title>Reliquary · Shuheng Wang</title>
+<meta name="description" content="A jewellery installation of silica sand, white ceramic, aluminium and CNC-carved wood, conceived with Wedge for Naturafacture, CHOGA’s SS 2025 series.">
+<meta name="author" content="Shuheng Wang">
+<meta name="theme-color" content="#ffffff">
+<link rel="canonical" href="https://shuhengwang.com/reliquary/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Shuheng Wang">
+<meta property="og:title" content="Reliquary · Shuheng Wang">
+<meta property="og:description" content="A jewellery installation of silica sand, white ceramic, aluminium and CNC-carved wood, conceived with Wedge for Naturafacture, CHOGA’s SS 2025 series.">
+<meta property="og:url" content="https://shuhengwang.com/reliquary/">
+<meta property="og:image" content="https://shuhengwang.com/img/cover/RLQ.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23111'/%3E%3Ctext x='16' y='21' font-family='Helvetica,Arial,sans-serif' font-size='14' fill='%23fff' text-anchor='middle'%3Esw%3C/text%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Reliquary", "description": "A jewellery installation of silica sand, white ceramic, aluminium and CNC-carved wood, conceived with Wedge for Naturafacture, CHOGA’s SS 2025 series.", "url": "https://shuhengwang.com/reliquary/", "image": "https://shuhengwang.com/img/cover/RLQ.jpg", "genre": "Installation", "isPartOf": {"@type": "WebSite", "name": "Shuheng Wang", "url": "https://shuhengwang.com/"}, "alternativeHeadline": "CHOGA × Wedge", "dateCreated": "2025"}</script>
+<style>:root{color-scheme:light}body{margin:0;font:14px system-ui}img{max-width:100%}[hidden]{display:none!important}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Geist+Mono:wght@400&display=swap">
+<style>
+/* One 12-column grid governs everything: the header (name / nav), the works, the index columns, the
+   information block and the footer all start on the same four edges. The works pair a sticky preview
+   (columns 1–3) with the covers (4–12); every cover keeps its picture's own proportions and goes under the
+   shortest column so far. The project sheet reads as one editorial column on the same grid: an opening
+   spread with the facts and contents, then numbered chapters that alternate text with uncropped,
+   equal-height image rows, and a word in the bar that names the chapter and jumps between them.
+   One light theme only: the page is pure white whatever the system theme. */
+:root {
+  color-scheme: only light;
+  --bg: #ffffff;
+  --fg: #1a1a1a;
+  --mute: #767676;
+  --line: #e6e6e6;
+  --panel: #f3f3f3;
+  --shadow: rgba(0, 0, 0, .07);
+  --sans: "Geist", "Untitled Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --mono: "Geist Mono", ui-monospace, Menlo, monospace;
+  --gut: max(16px, env(safe-area-inset-left, 0px));
+  --gutR: max(16px, env(safe-area-inset-right, 0px));
+  --gap: 16px;
+  --head: 50px;
+  /* Type. The base is 13px and grows a little on wide screens (about 14px at 1920, 15px from 2240); the mono
+     notes and the captions keep their step below it. Sheets add the display line, the lede and the reading text. */
+  --t-base: clamp(13px, calc(13px + (100vw - 1440px) * 0.0025), 15px);
+  --t-note: calc(var(--t-base) - 2px);
+  --t-cap: calc(var(--t-base) - 1px);
+  --t-disp: clamp(28px, 2.5vw, 52px);
+  --t-lede: clamp(17px, 1.36vw, 25px);
+  --t-read: clamp(14px, calc(0.6vw + 6.4px), 18px);
+  /* One curve for everything that moves: quick to start, slow to settle. */
+  --ease: cubic-bezier(.2, .7, .2, 1);
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; background: #fff; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
+::selection { background: #1a1a1a; color: #fff; }
+html.lock { overflow: hidden; }
+/* A page opened straight on a project or on About keeps the works out of sight until its sheet is up. */
+html[data-deep] header.top, html[data-deep] #top, html[data-deep] #contact { visibility: hidden; animation: undeep 0s 3s forwards; }
+@keyframes undeep { to { visibility: visible; } }
+/* A place on the page that a link has scrolled to takes focus without a ring. */
+main[tabindex]:focus-visible, section[tabindex]:focus-visible, footer[tabindex]:focus-visible { outline: none; }
+body {
+  margin: 0; background: var(--bg); color: var(--fg);
+  font-family: var(--sans); font-size: var(--t-base); line-height: 1.45; letter-spacing: -0.003em;
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+}
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; margin: 0; cursor: pointer; text-align: inherit; letter-spacing: inherit; }
+:focus-visible { outline: 1.5px solid var(--fg); outline-offset: 3px; }
+img { display: block; max-width: 100%; }
+h1, h2, h3, p, dl, dd, figure { margin: 0; }
+.wrap { padding-left: var(--gut); padding-right: var(--gutR); }
+.m { color: var(--mute); }
+.mono { font-family: var(--mono); font-size: var(--t-note); letter-spacing: 0.01em; }
+.num { font-variant-numeric: tabular-nums; }
+.g12 { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); }
+
+/* Controls: plain words, no box. A link or button fades a little under the pointer; one that opens a list
+   ends in an arrow that turns while the list is open. Each stays 30px tall for touch. */
+.pill {
+  display: inline-flex; align-items: center; gap: 8px; height: 30px; padding: 0; border-radius: 4px;
+  font-size: var(--t-base); line-height: 1; white-space: nowrap; transition: opacity .15s;
+}
+a.pill:hover, button.pill:not(:disabled):not(.vbtn):hover { opacity: .5; }
+.pill:disabled { opacity: .35; cursor: default; }
+.pill.icon { width: 30px; justify-content: center; flex: none; }
+.pill svg { width: 14px; height: 14px; flex: none; }
+.pill .arr { line-height: 1; }
+/* Arrows are drawn as SVG, never as text: iOS shows some arrow characters as emoji icons. */
+.ic { width: 12px; height: 12px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; overflow: visible; }
+.pill svg.ic { width: 12px; height: 12px; }
+.pill .arr { display: inline-flex; }
+
+/* Header */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); }
+header.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--bg);
+  padding-block: 10px; align-items: baseline;
+}
+.logo { grid-column: 1 / span 3; font: inherit; font-weight: 500; justify-self: start; }
+nav.main { grid-column: 4 / span 6; display: flex; gap: 6px 24px; flex-wrap: wrap; }
+section[id], footer[id], main[id] { scroll-margin-top: calc(var(--head) + env(safe-area-inset-top, 0px)); }
+
+/* Works: a sticky preview on the left (columns 1–3) and the covers on the right (4–12). Every cover keeps its
+   own proportions, and the covers stack in three columns (two on phones): stack() puts each one under the
+   shortest column so far, while the page keeps them in work order for the keyboard and screen readers. */
+#projects { padding-top: 30px; align-items: start; align-content: start; }
+.side {
+  grid-column: 1 / span 3; position: sticky; z-index: 5; align-self: start;
+  top: calc(env(safe-area-inset-top, 0px) + var(--head) + 30px);
+  display: grid; align-content: start;
+}
+/* Desktop: the column is lifted so the top of the filter's letters meets the top edge of the first covers. */
+@media (min-width: 1024px) {
+  .side { --lift: calc(.34em - 15px); margin-top: var(--lift); top: calc(env(safe-area-inset-top, 0px) + var(--head) + 30px + var(--lift)); }
+}
+.side .lbl { display: flex; gap: 6px; align-items: baseline; }
+/* The heading stays for screen readers; on tablets and desktops the preview counts the works instead. */
+@media (min-width: 600px) { .side .lbl { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; } }
+.lbl { font: inherit; margin: 0; }
+.filter { display: flex; gap: 6px; position: relative; min-width: 0; }
+.filter .sel { flex: 1; min-width: 0; }
+.filter .sel > span:first-child { overflow: hidden; text-overflow: ellipsis; }
+.menu {
+  position: absolute; left: 36px; right: 0; top: 36px; z-index: 12; background: var(--bg);
+  border-radius: 9px; padding: 4px; display: grid; gap: 2px; box-shadow: 0 0 0 1px var(--line), 0 8px 30px var(--shadow);
+  transform-origin: 0 0; animation: pop .18s var(--ease);
+}
+@keyframes pop { from { opacity: 0; transform: translateY(-4px) scale(.985); } }
+/* In a list, the chosen line and the one under the pointer are black; the others grey. The list sits 12px
+   out so its words line up with the control that opened it. */
+.menu button { display: flex; justify-content: space-between; gap: 12px; padding: 6px 8px; border-radius: 6px; color: var(--mute); }
+.menu button:hover, .menu button[aria-checked="true"] { color: var(--fg); }
+/* Desktop: the open menu covers the preview, so the preview steps away instead of showing cut-off text around it. */
+@media (min-width: 1024px) { .side:has(#menu:not([hidden])) .pv { visibility: hidden; } }
+
+/* Preview: the work under the pointer (or keyboard focus); the last one stays when the pointer leaves. */
+.pv { display: grid; gap: 20px; margin-top: 48px; padding-right: 8px; justify-items: start; }
+.pv-c { display: grid; gap: 16px; justify-items: start; }
+.pv-h { display: grid; gap: 6px; }
+.pv-pos { display: flex; gap: 10px; align-items: baseline; }
+.pv h3 { font-size: inherit; font-weight: 500; margin: 0; text-wrap: balance; }
+.pv dl { display: grid; grid-template-columns: 64px 1fr; gap: 2px 8px; }
+.pv dt { color: var(--mute); }
+.pv p { max-width: 36ch; text-wrap: pretty; }
+
+.grid { grid-column: 4 / -1; position: relative; --n: 3; --rg: 28px; }
+.grid .tile { position: absolute; left: calc(var(--c, 0) * (100% + var(--gap)) / var(--n)); width: calc((100% - (var(--n) - 1) * var(--gap)) / var(--n)); }
+.tile { display: grid; gap: 8px; align-content: start; width: 100%; min-width: 0; border-radius: 4px; container-type: inline-size; }
+.tile:focus-visible { outline-offset: 4px; }
+/* Until its picture arrives a frame holds the picture's own average colour (--tint), so nothing flashes grey. */
+.ph { display: block; position: relative; aspect-ratio: 2 / 1; background: var(--tint, var(--panel)); overflow: hidden; border-radius: 2px; }
+.ph img, .ph video {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .9s var(--ease);
+}
+/* A picture that is still loading waits unseen over its frame and fades in when it arrives (the script marks
+   it .fx, then .in); one that is already there is simply shown. */
+img.fx { opacity: 0; }
+img.fx.in { opacity: 1; transition: opacity .45s ease-out; }
+.ph img.fx.in { transition: opacity .45s ease-out, transform .9s var(--ease); }
+/* A work with a cover loop plays it in its tile. */
+.ph video { display: block; }
+/* When the works nearly fill the first screen (fit() sets .fill), the Index starts below the fold, never as a half row. */
+@media (min-width: 600px) { #projects.fill { min-height: calc(100svh - var(--head) - env(safe-area-inset-top, 0px)); } }
+.cap { display: flex; align-items: baseline; gap: 8px; min-width: 0; transition: color .15s; }
+.cap .code { flex: none; width: 28px; color: var(--mute); }
+.cap .t { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-decoration: underline 1px transparent; text-underline-offset: 3px; transition: text-decoration-color .15s; }
+.cap .y { flex: none; color: var(--mute); font-variant-numeric: tabular-nums; }
+/* The work shown in the preview carries a hairline under its title. */
+.tile.on .cap .t { text-decoration-color: currentColor; }
+@media (hover: hover) {
+  .grid:has(.tile:hover) .tile:not(:hover) .cap { color: var(--mute); }
+  .tile:hover .ph img, .tile:hover .ph video { transform: scale(1.03); }
+}
+.empty { padding: 48px 0; }
+
+/* Index */
+.index-wrap { margin-top: 0; padding-top: 48px; }
+#index { scroll-margin-top: calc(var(--head) + env(safe-area-inset-top, 0px) - 18px); }
+.ihead { padding-block: 12px 10px; border-top: 1px solid var(--line); }
+.ihead > span, .irow > span { min-width: 0; }
+.ihead .lbl { grid-column: 1 / span 3; }
+.c-t { grid-column: 4 / span 3; }
+.c-c { grid-column: 7 / span 3; }
+.c-n { grid-column: 10 / span 2; }
+.c-y { grid-column: 12 / span 1; justify-self: end; font-variant-numeric: tabular-nums; }
+.index { border-top: 1px solid var(--line); }
+.irow { width: 100%; padding-block: 7px; border-bottom: 1px solid var(--line); align-items: baseline; transition: color .15s; }
+.irow .c-no { grid-column: 1 / span 3; display: flex; gap: 16px; }
+.irow:focus-visible { outline-offset: -1px; }
+.irow.out { color: var(--mute); }
+@media (hover: hover) {
+  .index:hover .irow { color: var(--mute); }
+  .index:hover .irow:hover { color: var(--fg); }
+}
+/* Touch: a row is tall enough for a finger. */
+@media (hover: none) { .irow { padding-block: 12px; } }
+.peek { position: fixed; left: 0; top: 0; z-index: 15; width: 280px; pointer-events: none; opacity: 0; transition: opacity .18s ease-out; border-radius: 2px; overflow: hidden; background: var(--panel); will-change: transform; }
+.peek.on { opacity: 1; }
+
+/* Information */
+.about { padding-block: 120px 120px; row-gap: 32px; align-content: end; }
+.about .lbl { grid-column: 1 / span 3; }
+.about .bio { grid-column: 4 / span 6; font-size: clamp(16px, 1.3vw, 20px); line-height: 1.32; letter-spacing: -0.014em; text-wrap: pretty; max-width: 40ch; }
+
+footer.foot { padding-block: 12px calc(24px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line); row-gap: 8px; align-items: center; }
+footer .f1 { grid-column: 1 / span 3; }
+footer .f2 { grid-column: 4 / span 6; display: flex; gap: 6px; flex-wrap: wrap; }
+
+/* Project sheet */
+.sheet { position: fixed; inset: 0; z-index: 50; background: var(--bg); overflow-y: auto; overscroll-behavior: contain; outline: none; display: flex; flex-direction: column; animation: fade .22s ease-out; }
+.sheet > * { flex: none; }
+.sheet > .s-body { flex: 1 0 auto; }
+.sheet::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 3; background: var(--bg); }
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+.s-bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 2; background: var(--bg); padding-block: 10px; align-items: center; }
+.s-pos { grid-column: 1 / span 3; display: flex; gap: 10px; align-items: baseline; }
+.s-nav { grid-column: 4 / span 3; display: flex; gap: 20px; }
+.s-close { grid-column: 10 / span 3; justify-self: end; }
+/* Chapters: once the first chapter is reached, a pill in the bar names the chapter being read and opens
+   the list of chapters, like the filter over the works. It stays away over the opening spread. */
+.s-chap { grid-column: 7 / span 4; position: relative; min-width: 0; display: flex; opacity: 0; visibility: hidden; transition: opacity .25s, visibility 0s .25s; }
+.s-chap.on { opacity: 1; visibility: visible; transition: opacity .25s; }
+/* The pill's four columns (7–10) share column 10 with Close; both stay on the bar's one row. The pill is only
+   as wide as its text and Close sits at the right edge, so they never meet. */
+.s-chap, .s-close { grid-row: 1; }
+.s-chb { max-width: 100%; min-width: 0; }
+.s-chb .num { flex: none; color: var(--mute); }
+#s-cht { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.s-chm { left: 0; right: auto; width: max-content; min-width: 100%; max-width: calc(100vw - 32px); }
+.s-chm button { justify-content: flex-start; }
+.s-chm .num, .s-toc .num { flex: none; width: 18px; color: var(--mute); }
+.s-chm button[aria-current="true"] { color: var(--fg); }
+.s-body { padding-top: 44px; padding-bottom: 168px; }
+
+/* Opening spread: title, subtitle and intro on columns 1–7; the facts of the work and its contents on 9–12;
+   then the hero across the page. */
+.s-open { align-items: start; }
+.s-head { grid-column: 1 / span 7; }
+.s-head h2, .s-head .sub { font-size: var(--t-disp); line-height: 1.08; letter-spacing: -0.032em; font-weight: 500; text-wrap: balance; }
+.s-head .sub { font-weight: 400; color: var(--mute); }
+.s-intro { margin-top: 30px; font-size: var(--t-lede); line-height: 1.36; letter-spacing: -0.012em; max-width: 35em; text-wrap: pretty; }
+.s-side { grid-column: 9 / span 4; display: grid; gap: 28px; align-content: start; padding-top: 4px; }
+.s-meta, .s-toc { display: grid; grid-template-columns: minmax(88px, 6.8em) minmax(0, 1fr); gap: 3px 12px; align-items: baseline; }
+.s-meta dt, .s-toc h3 { color: var(--mute); }
+.s-meta dd { text-wrap: pretty; }
+.s-toc h3 { font: inherit; margin: 0; }
+.s-toc ol { list-style: none; margin: -2px 0 0 -8px; padding: 0; display: grid; gap: 1px; justify-items: start; min-width: 0; }
+.s-toc li { max-width: 100%; }
+.s-toc button { display: flex; gap: 10px; align-items: baseline; max-width: 100%; padding: 2px 10px 2px 8px; border-radius: 7px; transition: opacity .15s; }
+.s-toc button:focus-visible { outline-offset: 0; }
+@media (hover: hover) { .s-toc button:hover { opacity: .5; } }
+.s-open > .s-row { grid-column: 1 / -1; margin-top: 64px; }
+
+/* Chapters: a hairline across the page, the number and title on columns 1–3, the text on 4–9.
+   Every block sits on the 12-column grid. */
+.s-flow { align-items: start; }
+/* A work without chapters: its first row keeps the hero's distance from the opening spread. */
+.s-flow > .s-row:first-child { margin-top: 64px; }
+.s-flow > *, .s-ch > * { grid-column: 1 / -1; min-width: 0; }
+.s-ch { margin-top: 160px; padding-top: 14px; border-top: 1px solid var(--line); align-items: baseline; }
+.s-ch h3 { grid-column: 1 / span 3; display: flex; gap: 14px; align-items: baseline; padding-right: 16px; font-size: var(--t-lede); font-weight: 500; line-height: 1.25; letter-spacing: -0.012em; outline: none; text-wrap: balance; }
+.s-ch h3 .mono { font-weight: 400; }
+.s-p { grid-column: 4 / span 6; font-size: var(--t-read); line-height: 1.56; max-width: 35em; text-wrap: pretty; }
+.s-row + .s-p { margin-top: 96px; }
+.s-p + .s-row, .s-facts + .s-row { margin-top: 72px; }
+.s-facts + .s-p { margin-top: 48px; }
+/* Facts: a grey label over its value, in the page's own type like the facts of the opening spread, on the
+   three column groups of the text side. */
+.s-facts { grid-column: 4 / -1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 var(--gap); margin-top: 40px; padding-top: 10px; border-top: 1px solid var(--line); }
+.s-facts div { display: grid; gap: 2px; align-content: start; padding-right: 12px; }
+.s-facts dt { color: var(--mute); }
+.s-facts dd { text-wrap: pretty; }
+
+/* Image rows: one height across a row (each figure grows in proportion to its aspect ratio), uncropped,
+   and never taller than the screen. A row that would be too tall gives up whole grid columns (snap() in the
+   script), so both of its edges stay on the grid; the cap here is only the fallback. */
+.s-row { align-self: start; display: flex; gap: var(--gap); align-items: flex-start; justify-self: start; width: 100%; max-width: calc((100svh - var(--head) - 132px) * var(--sum) + var(--n) * var(--gap)); }
+.s-row + .s-row { margin-top: 40px; }
+.s-row figure { flex: var(--ar) 1 0; min-width: 0; display: grid; gap: 9px; align-content: start; }
+/* Each picture sits in a frame of its own shape, pale until the picture arrives. */
+.s-row .im { display: block; border-radius: 2px; background: var(--panel); overflow: hidden; }
+.s-row .im.ln { background: none; }
+.s-row img, .s-row video { display: block; width: 100%; height: auto; border-radius: 2px; }
+.s-row video { background: var(--panel); }
+/* Loops (short films cut from GIFs): they play muted while on screen; the pill pauses them. */
+.s-row .vid { position: relative; }
+.s-row video { display: block; aspect-ratio: var(--ar); object-fit: cover; }
+/* The pause button sits on the picture, so it keeps a pale chip to stay readable. */
+.vbtn { position: absolute; right: 8px; bottom: 8px; height: auto; min-height: 26px; padding: 3px 10px; border-radius: 9px; font-size: 11px; background: rgba(255, 255, 255, 0.86); color: #111; opacity: 0; transition: opacity .15s, background .15s; }
+@media (hover: hover) { .vbtn:hover { background: #fff; } }
+.vid:hover .vbtn, .vbtn:focus-visible, .vid.off .vbtn { opacity: 1; }
+@media (hover: none) {
+  /* Touch: a small icon chip (the button text stays its name), with a larger invisible tap area. */
+  .vbtn { opacity: 1; width: 26px; height: 26px; min-height: 0; padding: 0; right: 6px; bottom: 6px; border-radius: 8px; justify-content: center; font-size: 0; }
+  .vbtn::after { content: ""; position: absolute; inset: -9px; }
+  .vbtn::before { content: ""; width: 8px; height: 9px; box-sizing: border-box; border-inline: 3px solid currentColor; }
+  .vid.off .vbtn::before { width: 8px; height: 10px; margin-left: 2px; border: 0; background: currentColor; clip-path: polygon(0 0, 100% 50%, 0 100%); }
+}
+.s-row .pr { display: contents; }
+/* Drawings and models on pure white keep a hairline so they do not dissolve into the page. */
+.s-row img.ln { outline: 1px solid var(--line); outline-offset: -1px; }
+.s-row figcaption { color: var(--mute); font-size: var(--t-cap); line-height: 1.45; max-width: 62ch; text-wrap: pretty; }
+
+/* Closing: the author's conclusion, set like a chapter. */
+.s-end { margin-top: 176px; padding-top: 14px; border-top: 1px solid var(--line); align-items: baseline; }
+.s-end h3 { grid-column: 1 / span 3; font-size: var(--t-lede); font-weight: 500; line-height: 1.25; letter-spacing: -0.012em; }
+.s-end blockquote { grid-column: 4 / span 8; margin: 0; font-size: clamp(22px, 2.2vw, 36px); line-height: 1.18; letter-spacing: -0.028em; max-width: 22em; text-wrap: pretty; text-indent: -0.42em; }
+.s-more { justify-self: start; max-width: 100%; }
+.s-more > span:nth-child(3) { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+/* Next project: the foot of a sheet shows where it leads, set like the opening of the sheet it opens: the
+   label on columns 1–3, the title and its grey second line on 4–9, the cover on 10–12. */
+.s-next { width: 100%; padding-block: 28px calc(40px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line); align-items: start; }
+.s-next .k { grid-column: 1 / span 3; align-self: baseline; display: inline-flex; gap: 8px; align-items: center; }
+.s-next .k .ic { transition: transform .3s var(--ease); }
+.s-next .t { grid-column: 4 / span 6; align-self: baseline; display: grid; padding-right: 16px; font-size: var(--t-disp); line-height: 1.08; letter-spacing: -0.032em; font-weight: 500; text-wrap: balance; }
+.s-next .t .sub { font-weight: 400; color: var(--mute); }
+.s-next .im { grid-column: 10 / span 3; display: block; aspect-ratio: 2 / 1; overflow: hidden; border-radius: 2px; background: var(--panel); margin-top: calc(var(--t-disp) * .17); }
+.s-next .im img { width: 100%; height: 100%; object-fit: cover; transition: transform .9s var(--ease); }
+.s-next .im img.fx.in { transition: opacity .45s ease-out, transform .9s var(--ease); }
+.s-next:focus-visible { outline-offset: -2px; }
+@media (hover: hover) {
+  .s-next:hover .im img { transform: scale(1.03); }
+  .s-next:hover .k .ic { transform: translateX(4px); }
+}
+
+@media (hover: none) { .s-close .m { display: none; } }
+
+@media (max-width: 1023px) {
+  /* Tablet and phone: the side column becomes a bar above a full-width grid. */
+  .side { grid-column: 1 / -1; position: static; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); align-items: center; margin-bottom: 16px; }
+  .grid { grid-column: 1 / -1; }
+}
+@media (min-width: 600px) and (max-width: 1023px) {
+  /* The preview folds into one line beside the filter. */
+  .side .filter { grid-column: 1 / span 4; }
+  .pv { grid-column: 5 / -1; margin: 0; padding: 0; display: flex; align-items: center; gap: 12px; min-width: 0; }
+  .pv-c { display: flex; align-items: baseline; gap: 12px; min-width: 0; flex: 0 1 auto; }
+  .pv-h { display: flex; gap: 12px; align-items: baseline; min-width: 0; }
+  .pv h3 { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .pv-pos, .pv dl { flex: none; }
+  .pv dl { display: flex; gap: 8px; color: var(--mute); }
+  .pv dt, .pv dd:nth-of-type(3), #pv-d { display: none; }
+  .pv .open { margin-left: auto; flex: none; }
+}
+@media (max-width: 860px) {
+  :root { --gap: 12px; --head: 88px; }
+  #index { scroll-margin-top: calc(var(--head) + env(safe-area-inset-top, 0px) - 32px); }
+  .logo { grid-column: 1 / span 6; }
+  nav.main { grid-column: 1 / -1; grid-row: 2; margin-top: 8px; }
+  #projects { padding-top: 24px; }
+  .grid { --rg: 24px; }
+  .index-wrap { padding-top: 56px; }
+  .ihead .lbl { grid-column: 1 / span 6; }
+  .ihead .c-t, .ihead .c-c, .ihead .c-n { display: none; }
+  .ihead .c-y { grid-column: 7 / -1; }
+  .irow .c-no { grid-column: 1 / span 2; }
+  .irow .c-code { display: none; }
+  .irow .c-t { grid-column: 3 / span 7; }
+  .irow .c-c, .irow .c-n { display: none; }
+  .irow .c-y { grid-column: 10 / -1; }
+  .about { padding-block: 80px; }
+  .about .lbl, .about .bio { grid-column: 1 / -1; }
+  footer.foot { display: flex; flex-wrap: wrap; gap: 8px 6px; }
+  footer .f1 { flex: 1 0 100%; }
+  footer .f2 { display: contents; }
+  .peek { display: none; }
+  .s-bar { display: flex; gap: 16px; }
+  .s-nav { gap: 8px; }
+  .s-pos { margin-right: auto; }
+  .s-nav .tx { display: none; }
+  .s-nav .pill { width: 30px; padding: 0; justify-content: center; }
+  /* The chapter pill hangs under the bar as a white band, full width like the filter on the works, so
+     showing it never moves the page. */
+  .s-chap { position: absolute; left: var(--gut); right: var(--gutR); top: 100%; padding-bottom: 8px; background: var(--bg); }
+  /* The band itself is opaque at once; only the pill in it fades, so the page never shows through. */
+  .s-chap, .s-chap.on { opacity: 1; }
+  .s-chap { transition: visibility 0s .25s; }
+  .s-chap.on { transition: none; }
+  .s-chb { opacity: 0; transition: opacity .25s, background .15s; }
+  .s-chap.on .s-chb { opacity: 1; }
+  .s-chb { width: 100%; }
+  .s-chm { width: auto; right: 0; }
+  .s-body { padding-top: 24px; padding-bottom: 120px; }
+  /* The hero follows the intro straight away; the facts and contents come after it. */
+  .s-head, .s-side, .s-open > .s-row { grid-column: 1 / -1; }
+  .s-open > .s-row { order: 1; margin-top: 36px; }
+  .s-side { order: 2; margin-top: 40px; padding-top: 0; }
+  .s-flow > .s-row:first-child { margin-top: 40px; }
+  .s-ch { margin-top: 112px; }
+  .s-ch h3 { grid-column: 1 / -1; padding-right: 0; margin-bottom: 18px; }
+  .s-p, .s-facts { grid-column: 1 / -1; }
+  .s-row + .s-p { margin-top: 64px; }
+  .s-p + .s-row, .s-facts + .s-row { margin-top: 48px; }
+  .s-facts + .s-p { margin-top: 36px; }
+  .s-row + .s-row { margin-top: 32px; }
+  .s-end { margin-top: 112px; }
+  .s-end h3 { grid-column: 1 / -1; margin-bottom: 18px; }
+  .s-end blockquote { grid-column: 1 / -1; text-indent: 0; }
+  .s-next { padding-top: 20px; row-gap: 12px; }
+  .s-next .k, .s-next .t { grid-column: 1 / -1; padding-right: 0; }
+  .s-next .im { grid-column: 1 / span 6; margin-top: 12px; }
+}
+@media (min-width: 861px) and (max-width: 1023px) {
+  /* The nav, the preview line and the second cover column share one edge. */
+  nav.main { grid-column: 5 / span 5; }
+}
+@media (min-width: 600px) and (max-width: 860px) {
+  .cap .code { display: none; }
+  .s-side { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--gap); }
+}
+@media (min-width: 600px) and (max-width: 760px) {
+  .pv-pos .num, .pv dd:first-of-type { display: none; }
+}
+@media (max-width: 599px) {
+  /* Phone: the bar is the heading and the filter; tapping a cover opens the sheet, so the preview rests. */
+  .side .lbl { grid-column: 1 / span 4; }
+  .side .filter { grid-column: 5 / -1; }
+  .pv { display: none; }
+  .grid { --n: 2; }
+  .tile.on .cap .t { text-decoration-color: transparent; }
+  .cap { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1px 8px; }
+  .cap .t { grid-column: 1 / -1; grid-row: 1; white-space: normal; }
+  .cap .code { grid-row: 2; width: auto; }
+  .cap .y { grid-row: 2; font-size: 12px; }
+  /* Footer: the address takes its own row under the copyright line. */
+  footer #mail { flex: 1 1 auto; min-width: 0; }
+  footer #mail #ok { margin-left: auto; }
+  /* Sheet rows stack on phones (tablets keep them side by side at equal height); a strip of four becomes
+     two rows of two, each pair at one height. Long strips and the section keep the full width; no picture
+     grows past its own pixel width, and a portrait loop stays under half the screen. */
+  .s-row { display: grid; gap: 24px; }
+  .s-row figure { max-width: var(--iw); }
+  .s-row figure.tall { width: min(62%, calc(46svh * var(--ar))); }
+  .s-row.r4 { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .s-row.r4 .pr { display: flex; gap: 12px; align-items: flex-start; }
+  .s-row.r4 .pr figure { flex: var(--ar) 1 0; min-width: 0; }
+  .s-facts { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .s-facts div { grid-template-columns: 96px minmax(0, 1fr); gap: 0 12px; padding-right: 0; }
+  .s-next .im { grid-column: 1 / -1; }
+}
+/* Phones read the running text a step larger. */
+@media (max-width: 599px) { :root { --t-read: 15px; } }
+/* Touch: a control dims under the finger, and the area that takes the touch reaches about 44px around each
+   word without the word looking any bigger. */
+@media (hover: none) { .tile:active, .irow:active, .s-next:active, .pill:active:not(.vbtn), .s-toc button:active { opacity: .6; } }
+@media (pointer: coarse) {
+  .pill:not(.vbtn), .logo a { position: relative; }
+  .pill:not(.vbtn)::after, .logo a::after { content: ""; position: absolute; inset: -7px -6px; }
+  .logo a::after { inset: -13px -6px; }
+  .s-toc button { padding-block: 6px; }
+}
+/* About: a sheet like a project's, opened from About in the header and from the Information block. The CV
+   sections sit where a project's chapters do; each entry puts the name and what was done on columns 4–9,
+   the place on 10–11 and the years on 12. */
+.cv { grid-column: 4 / -1; display: grid; }
+.s-ch > .cv { grid-column: 4 / -1; }
+.cv-e { display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); column-gap: var(--gap); padding-block: 13px 15px; border-top: 1px solid var(--line); align-items: baseline; }
+.cv-e:first-child { border-top: 0; padding-top: 0; }
+.cv-e .w { grid-column: 1 / span 6; display: grid; gap: 2px; min-width: 0; }
+.cv-e h4 { font-size: var(--t-read); font-weight: 500; line-height: 1.4; margin: 0; }
+.cv-e .r { font-size: var(--t-read); color: var(--mute); line-height: 1.4; }
+.cv-e p { font-size: var(--t-read); line-height: 1.56; max-width: 35em; margin-top: 6px; text-wrap: pretty; }
+.cv-e .pl { grid-column: 7 / span 2; color: var(--mute); }
+.cv-e .yr { grid-column: 9 / span 1; justify-self: end; color: var(--mute); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.cv-e a { text-decoration: underline 1px; text-underline-offset: 3px; text-decoration-color: var(--line); }
+.cv-e a:hover { text-decoration-color: currentColor; }
+.cv.sk .cv-e .w { grid-column: 1 / span 3; }
+.cv.sk .cv-e .v { grid-column: 4 / -1; font-size: var(--t-read); line-height: 1.5; }
+.ab .s-pos { font-weight: 500; }
+.about .more { grid-column: 4 / span 6; justify-self: start; }
+@media (max-width: 860px) {
+  .s-ch > .cv { grid-column: 1 / -1; }
+  .cv-e { grid-template-columns: minmax(0, 1fr) auto; row-gap: 2px; }
+  .cv-e .w { grid-column: 1 / -1; }
+  .cv-e .pl { grid-column: 1; grid-row: 2; }
+  .cv-e .yr { grid-column: 2; grid-row: 2; }
+  .cv-e .w + .pl, .cv-e .w + .yr { margin-top: 6px; }
+  .cv.sk .cv-e .w, .cv.sk .cv-e .v { grid-column: 1 / -1; }
+  .about .more { grid-column: 1 / -1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .sheet { animation: none; }
+  .s-chap, .s-chap.on, .s-chb, .s-toc button { transition: none; }
+  .ph img, .cap, .cap .t, .irow, .pill, .peek, .vbtn, img.fx.in, .ph img.fx.in, .s-next .im img, .s-next .k .ic { transition: none; }
+  .tile:hover .ph img, .tile:hover .ph video, .s-next:hover .im img, .s-next:hover .k .ic { transform: none; }
+  .menu { animation: none; }
+}
+
+/* Quiet layer: no three-letter codes, one filter pill, a one-line preview heading and few hairlines.
+   These rules come last and are written as html:root, which gives each one more weight than the matching rule above. */
+/* 1. Tokens: soft hairlines. --mute already sits at the contrast floor for small text on white. */
+html:root {
+  --line: #ececec;
+}
+
+/* 2. The three-letter codes (DUN, CLF ...) and the "DUN 01 / 09" line are hidden everywhere: tile captions, the
+   preview, the index rows, the sheet bar, the next-project footer and the thin sheet's end pill. */
+html:root .cap .code,
+html:root .pv-pos,
+html:root .irow .c-code,
+html:root #s-code,
+html:root #s-fcode,
+html:root .s-more > .mono { display: none; }
+
+/* 3. Filter: one control, the words and an arrow. The icon button is hidden (the words open the same menu),
+   and the menu starts under them. */
+html:root #ficon { display: none; }
+html:root .side .filter { justify-self: start; }
+html:root .filter .sel { flex: none; gap: 8px; }
+html:root #menu { left: -12px; right: auto; width: max-content; min-width: max(100%, 168px); max-width: calc(100vw - 32px); }
+/* The arrow is the cue that a control opens a list: on the filter and on the sheet's chapter control it points
+   down (the corner arrow turned 45°), and up while the list is open. Links keep the corner arrow. */
+html:root #fsel .ic,
+html:root #s-chb .ic { transform: rotate(45deg); transition: transform .15s; }
+html:root #fsel[aria-expanded="true"] .ic,
+html:root #s-chb[aria-expanded="true"] .ic { transform: rotate(225deg); }
+@media (prefers-reduced-motion: reduce) {
+  html:root #fsel .ic,
+  html:root #s-chb .ic { transition: none; }
+}
+@media (min-width: 600px) and (max-width: 1023px) {
+  html:root .side .filter { justify-self: stretch; }
+}
+
+/* 4. Desktop preview: the title, then category and year in grey on the same line (no labels or image count),
+   then the description. It wraps to a second line only when the column is too narrow. */
+@media (min-width: 1024px) {
+  html:root .pv-c { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 10px; }
+  html:root .pv-h { display: contents; }
+  html:root .pv dl { display: flex; gap: 10px; color: var(--mute); }
+  html:root .pv dt,
+  html:root .pv dd:nth-of-type(3) { display: none; }
+  html:root #pv-d { flex: 1 0 100%; margin-top: 12px; }
+}
+
+/* 5. Index: on phones and tablets (three short columns) one rule opens the section and the rows stand on
+   spacing alone. On wide screens the five columns sit far apart, so the rows keep their soft rules for the eye
+   to follow across. */
+@media (max-width: 860px) {
+  html:root .index { border-top: 0; }
+  html:root .irow { border-bottom: 0; }
+}
+
+/* The footer needs no rule of its own: the space above it already closes the page. */
+html:root footer.foot { border-top: 0; }
+
+/* 6. Project sheet: chapters, the facts strip and the closing words are set apart by space and their titles,
+   not by a rule. The bar shows only a grey "09 / 09", and Close has no Esc hint. */
+html:root .s-ch,
+html:root .s-end { border-top: 0; padding-top: 0; }
+html:root .s-facts { border-top: 0; padding-top: 0; }
+html:root .s-close .m { display: none; }
+/* The About sheet is a CV, closer to a table than to a story: its sections keep the rule above them, so the
+   section break stays stronger than the hairlines between entries. */
+html:root .ab .s-ch { border-top: 1px solid var(--line); padding-top: 14px; }
+
+/* 7. Tablets and phones: the header is one row (name on the left, links on the right); --head follows the
+   header's real height. */
+@media (max-width: 860px) {
+  html:root { --head: 50px; }
+  html:root .logo { grid-column: 1 / span 4; }
+  html:root nav.main { grid-column: 5 / -1; grid-row: 1; margin-top: 0; justify-content: flex-end; gap: 20px; }
+}
+
+/* 8. Phones. */
+@media (max-width: 599px) {
+  /* The name already leads to the works, so the Projects link is hidden and the other three sit on the
+     name's row, pushed to the right edge. */
+  html:root header.top { display: flex; align-items: baseline; gap: 8px; }
+  html:root nav.main { gap: 18px; }
+  html:root .logo { margin-right: auto; white-space: nowrap; }
+  html:root nav.main a[href="#projects"] { display: none; }
+  /* Filter bar: "Projects 9" on the left, the filter on the right, its menu opening from the right edge. */
+  html:root .side .filter { justify-self: end; }
+  html:root #menu { left: auto; right: -12px; }
+  /* Captions: the title on its own line, the grey year under it. */
+  html:root .cap { grid-template-columns: minmax(0, 1fr); row-gap: 1px; }
+  html:root .cap .t { grid-column: 1; grid-row: 1; }
+  html:root .cap .y { grid-column: 1; grid-row: 2; font-size: 12px; }
+}
+
+/* Very narrow phones (320–359px): the links move a little closer so the header still holds one row. */
+@media (max-width: 359px) {
+  html:root nav.main { gap: 12px; }
+}
+</style>
+<noscript><style>html[data-deep] header.top, html[data-deep] #top, html[data-deep] #contact { visibility: visible; animation: none; }</style></noscript>
+</head>
+<body>
+<header class="top wrap g12">
+  <h1 class="logo"><a href="#top">shuheng wang</a></h1>
+  <nav class="main" aria-label="Main">
+    <a class="pill" href="#projects">Projects</a>
+    <a class="pill" href="#index">Index</a>
+    <a class="pill" href="#about">About</a>
+    <a class="pill" href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section id="projects" class="wrap g12" aria-label="Projects">
+    <div class="side">
+      <h2 class="lbl"><span>Projects</span> <span class="m num" id="count"></span></h2>
+      <div class="filter">
+        <button class="pill icon" id="ficon" type="button" aria-label="Filter by category" aria-haspopup="true" aria-expanded="false" aria-controls="menu">
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M1 3.5h12M1 7h12M1 10.5h12"/><path d="M4.5 2v3M9.5 5.5v3M6 9v3"/></svg>
+        </button>
+        <button class="pill sel" id="fsel" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="menu"><span id="fsel-t">All works</span><span class="arr" aria-hidden="true"><svg class="ic" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 3l6 6M9.5 4.5v5h-5"/></svg></span></button>
+        <div class="menu" id="menu" role="menu" hidden></div>
+      </div>
+      <div class="pv" id="pv">
+        <div class="pv-c" id="pv-c">
+          <div class="pv-h">
+            <p class="pv-pos"><span class="mono" id="pv-code"></span><span class="mono m num" id="pv-n"></span></p>
+            <h3 id="pv-t"></h3>
+          </div>
+          <dl id="pv-dl"></dl>
+          <p id="pv-d"></p>
+        </div>
+        <button class="pill open" id="pv-open" type="button" aria-describedby="pv-t">Open project <span class="arr" aria-hidden="true"><svg class="ic" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 3l6 6M9.5 4.5v5h-5"/></svg></span></button>
+      </div>
+    </div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section id="index" class="wrap index-wrap" aria-label="Index">
+    <div class="ihead g12">
+      <h2 class="lbl">Index</h2>
+      <span class="c-t m">Title</span><span class="c-c m">Category</span><span class="c-n m">Images</span><span class="c-y m">Year</span>
+    </div>
+    <div class="index" id="list"></div>
+  </section>
+
+  <section id="about" class="about wrap g12" aria-label="Information">
+    <h2 class="lbl">Information</h2>
+    <p class="bio">Shuheng Wang is a designer working across buildings, products, jewellery and installations: from rooms carved into an eroding cliff and a centre half buried in moving dunes, to a clip-on device designed to sense what is coming from behind, 3D-printed ceramic jewellery and an installation made to display it.</p>
+    <button class="pill more" id="ab-more" type="button">About and CV <span class="arr" aria-hidden="true"><svg class="ic" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 3l6 6M9.5 4.5v5h-5"/></svg></span></button>
+  </section>
+</main>
+
+<footer id="contact" class="foot wrap g12">
+  <span class="f1">© 2026 shuheng wang</span>
+  <div class="f2">
+    <button id="mail" class="pill" type="button"><span>wshing428@gmail.com</span> <span class="m" id="ok" aria-live="polite">Copy</span></button>
+  </div>
+</footer>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="s-title" tabindex="-1" hidden>
+  <div class="s-bar wrap g12">
+    <span class="s-pos"><span class="mono" id="s-code"></span><span class="mono m num" id="s-n"></span></span>
+    <div class="s-nav">
+      <button class="pill" id="s-prev" type="button" aria-label="Previous project"><svg class="ic" viewBox="0 0 12 12" aria-hidden="true"><path d="M10.5 6h-9M5 2.5L1.5 6 5 9.5"/></svg><span class="tx">Previous</span></button>
+      <button class="pill" id="s-next" type="button" aria-label="Next project"><span class="tx">Next</span><svg class="ic" viewBox="0 0 12 12" aria-hidden="true"><path d="M1.5 6h9M7 2.5L10.5 6 7 9.5"/></svg></button>
+    </div>
+    <div class="s-chap" id="s-chap">
+      <button class="pill s-chb" id="s-chb" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="s-chm"><span class="mono num" id="s-chn"></span><span id="s-cht"></span><span class="arr" aria-hidden="true"><svg class="ic" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 3l6 6M9.5 4.5v5h-5"/></svg></span></button>
+      <div class="menu s-chm" id="s-chm" role="menu" aria-label="Chapters" hidden></div>
+    </div>
+    <button class="pill s-close" id="s-close" type="button" aria-label="Close project">Close <span class="m">Esc</span></button>
+  </div>
+  <div class="s-body wrap">
+    <div class="s-open g12" id="s-open">
+      <div class="s-head">
+        <h2 id="s-title"></h2>
+        <p class="sub" id="s-sub" hidden></p>
+        <p class="s-intro" id="s-d"></p>
+      </div>
+      <div class="s-side">
+        <dl class="s-meta" id="s-dl"></dl>
+        <nav class="s-toc" id="s-toc" aria-labelledby="s-toch" hidden><h3 id="s-toch">Contents</h3><ol id="s-tocl"></ol></nav>
+      </div>
+    </div>
+    <div class="s-flow g12" id="s-imgs"></div>
+  </div>
+  <button class="s-next wrap g12" id="s-foot" type="button">
+    <span class="k m">Next project <svg class="ic" viewBox="0 0 12 12" aria-hidden="true"><path d="M1.5 6h9M7 2.5L10.5 6 7 9.5"/></svg></span>
+    <span class="t"><span class="mono m" id="s-fcode"></span><span id="s-ft"></span><span class="sub" id="s-fs"></span></span>
+    <span class="im"><img id="s-fi" alt="" width="960" height="480" loading="lazy" decoding="async"></span>
+  </button>
+</div>
+
+<div class="sheet ab" id="ab" role="dialog" aria-modal="true" aria-labelledby="ab-title" tabindex="-1" hidden>
+  <div class="s-bar wrap g12">
+    <span class="s-pos">About</span>
+    <button class="pill s-close" id="ab-close" type="button" aria-label="Close About">Close <span class="m">Esc</span></button>
+  </div>
+  <div class="s-body wrap">
+    <div class="s-open g12">
+      <div class="s-head">
+        <h2 id="ab-title">Shuheng Wang</h2>
+        <p class="sub">Designer, London</p>
+        <p class="s-intro">Shuheng Wang is a designer working across buildings, products, jewellery and installations. After a BSc in Architecture at the Bartlett, UCL, Shuheng now studies Innovation Design Engineering at the Royal College of Art and Imperial College London. Shuheng is also co-founder and director of CHOGA, a London jewellery studio developing a recycled, ceramic-like material for 3D printing, and works on materials and sustainability at WEDGE.</p>
+      </div>
+      <div class="s-side">
+        <dl class="s-meta"><dt>Based in</dt><dd>London</dd><dt>Studying</dt><dd>Innovation Design Engineering, Royal College of Art and Imperial College London</dd><dt>Contact</dt><dd><a href="mailto:wshing428@gmail.com">wshing428@gmail.com</a></dd></dl>
+        <nav class="s-toc" aria-labelledby="ab-toch"><h3 id="ab-toch">Contents</h3><ol><li><button type="button" data-a="01"><span class="mono num">01</span><span>Education</span></button></li><li><button type="button" data-a="02"><span class="mono num">02</span><span>Practice</span></button></li><li><button type="button" data-a="03"><span class="mono num">03</span><span>Research</span></button></li><li><button type="button" data-a="04"><span class="mono num">04</span><span>Awards</span></button></li><li><button type="button" data-a="05"><span class="mono num">05</span><span>Skills</span></button></li></ol></nav>
+      </div>
+    </div>
+    <div class="s-flow g12">
+      <section class="s-ch g12" id="ab-01" aria-labelledby="ab-01-t">
+        <h3 id="ab-01-t" tabindex="-1"><span class="mono m num">01</span><span>Education</span></h3>
+        <div class="cv">
+          <div class="cv-e"><div class="w"><h4>Royal College of Art and Imperial College London</h4><span class="r">MA Innovation Design Engineering</span></div><span class="pl">London</span><span class="yr">2026–</span></div>
+          <div class="cv-e"><div class="w"><h4>The Bartlett School of Architecture, UCL</h4><span class="r">BSc Architecture, First-Class Honours</span></div><span class="pl">London</span><span class="yr">2021–24</span></div>
+        </div>
+      </section>
+      <section class="s-ch g12" id="ab-02" aria-labelledby="ab-02-t">
+        <h3 id="ab-02-t" tabindex="-1"><span class="mono m num">02</span><span>Practice</span></h3>
+        <div class="cv">
+          <div class="cv-e"><div class="w"><h4>CHOGA</h4><span class="r">Co-founder and director</span><p>Leads the development of BrightOrb, a recycled, ceramic-like 3D-printing material, including new manufacturing and post-processing steps, and the studio’s business model and strategy. Ran CHOGA’s first showcase at London Design Festival 2025, from curation and spatial planning to the build. Also works on the products and the brand, and with manufacturers and suppliers in different regions.</p></div><span class="pl">London</span><span class="yr">2025–</span></div>
+          <div class="cv-e"><div class="w"><h4>WEDGE Design Solution</h4><span class="r">Sustainability specialist, early-stage core team</span><p>Researches manufacturing, materials and production methods to improve processes, and the market, and leads research into acoustic uses of WEDGE’s products. Helped WEDGE take part in exhibitions including London Design Festival and Material Matters; the work was later featured in ELLE Decoration.</p></div><span class="pl">London</span><span class="yr">2025–</span></div>
+          <div class="cv-e"><div class="w"><h4>Private residence</h4><span class="r">Overseas design lead (client side)</span><p>Leads the project for the client: takes design and concept development through stages 1–3, coordinates local architects and builders, and represents the client. A preliminary concept design is complete, and talks with the local contractor on early contractor involvement are under way.</p></div><span class="pl">Queenstown, New Zealand</span><span class="yr">2024–</span></div>
+          <div class="cv-e"><div class="w"><h4>Freelance</h4><span class="r">Architectural designer, remote</span><p>Modelling and rendering for the early design of a hotel.</p></div><span class="pl">London</span><span class="yr">2024</span></div>
+          <div class="cv-e"><div class="w"><h4>Shanghai Bolman Architectural Decoration Design Engineering</h4><span class="r">Assistant architectural planner</span><p>Helped develop architectural proposals: research on materials and construction, project drawings, models and documentation, and coordination with contractors and suppliers.</p></div><span class="pl">Shanghai</span><span class="yr">2024–25</span></div>
+          <div class="cv-e"><div class="w"><h4>Shanghai ZF Architectural Design</h4><span class="r">Architectural assistant, internship</span></div><span class="pl">Shanghai</span><span class="yr">2023</span></div>
+          <div class="cv-e"><div class="w"><h4>Three Lives Arts</h4><span class="r">Product design assistant, internship, remote</span></div><span class="pl">Malvern, Australia</span><span class="yr">2022</span></div>
+        </div>
+      </section>
+      <section class="s-ch g12" id="ab-03" aria-labelledby="ab-03-t">
+        <h3 id="ab-03-t" tabindex="-1"><span class="mono m num">03</span><span>Research</span></h3>
+        <div class="cv">
+          <div class="cv-e"><div class="w"><h4><a href="https://doi.org/10.54254/2754-1169/2025.21587" target="_blank" rel="noopener">An Analysis of the Relationship Between Social Factors and Noise Complaint in London</a></h4><span class="r">Advances in Economics, Management and Political Sciences 165(1): 95–99</span><p>A regression across London’s boroughs: average income, green space and car ownership correlate more strongly with complaint rates than measured noise levels do.</p></div><span class="pl">Independent</span><span class="yr">2025</span></div>
+          <div class="cv-e"><div class="w"><h4><a href="https://doi.org/10.54254/2753-7064/2025.LC25745" target="_blank" rel="noopener">Urban Spatial Strategies and Health Resilience: A Case Study of New Jiangwan City</a></h4><span class="r">Communications in Humanities Research 74(1): 122–128</span><p>A case study of New Jiangwan City, Shanghai, built on interviews with urban planners and residents and read through Henri Lefebvre’s ‘production of space’: how green corridors, adaptable public spaces and low-density layouts supported well-being, exercise and social ties under lockdown.</p></div><span class="pl">Independent</span><span class="yr">2025</span></div>
+        </div>
+      </section>
+      <section class="s-ch g12" id="ab-04" aria-labelledby="ab-04-t">
+        <h3 id="ab-04-t" tabindex="-1"><span class="mono m num">04</span><span>Awards</span></h3>
+        <div class="cv">
+          <div class="cv-e"><div class="w"><h4>First Class Honours Award, dissertation project</h4><span class="r">The Bartlett School of Architecture, UCL</span></div><span class="pl">London</span><span class="yr">2024</span></div>
+          <div class="cv-e"><div class="w"><h4>Bartlett Group Project Award, Year 1</h4><span class="r">The Bartlett School of Architecture, UCL</span></div><span class="pl">London</span><span class="yr">2022</span></div>
+          <div class="cv-e"><div class="w"><h4>OSSD Distinction Student Award</h4><span class="r">Shanghai Pinghe Bilingual School</span></div><span class="pl">Shanghai</span><span class="yr">2021</span></div>
+        </div>
+      </section>
+      <section class="s-ch g12" id="ab-05" aria-labelledby="ab-05-t">
+        <h3 id="ab-05-t" tabindex="-1"><span class="mono m num">05</span><span>Skills</span></h3>
+        <div class="cv sk">
+          <div class="cv-e"><div class="w"><h4>3D modelling</h4></div><span class="v">Rhino, Grasshopper, SketchUp, Blender</span></div>
+          <div class="cv-e"><div class="w"><h4>Rendering</h4></div><span class="v">V-Ray, Blender, Unreal Engine 5, Enscape</span></div>
+          <div class="cv-e"><div class="w"><h4>Making</h4></div><span class="v">3D printing, CNC (Fusion 360), laser cutting, model making, basic woodworking and metalworking</span></div>
+          <div class="cv-e"><div class="w"><h4>3D scanning</h4></div><span class="v">FARO lidar scanner, Creaform scanner, CloudCompare</span></div>
+          <div class="cv-e"><div class="w"><h4>Graphics</h4></div><span class="v">Photoshop, Illustrator, InDesign, Figma</span></div>
+          <div class="cv-e"><div class="w"><h4>Web</h4></div><span class="v">Framer</span></div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<img class="peek" id="peek" alt="" aria-hidden="true">
+
+<script>
+// Works, in the order the grid shows them.
+// imgs: [file, width, height, alt]; files live in img/<dir>/. cover: size of the 2:1 cover in img/cover/<code>.jpg
+// (the Index hover picture); wall: size of the copy of imgs[0] in img/wall/<code>.jpg (the home tile).
+// A long-form work adds intro, meta, hero, chapters and closing. A chapter's imgs is its flow: a number
+// places that paragraph of text; a row is { f: figures, w: 9 for columns 4–12 }, and a figure is
+// [file under img/ without .jpg, width, height, caption, alt text, 1 when it sits on pure white, 1 when it is a
+// loop: then the .jpg is its poster and .webm and .mp4 files sit beside it].
+const WORKS = [
+  { t: "Living on the Dunes", s: "Geomorphology Research Centre", c: "Architecture", y: "2024", code: "DUN", dir: "ug6", cover: [960, 480], wall: [960, 401],
+    d: "A research and visitor centre half buried in moving dunes, shaped to steer the wind and grow a dune each summer, developed through smoke tests, sandboxes and CFD.",
+    intro: "Behind the cliff at Rubjerg Knude, on Denmark’s North Sea coast, the dunes move five to ten metres a year. The project treats this movement as material. A research and visitor centre, half buried in the sand, uses its own form to steer the wind. Around it, fences, navigators and a wind trap grow a dune each summer and let it wear down in winter. Change normally measured in years becomes visible in weeks. This is one half of the Geomorphology Research Centre; the other, Eroding the Cliff, has its own page.",
+    meta: [
+      ["Year", "2024 (Feb–Jun)"], ["Location", "Rubjerg Knude, Denmark"], ["School", "The Bartlett School of Architecture, UCL"],
+      ["Unit", "UG6, Year 3"], ["Tutors", "Ben Spong, Stefan Lengen"],
+      ["Part of", "Time Magnificents!, with Eroding the Cliff"], ["Programme", "Research and visitor centre, dune field"], ["Methods", "Smoke tests, sandbox tests, CFD, film"],
+      ["Shown", "Bartlett Summer Show 2024"], ["Published", "Bartlett Year Book"],
+    ],
+    hero: ["ug6/U01", 2000, 836, "Aerial view: the centre half buried in the dunes, with the rooms carved into the cliff below.", "Aerial render of the building in the dunes above the cliff"],
+    chapters: [
+      { n: "01", title: "Site: Rubjerg Knude",
+        text: [
+          "Rubjerg Knude is a sedimentary cliff about 90 m above the North Sea, near Lønstrup in North Jutland. Migrating dunes lie behind it, and at times they have buried half of the Rubjerg Knude lighthouse. The dunes, made of sand stripped from the cliff, move 5 to 10 m a year.",
+          "A “Life of Sand” drawing traces the cycle. Wind, mostly from the north-west, drives sand from the beach against the cliff, wears it down and carries the debris over the top to build the dunes. The seasons set the pace. In warm, dry summers the sand is loose, and the dunes grow and travel. In cold, wet winters they harden and are only worn back by the wind. The site is read as a process, not a fixed plot.",
+        ],
+        facts: [["Dunes", "Move about 5–10 m a year"], ["Summer", "Loose sand: the dunes grow and travel"], ["Winter", "Wet sand hardens and is worn back by the wind"]],
+        imgs: [
+          { w: 9, f: [["ug6p/site-05", 1852, 1282, "Rubjerg Knude from above: the eroding cliff, the migrating dunes and the North Sea.", "Aerial photograph of the cliff, the dunes and the sea"]] },
+          1,
+          { w: 9, f: [["ug6p/site-10", 2388, 1149, "One year on the site: the dune builds from March to August and wears down from September to January. The cycle repeats every year.", "Timeline drawing of the yearly dune cycle with a red curve", 1]] },
+        ] },
+      { n: "02", title: "Designing with the wind",
+        text: [
+          "The project grew out of “Look, the Wind Blows”, an earlier study that passed smoke over flat, curved and bumpy surfaces to see how wind behaves. The study left a short set of rules. Smooth, gentle surfaces keep the flow laminar, and laminar flow is faster and can carry more sand. Too much curvature, or a rough surface, breaks it into turbulence, and turbulence slows the wind so the sand it carries settles. Some turbulence also makes the wind feel more comfortable to people. The first moves put these rules on the site: a sketch on an aerial photograph, a masterplan drawn along a designed wind path to form a sand dune, and a terrain model tested with smoke.",
+        ],
+        facts: [["Grew out of", "Look, the Wind Blows (Sep–Dec 2023)"]],
+        imgs: [
+          { f: [["ug6p/site-09", 2000, 1347, "Early sketch on an aerial photograph: the wind directed to build a sand dune.", "Grainy aerial photograph with hand-drawn wind lines over the dunes"],
+                ["ug6p/site-11", 2400, 1698, "Initial masterplan, 1:500: a designed wind path to form a sand dune.", "Pale line plan of the site with red wind arrows and an inset detail", 1]] },
+          { f: [["ug6p/site-13", 992, 864, "Early massing on the terrain model, tested with smoke.", "White terrain model with a grid and an eroded hollow, a smoke stick at the corner"],
+                ["ug6p/site-14", 2000, 1125, "Initial 3D massing, 1:500: visitor centre, wind dams and dune-forming device.", "Grey massing blocks on a wireframe terrain"]] },
+        ] },
+      { n: "03", title: "The building on the sand",
+        text: [
+          "The main building stands on moving sand. It has to resist erosion, keep clear of the dunes and use the wind. Precedents ranged from Sub-Saharan and Turkish vernacular building to a house made of sand and Denis Villeneuve’s Dune. Plan iterations, one of them called Sand Climber, led to a 1:200 printed model tested with smoke. It showed faces too square to the wind, spots where sand would pile up, and glass that needed cover.",
+          "Later massings gave the building a pointed nose, borrowed from car design, to split the wind. Metal walkways stand 2 to 4 m above the ground so the sand can pass beneath. Replaceable wire mesh and metal panels take the sandblasting instead of the concrete. Once the building is finished, sand is poured over it to merge it with the landscape. On the roof, rotatable wind tunnels turn with the wind and let researchers steer where the sand settles.",
+        ],
+        facts: [["Smoke-tested model", "1:200"], ["Elevated walkways", "2–4 m above the ground"]],
+        imgs: [
+          { f: [["ug6p/dune-01", 2000, 1127, "Material and form speed model: concrete main body, metal structure, timber secondary structure.", "Grey speed model of the building on a dark base"],
+                ["ug6p/dune-02", 2000, 1247, "“Sand Climber” plan iteration: interior dune, viewing terraces, researchers’ office.", "White sketch lines of a plan on a dark ground"]] },
+          { f: [["ug6p/dune-03", 2000, 1349, "Material study A: a concrete base for the main body.", "Massing model in sand, concrete body only"],
+                ["ug6p/dune-04", 2000, 1349, "Material study B: metal panels shield the concrete from sand-laden wind.", "The same model with metal panels added"],
+                ["ug6p/dune-05", 2000, 1349, "Material study C: an open roof terrace that lets heat escape.", "The same model with an open roof terrace"]] },
+          { f: [["ug6p/dune-06", 2183, 2295, "Ground floor plan, iteration 3, 1:200: wind dam, cafe, reception, offices, viewing space.", "Line drawing of a ground floor plan among contour lines", 1],
+                ["ug6p/dune-07", 2000, 1129, "Massing model of the same iteration, from above.", "Grey massing model seen from above"]] },
+          { w: 9, f: [["ug6p/dune-08", 2000, 1333, "The 1:200 printed model in smoke: faces too square to the wind would wear too fast.", "Building model in blue-lit smoke, on black"]] },
+          1,
+          { f: [["ug6p/dune-09", 2000, 1125, "Elevated walkway on metal stands, 2–4 m above the ground so the sand passes beneath.", "Render of a walkway raised on metal legs, on black"],
+                ["ug6/U11", 2000, 1333, "Sectional model of the sunken corridor: replaceable wire mesh, metal roofing, concrete.", "Sectional model of a sunken corridor with a glazed roof and a figure"],
+                ["ug6p/dune-10", 1994, 2400, "Stairwell detail section, 1:25: glass, metal frame, string structure, replaceable wire mesh.", "Detail section drawing of a glazed stair wall", 1]] },
+          { f: [["ug6p/dune-11", 2000, 1625, "Electricity room: turbines placed where the building itself speeds up the wind.", "Cutaway model of a dark room with turbines and a figure", 1],
+                ["ug6p/dune-12", 2000, 1125, "The turbine room: turbines driven by wind the building itself speeds up generate electricity.", "Dark render of a room with red-lit turbines"],
+                ["ug6/U05", 2000, 1125, "A wind turbine and its gear parts, with a figure for scale.", "Render of a wind turbine in a dark hall, with a figure"]] },
+          { f: [["ug6p/dune-13", 2000, 1125, "The washing room: accelerated wind blows the sand off visitors and researchers.", "Dark render of a room with a bright doorway and railings"],
+                ["ug6p/dune-14", 2000, 1125, "An interior dune that always stays the same, so that visitors rethink time.", "Model view from above of a room holding a small dune"]] },
+        ] },
+      { n: "04", title: "Forming a dune",
+        text: [
+          "How does a dune move, and how can it be kept in one place? A first sandbox, with steel and SLA shell pieces, suggested that dunes could be shaped, but the box was too small and the wind too weak. A longer box followed, with a hair dryer at one end and the wind falling from 90% to 30% along its length. Tests of the wind navigators and dune platform drew sand to the middle, and a groove caught it. The platform still did not hold the dune well.",
+          "The final field is a set of parts. A wind fence stops the dune being blown away. One navigator steers sand-laden wind into a wind trap, whose turbulence slows it so the sand settles on a concrete dune base. Another sends clean wind to sweep the observation platform. A CFD study of the summer wind showed a calm zone where the dune forms and faster air that keeps the walkways clear. The cycle repeats each year: renders in January, April and July follow the dune as it grows, and an animation runs through the whole year.",
+        ],
+        facts: [["Dune change", "From a few metres a year to about 5–8 m every 2 months"], ["CFD", "Summer wind, 0.5–8 m/s (Ansys Discovery Live)"], ["Timeline", "Preparation from 1 August 2024; first dune cycle 2029–30, then yearly"]],
+        imgs: [
+          { f: [["ug6p/form-01", 2000, 1333, "First sandbox test, before: steel and SLA-printed shell pieces in the sand.", "Steel and printed shell pieces standing in brown sand"],
+                ["ug6p/form-02", 2000, 1333, "After: sand blown away in places and gathered into small dunes.", "The same sandbox after the wind, with small dunes"]] },
+          { w: 9, f: [["ug6p/form-03", 2000, 691, "The longer sandbox, with a hair dryer at one end: the wind falls from 90% to 30% along the box.", "Top view of a long sandbox with a hair dryer at one end"]] },
+          { w: 9, f: [["ug6p/form-04", 2000, 1099, "Wind massing model: red arrows trace the planned path of the wind.", "Grey model with red dashed arrows marking the wind path"]] },
+          { f: [["ug6p/form-05", 1649, 867, "Physical test of the wind navigators and dune platform, starting phase.", "Black navigator models and a platform in pale sand"],
+                ["ug6p/form-06", 1653, 865, "Phase 3: the navigators steer the sand into a dune in the middle.", "Sand drifted into the middle of the platform model"]] },
+          { f: [["ug6/U08", 2000, 1000, "Massing model, fourth iteration, the nearest to the final architecture.", "White massing model of the whole scheme on grey contours"],
+                ["ug6p/form-07", 1135, 712, "Aim: sand covering the building until it merges with the dunes.", "Model render with sand covering the building"]] },
+          1,
+          { f: [["ug6p/form-08", 2400, 1419, "Dune formation design: wind fence, sand stair, wind navigators and wind trap.", "Axonometric drawing of the dune field with labelled parts and wind arrows", 1],
+                ["ug6p/form-09", 2000, 1272, "Final CFD of the summer wind: the low-speed zone where the dune forms.", "Wind speed plot in yellow, green and blue over the plan"]] },
+          { f: [["ug6/U02", 2000, 837, "January: the dune platform at dusk, under the curved wind fence.", "Render of the dune platform at dusk beneath a curved fence"]] },
+          { f: [["ug6p/form-15", 2000, 837, "April: the dune builds up on the platform.", "The same view in April, with a larger dune"]] },
+          { f: [["ug6p/form-16", 2000, 837, "July: the dune has grown since January.", "The same view in July, the dune grown high"]] },
+          { f: [["ug6p/sand-year", 1600, 900, "One year in 108 frames: sand spreads over the white model, and the dune on the platform rises and wears down.", "Looping animation of sand moving across a white model of the building and the cliff", 0, 1]] },
+        ] },
+      { n: "05", title: "Final design",
+        text: [
+          "The final drawings include an overall plan at 1:100 across six A0 sheets, three floor plans, and a section from the entrance down to the cliff. Renders made in Unreal Engine 5.4 follow a visit: the arrival across the dunes and the roof before and after the sand. A film and the animation of the sand through one year complete the set.",
+          "The building does not try to stay clean. It lets sand cover it, so it never shows its whole form, and its outline shifts with the dunes. Inside, one dune is kept constant, so visitors can rethink their sense of time. Because sand and wind are hard to model accurately on a computer, the building also works as a full-scale instrument, giving researchers first-hand data on how dunes build up and die out.",
+        ],
+        facts: [["Renders", "Unreal Engine 5.4"], ["Overall plan and section", "1:100"]],
+        imgs: [
+          { f: [["ug6p/form-10", 2400, 615, "Section, 1:100: elevated walkway, wind tunnels, cafe and the Cliff Centre below.", "Long section drawing through the building and the cliff", 1]] },
+          { f: [["ug6p/form-11", 2000, 837, "Arrival: approaching the half-buried building across the dunes.", "Render of the building low on the horizon across sand and stones"]] },
+          { w: 9, f: [["ug6p/form-12", 2000, 1126, "Late light through a slatted metal canopy, with sand drifting beneath.", "Render of sand under a slatted metal canopy"]] },
+          1,
+          { f: [["ug6p/form-13", 2000, 838, "The first-floor roof with its rotatable wind tunnels, before the sand arrives.", "Aerial render of the roof with round wind tunnels, before sand"],
+                ["ug6p/form-14", 2000, 838, "The same roof after sand has gathered, steered by the wind tunnels.", "The same roof with drifts of sand"]] },
+        ] },
+    ],
+    closing: "With the growing understanding of nature, architecture should also be more than just a shelter to protect people from nature … architecture has the ability to fill the gap between man and nature.",
+    imgs: [
+      ["U01", 2000, 836, "Aerial view of the building in the dunes"],
+      ["U02", 2000, 837, "Dune platform at dusk in January"],
+      ["U05", 2000, 1125, "A wind turbine and its gear parts, with a figure for scale"],
+      ["U07", 2000, 1125, "White model of the whole scheme with dune and cliff"],
+      ["U08", 2000, 1000, "Massing model, fourth iteration"],
+      ["U11", 2000, 1333, "Sectional model of the sunken corridor"],
+    ] },
+  { t: "Eroding the Cliff", s: "Geomorphology Research Centre", c: "Architecture", y: "2024", code: "CLF", dir: "ug6", cover: [960, 480], wall: [960, 540],
+    d: "Rooms carved into an eroding cliff by the wind itself: a cart on a track and a wind dam steer sand-laden wind into the rock. The method was developed through sandblasting tests, printed prototypes and 3D scans.",
+    intro: "At Rubjerg Knude, on Denmark’s North Sea coast, the cliff retreats by up to a metre a year. The project treats this erosion as a way to build. A cart on a track along the cliff and a wind dam direct sand-laden wind to carve rooms into the rock over about two years, among them a guest room where visitors stay the night and watch the wall change. Erosion that took one and a half to two years for half a metre takes about two months. This is one half of the Geomorphology Research Centre; the other, Living on the Dunes, has its own page.",
+    meta: [
+      ["Year", "2024 (Feb–Jun)"], ["Location", "Rubjerg Knude, Denmark"], ["School", "The Bartlett School of Architecture, UCL"],
+      ["Unit", "UG6, Year 3"], ["Tutors", "Ben Spong, Stefan Lengen"],
+      ["Part of", "Time Magnificents!, with Living on the Dunes"], ["Programme", "Wind dam, turbine hall, Cliff Nexus, guest room"], ["Methods", "Sandblasting, 3D printing, 3D scanning, smoke tests"],
+      ["Shown", "Bartlett Summer Show 2024"], ["Published", "Bartlett Year Book"],
+    ],
+    hero: ["ug6/U03", 2000, 858, "The wind dam steers the wind entering the cliff and drives turbines for electricity.", "Render of a cave lined with turbines lit red"],
+    chapters: [
+      { n: "01", title: "Site: Rubjerg Knude",
+        text: [
+          "At Rubjerg Knude, a sedimentary cliff about 90 m above the North Sea near Lønstrup, the coast is retreating: satellite images from 1985 to 2023 show it pushed about 55 m inland. The lighthouse stands between the cliff edge and the dunes.",
+          "Wind, mostly from the north-west, drives sand from the beach against the cliff, wears it down and carries the debris over the top to build the dunes behind.",
+        ],
+        facts: [["Coastline", "About 55 m inland in 40 years (1985–2023)"], ["Cliff", "About 90 m above sea level"], ["Wind", "Mostly from the north-west"]],
+        imgs: [
+          { w: 9, f: [["ug6p/site-06", 1858, 1234, "The Rubjerg Knude lighthouse between the cliff edge and the dunes.", "Black-and-white aerial view of the lighthouse on the cliff edge above the sea"]] },
+          { w: 9, f: [["ug6p/site-07", 2400, 1490, "Satellite images, 1985 to 2023: the coastline has moved about 55 m inland in 40 years.", "Satellite maps comparing the coastline in 1985 and 2023, with a row of yearly frames"]] },
+          1,
+          { w: 9, f: [["ug6/U06", 2000, 1500, "Geology of Rubjerg Knude: a terrain model of the sedimentary cliff, the dunes and the sea bed.", "Terrain model block of the cliff and dunes on black"]] },
+        ] },
+      { n: "02", title: "A wind tool box",
+        text: [
+          "The project grew out of “Look, the Wind Blows”, a study of wind that led to an aerodynamic design apparatus. In its early tests, smoke was released over small flat, curved and bumpy surfaces, and each test was recorded frame by frame. What the tests showed became a design tool box: a short set of rules that guided every later stage.",
+          "Smooth, gentle surfaces keep the flow laminar, and laminar flow is faster and can carry more sand. Too much curvature, or a rough surface, breaks it into turbulence. Faces square to the wind take its full force. On the cliff the rules are used to speed the wind up, so that channels and smooth faces focus sand-laden wind where a room should be cut.",
+        ],
+        facts: [["Grew out of", "Look, the Wind Blows (Sep–Dec 2023)"]],
+        imgs: [
+          { w: 9, f: [["ug6p/site-02", 2000, 1355, "The aerodynamic design apparatus from “Look, the Wind Blows”: carts, rotating parts and panels on curved tracks.", "Dark photograph of carts and panels on curved tracks with smoke"]] },
+          { f: [["ug6p/site-03", 2000, 437, "Smoke over a smooth, flat surface: the flow stays laminar from start to end.", "Three frames of smoke flowing over a flat surface"]] },
+          { f: [["ug6p/site-04", 2000, 437, "Smoke over a bumpy, curved surface: the flow breaks into strong turbulence.", "Three frames of smoke breaking up over a bumpy curved surface"]] },
+          1,
+        ] },
+      { n: "03", title: "Testing erosion",
+        text: [
+          "Erosion was tested in the Slade workshop sand blaster. Clay, plaster and plaster-and-cement blocks, covered with simple forms, showed how shape changes the wear. Geometry tests used the Venturi effect: a channel with a wide entrance and a narrow exit speeds the wind up and cuts faster, and the reverse slows it.",
+          "Three fragments turned this into a cliff cart, with rotating parts and an outer layer that can be replaced once worn. A 3D-printed prototype was blasted at grit 500 and scanned before and after. Final tests used longer sandblasting to erode spaces that can be lived in.",
+        ],
+        facts: [["Test materials", "Clay, plaster, plaster and cement"], ["Prototype 1", "SLA and SLS prints with metal bolts"]],
+        imgs: [
+          { f: [["ug6p/cliff-01", 1079, 808, "Material test, clay: a block covered with simple forms.", "Eroded clay block on a black table"],
+                ["ug6p/cliff-02", 1078, 808, "Material test, plaster.", "Eroded plaster block on a black table"],
+                ["ug6p/cliff-03", 1078, 808, "Material test, plaster and cement.", "Eroded plaster-and-cement block on a black table"],
+                ["ug6/U13", 2000, 1492, "Test pieces inside the Slade workshop sand blaster.", "Plaster test pieces on the grille of a sand blaster cabinet"]] },
+          { f: [["ug6p/cliff-04", 2000, 1486, "Eroded Space #1: a plaster surface carved by the sand blaster.", "Close-up of a pitted plaster surface carved by sand"],
+                ["ug6p/cliff-05", 1584, 773, "Geometry test: a channel form beside the plaster space it eroded.", "A square channel form beside a plaster block with an eroded hollow"]] },
+          1,
+          { w: 9, f: [["ug6p/cliff-06", 2000, 1802, "Fragment 1: the first erosion device on the cliff.", "Wireframe drawing of a device fixed to a cliff, on black"],
+                ["ug6p/cliff-07", 1333, 2000, "Prototype 1, printed in SLA and SLS with metal bolts, on a model cliff.", "White 3D-printed prototype fixed to a model cliff"]] },
+          { f: [["ug6/U09", 2000, 971, "Fragment 3: the cliff cart assembled.", "Model of the cliff cart with curved ends and timber roof panels"],
+                ["ug6/U10", 2000, 1333, "Fragment 3 exploded: inner layer, outer layer, roof and track.", "Exploded view of the cliff cart parts"]] },
+          { f: [["ug6/U12", 1200, 1600, "Physical model of the cliff cart on a plaster cliff: SLS, PLA and SLA prints, bolts and plaster.", "White model of the cliff cart above a plaster cliff"],
+                ["ug6p/cliff-08", 2000, 1229, "The first moving part slides open to control the first stage of erosion.", "Hands sliding open a panel of the cart model"]] },
+          { w: 9, f: [["ug6p/cliff-09", 2000, 1296, "Final erosion tests #1 and #2: longer sandblasting to erode spaces that can be lived in.", "Two eroded plaster blocks with hollow rooms, on black"]] },
+        ] },
+      { n: "04", title: "The cliff cart and its rooms",
+        text: [
+          "The final cart runs on a track along the cliff. Its first opening takes the full wind for mass erosion, the second about 80% for controlled cutting, and the third about 30% to smooth the surface. A room takes about 24 months to form, and the cart also carries visitors and researchers along the cliff.",
+          "The scans became a cave model, and the method produced three spaces: a wind dam that steers erosion and drives turbines, the Cliff Nexus, which links the cliff to the ground above, and a guest room where visitors stay the night and watch the wall change.",
+        ],
+        facts: [["Cliff erosion", "From about 0.5 m every 1.5–2 years to about 0.5 m every 2 months"], ["Cart openings", "100%, 80% and 30% of the wind"], ["One room", "About 24 months to erode"]],
+        imgs: [
+          { f: [["ug6p/cliff-13", 2000, 837, "The cliff cart: the erosion machine also carries visitors and researchers along the cliff.", "Render inside the cart: steel walls, a stair and a figure, the cliff beside"]] },
+          { w: 9, f: [["ug6p/cliff-10", 2400, 862, "Erosion sequence over about 24 months: mass erosion, rationalisation, smoothing.", "Drawing of four cliff sections with rooms eroding in stages"]] },
+          1,
+          { w: 9, f: [["ug6p/cliff-11", 2000, 1125, "The Cliff Centre: a hall for visitors and researchers inside the eroded cliff.", "Render of a hall inside a rough rock cave, with glass and lamps"]] },
+          { w: 9, f: [["ug6p/cliff-12", 2400, 1693, "Erosion lab and stair, section 1:25: rock-bolt connections and holed metal panels.", "Line drawing: section of a stair and lab against the cliff, with details", 1]] },
+          { f: [["ug6/U04", 2000, 839, "The guest room at 10:00 the next morning, the erosion visible on the wall.", "Render of a dim room with a rough sandstone wall in morning light"]] },
+        ] },
+      { n: "05", title: "Final design",
+        text: [
+          "The final drawings include a plan of the cliff part at 1:100 and a section from the entrance down to the Cliff Centre. The renders on this page, made in Unreal Engine 5.4, follow a visit through the cliff cart, the guest room in the morning and the wind dam.",
+          "Sand and wind are hard to model accurately on a computer, so the cliff rooms also serve as a full-scale instrument, with first-hand data on erosion as it happens.",
+        ],
+        facts: [["Plan and section", "1:100"], ["Renders", "Unreal Engine 5.4"]],
+        imgs: [
+          { w: 9, f: [["ug6p/cliff-15", 2400, 1368, "Plan of the cliff part, 1:100: wind dam, turbine hall, Cliff Nexus, cart and guest room.", "Line plan of rooms and a long walkway cut into the cliff", 1]] },
+          1,
+          { f: [["ug6p/form-10", 2400, 615, "Section, 1:100: elevated walkway, wind tunnels, cafe and the Cliff Centre below.", "Long section drawing through the building and the cliff", 1]] },
+        ] },
+    ],
+    imgs: [
+      ["cliff-centre", 2000, 1125, "The Cliff Centre: a hall for visitors and researchers inside the eroded cliff"],
+      ["U03", 2000, 858, "Wind dam with turbines inside the cliff"],
+      ["U04", 2000, 839, "Guest room carved in the cliff, in the morning"],
+      ["U06", 2000, 1500, "Terrain model of the cliff, the dunes and the sea bed"],
+      ["U09", 2000, 971, "Fragment 3: the cliff cart assembled"],
+      ["U10", 2000, 1333, "Fragment 3 exploded: inner layer, outer layer, roof and track"],
+      ["U12", 1200, 1600, "Physical model of the cliff cart on a plaster cliff"],
+      ["U13", 2000, 1492, "Plaster test pieces inside the Slade sand blaster"],
+    ] },
+  { t: "Look, the Wind Blows", s: "Aerodynamic Design Apparatus", c: "Architecture", y: "2023", code: "WND", dir: "wind", cover: [960, 480], wall: [960, 480],
+    d: "A tool for designing with the wind: timber panels on rods and tracks whose angles can be set and recorded while smoke shows the airflow. It grew out of schlieren photographs, smoke tests on printed surfaces and two wind models.",
+    intro: "Wind is invisible, and hard to design with. This research project set out first to see it and then to shape it. It began with branches moving in Epping Forest and went on to schlieren photography, smoke tests over printed surfaces and two models built to change the wind’s direction and speed. It led to an aerodynamic design apparatus: a tool of timber panels on rods and tracks whose position and angle can be set and recorded while smoke shows the airflow, so that a wind effect found on the tool can become a design. A test design used the tool to recreate a haunted walk in Epping Forest. What the project learned shaped the two halves of the Geomorphology Research Centre that followed: Living on the Dunes and Eroding the Cliff.",
+    meta: [
+      ["Year", "2023 (Sep–Dec)"], ["Location", "Epping Forest, England"], ["School", "The Bartlett School of Architecture, UCL"],
+      ["Unit", "UG6, Year 3"], ["Tutors", "Ben Spong, Stefan Lengen"], ["Type", "Research project"],
+      ["Led to", "Living on the Dunes and Eroding the Cliff"], ["Methods", "Schlieren photography, smoke tests, 3D scanning"],
+      ["Made with", "CNC-milled timber, SLS and PLA prints, laser-cut acrylic, steel rods"],
+    ],
+    hero: ["wind/tool", 2000, 1334, "The aerodynamic design tool: CNC-milled timber panels held on rods above curved tracks.", "Photograph of the tool: large timber panels held up on rods above curved white tracks, on black"],
+    chapters: [
+      { n: "01", title: "Epping Forest",
+        text: [
+          "The project began in Epping Forest, on the edge of London. Photographs of branches moving in the wind were taken there, and three of them were overlaid in Photoshop. Two early prototypes, an anemometer and a wind sculpture, were made and shot in the forest.",
+        ],
+        facts: [["Site", "Epping Forest"], ["Early prototypes", "An anemometer and a wind sculpture"]],
+        imgs: [
+          { f: [["wind/forest", 1774, 1183, "Epping Forest: branches moving in the wind.", "Photograph of a forest clearing with blurred, moving leaves"],
+                ["wind/overlay", 1774, 1183, "Photographs of the moving branches overlaid in Photoshop, in black and white.", "Black-and-white overlay of three photographs of moving branches"]] },
+          { w: 9, f: [["wind/branches", 1552, 1035, "Branches flowing with the wind.", "A tree crown bent and blurred by the wind against a pale sky"]] },
+          { f: [["wind/proto-1", 895, 1343, "Prototype 1: an anemometer, shot in Epping Forest.", "A small white anemometer fixed to the top of a tree stump"],
+                ["wind/proto-2", 896, 1343, "Prototype 2: a wind sculpture, shot in Epping Forest.", "Translucent strips hanging from the branches of a tree"]] },
+        ] },
+      { n: "02", title: "Seeing the wind",
+        text: [
+          "To see the air itself, the project turned to schlieren imaging. Light from a point source passes through the air being studied, and a mirror focuses it onto a knife edge. Where the air differs in density or temperature, it bends the light slightly. The knife edge blocks some of these rays and lets others pass, and the camera records the differences as light and shade. A two-mirror system was modelled, and a single-mirror system was set up in a home studio with a concave mirror, a torch and a camera.",
+          "The setup then became a device. The mirror, light source, knife edge and camera were fixed in place so that one person could work the camera, and a tunnel of cloth along the light path kept out stray light. A series of six schlieren photographs of a lighter being lit was shot in the home studio.",
+          "Reading about how wind behaves showed that it can be sorted roughly into laminar flow and turbulence. Vortices can be counted as a third type, although they are usually included in turbulence and are hard to see on their own in nature. A tree from Epping Forest was 3D scanned, and a particle image was compared with schlieren photographs for evidence of turbulent and laminar flow. One wind photograph was turned into a solid with a height field and 3D printed, which made the shape of each type easier to understand. Icons were then drawn for the three types, to sort them in later work.",
+        ],
+        facts: [["Schlieren setup", "Concave mirror, torch, knife edge, camera"], ["Types of wind", "Laminar, turbulent, vortex"]],
+        imgs: [
+          { w: 9, f: [["wind/schlieren", 2000, 1125, "A two-mirror schlieren system, modelled with a figure for scale.", "Render of two round mirrors on stands and a camera on a tripod, with a grey figure"]] },
+          1,
+          { f: [["wind/device", 1668, 904, "The setup turned into a device, with a cloth tunnel over the light path.", "Black-and-white photograph of a long rig lying on black cloth in front of a black backdrop, with two white cloth sleeves over the light path"],
+                ["wind/device-drawing", 1312, 887, "Drawing of the device, with the mirror at one end and the camera at the other.", "Line drawing of a long rig with a round mirror at one end and a camera at the other", 1]] },
+          { w: 9, f: [["wind/lighter", 1327, 905, "A schlieren photograph of a lighter being lit.", "Grey disc of light with a lighter nozzle and a rippled plume of hot air"]] },
+          2,
+          { f: [["wind/tree-scan", 2000, 1500, "A tree from Epping Forest, 3D scanned.", "Point-cloud scan of a small tree on black"],
+                ["wind/wind-print", 961, 548, "A wind photograph made solid with a height field and 3D printed.", "Translucent printed blocks with a rippled top surface"]] },
+          { w: 9, f: [["wind/wind-form", 1819, 1213, "The condensed form of wind, rendered against a photograph of Epping Forest.", "Render of a glassy, rippled slab set into a photograph of forest foliage"]] },
+        ] },
+      { n: "03", title: "Surfaces in smoke",
+        text: [
+          "To see how the wind behaves on different surfaces, a test tool kit of small panels was 3D printed, ranging from flat to hyperbolic and from bumpy to completely smooth. Smoke was passed over each panel, and every test was recorded in seven frames.",
+          "On a smooth, flat panel the smoke stayed laminar from start to end. On a bumpy, flat panel turbulence appeared after half a second to a second, and faded once the air reached the flat ground beyond the panel. A smooth curve carried the flow down cleanly, with a little turbulence where it fell away, but turned it turbulent where it met an upward curve. A bumpy, curved panel caused strong turbulence. The first wind model was designed from these lessons.",
+        ],
+        facts: [["Test kit", "Small 3D-printed panels, flat to hyperbolic"], ["Recording", "7 frames per test"], ["Bumpy, flat panel", "Turbulence after 0.5–1 s"]],
+        imgs: [
+          { w: 9, f: [["wind/toolkit", 1476, 1321, "The test tool kit, rendered: small panels from flat to curved and from bumpy to smooth.", "Render of rows of small transparent panels and a few white pieces on a pale grey ground"]] },
+          { f: [["wind/smoke-flat", 2000, 330, "Smooth, flat panel, frames 1, 3, 5 and 7: the smoke stays laminar to the end.", "Four frames of smoke spreading smoothly over a flat panel, on black"]] },
+          { f: [["wind/smoke-bumpy", 2000, 330, "Bumpy, curved panel, frames 1, 3, 5 and 7: the smoke breaks into strong turbulence.", "Four frames of smoke breaking up over a bumpy curved panel, on black"]] },
+          1,
+        ] },
+      { n: "04", title: "Turning the wind",
+        text: [
+          "The first wind model was a small space made of carefully shaped aerodynamic panels held in place by metal rods, meant above all to turn the wind. A point-cloud drawing showed the intended effect: the wind enters from one side and is redirected by two baffles, while pieces at the top and bottom keep it from escaping. Built and tested with smoke, the model was too loose and let a lot of air escape. Its curvature was also too high, which caused more turbulence than expected. Still, the main airflow was redirected to some extent: a good start.",
+          "The second model set a harder goal: two unusual wind experiences in the forest. One place has slow, turbulent air and the other fast, laminar air, so people feel a wind quite different from their surroundings while their view stays the same. A big entrance lets more wind in, a bumpy inner surface creates turbulence to slow it down, and plates at the top, middle and sides tighten the space. A stair leads up into it.",
+        ],
+        facts: [["Models", "2"], ["Second model", "A slow, turbulent place and a fast, laminar place"]],
+        imgs: [
+          { f: [["wind/attempt-1", 2000, 1517, "The first model, rendered: aerodynamic panels held in place by metal rods.", "Render of pale curved panels held in a loop of dark rods, on black"],
+                ["wind/attempt-1-wind", 2000, 1095, "The intended effect, drawn as a point cloud: the wind enters from the right and is redirected.", "Point-cloud drawing of wind streams passing through pale panels, on black"]] },
+          { w: 9, f: [["wind/attempt-1-smoke", 2000, 1102, "The first model tested with smoke: some wind escaped, but the main airflow was redirected.", "Black-and-white photograph of smoke passing through a model of curved panels on rods"]] },
+          1,
+          { w: 9, f: [["wind/attempt-2", 2000, 1141, "The second model: a slow, turbulent place and a fast, laminar one, with a stair at one end.", "White render of a model with a large curved shell, small arches and a stair on a white base"]] },
+          { w: 9, f: [["wind/attempt-2-test", 2000, 1500, "The second model in a smoke test.", "Photograph of a pale model with a bumpy shell, arches and a stair on an acrylic base, lit blue in the dark with smoke"]] },
+        ] },
+      { n: "05", title: "An aerodynamic design tool",
+        text: [
+          "Turning the wind models into full-size spaces raised a question: air may not behave at 1:1 as it does at a small scale. An aeroplane’s flaps change their curvature to adjust its speed and altitude. Borrowing the idea, the project set out to build a tool whose curvature could be varied, to test on and to design from.",
+          "The tool’s main parts are tracks, aerodynamic panels on rods that set their position and slope, and a smoke emitter that slides on its own track. A rotating platform carries the wind source along a track, so the direction of the wind can be adjusted. Each panel turns on a ball joint, clamped by 3 mm bolts to hold its angle, and parts slide up and down the rods to support it. A tracking system moves the panels along x and y. The connection system is designed to let each panel’s position be customised as far as possible, and the curvature of the surfaces can be recorded to inform a design.",
+          "The main components were SLS printed, which gives them some elasticity. The aerodynamic panels were CNC milled from timber: the machining is precise enough, and timber, being elastic, does not easily break or deform when knocked. The base and joints are laser-cut acrylic, the tracks are PLA prints, and steel rods and 3 mm bolts hold it together. An instruction manual records the assembly in 18 steps.",
+          "Smoke tests on the finished tool showed the flow through apertures, laminar flow and turbulence over the timber panels.",
+        ],
+        facts: [["Panels", "CNC-milled timber"], ["Components", "SLS prints, PLA tracks, laser-cut acrylic, steel rods, 3 mm bolts"], ["Assembly", "18 steps"]],
+        imgs: [
+          { f: [["wind/tool-render", 2000, 1063, "Conceptual render: timber panels on rods, with a rotating platform for the wind source.", "Render of large timber panels on clusters of rods above a curved track, with a raised platform at the right"],
+                ["wind/tool-platform", 2000, 1125, "Close-up: the rotating platform and its track.", "Render close-up of a transparent platform on a curved track beside timber panels"]] },
+          { w: 9, f: [["wind/tool-top", 2000, 1089, "Conceptual render: the timber panels on their curved tracks, with the rotating platform for the wind source at the right.", "Render of curved panels on concentric tracks with a radial frame, in grey haze"]] },
+          1,
+          { f: [["wind/mech-1", 1280, 1600, "Parts slide up and down the rods to support the panels.", "Grey render close-up of white blocks on vertical rods beside a curved track"],
+                ["wind/mech-3", 1280, 1600, "Close-up render: a timber panel on its rod, the ball joint clamped by bolts.", "Grey render close-up of a timber panel on a rod with a clamped ball joint"]] },
+          2,
+          { f: [["wind/cnc", 963, 642, "CNC milling a timber panel.", "A CNC cutter milling a block of timber, with chips around it"],
+                ["wind/sls", 756, 647, "An SLS-printed component, fitted with bolts.", "Hands holding a white printed part with bolts"],
+                ["wind/parts", 1270, 1044, "The parts laid out: milled timber, printed components and acrylic.", "Timber plates with milled hollows and white printed parts laid out on white", 1]] },
+          { f: [["wind/assembly", 721, 481, "Assembling the tool in the workshop.", "Black-and-white photograph of the tool half built on a workshop table"],
+                ["wind/tracking-1", 1237, 825, "The tracking system: a clear acrylic platform on rods above the tracks.", "Close-up of a clear acrylic platform on rods above curved tracks"],
+                ["wind/tracking-2", 1237, 825, "Carts and rods on the curved tracks.", "Close-up of white printed carts and steel rods on curved white tracks"]] },
+          { w: 9, f: [["wind/tool-grey", 2000, 1260, "The finished tool.", "Photograph of the tool with its timber panels on a board, against a grey wall"]] },
+          3,
+          { f: [["wind/smoke-top", 1403, 496, "Smoke passing along the curved timber panels.", "Smoke flowing over curved timber panels on white tracks"]] },
+          { f: [["wind/smoke-aperture", 690, 460, "Through an aperture.", "Smoke streaming through a gap between timber panels"],
+                ["wind/smoke-laminar", 690, 460, "Laminar flow.", "A smooth stream of smoke between timber panels"],
+                ["wind/smoke-turbulence", 690, 460, "Turbulence over the bumpy timber.", "Smoke curling over a timber panel carved with bumps"]] },
+          { w: 9, f: [["wind/smoke-close", 1391, 928, "Smoke against a timber panel, close up.", "Close-up of white smoke beside the grain of a curved timber panel"]] },
+          { w: 9, f: [["wind/exploded", 2000, 1350, "The tool from above: a photograph with its line drawing laid over it.", "Photograph from above of curved tracks, carts and timber panels with smoke, overlaid with a fine white line drawing, on black"]] },
+        ] },
+      { n: "06", title: "A haunted walk",
+        text: [
+          "To show how the tool can be used, a test design recreates the haunting experience of a walk in Epping Forest, along a trail with two sites. Site 1, The Unseen Road, refers to something hikers know: the wind can push a walker off the path they meant to take without them noticing. Here a path mapped out by the wind leads through the forest to the ghost figure, and its panels are fibreglass. The path the wind needed was found first, and its curvature was recreated on the tool until the smoke matched the designed wind. The panel settings that made it were recorded and turned into the design.",
+          "Site 2, The Ghost, makes a figure out of fog. A device with a smoke emitter sends the fog over five panels that shape the ghost’s head, chest, right arm, waist and lower body, while a sixth stirs turbulence along the ground. The panels are held on metal rods, with fixings attached to the trees, and a metal sheet with shaped apertures controls the light. Laminar flow can cover what is behind it, so the device is hidden by the smoke, although some parts will be seen from the ideal viewpoint. Because the scale here is much smaller, the method was to find the airflow on the tool, record it and fine-tune it into the final shapes, and the ghost’s parts were matched to smoke results from the tool.",
+        ],
+        facts: [["Site 1", "The Unseen Road, fibreglass panels"], ["Site 2", "The Ghost, a figure made of fog"]],
+        imgs: [
+          { f: [["wind/masterplan", 1535, 1600, "Test design masterplan: the haunted trail through the forest to the ghost figure.", "Plan of a winding strip of forest floor on a black grid"],
+                ["wind/site-1", 1857, 1470, "Site 1, The Unseen Road, from above.", "Top view of a curving strip of forest floor with panels along it, on black"]] },
+          { f: [["wind/site-1-tool", 721, 481, "Site 1 on the tool, 01: pressure pulling along the outer curve. The smoke curve matches the designed wind curve.", "Photograph from above of the tool’s curved tracks and timber panels, with smoke along the outer edge, on black"],
+                ["wind/site-1-tool-2", 721, 481, "02: pressure pushing along the inner curve.", "Photograph from above of the tool’s curved tracks and timber panels, with smoke along the inner edge, on black"]] },
+          1,
+          { f: [["wind/ghost-parts", 2000, 439, "Site 2 components: the panels that shape the ghost and the parts that fix them to the trees.", "Render of six glossy black curved panels, three with bumpy surfaces, then small fixings, curved and straight metal rods and small pins, on grey"]] },
+        ] },
+    ],
+    closing: "Ultimately, my goal is to transform wind from an unpredictable environmental factor into a tangible design element that can be intentionally harnessed to enhance both the performance and the sustainability of built forms.",
+    imgs: [
+      ["tool-wide", 2000, 1000, "The aerodynamic design tool"],
+      ["tool", 2000, 1334, "The aerodynamic design tool on black"],
+      ["tool-render", 2000, 1063, "Conceptual render of the tool"],
+      ["exploded", 2000, 1350, "The tool from above, with its line drawing"],
+      ["attempt-2", 2000, 1141, "The second wind model"],
+      ["forest", 1774, 1183, "Epping Forest"],
+    ] },
+  { t: "omii", s: "Peripheral Pedestrian Awareness", c: "Product", y: "2026", code: "OMI", dir: "omii", cover: [960, 517], wall: [960, 516], loop: ["omii/face", 800, 450],
+    d: "A pair of clip-on units for the shoulder straps of a bag that sense what is coming from behind and say which side, and how urgently, with a vibration on that shoulder. A team project at the RCA and Imperial.",
+    intro: "On London’s pavements, what catches people out often comes from behind: e-bikes, scooters, cyclists. omii is a pair of clip-on units for the shoulder straps of a bag. Two small radars watch the space behind the wearer, work out what is closing in and how soon, and answer with a vibration on the matching shoulder: two taps for awareness, a rising buzz for attention, a continuous buzz and a beep when it is urgent. We built and tested tap, sound and vibration prototypes, and vibration was the fastest and clearest.",
+    meta: [
+      ["Year", "2026 (Sep–Oct)"], ["Location", "London"], ["School", "Royal College of Art and Imperial College London"],
+      ["Module", "IDE Fundamentals, Innovation Design Engineering"], ["Team", "Eddie, Eugene, Sejal, Shuheng, Val, Yuying"],
+      ["My role", "R&D, design and prototyping"], ["Methods", "Survey, filmed scenarios, Arduino prototypes, reaction tests, radar concept"],
+    ],
+    hero: ["omii/hero", 1811, 976, "omii: a clip-on unit with a swivel clip and a dot-matrix face.", "Render of a white rounded device with a lit dot-matrix face, on black"],
+    chapters: [
+      { n: "01", title: "Caught out from behind",
+        text: [
+          "Traffic, theft and harassment are different problems, but all of them approach from where you can’t see. Of 18 people we surveyed who walk in London, 16 (89%) had been surprised by a person, bike or vehicle in the last six months, and 13 of those 16 (81%) said it came from behind or they never saw it coming. E-bikes and bicycles were named most often; pavements and road crossings were the most common places.",
+          "We staged and filmed six short scenes of how it happens: looking at a phone, a blind spot, a conversation, an approach from behind, headphones, and a street at night. Streets rely on eyes and ears alone, and nothing extends awareness behind you.",
+        ],
+        facts: [["Surprised in six months", "16 of 18 people who walk in London (89%)"], ["From behind, or never seen", "13 of those 16 (81%)"], ["Named most, by those 16", "E-bikes (13), bicycles (11)"]],
+        imgs: [
+          1,
+          { f: [["omii/sc-phone", 712, 400, "Looking at a phone.", "A woman walks while looking at her phone", 0, 1],
+                ["omii/sc-blind-spot", 712, 400, "A blind spot: a man carrying a large board walks into someone on her phone.", "A man carrying a large white board walks towards a woman on her phone", 0, 1],
+                ["omii/sc-distracted", 712, 400, "A conversation: one of two friends turns round, startled.", "Two people talking; one turns round, startled", 0, 1]] },
+          { f: [["omii/sc-behind", 712, 400, "From behind: a cyclist knocks into a man looking at his phone.", "A cyclist comes from behind towards a man looking at his phone", 0, 1],
+                ["omii/sc-headphones", 712, 400, "Headphones and music.", "A woman in headphones dancing in the street", 0, 1],
+                ["omii/sc-night", 400, 712, "A street at night: someone close behind.", "A night street, one person close behind another", 0, 1]] },
+        ] },
+      { n: "02", title: "Six requirements",
+        text: [
+          "Desk research covered conflicts between pedestrians and cyclists, phone snatching from behind, and how fast people react to touch, light and sound. With the team’s Miro board it led to three directions, and we took peripheral awareness forward: how might we help people sense what is outside their field of view, and make walking safer? The answer had to be early, quiet, hands-free and directional.",
+          "We set six requirements: sense about 15–20 m behind, alert before contact, say which side, work without relying on sound, stay silent by default, and use no camera, so no faces. The research also set two limits. Sensing an approach is not sensing intent, so cyclists must not be profiled as thieves. And a cue on one side can be read as “danger here” or as “go here”.",
+        ],
+        facts: [["Reaction to a cue", "Touch about 337 ms, light 443 ms, sound 597 ms (published study)"], ["Directions", "Urban encumbrance, peripheral awareness, gait rhythm"], ["Design criteria", "Early, quiet, hands-free, directional"]],
+        imgs: [
+          { w: 9, f: [["omii/p-sticky-notes", 294, 305, "Clustering findings.", "Pink, yellow and green sticky notes on a white board"],
+                      ["omii/p-mind-map", 286, 228, "A hand-drawn mind map.", "A mind map drawn in black pen"],
+                      ["omii/p-miro-research", 315, 282, "The research board on Miro.", "Screenshot of a Miro board with notes and photos", 1],
+                      ["omii/p-miro-ideation", 287, 277, "Timed ideation rounds.", "Screenshot of Miro prompts with coloured notes", 1]] },
+          1,
+        ] },
+      { n: "03", title: "Three builds",
+        text: [
+          "The first electronics paired an Arduino Nano ESP32 with an ultrasonic distance sensor. The aim was an indoor demo: as a piece of cardboard or a toy car came up from behind, the falling distance would trigger a light and a sound. The distance readings worked, though they jumped around at about 30 cm. Boards and wires were taped to a backpack strap and to a shoulder for wearing tests.",
+          "Three builds then sent the same message through different senses: something is coming, from this side. Spatial audio played a directional alert in the headphones. BirdTap put a 3D-printed bird on each shoulder, where a 9 g micro servo turned its head to tap twice on the side of the approach. It was refined over many printed versions and gave a clear signal, but it was too visible. The strap unit buzzed on the left or right shoulder: hidden, and coupled to the body.",
+        ],
+        facts: [["Controller", "Arduino Nano ESP32"], ["First sensor", "Ultrasonic distance sensor"], ["Builds", "Sound, tap, vibration"]],
+        imgs: [
+          { f: [["omii/p-backpack-sensors", 1600, 1200, "Sensor boards and wires taped to a backpack strap.", "Circuit boards and coloured wires taped onto a black backpack"],
+                ["omii/p-electronics", 294, 352, "Boards, wires and printed bird parts.", "Boards, wires and white printed parts on a desk"],
+                ["omii/p-wiring", 294, 352, "Wiring the sensors and the birds.", "A team member wiring sensors at a desk"],
+                ["omii/p-shoulder-sensors", 1200, 1437, "Sensors taped to a shoulder for a wearing test.", "Coloured wires and small boards taped to the shoulder of a checked shirt"]] },
+          1,
+          { f: [["omii/proto-audio", 1138, 640, "01 Spatial audio: a directional alert in the headphones.", "A woman in headphones turns her head", 0, 1],
+                ["omii/proto-birdtap", 1138, 640, "02 BirdTap: a printed bird taps twice on the side of the approach. Clear, but too visible.", "A white 3D-printed bird on a shoulder, tapping", 0, 1],
+                ["omii/proto-buzz", 1138, 640, "03 Strap unit: a buzz on the left or right shoulder. Hidden, and coupled to the body.", "A small taped vibration unit on a shoulder", 0, 1]] },
+        ] },
+      { n: "04", title: "Testing the signal",
+        text: [
+          "Six people wearing headphones tried all three builds, first with no distraction and then while distracted by music, a conversation, a phone or exercise: 104 alerts in all. For each alert we recorded the reaction time, whether the signal felt clear or faint, and where it seemed to come from.",
+          "Vibration was the fastest for all six, with a mean reaction of 1.10 s against 1.51 s for sound and 1.67 s for the tap, and none of its 34 alerts was missed. So touch leads, and sound becomes a back-up for urgent alerts. One person moved toward the buzz, so the buzz marks the threat, not the escape route. Vibration also felt weaker while walking and turning, so its strength is set while walking.",
+        ],
+        facts: [["Mean reaction", "Vibration 1.10 s, sound 1.51 s, tap 1.67 s"], ["Missed alerts", "Vibration 0 of 34, sound 2 of 42, tap 0 of 28"], ["Warning needed", "3–4 s, so a detection range of about 8–15 m"]],
+        imgs: [1] },
+      { n: "05", title: "Form and sensing",
+        text: [
+          "Sketches set the constraints for the final form: the vibration module close to the body, a sensor that can be angled, and a low-res screen, with a swivel clip, soft silicone and a magnetic clasp. Two FMCW mmWave radars, one on each shoulder, each cover ±60° behind the wearer, the space that human vision misses. There is no camera, so no faces are recorded.",
+          "The radar data runs through range, Doppler and angle processing into target tracking. omii works out whether something is approaching, on which side, and whether its path will cross the wearer’s, then turns that into an urgency score, and thresholds sort that score into alert levels. Direction becomes a place on the body, and urgency becomes the density of the pulses. An IMU would take out the wearer’s own movement. The thresholds and this correction are design hypotheses, still to be calibrated in road tests.",
+        ],
+        facts: [["Sensing", "Two FMCW mmWave radars, ±60° each"], ["Range rings", "8 m and 15 m"], ["Privacy", "No camera, no faces"]],
+        imgs: [
+          { w: 9, f: [["omii/sketch", 552, 817, "Sketch of the constraints: swivel clip, haptics, soft silicone, magnetic clasp, low-res screen.", "Pen sketch of the device with notes", 1],
+                      ["omii/field-of-view", 558, 440, "Top view: human vision against the two shoulder radars, with 8 m and 15 m rings.", "Diagram of a head from above with blue vision and orange radar sectors", 1],
+                      ["omii/radar-coverage", 280, 359, "Each radar covers ±60° behind the wearer.", "Diagram of a standing figure inside a sphere with an orange sector behind", 1]] },
+          1,
+          { w: 9, f: [["omii/exploded-front", 522, 772, "Exploded view: clip, display, circuit boards and housing.", "Exploded render of the device with a red face, boards and shell parts", 1],
+                      ["omii/exploded-side", 543, 876, "Exploded view from the side.", "Side exploded render of the device parts", 1],
+                      ["omii/face", 800, 450, "The face cycles through its states.", "Animation of a dot-matrix face changing expression", 0, 1]] },
+        ] },
+      { n: "06", title: "omii",
+        text: [
+          "omii clips onto the shoulder straps of a bag, or onto clothing. Its alerts escalate with the time to collision: two short taps on the matching side at 3–6 s, a vibration that ramps up at 1.5–3 s, and a continuous buzz and a beep under 1.5 s. A nudge also warns the wearer when they are about to turn into someone’s path. A small dot-matrix face shows the same states.",
+          "In one journey a cyclist comes up fast from behind on the left. The left omii vibrates, the wearer steps slightly right, and the cyclist passes safely. In another, the wearer starts to turn right while someone behind is looking at their phone. The right omii gives two short taps, and the wearer stops to let them pass.",
+        ],
+        facts: [["Awareness", "3–6 s to collision: two short taps"], ["Attention", "1.5–3 s: the vibration ramps up"], ["Urgent", "Under 1.5 s: a continuous buzz and a beep"]],
+        imgs: [
+          { f: [["omii/backpack", 1983, 1115, "Two omii units on the shoulder straps of a backpack.", "Render of the back of a backpack with a blue device on each strap"]] },
+          1,
+          { w: 9, f: [["omii/storyboard", 1690, 591, "Storyboard of the two journeys.", "Line drawings of a pedestrian, a cyclist and a person on a phone", 1]] },
+        ] },
+    ],
+    imgs: [
+      ["hero", 1811, 976, "omii, a clip-on unit with a dot-matrix face"],
+      ["backpack", 1983, 1115, "Two omii units on a backpack"],
+    ] },
+  { t: "CHOGA", s: "Ritual in Form", c: "Product", y: "2026", code: "CHG", dir: "choga", cover: [960, 480], wall: [960, 480],
+    d: "A London jewellery studio whose name is Tibetan for “ritual”: 3D-printed ceramic and metal pieces in three series, an online shop, and a pop-up where visitors excavate a relic from 2050.",
+    intro: "In Tibetan, CHOGA means “ritual”. The studio, based in London, makes jewellery as small anchors for modern rituals, and uses Eastern philosophy as a method rather than a motif: the void, the movement of ritual, the relation between object and body, and honesty to material. Its 2026 collection has three series, NORBU, RI SGRA and ZLABA, in 3D-printed ceramic glazed white, pearl or silver, and in bronze. The work runs from SubD models to a production batch with a ceramic workshop, a new online shop, and Future Archaeology, a month-long pop-up on Neal Street whose invitation lives on the visitor’s phone.",
+    meta: [
+      ["Year", "2026"], ["Location", "London"], ["Studio", "CHOGA, jewellery and objects"],
+      ["Collection", "NORBU, RI SGRA, ZLABA"], ["Materials", "3D-printed ceramic, silver-plated bronze, bronze"],
+      ["Pop-up", "Future Archaeology, WEVE 2050, Neal Street, Aug–Sep 2026"],
+      ["My role", "Co-founder and director"], ["Tools", "Rhino SubD, Framer, Shopify, HTML and JavaScript"],
+    ],
+    hero: ["choga/hero", 1280, 688, "RI SGRA, a ribbed ceramic piece, turning: one of the object films made for the shop.", "A pale green ribbed ceramic form turning slowly on black", 0, 1],
+    chapters: [
+      { n: "01", title: "Ritual",
+        text: [
+          "CHOGA means “ritual” in Tibetan: “a reverence for time, a celebration of being”. The studio treats accessories not as adornment but as tangible anchors of modern rituals. It avoids literal Eastern motifs and figurative symbols, and works instead from the void, the dynamics of ritual, the relation between object and body, and material honesty.",
+          "For CHOGA, ritual is not tied to a scale. Its spatial installations are meant as sanctuaries, and the jewellery distils them into something the body can carry, a small fragment of the same ritual wherever the wearer goes. One of these installations, Reliquary, conceived with Wedge for the SS 2025 series Naturafacture, has its own page.",
+        ],
+        facts: [["Name", "CHOGA, Tibetan for “ritual”"], ["Based", "London"], ["Method", "Eastern philosophy as process, not motif"]],
+        imgs: [
+          { f: [["choga/bowl", 1344, 1800, "A bowl mended with gold seams, holding a ceramic fragment.", "Two hands in black sleeves holding a silver bowl with gold seams and a white ceramic piece inside"],
+                ["choga/packaging", 1344, 1392, "The packaging, laid out.", "A grey box, a card, a metal name plate, the open box and a wrapped ring laid out in a column on black"]] },
+          1,
+        ] },
+      { n: "02", title: "Three series",
+        text: [
+          "The 2026 collection has three series, each named in Tibetan. NORBU means “jewel”: something cherished, luminous and enduring. RI SGRA means “echo”, an inner vibration and a perceptive presence. ZLABA means “moon”, a symbol of softness, rhythm and quiet light.",
+          "The series also divide by material. RI SGRA is pure ceramic and ZLABA is pure metal, while NORBU joins a ceramic body glazed white, pearl or silver to a band of bronze or silver-plated bronze. The pieces are shown on the hand and the ear, in black and in shadow.",
+        ],
+        facts: [["NORBU, “jewel”", "Rings R01, R02, earring ER01: ceramic and metal"], ["RI SGRA, “echo”", "Ring R01: white ceramic"], ["ZLABA, “moon”", "Ring R01, bracelet BC01: bronze"]],
+        imgs: [
+          { f: [["choga/norbu-r02", 1344, 1800, "NORBU R02: white ceramic and silver-plated bronze.", "A hand against a black dress wearing a white sculptural ring"],
+                ["choga/norbu-r01", 1344, 1800, "NORBU R01: pearl ceramic and bronze.", "Two hands in warm light, one wearing a white sculptural ring"],
+                ["choga/norbu-er01", 1344, 1800, "NORBU ER01, an earring in white ceramic and silver-plated bronze.", "Close-up of an ear wearing a white folded earring"]] },
+          1,
+          { f: [["choga/risgra-r01", 1344, 1800, "RI SGRA R01: white ceramic.", "A hand in a black sleeve wearing a white ring, on black"],
+                ["choga/zlaba-r01", 1344, 1800, "ZLABA R01: silver-plated bronze.", "Crossed hands, one wearing a silver ring, against white"],
+                ["choga/zlaba-bc01", 1344, 1800, "ZLABA BC01, a bracelet in bronze.", "Two raised arms against pale grey, one wearing a coiled bronze bracelet"]] },
+        ] },
+      { n: "03", title: "SubD forms",
+        text: [
+          "The pieces are modelled in Rhino as SubD surfaces, which keep a form soft and continuous while a light cage of control points shapes it. A folded stud went through four versions, alongside a twisted ribbon stud, a crumpled ribbon stud and two flower rings.",
+          "Renders come before printing. They test how a glazed ceramic body sits against polished metal, how a post meets the back of a stud, and how a pale green stone sits in a ceramic flower.",
+        ],
+        facts: [["Modelling", "Rhino SubD"], ["Studies", "Folded stud v1–v4, twisted and crumpled ribbon studs, two flower rings"], ["Checked in", "Renders of glaze against metal"]],
+        imgs: [
+          { f: [["choga/stud-cage", 900, 800, "Folded stud v4 with its SubD control cage.", "A grey twisted ring-like stud with white control points and curves over it", 1],
+                ["choga/stud-34", 1600, 1000, "Folded stud v4, a pair.", "Two grey twisted studs on a pale grey ground", 1]] },
+          1,
+          { w: 9, f: [["choga/stud-white", 1240, 1269, "A white ceramic stud on a silver post.", "Render of an earring: a white ceramic leaf on a polished silver post", 1],
+                      ["choga/flower-gem", 1419, 1109, "A ceramic flower set with a pale green stone.", "Render of a white ceramic flower with a small green stone at its centre"]] },
+        ] },
+      { n: "04", title: "Printed in ceramic",
+        text: [
+          "The collection is made with a ceramic 3D-printing workshop. Each piece is printed, bisque-fired, coated in slip and glazed white, pearl or silver, then fitted with sterling silver. The holes for posts and hooks are kept free of glaze; in the first samples glaze still closed them, so they were made larger.",
+          "The November 2026 batch has 23 models. Ten run as production pieces, 10 to 25 of each, and thirteen are one-off samples that try new forms, two of them set with jade. The sheet sent to the workshop gives every model its quantity and its size to a tenth of a millimetre.",
+        ],
+        facts: [["Process", "Print, bisque firing, slip, glaze"], ["Glazes", "White, pearl, silver"], ["November batch", "23 models: 10 runs (165 pieces), 13 samples"]],
+        imgs: [
+          { f: [["choga/batch", 2400, 800, "Twelve of the 23 models in the November batch, as sent to the workshop.", "Twelve grey renders of small soft ceramic forms, several with a hole for a post", 1]] },
+          1,
+        ] },
+      { n: "05", title: "Future Archaeology",
+        text: [
+          "For a month in summer 2026 the collection was shown at WEVE 2050 on Neal Street, in a pop-up called Future Archaeology. It fixes its coordinates at the year 2050 and treats each piece as a relic excavated from an imagined future and brought back to Neal Street. Clay and metal, humanity’s oldest materials, are the link between the two.",
+          "The invitation is a web page on the visitor’s phone, laid out as an archaeological record. Three questions weigh ceramic against metal and choose a series: “When everything else is lost, what do you keep?”, “Buried a thousand years, how would you want to be found?” and “Which surface do you trust?”. As they are answered, redacted fields open and the relic appears as a dithered image of its turning object.",
+          "The record stays open until the visitor comes to the shop and scans the site marker with the phone’s camera. Then it becomes a Future Relic Discovery Report, with a record code worth 20% off the matching series in the shop and a card to download whose QR code restores the record.",
+        ],
+        facts: [["Where", "WEVE 2050, 38 Neal Street, London"], ["When", "5 August – 5 September 2026"], ["Reward", "20% off the matching series"]],
+        imgs: [
+          { f: [["choga/inv-1", 740, 1336, "1 The sealed record and the first question.", "A cream phone page titled Archaeological Invitation, with redacted fields, a pixel question mark and three answers"],
+                ["choga/inv-2", 740, 1336, "2 Fields open as the questions are answered.", "The same page with more fields filled in and the third question"],
+                ["choga/inv-3", 740, 1336, "3 The series revealed; the record waits for the site marker.", "The page with a grey dithered object and a camera panel to scan the shop’s marker"],
+                ["choga/inv-4", 740, 1336, "4 After the scan: the discovery report and its record code.", "The page retitled Future Relic Discovery Report, with the series name, a record code and a QR code"]] },
+          1,
+          { w: 9, f: [["choga/inv-flow", 500, 902, "The invitation from the first question to the report.", "Screen recording of the phone page answering questions, revealing a dithered object and turning into a report", 0, 1],
+                      ["choga/qr-relief", 1400, 900, "A study for the site marker: the QR code as an eroded relief, generated as a printable model.", "Render of a sand-coloured slab whose surface is a weathered QR code pattern", 1]] },
+          2,
+        ] },
+      { n: "06", title: "The shop",
+        text: [
+          "The online shop was redesigned in Framer on Shopify. Three directions were compared: a ritual gallery, an object index and a set of series chapters. The ritual gallery was chosen: a black page where the pieces turn slowly, under the line “Ritual in form. Sculptural jewelry by CHOGA.”, with ten products under Shop, Series and About.",
+          "Each piece has its own film, a slow turn on black. The same films feed the pop-up invitation, which dithers them into its relics.",
+        ],
+        facts: [["Platform", "Framer and Shopify"], ["Directions", "Ritual gallery, object index, series chapters"], ["Chosen", "Ritual gallery: pieces turning on black"]],
+        imgs: [
+          { w: 9, f: [["choga/shop", 1424, 1212, "The ritual gallery home page.", "A black web page with the CHOGA logo, a pale green ribbed object, the words Ritual in Form and four selected objects"]] },
+          1,
+          { w: 9, f: [["choga/obj-norbu", 720, 720, "NORBU, turning.", "A white ceramic piece with a silver band turning on black", 0, 1],
+                      ["choga/obj-zlaba", 720, 720, "A green glazed piece with silver, turning.", "A dark green glazed ceramic form wrapped in silver turning on black", 0, 1]] },
+        ] },
+    ],
+    imgs: [
+      ["norbu-r02-wide", 1792, 896, "NORBU R02, white ceramic and silver-plated bronze, worn on the hand"],
+      ["hero", 1280, 688, "RI SGRA, a ribbed ceramic piece, turning on black"],
+      ["shop", 1424, 1212, "The CHOGA shop home page"],
+    ] },
+  { t: "Reliquary", s: "CHOGA × Wedge", c: "Installation", y: "2025", code: "RLQ", dir: "reliquary", cover: [960, 517], wall: [960, 540],
+    d: "A jewellery installation of silica sand, white ceramic, aluminium and CNC-carved wood, conceived with Wedge for Naturafacture, CHOGA’s SS 2025 series.",
+    intro: "Reliquary is a jewellery installation from Naturafacture, CHOGA’s SS 2025 series, conceived with Wedge. In the brand book’s words, it is “composed of silica sand, white ceramic, aluminium, and CNC carved wood, where matter itself becomes a vessel of ritual. Suspended between fragility and endurance, it cradles adornment as if holding memory and breath.”",
+    meta: [
+      ["Year", "2025"], ["Type", "Jewellery installation"], ["Series", "Naturafacture, CHOGA SS 2025"],
+      ["Credit", "CHOGA × Wedge"], ["Materials", "Silica sand, white ceramic, aluminium, CNC-carved wood"],
+    ],
+    hero: ["reliquary/forest", 2400, 1350, "Reliquary in a night forest scene, between truss towers and studio lights.", "A tall dark crumpled column on a black base, lit by an octagonal softbox and two strip lights, between two silver truss towers in a forest at night"],
+    chapters: [
+      { n: "01", title: "A vessel of ritual",
+        text: [
+          "A reliquary keeps what is precious. Here the precious things are jewellery, and the brand book gives each of the four materials part of the idea: “The porous sand murmurs of erosion and touch; the white ceramic gleams with quiet purity; the aluminium glints with precision; the carved wood carries the warmth of time.”",
+          "In the same text, “their geometry gestures toward the delicate tension between preservation and disappearance, between ornament and offering.”",
+        ],
+        imgs: [
+          { w: 9, f: [["reliquary/detail", 1070, 475, "From above: rings and small coloured pieces held in mirror-finish cradles and on white and black forms.", "Top view on oak leaves and twigs: a mirror-finish silver cradle holding a ribbed silver ring, a second silver cradle with a small silver cylinder, two matte white forms carrying small glossy red, teal and green pieces, black grainy forms with a dark ribbed ring resting on one, and the dark glossy ribbed column behind"]] },
+          1,
+        ] },
+      { n: "02", title: "Naturafacture",
+        text: [
+          "Naturafacture, the SS 2025 series Reliquary belongs to, is introduced in the brand book as “a manufactured ritual of nature and form”. The series text speaks of organic life “meticulously constructed, layer by layer, through the precision of ceramic 3D printing”, where “cracks resemble veins; curves echo roots” and each piece “emerges as a relic from a future ceremony”.",
+        ],
+        imgs: [] },
+    ],
+    imgs: [
+      ["forest", 2400, 1350, "Reliquary in a night forest scene"],
+    ] },
+  { t: "Humanize Perception", s: "Gaze-Guided LiDAR Scanning", c: "Research", y: "2026", code: "PRC", dir: "perception", cover: [960, 480], wall: [960, 504],
+    d: "A phone rig that lets the eye steer a LiDAR scan: what holds the eye is captured densely, what it passes over sparsely. First tests at home, then the rig on a city street.",
+    intro: "Machines and people perceive space in different ways. Machine vision records an environment as continuous geometric data; human perception is selective and embodied, shaped by attention, memory and movement. This independent research project combines eye tracking with LiDAR scanning to ask whether spatial capture can be informed not only by objective measurement but by human perception itself. It moved from first tests at home to a phone rig: the front camera follows the eye while the rear LiDAR sensor scans, and the scan is dense where attention stays and sparse where it does not. The rig was then tested on a city street.",
+    meta: [
+      ["Year", "2026"], ["Type", "Independent research project"],
+      ["Methods", "Eye tracking, LiDAR scanning, gaze calibration"],
+      ["Built with", "An iPhone’s front camera and LiDAR sensor, custom software, a purpose-designed holder"],
+      ["Tested", "At home and on a city street"],
+    ],
+    hero: ["perception/street-use", 1905, 1473, "Scanning with the rig on the street: the phone sits in the holder, a fixed distance from the eye.", "Shuheng holds a white pistol-grip holder to their face, its rest under the nose, with a phone clamped at the far end, in front of a brick building"],
+    chapters: [
+      { n: "01", title: "Two ways of seeing",
+        text: [
+          "Human perception does not take in space as a complete, neutral field. Attention picks out particular objects, edges, movement and areas that seem to matter, and filters out the rest. A LiDAR scan captures the same environment as continuous, comprehensive geometry. Set side by side, the two show the gap between human and machine spatial understanding: people build incomplete but meaningful representations of space, ordered by attention, movement and what they judge important.",
+        ],
+        facts: [["Machine vision", "Continuous geometric data"], ["Human perception", "Selective, shaped by attention, memory and movement"]],
+        imgs: [
+          { f: [["perception/flat-full", 1422, 1116, "Normal, machine-like scanning: everything recorded evenly.", "Grey point-cloud model of several rooms seen from above at an angle, every surface filled in"],
+                ["perception/flat-focus", 1422, 1118, "Scanning only what was of interest.", "The same point-cloud model with most surfaces thinned out and only some areas kept dense"]] },
+        ] },
+      { n: "02", title: "A first test at home",
+        text: [
+          "Initial tests asked how visual attention could inform the digital representation of space. Eye-tracking experiments recorded gaze movement, fixation patterns and areas of visual interest, to build a measurable framework for turning human perception into spatial data. A browser prototype tracked the face and irises from a webcam and built a heatmap over an image as the eye moved across it.",
+          "The original LiDAR scan of the living room was then set against a perceived 30-second scan. The original records the room as continuous geometry; the perceived scan redistributes data density according to gaze, denser where the eye stayed and sparser where it rarely went.",
+        ],
+        facts: [["Test scan", "30 seconds, at home"], ["Heatmap scale", "0.2 s to 4 s"]],
+        imgs: [
+          { f: [["perception/pano-gaze", 2000, 792, "A panorama of the living room with a heatmap laid over it.", "Wide panorama of a living room and kitchen with blue, green and red heatmap patches across the walls and furniture"],
+                ["perception/webcam-gaze", 1016, 1270, "Eye tracking from a webcam in the browser prototype: face mesh, gaze point and head pose.", "Webcam image of Shuheng’s face with a fine tracking mesh, above a panel reading Analyzing, Face detected, Gaze point and Head pose"]] },
+          1,
+          { f: [["perception/room-scan", 2000, 1050, "Original: the LiDAR scan of the living room.", "Point-cloud scan of an open-plan kitchen and living room, on black"],
+                ["perception/room-gaze", 2000, 1050, "Perceived (30-second scan), with a heatmap on a colour scale from red (4 s) to blue (0.2 s).", "The kitchen scan overlaid with a heatmap, red and yellow along the counter, blue at the edges"]] },
+        ] },
+      { n: "03", title: "A rig for the eye",
+        text: [
+          "The software was developed by combining AI-assisted coding with independent research into established eye-tracking and computer-vision methods, including pinhole back-projection, least-squares affine calibration and I-DT fixation detection. Studying them showed the principles and limits of gaze calibration, coordinate mapping and fixation analysis, above all the effects of lighting, head movement, calibration accuracy and the alignment of eye and camera. Rather than treat these as purely technical problems, the project used them to shape its design logic.",
+          "The result is custom software that brings a phone’s front camera, its rear LiDAR sensor and eye-tracking calibration together into one scanning system. A purpose-designed holder keeps the eye about 30 cm from the front camera, so the calibration stays stable and the gaze lines up with what is being scanned, 3 to 10 metres ahead. Sampling density follows visual attention: areas that hold the eye are captured at a much higher resolution, and unattended areas more sparsely.",
+        ],
+        facts: [["Eye to front camera", "About 30 cm"], ["Scan range", "3–10 m"], ["Methods studied", "Including pinhole back-projection, least-squares affine calibration, I-DT fixation detection"]],
+        imgs: [
+          { f: [["perception/calib-ui", 1050, 484, "Eye-tracking calibration and analysis on the phone: the face mesh, both eyes and the distance to the camera.", "Phone screen with a greyscale face under a tracking mesh, close-ups of both eyes and readouts for each eye"],
+                ["perception/lidar-ui", 1050, 484, "The LiDAR scan screen, with a heatmap over the live view of the street.", "Phone screen showing a brick street with a red and yellow heatmap over the building fronts"]] },
+          1,
+          { f: [["perception/street-calib", 1918, 1476, "Eye-tracking calibration in the holder.", "A phone held in a white holder, its screen showing Shuheng’s face and eyes, with a street behind"],
+                ["perception/street-test", 1901, 1476, "Scanning with focus navigation.", "The phone in its holder, its screen showing a street with a red heatmap over the facades"]] },
+        ] },
+      { n: "04", title: "On the street",
+        text: [
+          "The prototype was then tested in an urban street, to see how gaze-guided scanning performs outside controlled conditions. The test involved walking through the site while focusing on selected parts of the buildings, and explored how attention, movement and the length of a scan affect the density and clarity of the point cloud. A two-minute and a three-minute street scan were each set beside a full scan of the same streets.",
+        ],
+        facts: [["Street scans", "2 and 3 minutes, each beside a full scan"]],
+        imgs: [
+          { f: [["perception/street2-gaze", 2000, 1381, "The two-minute street scan with its heatmap, and the spots A to D.", "Point-cloud model of two streets meeting, with heatmap colour on some building fronts and four framed spots labelled A to D"],
+                ["perception/street2-full", 2000, 1380, "The full scan of the same streets.", "Grey point-cloud model of the same streets, evenly filled, with the same four frames"]] },
+          { f: [["perception/street2-a", 1425, 1488, "Spot A, close up.", "Coloured point cloud of a shopfront with red pilasters and a lit door"],
+                ["perception/street2-b", 1425, 1488, "Spot B.", "Coloured point cloud of a shopfront with red pilasters and a shuttered window"],
+                ["perception/street2-c", 1424, 1488, "Spot C.", "Coloured point cloud of a pale corner entrance with a metal gate"],
+                ["perception/street2-d", 1424, 1488, "Spot D.", "Coloured point cloud of a pale ground floor with dark windows, fading into black"]] },
+          { f: [["perception/street3-gaze", 2000, 1872, "The three-minute street scan with its heatmap. Its frames A to D mark different spots from those in the close-ups above.", "Point-cloud model of a longer route along several streets, with heatmap colour on the building fronts and four framed spots labelled A to D"],
+                ["perception/street3-full", 2000, 1874, "The full scan, with the same frames.", "Grey point-cloud model of the same streets, evenly filled, with four framed spots labelled A to D"]] },
+        ] },
+    ],
+    imgs: [
+      ["room-gaze", 2000, 1050, "The perceived scan of the living room"],
+      ["street-use", 1905, 1473, "Scanning with the rig on the street"],
+      ["street3-gaze", 2000, 1872, "The three-minute street scan"],
+      ["flat-focus", 1422, 1118, "Scanning only what was of interest"],
+    ] },
+  { t: "Mycelium Self-Build", s: "From Soil Remediation to Gyroid Scaffolds", c: "Architecture", y: "2023–26", code: "MYC", dir: "mycelium", cover: [960, 480], wall: [960, 605],
+    d: "A mycelium project in two parts: a factory in Poplar, East London, that cleans contaminated soil and is built partly by its neighbours, and a web tool that turns a designer’s own 3D model into a printable gyroid scaffold for growing mycelium.",
+    intro: "Can mycelium clean contaminated soil while empowering a community to build for itself? And how can bio-integrated material combined with parametric design be used by every designer? The project has two parts. The Mycelium Factory (2023) is designed for a site in Poplar, East London, close to the DLR and the West India Docks, in an area bombed in the Blitz; the site’s soil is too contaminated to build on. It remediates other contaminated soils in London, gives nearby residents a mycelium studio, and is partly self-built: families, parents and children take part, so the programme for the neighbourhood starts while the building goes up. Mycelium Lab (2026) is a web tool that converts a designer’s own geometry into a gyroid scaffold for FDM printing, set by porosity, thickness, resolution and the local conditions the mycelium will grow in.",
+    meta: [
+      ["Year", "2023 and 2026"],
+      ["The Mycelium Factory", "2023 (Feb–Jun), The Bartlett School of Architecture, UCL, UG2, Year 2"],
+      ["Location", "Poplar, East London"], ["Tutors", "Zach Fluker, Jhono Bennett"],
+      ["Programme", "Reception and exhibition, lab and workshop, soil remediation factory"],
+      ["Model", "1:50, with mycelium cast in 3D-printed moulds"],
+      ["Mycelium Lab", "2026, independent project, AI-assisted coding in Cursor"],
+      ["Exports", "STL and G-code for FDM printing"],
+    ],
+    hero: ["mycelium/factory-model", 2000, 1261, "The 1:50 final model of the factory from above, with the line drawing of its moulds laid over it.", "Top view of a long architectural model of timber, plaster and mycelium parts, overlaid with fine white line drawings on black"],
+    chapters: [
+      { n: "01", title: "Contaminated ground",
+        text: [
+          "The site is unsuitable for any building because its soil is heavily contaminated, so the first step of the project is to remove the soil. To check the problem, plants were grown in the site’s polluted soil next to a control group in healthy, uncontaminated soil. The difference was stark: plants in the site soil showed abnormal forms, stunted growth and clear signs of phytotoxicity.",
+          "The remediation draws on published research into fungi taken from heavy-metal-contaminated soils in Zambia’s Copperbelt, which removed copper, cobalt, iron, manganese, zinc and lead from the soil (L. Dusengemungu and others, Frontiers in Microbiology, 2022).",
+        ],
+        facts: [["Site", "Poplar, East London, by the DLR"], ["Soil test", "Site soil against clean soil, day 1 to day 12"]],
+        imgs: [
+          { f: [["mycelium/soil-sample", 946, 751, "Soil samples for the test.", "Two plastic tubs of dark soil on a wooden surface"],
+                ["mycelium/soil-test", 1938, 1371, "Experimental group in the site’s soil, control group in clean soil, from day 1 to day 12.", "Twelve photos of plastic tubs of soil in four columns labelled Experimental group and Control group, days 1 to 12: seedlings sprout by day 7, and by day 12 they are fewer and spindlier in the site soil than in the clean soil"]] },
+          1,
+        ] },
+      { n: "02", title: "Building with mycelium",
+        text: [
+          "Mycelium offers a zero-carbon, fully circular lifecycle: the material is grown, and at the end of its life it is fully compostable. Mycelium composites typically have a micro-texture like velvet, cork or dry earth, which gives them a warm, organic touch. But pure mycelium is foam-like and brittle, with very low tensile and shear strength, so it cannot carry loads on its own. Here a light timber frame takes the loads and mycelium fills it in: panels for the roof and between the floors, for insulation and sound absorption, and bricks for walls that carry no load. Below ground, mycelium reinforces rammed earth.",
+          "Panels and bricks were made and tested. Flour is mixed with fungal tissue and a culture medium, packed into a mould and dried inside a plastic bag, then heated in an oven to inactivate the fungus. The whole process takes four to six weeks.",
+        ],
+        facts: [["Load-bearing", "Light timber frame"], ["Mycelium panels", "Roof, floors, inner walls"], ["Making a brick", "4–6 weeks"]],
+        imgs: [
+          { w: 9, f: [["mycelium/factory-section", 1382, 1600, "Exploded section: mycelium panels and bricks in a timber frame, over the soil remediation factory.", "Exploded line drawing of three storeys of wall and floor layers, labelled ground floor, underground floor 1 and underground floor 2", 1],
+                      ["mycelium/panel-test", 699, 1600, "Self-made mycelium panels in a timber frame.", "Two pale, fibrous mycelium panels set side by side in a tall timber frame"]] },
+          1,
+          { w: 9, f: [["mycelium/brick-test", 2000, 1127, "A self-made mycelium brick beside its mould.", "A white mould with two round inserts beside a pale, rough mycelium brick with two holes, on white", 1]] },
+        ] },
+      { n: "03", title: "A factory below ground",
+        text: [
+          "The building has a ground floor and two basements. The ground floor holds reception and exhibition space. The first basement holds the lab and workshop, and the second the soil remediation factory, with a soil tank for remediation and a rail track.",
+        ],
+        facts: [["Ground floor", "Reception, exhibition"], ["Basement 1", "Lab, workshop"], ["Basement 2", "Soil remediation factory"]],
+        imgs: [
+          { w: 9, f: [["mycelium/r-entrance", 2000, 1117, "Final render: the soil entrance.", "Night render of the soil entrance: low buildings under floodlights, a red glow and smoke above wet grass"]] },
+          { f: [["mycelium/r-kiln", 2000, 988, "Final render: the B1 kiln.", "Dark render of a long room with a stepped brick kiln at the left and rows of hanging mycelium forms lit in red"],
+                ["mycelium/r-lab", 2000, 951, "Final render: the B1 mycelium lab.", "Dark render of a corridor between a red-lit shelf and hanging mycelium forms, with a curtain and a pale room beyond"]] },
+          { f: [["mycelium/r-storage", 2000, 1110, "Final render: the mycelium storage room on the ground floor.", "Dark render of a low hall with columns and red fabric hanging between them"],
+                ["mycelium/r-stair", 2000, 1495, "Final render: the spiral stair.", "Render looking up a curved stair in a shaft, lit by a beam of light from a round opening above"]] },
+        ] },
+      { n: "04", title: "Built with its neighbours",
+        text: [
+          "In the self-build process, a construction team puts up the timber frame and local children produce the mycelium blocks. The community’s help also lowers the cost of building.",
+          "The 1:50 final model shows how the building is put together from modules. In the model, mycelium was used for the core parts, such as the roof, the central tube and the kiln, cast in 3D-printed moulds to show the malleability and potential of the material.",
+        ],
+        facts: [["Builders", "A construction team, families and children"], ["Final model", "1:50, in detachable parts"]],
+        imgs: [
+          1,
+          { w: 9, f: [["mycelium/model-parts", 2000, 1086, "The 1:50 model taken apart.", "Parts of an architectural model laid out on a white table: timber floor plates, concrete and plaster blocks, ribbed panels, a fibrous mycelium tube and a smaller tapered mycelium piece held in a hand"]] },
+        ] },
+      { n: "05", title: "Mycelium Lab: the gyroid",
+        text: [
+          "The second part, Mycelium Lab, is an independent project from 2026 that treats mycelium not as a fixed material product but as a system to design, linking biological growth, computational modelling and fabrication. It is based on research into mycelium-bound composites grown on 3D-printed wood-PLA gyroid scaffolds. The study shows that the gyroid can guide mycelium growth while improving the mechanical performance of conventional mycelium-based materials. Its porous geometry gives both structural support and space for biological colonisation: a precedent for combining digital fabrication with bio-based material development.",
+          "The algorithm was developed step by step. A basic form, such as a cube, is infilled with a gyroid structure. A base is then added, and curved-surface optimisation rounds the corners. Where the form overhangs, a solid surface is added so that print supports can be generated more easily: first under one overhang, then across several areas and under lifted overhangs, and finally on complex forms with discontinuous overhangs.",
+        ],
+        facts: [["Research base", "D. Sharma and H. Le Ferrand, “3D printed gyroid scaffolds enabling strong and thermally insulating mycelium-bound composites for greener infrastructures”, Nature Communications, 2025"], ["Steps", "Gyroid infill, rounded corners, support-generating surfaces under overhangs"]],
+        imgs: [
+          1,
+          { f: [["mycelium/form-gyroid", 935, 814, "The basic form, infilled with a gyroid.", "White cube made of a gyroid lattice with round holes, on light grey"],
+                ["mycelium/form-corner", 935, 814, "A base and rounded corners.", "The gyroid cube with rounded corners, standing on a thin solid base, on light grey"],
+                ["mycelium/form-overhang", 935, 814, "A surface added under the overhang.", "A slanted gyroid block whose overhanging underside is closed by a smooth solid surface, on light grey"]] },
+          { f: [["mycelium/form-double", 935, 814, "Double overhang.", "A gyroid block that flares out above its base, with solid surfaces closing the undersides of its two overhangs, on light grey"],
+                ["mycelium/form-lifted", 935, 813, "Lifted overhang.", "A gyroid block with a raised, curving overhang and a solid surface beneath it, on light grey"],
+                ["mycelium/form-hole", 935, 813, "Hole and overhang: a complex form with discontinuous overhangs.", "A gyroid block with a large hole through its top and solid surfaces below it, on light grey"]] },
+        ] },
+      { n: "06", title: "The web tool",
+        text: [
+          "The workflow was then turned into an HTML-based program, written with AI-assisted coding in Cursor, with a separate Python script for high-quality scaffolds from custom meshes. The Mycelium Lab combines environmental sensing, computational geometry and cultivation guidance. A user records the spot where the mycelium will grow through GPS and a photo; the light level read from the photo suggests how open the pores should be. They upload or generate a 3D model, preview the gyroid scaffold, adjust porosity, cell size, thickness and resolution, and export it as STL or G-code for FDM printing.",
+          "Cultivation is then guided step by step, from sterilisation and inoculation to environmental control, over a 28-day schedule. Each experiment is archived as a project with its model, settings and cultivation records, so that it can feed back into the next material test.",
+        ],
+        facts: [["Parameters", "Porosity, cell size, thickness, resolution"], ["Site input", "GPS and a photo"], ["Cultivation guide", "28 days"]],
+        imgs: [
+          { f: [["mycelium/desktop-ui", 1234, 1600, "Desktop: preview the scaffold, set its parameters and export STL or G-code.", "The app on desktop: on the left, a G-code layer preview of an egg-shaped gyroid scaffold in white lines on black; on the right, a light panel of parameter sliders with Generate Gyroid, Download STL and Export G-code buttons"],
+                ["mycelium/phone-model", 827, 1600, "Mobile: choosing the mesh resolution.", "Phone screen with a grey egg-shaped model and three resolution options, the last one selected"],
+                ["mycelium/phone-guide", 828, 1600, "The cultivation guide, day 0 of 28.", "Phone screen headed Oyster mushroom on VASE4, with a dark gyroid model, Day 0 of 28, a five-day weather strip, a grid of day markers and the first cultivation tasks, none ticked"],
+                ["mycelium/phone-projects", 827, 1600, "My projects: each experiment archived.", "Phone screen listing three projects as cards with dark gyroid models"]] },
+          1,
+        ] },
+      { n: "07", title: "Test prints",
+        text: [
+          "Two scaffolds were printed as tests in white PLA: an egg shape and a bone shape. Wood-PLA compatible with Bambu printers, the material used in the research, was not readily available.",
+        ],
+        imgs: [
+          { f: [["mycelium/print-egg", 2000, 1734, "A gyroid scaffold printed in white PLA.", "An egg-shaped white print made of a curving lattice with round holes and a large opening, on black"],
+                ["mycelium/print-bone", 2000, 1126, "A bone-shaped test print, also in white.", "A white bone-shaped print made of a gyroid lattice, with four openings along its middle, on black"]] },
+        ] },
+    ],
+    imgs: [
+      ["factory-model", 2000, 1261, "The 1:50 final model of the factory from above"],
+      ["r-entrance", 2000, 1117, "Final render of the soil entrance"],
+      ["model-parts", 2000, 1086, "The 1:50 model taken apart"],
+      ["forms", 2000, 1094, "Three forms and their gyroid scaffolds"],
+      ["print-egg", 2000, 1734, "A gyroid scaffold printed in white PLA"],
+    ] },
+  { t: "SPECIMEN51", s: "A Soft Jellyfish Robot", c: "Installation", y: "2026", code: "SPC", dir: "specimen", cover: [960, 480], wall: [897, 1450],
+    d: "A soft jellyfish robot that answers a shape wound in red yarn: a webcam and a trained classifier recognise the shape, the hood closes and four tentacles perform the dance that belongs to it. A team project at the RCA and Imperial.",
+    intro: "SPECIMEN51 is a soft jellyfish robot. Four tentacles hang from a round black body, and on top a clear hood folds open and shut like the hood of a pram. While the hood is open, a visitor winds a piece of red yarn around the pegs on a white disc. A webcam above the robot looks at the shape, and a classifier trained in Wekinator decides which of five shapes it is. Then the hood closes and the tentacles perform the dance that belongs to that shape. The exhibit is staged like a small surgery: the jellyfish lies on an operating table under the camera like a specimen being examined, and winding the yarn is like wiring up its nerves.",
+    meta: [
+      ["Year", "2026"], ["School", "Royal College of Art and Imperial College London"],
+      ["Module", "Cyberphysical Systems, Innovation Design Engineering"], ["Team", "Ismail Kale, Siyu Sun, Shuheng Wang"],
+      ["Built with", "Webcam, Processing, Wekinator, Arduino Nano Every, nine servos"],
+      ["Size", "About 66 cm tall and 53 cm wide at the feet"],
+      ["Repository", "github.com/ismailk1/cps_group11"],
+    ],
+    hero: ["specimen/whole", 897, 1450, "SPECIMEN51 on its display stand, with the webcam on the mast behind it.", "A round black robot body with four ribbed tentacles on a clear acrylic stand, a clear hood folded open on top and a tall clear mast with a webcam on an arm, on white"],
+    chapters: [
+      { n: "01", title: "A specimen on the table",
+        text: [
+          "The input is something made by hand. The yarn stays on the disc, so the camera can watch it the whole time the hood is open, and winding a new shape, or fixing an old one, takes only a few seconds. Red yarn on a white disc is also easy for the camera to pick out.",
+          "One round lasts 45 seconds and then starts again: 25 seconds for the hood to open, stay open and close, 5 seconds of rest and 15 seconds of dancing. The display stand is based on an operating table. The whole exhibit is about 66 cm tall and 53 cm wide at the feet, and the robot body sits 23 cm above the deck.",
+        ],
+        facts: [["Shapes", "Five, each with its own dance"], ["One round", "45 s: hood 25 s, rest 5 s, dance 15 s"]],
+        imgs: [
+          { f: [["specimen/manual", 2000, 1021, "The instruction manual: the five shapes and the dance each one starts. Mode 0 is the rest pose.", "Line drawing of a person winding red yarn on the disc under the camera, beside six small diagrams labelled MODE_0 to MODE_5: the rest pose, then five yarn shapes, each with arrows for the tentacle movement", 1]] },
+          1,
+        ] },
+      { n: "02", title: "Soft tentacles",
+        text: [
+          "The software pipeline came from the course’s robot arm exercise (webcam, Wekinator, Processing, Arduino and servos), but the rigid four-joint arm was replaced with a soft mechanism. Each tentacle is a soft TPU spine with 15 hard ribs, 10 mm apart, getting smaller from 26 mm at the root to 20 mm at the tip. Four fishing lines run through the ribs and are locked at the tip. At the root, each pair of opposite lines goes round the pulley of one servo, so with two servos a tentacle can bend in any direction.",
+          "The spine went through four iterations. The first was solid TPU and hardly bent; the second had hollow chambers inside and was still too stiff. The third, with thin ring slits between the ribs that leave only a round core, is the one on the robot; the fourth has an even thinner core in case it needs to be softer. The pulleys were remodelled around the real servo horns, and a bigger groove let the tentacle bend all the way.",
+        ],
+        facts: [["Servos", "Nine: two per tentacle, one for the hood"], ["Spine", "TPU 90A, 15 ribs from 26 to 20 mm"]],
+        imgs: [
+          { f: [["specimen/bend", 1600, 891, "A tentacle bending sideways in front of the camera mast.", "A black ribbed tentacle curving sideways from the robot body towards the black base of the camera mast, on a white table"],
+                ["specimen/tentacle", 876, 1586, "One tentacle: a TPU spine threaded through 15 ribs.", "Close-up of a black ribbed tentacle hanging from the robot body, the white spine visible between the ribs"]] },
+          1,
+          { w: 9, f: [["specimen/spines", 1200, 510, "The four spine iterations: solid, hollow inside, ring slits (used) and a thinner core.", "Line drawings of four ribbed spines, labelled Iteration 1 too stiff, Iteration 2 still too stiff, Iteration 3 used and Iteration 4 softer option", 1]] },
+        ] },
+      { n: "03", title: "The hood",
+        text: [
+          "The hood is four 1.5 mm steel half-circle wires on one hinge, joined by clear film. A servo swings the outer wire forward, which pulls the others into a closed dome. The film is polythene: three panels of a sphere pattern drawn in Onshape, stitched together with channels through which the wires are threaded. Under it sits the white winding disc with eight clear acrylic pegs.",
+        ],
+        facts: [["Wires", "Four, 1.5 mm steel, on one hinge"], ["Film", "Polythene, three stitched panels"]],
+        imgs: [
+          { f: [["specimen/triangle", 1596, 1232, "A triangle wound on the pegs, under the closing hood.", "Red yarn wound in a triangle around clear acrylic pegs on a white disc, with the clear film and steel wires of the hood folding down over it"],
+                ["specimen/closed", 926, 1564, "The hood closed over the disc.", "The robot body seen from the side through the clear hood film, with red yarn on the disc, black tentacle stands, servos and wires below"]] },
+        ] },
+      { n: "04", title: "Reading the yarn",
+        text: [
+          "A Processing sketch cuts a circle out of the webcam image that just covers the disc and blacks out everything else, then samples a 44 × 44 grid of brightness values: 1,936 inputs for Wekinator. A classifier with five classes decides which shape is on the disc, so that each shape starts exactly one dance. About 2,500 examples of the five shapes were recorded, moving or rewinding the yarn between recordings, to train Wekinator’s k-nearest-neighbour classifier.",
+          "In tests the triangle, the long thin loop and the half circle were classified correctly about 90% of the time; the square and the circle were often mixed up. A second Processing sketch passes the class on to the Arduino Nano Every once it has held for 200 ms, and the Arduino runs the round. It takes the latest class two seconds before the hood starts to close, so the closing hood cannot change the dance.",
+        ],
+        facts: [["Input", "44 × 44 brightness grid, 1,936 values"], ["Model", "k-nearest neighbour, about 2,500 examples"], ["Dances", "Up/down wave, left/right wave, diagonal twitch, cross-step, relay"]],
+        imgs: [
+          { w: 9, f: [["specimen/camera", 824, 1456, "The webcam on its sliding arm.", "A black webcam clamped to a printed bracket on a clear acrylic arm, against a pale background"],
+                      ["specimen/square", 916, 1278, "A square wound on the pegs.", "Red yarn wound in a square around clear acrylic pegs on a white disc, on the black robot body"]] },
+          1,
+        ] },
+      { n: "05", title: "Drawn to be rebuilt",
+        text: [
+          "The whole exhibit is drawn on four sheets: an exploded view, a parts list and 15 assembly steps. Steps 1–5 build the display stand, 6–9 the robot, 10–14 the hood, and step 15 sets the camera height. The printed and laser-cut parts, from the 225 mm chassis to the clear acrylic leg blades, are in the repository with print settings for the PLA and the TPU, and the simpler parts (the winding disc, pegs, hood wires and film) are given by their sizes on the parts list, so the exhibit can be built again.",
+        ],
+        facts: [["Drawings", "Exploded view, parts list, 15 steps"], ["Materials", "Black PLA, TPU 90A, 3 mm clear acrylic, 1.5 mm steel wire"]],
+        imgs: [
+          { f: [["specimen/exploded", 1414, 2000, "Exploded view of the whole exhibit: stand, robot and hood.", "Exploded line drawing: the stand with its deck, legs and camera mast on the left, and the robot body, head, winding disc, four hood wires and film stacked above each other on the right", 1],
+                ["specimen/parts", 2000, 1414, "Parts and hardware, coded A, P, R and T.", "Sheet of black silhouettes of every stand, robot and hood part with code numbers, beside a parts list and a hardware list", 1]] },
+          { f: [["specimen/steps-1", 2000, 1414, "Assembly steps 1–8: the display stand and the robot.", "Eight numbered line drawings showing the legs, deck, mast, camera arm, support, tentacle stands and chassis being put together, with screw lists", 1]] },
+          { f: [["specimen/steps-2", 2000, 1414, "Assembly steps 9–15: the robot on its support, the hood and the camera height.", "Eight line drawings showing the robot fixed to its support, the disc and pegs, the four hood wires, the film, the hood open and closed, the camera height and a detail of the hinge", 1]] },
+        ] },
+    ],
+    imgs: [
+      ["whole", 897, 1450, "SPECIMEN51 on its display stand"],
+      ["bend", 1600, 891, "A tentacle bending sideways"],
+      ["triangle", 1596, 1232, "A triangle wound on the pegs, under the closing hood"],
+      ["exploded", 1414, 2000, "Exploded view of the whole exhibit"],
+    ] },
+];
+const CATS = ["All works", ...new Set(WORKS.map(w => w.c))];
+const imgSrc = (w, f) => `img/${w.dir}/${f}.jpg`;
+// Images a sheet shows: a long-form work counts its hero and every figure in its chapters.
+const nImgs = w => w.chapters ? (w.hero ? 1 : 0) + w.chapters.reduce((n, c) => n + c.imgs.reduce((m, r) => m + (r.f ? r.f.length : 0), 0), 0) : w.imgs.length;
+// 960px-wide 2:1 covers for the Index hover picture; full files stay for the sheet.
+const coverSrc = w => `img/cover/${w.code}.jpg`;
+// A cover loop: [file under img/ without extension, width, height]; muted, so it may start by itself.
+// With reduced motion the tile keeps its still picture instead.
+const coverLoop = ([f, iw, ih]) => `<video muted loop playsinline autoplay preload="auto" poster="img/${f}.jpg" width="${iw}" height="${ih}" aria-hidden="true"><source src="img/${f}.webm" type="video/webm"><source src="img/${f}.mp4" type="video/mp4"></video>`;
+// A tile shows the work's first picture whole: a copy up to 960px wide in img/wall/, and the full file for
+// screens that need more. A cover is a third of columns 4–12 on desktop, a third of the page on tablets, half on phones.
+const wallSrc = w => `img/wall/${w.code}.jpg`;
+const wallSizes = "(min-width: 1024px) calc(25vw - 20px), (min-width: 600px) calc((100vw - 64px) / 3), calc((100vw - 44px) / 2)";
+// The average colour of each cover: its frame holds that colour until the picture arrives.
+const TINT = { DUN: "#77645c", CLF: "#403a33", WND: "#241f1e", OMI: "#1c1c1c", CHG: "#6d6864", RLQ: "#24211b", PRC: "#242723", MYC: "#282729", SPC: "#c5c8d6" };
+// A picture 1600px wide or more has a 1200px copy beside it (name-1200.jpg) for small screens and small frames.
+const SMALL = 1200, hasSmall = iw => iw >= 1600;
+const pad = n => String(n).padStart(2, "0");
+const $ = id => document.getElementById(id);
+/* Addresses. Every project and the About page has its own, so it can be shared, opened in a new tab, reloaded,
+   and left with the browser's Back. The built site uses /name/; a preview of this file uses #/name. */
+const PATHS = document.documentElement.dataset.routes === "path";
+const SITE = "Shuheng Wang", HOME = PATHS ? SITE : document.title;
+const SLUGS = WORKS.map(w => w.t.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, ""));
+const href = r => PATHS ? (r ? `/${r}/` : "/") : location.pathname + location.search + (r ? `#/${r}` : "");
+const route = () => { try { return PATHS ? decodeURIComponent(location.pathname).replace(/index\.html$/, "").replace(/^\/+|\/+$/g, "") : location.hash.startsWith("#/") ? decodeURIComponent(location.hash.slice(2)).replace(/\/+$/, "") : ""; } catch (e) { return ""; } };
+// A plain click opens a work here; a click with a modifier key, or the middle button, is left to the browser.
+const plain = e => !(e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button);
+/* Pictures still on their way are marked so that they fade in when they arrive; ones already there are left alone. */
+function fx(root) {
+  if (reduce) return;
+  root.querySelectorAll("img").forEach(im => {
+    if (im.complete || im.classList.contains("fx")) return;
+    const done = () => im.classList.add("in");
+    im.classList.add("fx"); im.addEventListener("load", done, { once: true }); im.addEventListener("error", done, { once: true });
+  });
+}
+// A sheet's content arrives with a short rise and fade, when the sheet opens and when it turns to another work;
+// when a sheet closes, the page behind comes back with a short fade.
+// Neither plays when the browser's own Back or Forward made the change: phones already slide the page then.
+let hush = false;
+const arrive = el => { if (!reduce && !hush && el && el.animate) el.animate([{ opacity: 0, transform: "translateY(10px)" }, { opacity: 1, transform: "none" }], { duration: 420, easing: "cubic-bezier(.2, .7, .2, 1)" }); };
+const reveal = () => { if (!reduce && !hush) bg.forEach(el => el.animate && el.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 260, easing: "ease-out" })); };
+let cat = "All works";
+try { const s = localStorage.getItem("sw-cat"); if (CATS.includes(s)) cat = s; } catch (e) {}
+const visible = () => WORKS.map((w, i) => ({ ...w, i })).filter(w => cat === "All works" || w.c === cat);
+
+/* Filter */
+const menu = $("menu"), ficon = $("ficon"), fsel = $("fsel");
+function openMenu(open) {
+  menu.hidden = !open;
+  [ficon, fsel].forEach(b => b.setAttribute("aria-expanded", open));
+  if (open) (menu.querySelector('[aria-checked="true"]') || menu.firstElementChild).focus();
+}
+let menuFrom = fsel;
+ficon.onclick = fsel.onclick = e => { e.stopPropagation(); menuFrom = e.currentTarget; openMenu(menu.hidden); };
+document.addEventListener("click", e => { if (!menu.hidden && !menu.contains(e.target)) openMenu(false); });
+menu.addEventListener("keydown", e => {
+  const items = [...menu.querySelectorAll("button")], k = items.indexOf(document.activeElement);
+  if (e.key === "ArrowDown") { e.preventDefault(); items[(k + 1) % items.length].focus(); }
+  if (e.key === "ArrowUp") { e.preventDefault(); items[(k - 1 + items.length) % items.length].focus(); }
+  if (e.key === "Tab") openMenu(false);
+});
+
+function renderGrid() {
+  menu.innerHTML = CATS.map(c => {
+    const n = c === "All works" ? WORKS.length : WORKS.filter(w => w.c === c).length;
+    return `<button type="button" role="menuitemradio" aria-checked="${c === cat}" data-c="${c}"><span>${c}</span><span class="m num">${n}</span></button>`;
+  }).join("");
+  menu.querySelectorAll("button").forEach(b => b.onclick = () => {
+    cat = b.dataset.c; try { localStorage.setItem("sw-cat", cat); } catch (e) {}
+    openMenu(false); renderGrid(); fsel.focus();
+  });
+  $("fsel-t").textContent = cat;
+  const items = visible();
+  $("count").textContent = items.length;
+  $("grid").innerHTML = items.length ? items.map((w, k) => {
+    const [w0, h0] = w.wall, big = w.imgs[0], play = w.loop && !reduce;
+    return `<a class="tile" href="${href(SLUGS[w.i])}" draggable="false" data-i="${w.i}">
+      <span class="ph" style="aspect-ratio:${play ? `${w.loop[1]} / ${w.loop[2]}` : `${w0} / ${h0}`}${TINT[w.code] ? `;--tint:${TINT[w.code]}` : ""}">${play ? coverLoop(w.loop) : `<img src="${wallSrc(w)}" srcset="${wallSrc(w)} ${w0}w${big[1] > w0 ? `${hasSmall(big[1]) ? `, ${imgSrc(w, `${big[0]}-${SMALL}`)} ${SMALL}w` : ""}, ${imgSrc(w, big[0])} ${big[1]}w` : ""}" sizes="${wallSizes}" alt="" width="${w0}" height="${h0}" decoding="async"${k < 6 ? ' fetchpriority="high"' : ""}>`}</span>
+      <span class="cap"><span class="code mono">${w.code}</span><span class="t">${w.t}</span><span class="y">${w.y}</span></span>
+    </a>`;
+  }).join("") : `<p class="empty m">Nothing in this category yet.</p>`;
+  fx($("grid"));
+  // The preview keeps its work while it is still in view; otherwise it shows the first one.
+  if (!items.some(w => w.i === act)) act = items.length ? items[0].i : -1;
+  showPv(act, false);
+  syncIndex();
+  stack();
+  fit();
+}
+/* Each cover goes under the shortest column so far (the leftmost on a tie). Widths and left edges come from the
+   CSS (--n columns, --c for the column); the tops are measured, so a caption on two lines is no problem. */
+function stack() {
+  const g = $("grid"), cs = getComputedStyle(g), n = parseInt(cs.getPropertyValue("--n")) || 3, rg = parseFloat(cs.getPropertyValue("--rg")) || 0;
+  const col = Array(n).fill(0), tiles = g.querySelectorAll(".tile");
+  stackW = g.clientWidth;
+  tiles.forEach(t => {
+    let c = 0; col.forEach((h, j) => { if (h < col[c] - 0.5) c = j; });
+    t.style.setProperty("--c", c); t.style.top = col[c] + "px"; col[c] += t.offsetHeight + rg;
+  });
+  g.style.height = tiles.length ? Math.max(...col) - rg + "px" : "";
+}
+let stackW = 0;
+// The columns change width with the window (and when a scroll bar appears), so the covers are stacked again.
+if ("ResizeObserver" in window) new ResizeObserver(() => { if ($("grid").clientWidth !== stackW) { stack(); fit(); } }).observe($("grid"));
+
+/* Preview: follows the pointer and keyboard focus over the covers, and keeps the last one when the pointer leaves. */
+let act = -1;
+function showPv(i, fade = true) {
+  const pv = $("pv"); pv.hidden = i < 0;
+  $("grid").querySelectorAll(".tile[data-i]").forEach(t => t.classList.toggle("on", +t.dataset.i === i));
+  if (i < 0) return;
+  const w = WORKS[i], list = visible(), k = list.findIndex(x => x.i === i);
+  $("pv-code").textContent = w.code;
+  $("pv-n").textContent = `${pad(k + 1)} / ${pad(list.length)}`;
+  $("pv-t").textContent = w.t;
+  $("pv-dl").innerHTML = `<dt>Category</dt><dd>${w.c}</dd><dt>Year</dt><dd class="num">${w.y}</dd><dt>Images</dt><dd class="num">${nImgs(w)}</dd>`;
+  $("pv-d").textContent = w.d || "";
+  if (fade && !reduce && $("pv-c").animate) $("pv-c").animate([{ opacity: 0.2 }, { opacity: 1 }], { duration: 260, easing: "ease-out" });
+}
+// After the sheet closes, the browser re-hovers the tile under a resting pointer; that must not undo the
+// hand-back to the last-viewed work, so the pointer takes over again only once it actually moves.
+let rest = false;
+function pointTo(e) {
+  if (rest && e.type === "mouseover") return;
+  const t = e.target.closest(".tile[data-i]"), i = t ? +t.dataset.i : act;
+  if (i !== act) { act = i; showPv(i); }
+}
+$("grid").addEventListener("mouseover", pointTo);
+$("grid").addEventListener("mousemove", e => { if (rest) { rest = false; pointTo(e); } });
+$("grid").addEventListener("focusin", pointTo);
+$("pv-open").onclick = e => { if (act >= 0) openSheet(act, e.currentTarget); };
+/* The description keeps the height of the longest one, so the Open project pill never moves between works.
+   On tablets and phones the description is hidden, measures 0 and reserves nothing. */
+function pvReserve() {
+  const d = $("pv-d"), keep = d.textContent; let h = 0;
+  d.style.minHeight = "";
+  WORKS.forEach(w => { d.textContent = w.d || ""; h = Math.max(h, d.getBoundingClientRect().height); });
+  d.textContent = keep; d.style.minHeight = h ? h + "px" : "";
+}
+/* Tablet and desktop: when the works end on the first screen but the Index would not fit whole beneath them,
+   the works hold the screen and the Index starts below the fold, never as a half-cut row. */
+function fit() {
+  pvReserve();
+  const pr = $("projects"); pr.classList.remove("fill");
+  const end = $("grid").getBoundingClientRect().bottom + scrollY, ix = $("index").offsetHeight;
+  pr.classList.toggle("fill", end < innerHeight && end + ix > innerHeight);
+  // The short index must still be able to reach the top of the screen (Index link, index tile), so the
+  // information block grows when the page below the index is shorter than the screen.
+  const ab = $("about"); ab.style.minHeight = ""; ab.style.marginTop = "";
+  const need = innerHeight - parseFloat(getComputedStyle($("index")).scrollMarginTop) - ix - $("contact").offsetHeight;
+  if (ab.offsetHeight < need) ab.style.minHeight = Math.ceil(need) + "px";
+  // When the works and the whole Index fit but the Information text would still be cut by the fold, it starts at the fold.
+  if (!pr.classList.contains("fill") && innerWidth >= 600) {
+    const y = el => el.getBoundingClientRect(), lt = y(ab.querySelector(".lbl")).top + scrollY, bb = y(ab.querySelector(".bio")).bottom + scrollY;
+    if (lt < innerHeight && bb > innerHeight) ab.style.marginTop = Math.ceil(innerHeight - (y(ab).top + scrollY)) + "px";
+  }
+}
+addEventListener("resize", fit); document.fonts?.ready.then(() => { stack(); fit(); });
+$("grid").addEventListener("click", e => { const t = e.target.closest(".tile[data-i]"); if (t && plain(e)) { e.preventDefault(); openSheet(+t.dataset.i, t); } });
+
+/* Index: rows outside the active category step back to the muted colour. */
+function syncIndex() {
+  $("list").querySelectorAll(".irow").forEach(r => r.classList.toggle("out", cat !== "All works" && WORKS[+r.dataset.i].c !== cat));
+}
+function renderIndex() {
+  $("list").innerHTML = WORKS.map((w, i) => `
+    <a class="irow g12" href="${href(SLUGS[i])}" draggable="false" data-i="${i}" data-img="${coverSrc(w)}">
+      <span class="c-no mono m"><span class="num">${pad(i + 1)}</span><span class="c-code">${w.code}</span></span>
+      <span class="c-t">${w.t}</span><span class="c-c m">${w.c}</span><span class="c-n m num">${pad(nImgs(w))}</span><span class="c-y m">${w.y}</span>
+    </a>`).join("");
+  $("list").querySelectorAll(".irow").forEach(row => {
+    row.onclick = e => { if (plain(e)) { e.preventDefault(); openSheet(+row.dataset.i, row); } };
+    row.addEventListener("mouseenter", () => { peek.src = row.dataset.img; peek.classList.add("on"); });
+    row.addEventListener("mouseleave", () => peek.classList.remove("on"));
+  });
+  syncIndex();
+}
+// The hover picture trails the pointer a little instead of being pinned to it; it starts where the pointer is.
+const peek = $("peek");
+let pkx = 0, pky = 0, pktx = 0, pkty = 0, pkRaf = 0, pkNew = true;
+function pkStep() {
+  pkRaf = 0; pkx += (pktx - pkx) * 0.22; pky += (pkty - pky) * 0.22;
+  peek.style.transform = `translate(${pkx.toFixed(1)}px, ${pky.toFixed(1)}px)`;
+  if (peek.classList.contains("on") && Math.abs(pktx - pkx) + Math.abs(pkty - pky) > 0.3) pkRaf = requestAnimationFrame(pkStep);
+}
+addEventListener("mousemove", e => {
+  if (!peek.classList.contains("on")) { pkNew = true; return; }
+  pktx = Math.min(e.clientX + 24, innerWidth - 296);
+  pkty = Math.max(8, Math.min(e.clientY - 40, innerHeight - (peek.offsetHeight || 190) - 16));
+  if (pkNew || reduce) { pkx = pktx; pky = pkty; pkNew = false; }
+  if (!pkRaf) pkRaf = requestAnimationFrame(pkStep);
+});
+
+/* Project sheet */
+const sheet = $("sheet"), bg = [document.querySelector("header.top"), $("top"), $("contact")];
+let cur = -1, opener = null;
+// The works the sheet steps through, fixed when it opens: the filtered set if the opened work is in it, else all.
+let walk = [];
+// Escapes text for HTML and keeps a number with its unit of length, and a range ("1.5–2"), on one line.
+const esc = t => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/(\d) (?=m\b|m\/s\b)/g, "$1\u00a0").replace(/(\d)–(?=\d)/g, "$1–\u2060");
+/* Sheet figures and rows. A figure is [file under img/, width, height, caption, alt, on white]; the first one
+   of a sheet loads at once, the rest lazily. A row's images share one height (each grows with its aspect
+   ratio); it starts on column 1 (w 12) or on column 4 with the text (w 9), and snap() narrows it by whole
+   columns when it would be taller than the screen. */
+let nFig = 0;
+function figure([f, iw, ih, cap, alt, ln, vid], sizes) {
+  const first = nFig++ === 0;
+  const set = hasSmall(iw) ? ` srcset="img/${f}-${SMALL}.jpg ${SMALL}w, img/${f}.jpg ${iw}w" sizes="${sizes || "100vw"}"` : "";
+  const st = `--ar:${(iw / ih).toFixed(4)};--iw:${iw}px`;
+  if (vid) return `<figure${iw / ih < 0.8 ? ' class="tall"' : ""} style="${st}"><div class="vid${reduce ? " off" : ""}"><video muted loop playsinline preload="none" poster="img/${f}.jpg" width="${iw}" height="${ih}" aria-label="${esc(alt || cap)}"><source src="img/${f}.webm" type="video/webm"><source src="img/${f}.mp4" type="video/mp4"></video><button class="pill vbtn" type="button">${reduce ? "Play" : "Pause"}</button></div><figcaption>${esc(cap)}</figcaption></figure>`;
+  return `<figure${ln && iw / ih < 0.8 ? ' class="tall"' : ""} style="${st}"><span class="im${ln ? " ln" : ""}"><img${ln ? ' class="ln"' : ""} src="img/${f}.jpg"${set} alt="${esc(alt ?? cap)}" width="${iw}" height="${ih}" decoding="async"${first ? ' fetchpriority="high"' : ' loading="lazy"'}></span><figcaption>${esc(cap)}</figcaption></figure>`;
+}
+/* Loops play while at least a third of them is on screen and stop when the sheet closes or scrolls past.
+   With reduced motion they wait on their poster until the pill starts them; a paused loop stays paused. */
+const vio = "IntersectionObserver" in window ? new IntersectionObserver(es => es.forEach(e => {
+  const v = e.target, off = v.parentElement.classList.contains("off");
+  if (e.isIntersecting && !off && !sheet.hidden) { v.preload = "auto"; v.play().catch(() => {}); } else v.pause();
+}), { threshold: 0.33 }) : null;
+function wireVids() {
+  vio?.disconnect();
+  sheet.querySelectorAll(".vid video").forEach(v => vio ? vio.observe(v) : (!reduce && v.play().catch(() => {})));
+}
+document.addEventListener("click", e => {
+  const b = e.target.closest(".vbtn"); if (!b) return;
+  const box = b.parentElement, v = box.querySelector("video"), off = !box.classList.contains("off");
+  box.classList.toggle("off", off); b.textContent = off ? "Play" : "Pause";
+  if (off) v.pause(); else { v.preload = "auto"; v.play().catch(() => {}); }
+});
+function row({ f, w = 12 }) {
+  const sum = f.reduce((s, [, iw, ih]) => s + iw / ih, 0), s = w === 12 ? 1 : 13 - w;
+  const mh = Math.min(...f.map(x => x[2]));
+  // How wide a figure is shown, for the browser to pick a file: its share of the row on desktops and tablets;
+  // on phones the whole width, or its share of a pair.
+  const vw = x => `${Math.max(1, Math.round(x))}vw`, ar = ([, iw, ih]) => iw / ih;
+  const fig = grp => x => figure(x, `(min-width: 861px) ${vw(w / 12 * ar(x) / sum * 100)}, (min-width: 600px) ${vw(ar(x) / sum * 100)}, ${vw(ar(x) / grp.reduce((s, y) => s + ar(y), 0) * 100)}`);
+  const figs = f.length === 4 ? `<div class="pr">${f.slice(0, 2).map(fig(f.slice(0, 2))).join("")}</div><div class="pr">${f.slice(2).map(fig(f.slice(2))).join("")}</div>` : f.map(x => fig([x])(x)).join("");
+  return `<div class="s-row r${f.length}" data-s="${s}" data-k="${w}" data-sum="${sum.toFixed(4)}" data-mh="${mh}" data-n="${f.length - 1}" style="--sum:${sum.toFixed(3)};--n:${f.length - 1};grid-column:${s} / span ${w}">${figs}</div>`;
+}
+/* Keeps every row on whole grid columns: a row that would be taller than the screen gives up a column at a
+   time from its right edge. Tablets and phones run every row across the full width; phones stack them. */
+function snap() {
+  if (sheet.hidden) return;
+  const narrow = innerWidth <= 860, stack = innerWidth < 600;
+  const maxH = document.documentElement.clientHeight - (narrow ? 88 : 50) - 132;
+  sheet.querySelectorAll(".s-row[data-k]").forEach(r => {
+    const g = parseFloat(getComputedStyle(r.parentElement).columnGap) || 16, col = (r.parentElement.clientWidth - 11 * g) / 12;
+    const sum = +r.dataset.sum, n = +r.dataset.n, s = narrow ? 1 : +r.dataset.s;
+    let k = narrow ? 12 : +r.dataset.k;
+    if (!stack) while (k > 4 && (k * col + (k - 1) * g - n * g) / sum > maxH) k--;
+    // A row also stops at the width where its smallest picture is shown at its own pixel size.
+    r.style.gridColumn = `${s} / span ${k}`; r.style.maxWidth = stack ? "none" : `${Math.round(+r.dataset.mh * sum + n * g)}px`;
+  });
+}
+// Long form: each chapter (a hairline, number, title, first paragraph, facts) and its flow of rows and later
+// paragraphs, then the closing words. The hero sits in the opening spread.
+function longForm(w) {
+  let h = w.chapters.map(ch => {
+    const id = `ch-${ch.n}`;
+    const facts = ch.facts && ch.facts.length ? `<dl class="s-facts">${ch.facts.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>` : "";
+    const flow = ch.imgs.map(r => typeof r === "number" ? `<p class="s-p">${esc(ch.text[r])}</p>` : row(r)).join("");
+    return `<section class="s-ch g12" id="${id}" aria-labelledby="${id}-t" data-n="${ch.n}" data-t="${esc(ch.title)}">
+      <h3 id="${id}-t" tabindex="-1"><span class="mono m num">${ch.n}</span><span>${esc(ch.title)}</span></h3>
+      <p class="s-p">${esc(ch.text[0])}</p>${facts}${flow}</section>`;
+  }).join("");
+  if (w.closing) h += `<section class="s-end g12" aria-labelledby="s-end-t"><h3 id="s-end-t">Conclusion</h3><blockquote><p>“${esc(w.closing)}”</p></blockquote></section>`;
+  return h;
+}
+// Short form: the images in equal-height pairs (an odd count opens with one alone, so no sheet ends on a lone
+// picture). A row stays full width while it is wide enough to stay well under the screen; taller ones take
+// columns 4–12, the same edge as the text.
+function shortForm(w) {
+  const fs = w.imgs.map(([f, iw, ih, alt]) => [`${w.dir}/${f}`, iw, ih, /[.!?]$/.test(alt) ? alt : `${alt}.`, ""]), rows = [];
+  let j = fs.length % 2;
+  if (j) rows.push([fs[0]]);
+  for (; j < fs.length; j += 2) rows.push(fs.slice(j, j + 2));
+  return rows.map(f => row({ f, w: f.reduce((s, [, iw, ih]) => s + iw / ih, 0) < 2.4 ? 9 : 12 })).join("");
+}
+function fill(i) {
+  cur = i; const w = WORKS[i], list = walk, k = list.findIndex(x => x.i === i);
+  const nxt = list[(k + 1) % list.length];
+  $("s-code").textContent = w.code;
+  $("s-n").textContent = `${pad(k + 1)} / ${pad(list.length)}`;
+  $("s-title").textContent = w.t;
+  $("s-sub").textContent = w.s || ""; $("s-sub").hidden = !w.s;
+  const meta = w.meta || [["Category", w.c], ["Year", w.y], ["Images", nImgs(w)]];
+  $("s-dl").innerHTML = meta.map(([dt, dd]) => `<dt>${esc(dt)}</dt><dd>${esc(dd)}</dd>`).join("");
+  const intro = (w.intro || w.d || "").replace(/(\d) (?=m\b)/g, "$1 ");
+  $("s-d").textContent = intro; $("s-d").hidden = !intro;
+  // Contents: in the opening spread and in the bar's chapter menu.
+  const chl = w.chapters || [];
+  $("s-tocl").innerHTML = chl.map(c => `<li><button type="button" data-n="${c.n}"><span class="mono num">${c.n}</span><span>${esc(c.title)}</span></button></li>`).join("");
+  $("s-chm").innerHTML = chl.map(c => `<button type="button" role="menuitem" data-n="${c.n}"><span class="mono num">${c.n}</span><span>${esc(c.title)}</span></button>`).join("");
+  $("s-toc").hidden = !chl.length; chMenu(false);
+  nFig = 0;
+  $("s-open").querySelector(".s-row")?.remove();
+  if (w.hero) $("s-open").insertAdjacentHTML("beforeend", row({ f: [w.hero] }));
+  let html = w.chapters ? longForm(w) : shortForm(w);
+  // Thin sheet (one image): a quiet end link sits under the picture and stands in for the footer bar.
+  const many = list.length > 1, thin = !w.chapters && w.imgs.length === 1 && many;
+  if (thin) html += `<button class="pill s-more" type="button"><span class="m">Next</span><span class="mono m">${nxt.code}</span><span>${nxt.t}</span><svg class="ic" viewBox="0 0 12 12" aria-hidden="true"><path d="M1.5 6h9M7 2.5L10.5 6 7 9.5"/></svg></button>`;
+  $("s-imgs").innerHTML = html;
+  $("s-foot").hidden = thin || !many;
+  $("s-fcode").textContent = nxt.code; $("s-ft").textContent = nxt.t;
+  $("s-fs").textContent = nxt.s || ""; $("s-fs").hidden = !nxt.s;
+  $("s-fi").src = coverSrc(nxt);
+  fx(sheet);
+  [$("s-prev"), $("s-next")].forEach(b => b.disabled = !many);
+  sheet.scrollTop = 0;
+  // A smooth scroll still running in the sheet (a Contents jump, Space or Page Down) would carry the next
+  // project on down; keep it at the top until the sheet has been still for a few frames.
+  let hold = 0, still = 0;
+  const pin = () => { if (sheet.hidden || cur !== i) return; if (sheet.scrollTop) { sheet.scrollTop = 0; still = 0; } else still++; if (++hold < 30 && still < 3) requestAnimationFrame(pin); };
+  requestAnimationFrame(pin);
+  chs = [...$("s-imgs").querySelectorAll(".s-ch")]; chOn = null; $("s-chap").classList.remove("on"); $("s-chn").textContent = $("s-cht").textContent = "";
+  if (!sheet.hidden) { snap(); syncChap(); wireVids(); arrive(sheet.querySelector(".s-body")); }
+}
+/* Chapter in view: the last chapter whose title has passed a reading line a quarter of the way down the
+   screen. The bar's pill names it and the menu marks it; the pill stays away over the opening spread and on
+   sheets without chapters. */
+let chs = [], chOn = null, chRaf = 0;
+function syncChap() {
+  chRaf = 0;
+  if (sheet.hidden) return;
+  const line = sheet.querySelector(".s-bar").getBoundingClientRect().bottom + innerHeight * 0.25;
+  let on = null;
+  for (const c of chs) { if (c.firstElementChild.getBoundingClientRect().top <= line) on = c; else break; }
+  // A short last chapter may never reach the line: at the foot of the sheet it is the current one.
+  if (chs.length && sheet.scrollTop >= sheet.scrollHeight - sheet.clientHeight - 2) on = chs[chs.length - 1];
+  if (on === chOn) return;
+  const was = chOn; chOn = on;
+  $("s-chap").classList.toggle("on", !!on);
+  $("s-chm").querySelectorAll("button").forEach(b => on && b.dataset.n === on.dataset.n ? b.setAttribute("aria-current", "true") : b.removeAttribute("aria-current"));
+  if (!on) {
+    // Back over the opening spread: the menu closes with its pill; focus inside it moves to the sheet.
+    if (!$("s-chm").hidden) { const had = $("s-chap").contains(document.activeElement); chMenu(false); if (had) sheet.focus({ preventScroll: true }); }
+    else if ($("s-chap").contains(document.activeElement)) sheet.focus({ preventScroll: true });
+    return;
+  }
+  $("s-chn").textContent = on.dataset.n; $("s-cht").textContent = on.dataset.t;
+  if (was && !reduce && $("s-chb").animate) $("s-chb").animate([{ opacity: 0.25 }, { opacity: 1 }], { duration: 260, easing: "ease-out" });
+}
+sheet.addEventListener("scroll", () => { if (!chRaf) chRaf = requestAnimationFrame(syncChap); }, { passive: true });
+addEventListener("resize", () => { snap(); if (!chRaf) chRaf = requestAnimationFrame(syncChap); });
+document.fonts?.ready.then(snap);
+/* Going to a chapter: the sheet scrolls until its hairline sits a little under the bar (and under the
+   chapter pill's band on tablets and phones), smoothly unless motion is reduced, and focus moves to its title. */
+function goChap(n) {
+  const c = $("ch-" + n); if (!c) return;
+  const bar = sheet.querySelector(".s-bar"), band = innerWidth <= 860 ? 46 : 0;
+  const top = c.getBoundingClientRect().top - sheet.getBoundingClientRect().top + sheet.scrollTop - bar.offsetHeight - band - 24;
+  sheet.scrollTo({ top: Math.max(0, top), behavior: reduce ? "auto" : "smooth" });
+  c.querySelector("h3").focus({ preventScroll: true });
+}
+const chb = $("s-chb"), chm = $("s-chm");
+function chMenu(open) {
+  chm.hidden = !open; chb.setAttribute("aria-expanded", open);
+  if (open) (chm.querySelector('[aria-current="true"]') || chm.firstElementChild)?.focus();
+}
+chb.onclick = e => { e.stopPropagation(); if ($("s-chap").classList.contains("on")) chMenu(chm.hidden); };
+document.addEventListener("click", e => { if (!chm.hidden && !chm.contains(e.target)) chMenu(false); });
+chm.addEventListener("keydown", e => {
+  const items = [...chm.querySelectorAll("button")], k = items.indexOf(document.activeElement);
+  if (e.key === "ArrowDown") { e.preventDefault(); items[(k + 1) % items.length].focus(); }
+  if (e.key === "ArrowUp") { e.preventDefault(); items[(k - 1 + items.length) % items.length].focus(); }
+  if (e.key === "Home" || e.key === "End") { e.preventDefault(); items[e.key === "Home" ? 0 : items.length - 1].focus(); }
+  if (e.key === "Tab") { e.preventDefault(); chMenu(false); chb.focus(); }
+});
+chm.addEventListener("click", e => { const b = e.target.closest("button[data-n]"); if (b) { e.stopPropagation(); chMenu(false); goChap(b.dataset.n); } });
+$("s-tocl").addEventListener("click", e => { const b = e.target.closest("button[data-n]"); if (b) goChap(b.dataset.n); });
+function step(d) {
+  if (walk.length < 2) return;
+  const list = walk, k = list.findIndex(x => x.i === cur); fill(list[(k + d + list.length) % list.length].i);
+  addr(SLUGS[cur], "replace");
+  // The focused end link can be replaced or hidden by fill(); keep focus inside the dialog.
+  if (!sheet.contains(document.activeElement) || !document.activeElement.getClientRects().length) $("s-close").focus({ preventScroll: true });
+}
+// quiet: the address already names this work (the page was opened on it, or Back or Forward led here).
+function openSheet(i, from, quiet) {
+  opener = from || (quiet && $("grid").querySelector(`.tile[data-i="${i}"]`)) || document.activeElement;
+  const v = visible(); walk = v.some(w => w.i === i) ? v : WORKS.map((w, j) => ({ ...w, i: j }));
+  fill(i);
+  sheet.hidden = false; sheet.scrollTop = 0; document.documentElement.classList.add("lock");
+  bg.forEach(el => el.inert = true); peek.classList.remove("on");
+  snap(); syncChap(); wireVids(); arrive(sheet.querySelector(".s-body"));
+  addr(SLUGS[i], quiet === true ? "" : "push");
+  $("s-close").focus({ preventScroll: true });
+}
+function closeSheet(quiet) {
+  chMenu(false); sheet.hidden = true; document.documentElement.classList.remove("lock");
+  vio?.disconnect(); sheet.querySelectorAll(".vid video").forEach(v => v.pause());
+  bg.forEach(el => el.inert = false);
+  // Return to the work last viewed in the sheet: its tile takes focus (and the preview through focusin),
+  // or, when the pill or an index row opened the sheet, the preview switches to it directly.
+  const last = cur;
+  if (opener && opener.matches && opener.matches(".tile[data-i]")) opener = $("grid").querySelector(`.tile[data-i="${last}"]`) || opener;
+  else if (visible().some(w => w.i === last)) { act = last; showPv(last, false); }
+  cur = -1; rest = true;
+  if (opener && opener.isConnected) opener.focus({ preventScroll: true });
+  if (quiet !== true) { home(); reveal(); }
+}
+$("s-close").onclick = () => closeSheet();
+$("s-prev").onclick = () => step(-1);
+$("s-next").onclick = () => step(1);
+$("s-foot").onclick = () => { step(1); $("s-close").focus({ preventScroll: true }); };
+$("s-imgs").addEventListener("click", e => { if (e.target.closest(".s-more")) { step(1); $("s-close").focus({ preventScroll: true }); } });
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") {
+    if (!menu.hidden) { openMenu(false); menuFrom.focus(); }
+    else if (!chm.hidden) { chMenu(false); chb.focus(); }
+    else if (!sheet.hidden) closeSheet();
+    else if (!ab.hidden) closeAbout();
+  }
+  if (!sheet.hidden && chm.hidden && (e.key === "ArrowRight" || e.key === "ArrowLeft") && !e.altKey && !e.metaKey) { e.preventDefault(); step(e.key === "ArrowRight" ? 1 : -1); }
+  if (!sheet.hidden && e.key === "Tab" && !e.defaultPrevented) {
+    // Wrap at either end, and also when focus sits on the dialog itself (a click on a blank area). From a
+    // chapter title (focused by the contents) Tab carries on from its place in the page.
+    const f = [...sheet.querySelectorAll("button:not([disabled])")].filter(b => b.getClientRects().length && getComputedStyle(b).visibility !== "hidden");
+    const a = document.activeElement, i = f.indexOf(a);
+    if (i < 0 && a !== sheet && sheet.contains(a)) {
+      const nx = f.findIndex(b => a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING);
+      if (e.shiftKey ? nx === 0 : nx < 0) { e.preventDefault(); (e.shiftKey ? f[f.length - 1] : f[0]).focus(); }
+    } else if (e.shiftKey ? i <= 0 : (i === -1 || i === f.length - 1)) { e.preventDefault(); (e.shiftKey ? f[f.length - 1] : f[0]).focus(); }
+  }
+});
+
+
+/* Copy email */
+let okT;
+$("mail").onclick = async () => {
+  const ok = $("ok");
+  try { await navigator.clipboard.writeText("wshing428@gmail.com"); ok.textContent = "Copied"; }
+  catch (e) { const s = getSelection(), rg = document.createRange(); rg.selectNodeContents($("mail").firstChild); s.removeAllRanges(); s.addRange(rg); ok.textContent = "Selected"; }
+  clearTimeout(okT); okT = setTimeout(() => ok.textContent = "Copy", 1600);
+};
+
+/* Visitors who ask for less motion get still posters, no fades and no smooth scrolling. */
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* About: opened from About in the header and from the Information block; Esc or Close returns to where it was opened. */
+const ab = $("ab"); let abFrom = null;
+function openAbout(from, quiet) {
+  if (!sheet.hidden) closeSheet(true);
+  abFrom = from || (quiet === true && abLinks[0]) || document.activeElement;
+  ab.hidden = false; ab.scrollTop = 0; document.documentElement.classList.add("lock");
+  bg.forEach(el => el.inert = true); peek.classList.remove("on");
+  arrive(ab.querySelector(".s-body"));
+  addr("about", quiet === true ? "" : "push");
+  $("ab-close").focus({ preventScroll: true });
+}
+function closeAbout(quiet) {
+  ab.hidden = true; document.documentElement.classList.remove("lock");
+  bg.forEach(el => el.inert = false);
+  if (abFrom && abFrom.isConnected) abFrom.focus({ preventScroll: true });
+  if (quiet !== true) { home(); reveal(); }
+}
+const abLinks = [...document.querySelectorAll('a[href="#about"]')];
+abLinks.forEach(a => { a.href = href("about"); a.addEventListener("click", e => { if (plain(e)) { e.preventDefault(); openAbout(a); } }); });
+/* A link to a place on this page scrolls there and leaves the address as it is; focus follows, so Tab carries on
+   from that place. */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  const id = a.getAttribute("href").slice(1), t = id && $(id); if (!t) return;
+  a.addEventListener("click", e => {
+    if (!plain(e)) return; e.preventDefault();
+    if (id === "top") { scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" }); return; }
+    t.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" }); t.tabIndex = -1; t.focus({ preventScroll: true });
+  });
+});
+// An address that arrives naming a place on the page (#index) is tidied once the page has gone there.
+const tidy = () => { if (location.hash && (PATHS || !location.hash.startsWith("#/"))) try { history.replaceState(history.state, "", location.pathname + location.search); } catch (e) {} };
+addEventListener("hashchange", tidy);
+if (document.readyState === "complete") tidy(); else addEventListener("load", () => setTimeout(tidy, 0));
+// A cover or an Index row also opens with the Space bar, as a button would.
+document.addEventListener("keydown", e => { if (e.key === " " && e.target.matches && e.target.matches("a.tile, a.irow")) { e.preventDefault(); e.target.click(); } });
+$("ab-more").onclick = e => openAbout(e.currentTarget);
+$("ab-close").onclick = () => closeAbout();
+ab.querySelector(".s-toc ol").addEventListener("click", e => {
+  const b = e.target.closest("button[data-a]"); if (!b) return;
+  const c = $("ab-" + b.dataset.a), bar = ab.querySelector(".s-bar");
+  ab.scrollTo({ top: Math.max(0, c.getBoundingClientRect().top - ab.getBoundingClientRect().top + ab.scrollTop - bar.offsetHeight - 24), behavior: reduce ? "auto" : "smooth" });
+  c.querySelector("h3").focus({ preventScroll: true });
+});
+ab.addEventListener("keydown", e => {
+  if (e.key !== "Tab") return;
+  const f = [...ab.querySelectorAll("button, a[href]")].filter(b => b.getClientRects().length), i = f.indexOf(document.activeElement);
+  if (e.shiftKey ? i <= 0 : (i === -1 || i === f.length - 1)) { e.preventDefault(); (e.shiftKey ? f[f.length - 1] : f[0]).focus(); }
+});
+
+/* The address follows what is open. Opening adds a step to the browser's history, so Back closes it; turning to
+   the next project only renames the step, so Back still leads out to the works. */
+let own = !!(history.state && history.state.sw), leaving = false, backY = 0;
+const titleOf = r => { const i = SLUGS.indexOf(r); return i >= 0 ? `${WORKS[i].t} · ${SITE}` : r === "about" ? `About · ${SITE}` : HOME; };
+// The step is made first and named after, so that each step keeps its own title in the browser's history.
+function addr(r, how) {
+  try {
+    if (how === "push" && !leaving) { history.pushState({ sw: 1 }, "", href(r)); own = true; }
+    else if (how === "replace" && route() !== r) history.replaceState(history.state, "", href(r));
+  } catch (e) {}
+  document.title = titleOf(r);
+}
+// Closing steps back when the step was added here; a page opened straight on a project just takes the home address.
+function home() {
+  if (leaving) return;
+  if (!own) { addr("", "replace"); return; }
+  own = false; leaving = true; backY = scrollY;
+  try { history.back(); } catch (e) { leaving = false; addr("", "replace"); return; }
+  // Should the step back never arrive, the address is put right anyway.
+  setTimeout(() => { if (leaving) { leaving = false; if (sheet.hidden && ab.hidden) addr("", "replace"); } }, 1500);
+}
+function show(r) {
+  const i = SLUGS.indexOf(r);
+  if (i >= 0) {
+    if (!ab.hidden) closeAbout(true);
+    if (sheet.hidden) openSheet(i, null, true);
+    else if (cur !== i) { if (!walk.some(w => w.i === i)) walk = WORKS.map((w, j) => ({ ...w, i: j })); fill(i); addr(r, ""); }
+  } else if (r === "about") {
+    if (ab.hidden) openAbout(null, true);
+  } else {
+    const was = !sheet.hidden || !ab.hidden;
+    if (!sheet.hidden) closeSheet(true);
+    if (!ab.hidden) closeAbout(true);
+    if (was) reveal();
+    addr("", r ? "replace" : "");
+  }
+}
+addEventListener("popstate", () => {
+  const was = leaving; leaving = false;
+  own = !!(history.state && history.state.sw);
+  const r = route(), open = !sheet.hidden ? SLUGS[cur] : !ab.hidden ? "about" : "";
+  // After a step back made by Close, the page stays where it was.
+  if (was) { const y = backY; requestAnimationFrame(() => { if (Math.abs(scrollY - y) > 1) scrollTo({ top: y, behavior: "instant" }); }); }
+  // Something was opened again before the step back arrived: it gets its step again.
+  if (was && !r && open) { document.title = HOME; addr(open, "push"); return; }
+  hush = true; try { show(r); } finally { hush = false; }
+});
+
+renderGrid(); renderIndex();
+try { if (route()) show(route()); } finally { document.documentElement.removeAttribute("data-deep"); }
+</script>
+</body>
+</html>

@@ -1,33 +1,38 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-routes="path">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<base href="/">
 <title>Shuheng Wang</title>
 <meta name="description" content="Shuheng Wang is a designer working across buildings, products, jewellery and installations: from rooms carved into an eroding cliff and a centre half buried in moving dunes, to a clip-on device designed to sense what is coming from behind, 3D-printed ceramic jewellery and an installation made to display it.">
+<meta name="author" content="Shuheng Wang">
 <meta name="theme-color" content="#ffffff">
 <link rel="canonical" href="https://shuhengwang.com/">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Shuheng Wang">
 <meta property="og:title" content="Shuheng Wang">
 <meta property="og:description" content="Shuheng Wang is a designer working across buildings, products, jewellery and installations: from rooms carved into an eroding cliff and a centre half buried in moving dunes, to a clip-on device designed to sense what is coming from behind, 3D-printed ceramic jewellery and an installation made to display it.">
 <meta property="og:url" content="https://shuhengwang.com/">
 <meta property="og:image" content="https://shuhengwang.com/img/cover/DUN.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23111'/%3E%3Ctext x='16' y='21' font-family='Helvetica,Arial,sans-serif' font-size='14' fill='%23fff' text-anchor='middle'%3Esw%3C/text%3E%3C/svg%3E">
+<link rel="preload" as="image" href="img/wall/DUN.jpg" imagesrcset="img/wall/DUN.jpg 960w, img/ug6/U01-1200.jpg 1200w, img/ug6/U01.jpg 2000w" imagesizes="(min-width: 1024px) calc(25vw - 20px), (min-width: 600px) calc((100vw - 64px) / 3), calc((100vw - 44px) / 2)" fetchpriority="high">
+<link rel="preload" as="image" href="img/wall/CLF.jpg" imagesrcset="img/wall/CLF.jpg 960w, img/ug6/cliff-centre-1200.jpg 1200w, img/ug6/cliff-centre.jpg 2000w" imagesizes="(min-width: 1024px) calc(25vw - 20px), (min-width: 600px) calc((100vw - 64px) / 3), calc((100vw - 44px) / 2)" fetchpriority="high">
+<link rel="preload" as="image" href="img/wall/WND.jpg" imagesrcset="img/wall/WND.jpg 960w, img/wind/tool-wide-1200.jpg 1200w, img/wind/tool-wide.jpg 2000w" imagesizes="(min-width: 1024px) calc(25vw - 20px), (min-width: 600px) calc((100vw - 64px) / 3), calc((100vw - 44px) / 2)" fetchpriority="high">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Shuheng Wang", "url": "https://shuhengwang.com/"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Shuheng Wang", "url": "https://shuhengwang.com/", "jobTitle": "Designer", "description": "Shuheng Wang is a designer working across buildings, products, jewellery and installations: from rooms carved into an eroding cliff and a centre half buried in moving dunes, to a clip-on device designed to sense what is coming from behind, 3D-printed ceramic jewellery and an installation made to display it.", "address": {"@type": "PostalAddress", "addressLocality": "London", "addressCountry": "GB"}}</script>
 <style>:root{color-scheme:light}body{margin:0;font:14px system-ui}img{max-width:100%}[hidden]{display:none!important}</style>
-</head>
-<body>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Geist+Mono:wght@400&display=swap">
 <style>
-/* Archive grid. One 12-column grid governs everything: the header (name / nav),
-   the works, the index columns, the information block and the footer all start on the same
-   four edges. The works pair a sticky preview (columns 1–3) with the covers (4–12): Living on the Dunes leads
-   across two columns and two rows (or the full grid width when that would leave one cover alone, as with
-   four works), the other works sit beside and below it in 2:1 frames, and all of them fit on the first screen. The project sheet reads as one editorial column on the same grid:
-   an opening spread with the facts and contents, then numbered chapters that alternate text with
-   uncropped, equal-height image rows, and a pill in the bar that names the chapter and jumps between them.
+/* One 12-column grid governs everything: the header (name / nav), the works, the index columns, the
+   information block and the footer all start on the same four edges. The works pair a sticky preview
+   (columns 1–3) with the covers (4–12); every cover keeps its picture's own proportions and goes under the
+   shortest column so far. The project sheet reads as one editorial column on the same grid: an opening
+   spread with the facts and contents, then numbered chapters that alternate text with uncropped,
+   equal-height image rows, and a word in the bar that names the chapter and jumps between them.
    One light theme only: the page is pure white whatever the system theme. */
 :root {
   color-scheme: only light;
@@ -43,36 +48,48 @@
   --gutR: max(16px, env(safe-area-inset-right, 0px));
   --gap: 16px;
   --head: 50px;
-  /* Sheet type: the display line, the lede, the reading text. Everything else stays at the 13px base. */
-  --t-disp: clamp(28px, 2.5vw, 42px);
-  --t-lede: clamp(17px, 1.36vw, 22px);
-  --t-read: clamp(14px, 1.04vw, 16px);
+  /* Type. The base is 13px and grows a little on wide screens (about 14px at 1920, 15px from 2240); the mono
+     notes and the captions keep their step below it. Sheets add the display line, the lede and the reading text. */
+  --t-base: clamp(13px, calc(13px + (100vw - 1440px) * 0.0025), 15px);
+  --t-note: calc(var(--t-base) - 2px);
+  --t-cap: calc(var(--t-base) - 1px);
+  --t-disp: clamp(28px, 2.5vw, 52px);
+  --t-lede: clamp(17px, 1.36vw, 25px);
+  --t-read: clamp(14px, calc(0.6vw + 6.4px), 18px);
+  /* One curve for everything that moves: quick to start, slow to settle. */
+  --ease: cubic-bezier(.2, .7, .2, 1);
 }
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
-html { scroll-behavior: smooth; background: #fff; }
+html { scroll-behavior: smooth; background: #fff; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
+::selection { background: #1a1a1a; color: #fff; }
 html.lock { overflow: hidden; }
+/* A page opened straight on a project or on About keeps the works out of sight until its sheet is up. */
+html[data-deep] header.top, html[data-deep] #top, html[data-deep] #contact { visibility: hidden; animation: undeep 0s 3s forwards; }
+@keyframes undeep { to { visibility: visible; } }
+/* A place on the page that a link has scrolled to takes focus without a ring. */
+main[tabindex]:focus-visible, section[tabindex]:focus-visible, footer[tabindex]:focus-visible { outline: none; }
 body {
   margin: 0; background: var(--bg); color: var(--fg);
-  font-family: var(--sans); font-size: 13px; line-height: 1.45; letter-spacing: -0.003em;
+  font-family: var(--sans); font-size: var(--t-base); line-height: 1.45; letter-spacing: -0.003em;
   -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
 }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; color: inherit; background: none; border: 0; padding: 0; margin: 0; cursor: pointer; text-align: inherit; letter-spacing: inherit; }
-:focus-visible { outline: 1px solid var(--fg); outline-offset: 2px; }
+:focus-visible { outline: 1.5px solid var(--fg); outline-offset: 3px; }
 img { display: block; max-width: 100%; }
 h1, h2, h3, p, dl, dd, figure { margin: 0; }
 .wrap { padding-left: var(--gut); padding-right: var(--gutR); }
 .m { color: var(--mute); }
-.mono { font-family: var(--mono); font-size: 11px; letter-spacing: 0.01em; }
+.mono { font-family: var(--mono); font-size: var(--t-note); letter-spacing: 0.01em; }
 .num { font-variant-numeric: tabular-nums; }
 .g12 { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); }
 
 /* Controls: plain words, no box. A link or button fades a little under the pointer; one that opens a list
    ends in an arrow that turns while the list is open. Each stays 30px tall for touch. */
 .pill {
-  display: inline-flex; align-items: center; gap: 8px; height: 30px; padding: 0;
-  font-size: 13px; line-height: 1; white-space: nowrap; transition: opacity .15s;
+  display: inline-flex; align-items: center; gap: 8px; height: 30px; padding: 0; border-radius: 4px;
+  font-size: var(--t-base); line-height: 1; white-space: nowrap; transition: opacity .15s;
 }
 a.pill:hover, button.pill:not(:disabled):not(.vbtn):hover { opacity: .5; }
 .pill:disabled { opacity: .35; cursor: default; }
@@ -83,13 +100,12 @@ a.pill:hover, button.pill:not(:disabled):not(.vbtn):hover { opacity: .5; }
 .ic { width: 12px; height: 12px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; overflow: visible; }
 .pill svg.ic { width: 12px; height: 12px; }
 .pill .arr { display: inline-flex; }
-.s-next .a { display: inline-flex; align-items: center; }
 
 /* Header */
 body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); }
 header.top {
   position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--bg);
-  padding-block: 10px; align-items: center;
+  padding-block: 10px; align-items: baseline;
 }
 .logo { grid-column: 1 / span 3; font: inherit; font-weight: 500; justify-self: start; }
 nav.main { grid-column: 4 / span 6; display: flex; gap: 6px 24px; flex-wrap: wrap; }
@@ -104,6 +120,10 @@ section[id], footer[id], main[id] { scroll-margin-top: calc(var(--head) + env(sa
   top: calc(env(safe-area-inset-top, 0px) + var(--head) + 30px);
   display: grid; align-content: start;
 }
+/* Desktop: the column is lifted so the top of the filter's letters meets the top edge of the first covers. */
+@media (min-width: 1024px) {
+  .side { --lift: calc(.34em - 15px); margin-top: var(--lift); top: calc(env(safe-area-inset-top, 0px) + var(--head) + 30px + var(--lift)); }
+}
 .side .lbl { display: flex; gap: 6px; align-items: baseline; }
 /* The heading stays for screen readers; on tablets and desktops the preview counts the works instead. */
 @media (min-width: 600px) { .side .lbl { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; } }
@@ -114,7 +134,9 @@ section[id], footer[id], main[id] { scroll-margin-top: calc(var(--head) + env(sa
 .menu {
   position: absolute; left: 36px; right: 0; top: 36px; z-index: 12; background: var(--bg);
   border-radius: 9px; padding: 4px; display: grid; gap: 2px; box-shadow: 0 0 0 1px var(--line), 0 8px 30px var(--shadow);
+  transform-origin: 0 0; animation: pop .18s var(--ease);
 }
+@keyframes pop { from { opacity: 0; transform: translateY(-4px) scale(.985); } }
 /* In a list, the chosen line and the one under the pointer are black; the others grey. The list sits 12px
    out so its words line up with the control that opened it. */
 .menu button { display: flex; justify-content: space-between; gap: 12px; padding: 6px 8px; border-radius: 6px; color: var(--mute); }
@@ -127,7 +149,7 @@ section[id], footer[id], main[id] { scroll-margin-top: calc(var(--head) + env(sa
 .pv-c { display: grid; gap: 16px; justify-items: start; }
 .pv-h { display: grid; gap: 6px; }
 .pv-pos { display: flex; gap: 10px; align-items: baseline; }
-.pv h3 { font-size: 13px; font-weight: 500; margin: 0; }
+.pv h3 { font-size: inherit; font-weight: 500; margin: 0; text-wrap: balance; }
 .pv dl { display: grid; grid-template-columns: 64px 1fr; gap: 2px 8px; }
 .pv dt { color: var(--mute); }
 .pv p { max-width: 36ch; text-wrap: pretty; }
@@ -136,11 +158,17 @@ section[id], footer[id], main[id] { scroll-margin-top: calc(var(--head) + env(sa
 .grid .tile { position: absolute; left: calc(var(--c, 0) * (100% + var(--gap)) / var(--n)); width: calc((100% - (var(--n) - 1) * var(--gap)) / var(--n)); }
 .tile { display: grid; gap: 8px; align-content: start; width: 100%; min-width: 0; border-radius: 4px; container-type: inline-size; }
 .tile:focus-visible { outline-offset: 4px; }
-.ph { display: block; position: relative; aspect-ratio: 2 / 1; background: var(--panel); overflow: hidden; border-radius: 2px; }
+/* Until its picture arrives a frame holds the picture's own average colour (--tint), so nothing flashes grey. */
+.ph { display: block; position: relative; aspect-ratio: 2 / 1; background: var(--tint, var(--panel)); overflow: hidden; border-radius: 2px; }
 .ph img, .ph video {
   width: 100%; height: 100%; object-fit: cover;
-  transition: transform .9s cubic-bezier(.2, .7, .2, 1);
+  transition: transform .9s var(--ease);
 }
+/* A picture that is still loading waits unseen over its frame and fades in when it arrives (the script marks
+   it .fx, then .in); one that is already there is simply shown. */
+img.fx { opacity: 0; }
+img.fx.in { opacity: 1; transition: opacity .45s ease-out; }
+.ph img.fx.in { transition: opacity .45s ease-out, transform .9s var(--ease); }
 /* A work with a cover loop plays it in its tile. */
 .ph video { display: block; }
 /* When the works nearly fill the first screen (fit() sets .fill), the Index starts below the fold, never as a half row. */
@@ -176,7 +204,9 @@ section[id], footer[id], main[id] { scroll-margin-top: calc(var(--head) + env(sa
   .index:hover .irow { color: var(--mute); }
   .index:hover .irow:hover { color: var(--fg); }
 }
-.peek { position: fixed; left: 0; top: 0; z-index: 15; width: 280px; pointer-events: none; opacity: 0; transition: opacity .12s; border-radius: 2px; overflow: hidden; background: var(--panel); }
+/* Touch: a row is tall enough for a finger. */
+@media (hover: none) { .irow { padding-block: 12px; } }
+.peek { position: fixed; left: 0; top: 0; z-index: 15; width: 280px; pointer-events: none; opacity: 0; transition: opacity .18s ease-out; border-radius: 2px; overflow: hidden; background: var(--panel); will-change: transform; }
 .peek.on { opacity: 1; }
 
 /* Information */
@@ -189,7 +219,7 @@ footer .f1 { grid-column: 1 / span 3; }
 footer .f2 { grid-column: 4 / span 6; display: flex; gap: 6px; flex-wrap: wrap; }
 
 /* Project sheet */
-.sheet { position: fixed; inset: 0; z-index: 50; background: var(--bg); overflow-y: auto; overscroll-behavior: contain; outline: none; display: flex; flex-direction: column; animation: fade .18s ease-out; }
+.sheet { position: fixed; inset: 0; z-index: 50; background: var(--bg); overflow-y: auto; overscroll-behavior: contain; outline: none; display: flex; flex-direction: column; animation: fade .22s ease-out; }
 .sheet > * { flex: none; }
 .sheet > .s-body { flex: 1 0 auto; }
 .sheet::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 3; background: var(--bg); }
@@ -218,11 +248,11 @@ footer .f2 { grid-column: 4 / span 6; display: flex; gap: 6px; flex-wrap: wrap; 
    then the hero across the page. */
 .s-open { align-items: start; }
 .s-head { grid-column: 1 / span 7; }
-.s-head h2, .s-head .sub { font-size: var(--t-disp); line-height: 1.08; letter-spacing: -0.032em; font-weight: 500; }
+.s-head h2, .s-head .sub { font-size: var(--t-disp); line-height: 1.08; letter-spacing: -0.032em; font-weight: 500; text-wrap: balance; }
 .s-head .sub { font-weight: 400; color: var(--mute); }
 .s-intro { margin-top: 30px; font-size: var(--t-lede); line-height: 1.36; letter-spacing: -0.012em; max-width: 35em; text-wrap: pretty; }
 .s-side { grid-column: 9 / span 4; display: grid; gap: 28px; align-content: start; padding-top: 4px; }
-.s-meta, .s-toc { display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 3px 12px; align-items: baseline; }
+.s-meta, .s-toc { display: grid; grid-template-columns: minmax(88px, 6.8em) minmax(0, 1fr); gap: 3px 12px; align-items: baseline; }
 .s-meta dt, .s-toc h3 { color: var(--mute); }
 .s-meta dd { text-wrap: pretty; }
 .s-toc h3 { font: inherit; margin: 0; }
@@ -240,15 +270,16 @@ footer .f2 { grid-column: 4 / span 6; display: flex; gap: 6px; flex-wrap: wrap; 
 .s-flow > .s-row:first-child { margin-top: 64px; }
 .s-flow > *, .s-ch > * { grid-column: 1 / -1; min-width: 0; }
 .s-ch { margin-top: 160px; padding-top: 14px; border-top: 1px solid var(--line); align-items: baseline; }
-.s-ch h3 { grid-column: 1 / span 3; display: flex; gap: 14px; align-items: baseline; padding-right: 16px; font-size: var(--t-lede); font-weight: 500; line-height: 1.25; letter-spacing: -0.012em; outline: none; }
+.s-ch h3 { grid-column: 1 / span 3; display: flex; gap: 14px; align-items: baseline; padding-right: 16px; font-size: var(--t-lede); font-weight: 500; line-height: 1.25; letter-spacing: -0.012em; outline: none; text-wrap: balance; }
 .s-ch h3 .mono { font-weight: 400; }
 .s-p { grid-column: 4 / span 6; font-size: var(--t-read); line-height: 1.56; max-width: 35em; text-wrap: pretty; }
 .s-row + .s-p { margin-top: 96px; }
 .s-p + .s-row, .s-facts + .s-row { margin-top: 72px; }
 .s-facts + .s-p { margin-top: 48px; }
-/* Facts: a quiet mono strip on the three column groups of the text side. */
-.s-facts { grid-column: 4 / -1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 var(--gap); margin-top: 40px; padding-top: 10px; border-top: 1px solid var(--line); line-height: 1.5; }
-.s-facts div { display: grid; gap: 3px; align-content: start; padding-right: 12px; }
+/* Facts: a grey label over its value, in the page's own type like the facts of the opening spread, on the
+   three column groups of the text side. */
+.s-facts { grid-column: 4 / -1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 var(--gap); margin-top: 40px; padding-top: 10px; border-top: 1px solid var(--line); }
+.s-facts div { display: grid; gap: 2px; align-content: start; padding-right: 12px; }
 .s-facts dt { color: var(--mute); }
 .s-facts dd { text-wrap: pretty; }
 
@@ -258,7 +289,11 @@ footer .f2 { grid-column: 4 / span 6; display: flex; gap: 6px; flex-wrap: wrap; 
 .s-row { align-self: start; display: flex; gap: var(--gap); align-items: flex-start; justify-self: start; width: 100%; max-width: calc((100svh - var(--head) - 132px) * var(--sum) + var(--n) * var(--gap)); }
 .s-row + .s-row { margin-top: 40px; }
 .s-row figure { flex: var(--ar) 1 0; min-width: 0; display: grid; gap: 9px; align-content: start; }
-.s-row img, .s-row video { width: 100%; height: auto; border-radius: 2px; background: var(--panel); }
+/* Each picture sits in a frame of its own shape, pale until the picture arrives. */
+.s-row .im { display: block; border-radius: 2px; background: var(--panel); overflow: hidden; }
+.s-row .im.ln { background: none; }
+.s-row img, .s-row video { display: block; width: 100%; height: auto; border-radius: 2px; }
+.s-row video { background: var(--panel); }
 /* Loops (short films cut from GIFs): they play muted while on screen; the pill pauses them. */
 .s-row .vid { position: relative; }
 .s-row video { display: block; aspect-ratio: var(--ar); object-fit: cover; }
@@ -276,7 +311,7 @@ footer .f2 { grid-column: 4 / span 6; display: flex; gap: 6px; flex-wrap: wrap; 
 .s-row .pr { display: contents; }
 /* Drawings and models on pure white keep a hairline so they do not dissolve into the page. */
 .s-row img.ln { outline: 1px solid var(--line); outline-offset: -1px; }
-.s-row figcaption { color: var(--mute); font-size: 12px; line-height: 1.45; max-width: 62ch; text-wrap: pretty; }
+.s-row figcaption { color: var(--mute); font-size: var(--t-cap); line-height: 1.45; max-width: 62ch; text-wrap: pretty; }
 
 /* Closing: the author's conclusion, set like a chapter. */
 .s-end { margin-top: 176px; padding-top: 14px; border-top: 1px solid var(--line); align-items: baseline; }
@@ -284,12 +319,21 @@ footer .f2 { grid-column: 4 / span 6; display: flex; gap: 6px; flex-wrap: wrap; 
 .s-end blockquote { grid-column: 4 / span 8; margin: 0; font-size: clamp(22px, 2.2vw, 36px); line-height: 1.18; letter-spacing: -0.028em; max-width: 22em; text-wrap: pretty; text-indent: -0.42em; }
 .s-more { justify-self: start; max-width: 100%; }
 .s-more > span:nth-child(3) { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
-.s-next { width: 100%; padding-block: 12px calc(32px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line); align-items: baseline; }
-.s-next .k { grid-column: 1 / span 3; }
-.s-next .t { grid-column: 4 / span 6; display: flex; gap: 8px; align-items: baseline; }
-.s-next .a { grid-column: 10 / span 3; justify-self: end; }
-.s-next:focus-visible { outline-offset: -1px; }
-@media (hover: hover) { .s-next:hover .t > span:last-child { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; } }
+/* Next project: the foot of a sheet shows where it leads, set like the opening of the sheet it opens: the
+   label on columns 1–3, the title and its grey second line on 4–9, the cover on 10–12. */
+.s-next { width: 100%; padding-block: 28px calc(40px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line); align-items: start; }
+.s-next .k { grid-column: 1 / span 3; align-self: baseline; display: inline-flex; gap: 8px; align-items: center; }
+.s-next .k .ic { transition: transform .3s var(--ease); }
+.s-next .t { grid-column: 4 / span 6; align-self: baseline; display: grid; padding-right: 16px; font-size: var(--t-disp); line-height: 1.08; letter-spacing: -0.032em; font-weight: 500; text-wrap: balance; }
+.s-next .t .sub { font-weight: 400; color: var(--mute); }
+.s-next .im { grid-column: 10 / span 3; display: block; aspect-ratio: 2 / 1; overflow: hidden; border-radius: 2px; background: var(--panel); margin-top: calc(var(--t-disp) * .17); }
+.s-next .im img { width: 100%; height: 100%; object-fit: cover; transition: transform .9s var(--ease); }
+.s-next .im img.fx.in { transition: opacity .45s ease-out, transform .9s var(--ease); }
+.s-next:focus-visible { outline-offset: -2px; }
+@media (hover: hover) {
+  .s-next:hover .im img { transform: scale(1.03); }
+  .s-next:hover .k .ic { transform: translateX(4px); }
+}
 
 @media (hover: none) { .s-close .m { display: none; } }
 
@@ -364,9 +408,9 @@ footer .f2 { grid-column: 4 / span 6; display: flex; gap: 6px; flex-wrap: wrap; 
   .s-end { margin-top: 112px; }
   .s-end h3 { grid-column: 1 / -1; margin-bottom: 18px; }
   .s-end blockquote { grid-column: 1 / -1; text-indent: 0; }
-  .s-next .k { grid-column: 1 / span 4; }
-  .s-next .t { grid-column: 5 / span 7; }
-  .s-next .a { grid-column: 12 / span 1; }
+  .s-next { padding-top: 20px; row-gap: 12px; }
+  .s-next .k, .s-next .t { grid-column: 1 / -1; padding-right: 0; }
+  .s-next .im { grid-column: 1 / span 6; margin-top: 12px; }
 }
 @media (min-width: 861px) and (max-width: 1023px) {
   /* The nav, the preview line and the second cover column share one edge. */
@@ -404,6 +448,18 @@ footer .f2 { grid-column: 4 / span 6; display: flex; gap: 6px; flex-wrap: wrap; 
   .s-row.r4 .pr figure { flex: var(--ar) 1 0; min-width: 0; }
   .s-facts { grid-template-columns: minmax(0, 1fr); gap: 10px; }
   .s-facts div { grid-template-columns: 96px minmax(0, 1fr); gap: 0 12px; padding-right: 0; }
+  .s-next .im { grid-column: 1 / -1; }
+}
+/* Phones read the running text a step larger. */
+@media (max-width: 599px) { :root { --t-read: 15px; } }
+/* Touch: a control dims under the finger, and the area that takes the touch reaches about 44px around each
+   word without the word looking any bigger. */
+@media (hover: none) { .tile:active, .irow:active, .s-next:active, .pill:active:not(.vbtn), .s-toc button:active { opacity: .6; } }
+@media (pointer: coarse) {
+  .pill:not(.vbtn), .logo a { position: relative; }
+  .pill:not(.vbtn)::after, .logo a::after { content: ""; position: absolute; inset: -7px -6px; }
+  .logo a::after { inset: -13px -6px; }
+  .s-toc button { padding-block: 6px; }
 }
 /* About: a sheet like a project's, opened from About in the header and from the Information block. The CV
    sections sit where a project's chapters do; each entry puts the name and what was done on columns 4–9,
@@ -438,8 +494,9 @@ footer .f2 { grid-column: 4 / span 6; display: flex; gap: 6px; flex-wrap: wrap; 
   html { scroll-behavior: auto; }
   .sheet { animation: none; }
   .s-chap, .s-chap.on, .s-chb, .s-toc button { transition: none; }
-  .ph img, .cap, .cap .t, .irow, .pill, .peek, .vbtn { transition: none; }
-  .tile:hover .ph img, .tile:hover .ph video { transform: none; }
+  .ph img, .cap, .cap .t, .irow, .pill, .peek, .vbtn, img.fx.in, .ph img.fx.in, .s-next .im img, .s-next .k .ic { transition: none; }
+  .tile:hover .ph img, .tile:hover .ph video, .s-next:hover .im img, .s-next:hover .k .ic { transform: none; }
+  .menu { animation: none; }
 }
 
 /* Quiet layer: no three-letter codes, one filter pill, a one-line preview heading and few hairlines.
@@ -522,7 +579,7 @@ html:root .ab .s-ch { border-top: 1px solid var(--line); padding-top: 14px; }
 @media (max-width: 599px) {
   /* The name already leads to the works, so the Projects link is hidden and the other three sit on the
      name's row, pushed to the right edge. */
-  html:root header.top { display: flex; align-items: center; gap: 8px; }
+  html:root header.top { display: flex; align-items: baseline; gap: 8px; }
   html:root nav.main { gap: 18px; }
   html:root .logo { margin-right: auto; white-space: nowrap; }
   html:root nav.main a[href="#projects"] { display: none; }
@@ -540,7 +597,9 @@ html:root .ab .s-ch { border-top: 1px solid var(--line); padding-top: 14px; }
   html:root nav.main { gap: 12px; }
 }
 </style>
-
+<noscript><style>html[data-deep] header.top, html[data-deep] #top, html[data-deep] #contact { visibility: visible; animation: none; }</style></noscript>
+</head>
+<body>
 <header class="top wrap g12">
   <h1 class="logo"><a href="#top">shuheng wang</a></h1>
   <nav class="main" aria-label="Main">
@@ -627,9 +686,9 @@ html:root .ab .s-ch { border-top: 1px solid var(--line); padding-top: 14px; }
     <div class="s-flow g12" id="s-imgs"></div>
   </div>
   <button class="s-next wrap g12" id="s-foot" type="button">
-    <span class="k m">Next project</span>
-    <span class="t"><span class="mono m" id="s-fcode"></span><span id="s-ft"></span></span>
-    <span class="a" aria-hidden="true"><svg class="ic" viewBox="0 0 12 12" aria-hidden="true"><path d="M1.5 6h9M7 2.5L10.5 6 7 9.5"/></svg></span>
+    <span class="k m">Next project <svg class="ic" viewBox="0 0 12 12" aria-hidden="true"><path d="M1.5 6h9M7 2.5L10.5 6 7 9.5"/></svg></span>
+    <span class="t"><span class="mono m" id="s-fcode"></span><span id="s-ft"></span><span class="sub" id="s-fs"></span></span>
+    <span class="im"><img id="s-fi" alt="" width="960" height="480" loading="lazy" decoding="async"></span>
   </button>
 </div>
 
@@ -1502,8 +1561,36 @@ const coverLoop = ([f, iw, ih]) => `<video muted loop playsinline autoplay prelo
 // screens that need more. A cover is a third of columns 4–12 on desktop, a third of the page on tablets, half on phones.
 const wallSrc = w => `img/wall/${w.code}.jpg`;
 const wallSizes = "(min-width: 1024px) calc(25vw - 20px), (min-width: 600px) calc((100vw - 64px) / 3), calc((100vw - 44px) / 2)";
+// The average colour of each cover: its frame holds that colour until the picture arrives.
+const TINT = { DUN: "#77645c", CLF: "#403a33", WND: "#241f1e", OMI: "#1c1c1c", CHG: "#6d6864", RLQ: "#24211b", PRC: "#242723", MYC: "#282729", SPC: "#c5c8d6" };
+// A picture 1600px wide or more has a 1200px copy beside it (name-1200.jpg) for small screens and small frames.
+const SMALL = 1200, hasSmall = iw => iw >= 1600;
 const pad = n => String(n).padStart(2, "0");
 const $ = id => document.getElementById(id);
+/* Addresses. Every project and the About page has its own, so it can be shared, opened in a new tab, reloaded,
+   and left with the browser's Back. The built site uses /name/; a preview of this file uses #/name. */
+const PATHS = document.documentElement.dataset.routes === "path";
+const SITE = "Shuheng Wang", HOME = PATHS ? SITE : document.title;
+const SLUGS = WORKS.map(w => w.t.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, ""));
+const href = r => PATHS ? (r ? `/${r}/` : "/") : location.pathname + location.search + (r ? `#/${r}` : "");
+const route = () => { try { return PATHS ? decodeURIComponent(location.pathname).replace(/index\.html$/, "").replace(/^\/+|\/+$/g, "") : location.hash.startsWith("#/") ? decodeURIComponent(location.hash.slice(2)).replace(/\/+$/, "") : ""; } catch (e) { return ""; } };
+// A plain click opens a work here; a click with a modifier key, or the middle button, is left to the browser.
+const plain = e => !(e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button);
+/* Pictures still on their way are marked so that they fade in when they arrive; ones already there are left alone. */
+function fx(root) {
+  if (reduce) return;
+  root.querySelectorAll("img").forEach(im => {
+    if (im.complete || im.classList.contains("fx")) return;
+    const done = () => im.classList.add("in");
+    im.classList.add("fx"); im.addEventListener("load", done, { once: true }); im.addEventListener("error", done, { once: true });
+  });
+}
+// A sheet's content arrives with a short rise and fade, when the sheet opens and when it turns to another work;
+// when a sheet closes, the page behind comes back with a short fade.
+// Neither plays when the browser's own Back or Forward made the change: phones already slide the page then.
+let hush = false;
+const arrive = el => { if (!reduce && !hush && el && el.animate) el.animate([{ opacity: 0, transform: "translateY(10px)" }, { opacity: 1, transform: "none" }], { duration: 420, easing: "cubic-bezier(.2, .7, .2, 1)" }); };
+const reveal = () => { if (!reduce && !hush) bg.forEach(el => el.animate && el.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 260, easing: "ease-out" })); };
 let cat = "All works";
 try { const s = localStorage.getItem("sw-cat"); if (CATS.includes(s)) cat = s; } catch (e) {}
 const visible = () => WORKS.map((w, i) => ({ ...w, i })).filter(w => cat === "All works" || w.c === cat);
@@ -1539,11 +1626,12 @@ function renderGrid() {
   $("count").textContent = items.length;
   $("grid").innerHTML = items.length ? items.map((w, k) => {
     const [w0, h0] = w.wall, big = w.imgs[0], play = w.loop && !reduce;
-    return `<button class="tile" type="button" data-i="${w.i}">
-      <span class="ph" style="aspect-ratio:${play ? `${w.loop[1]} / ${w.loop[2]}` : `${w0} / ${h0}`}">${play ? coverLoop(w.loop) : `<img src="${wallSrc(w)}" srcset="${wallSrc(w)} ${w0}w${big[1] > w0 ? `, ${imgSrc(w, big[0])} ${big[1]}w` : ""}" sizes="${wallSizes}" alt="" width="${w0}" height="${h0}" decoding="async"${k < 6 ? ' fetchpriority="high"' : ""}>`}</span>
+    return `<a class="tile" href="${href(SLUGS[w.i])}" draggable="false" data-i="${w.i}">
+      <span class="ph" style="aspect-ratio:${play ? `${w.loop[1]} / ${w.loop[2]}` : `${w0} / ${h0}`}${TINT[w.code] ? `;--tint:${TINT[w.code]}` : ""}">${play ? coverLoop(w.loop) : `<img src="${wallSrc(w)}" srcset="${wallSrc(w)} ${w0}w${big[1] > w0 ? `${hasSmall(big[1]) ? `, ${imgSrc(w, `${big[0]}-${SMALL}`)} ${SMALL}w` : ""}, ${imgSrc(w, big[0])} ${big[1]}w` : ""}" sizes="${wallSizes}" alt="" width="${w0}" height="${h0}" decoding="async"${k < 6 ? ' fetchpriority="high"' : ""}>`}</span>
       <span class="cap"><span class="code mono">${w.code}</span><span class="t">${w.t}</span><span class="y">${w.y}</span></span>
-    </button>`;
+    </a>`;
   }).join("") : `<p class="empty m">Nothing in this category yet.</p>`;
+  fx($("grid"));
   // The preview keeps its work while it is still in view; otherwise it shows the first one.
   if (!items.some(w => w.i === act)) act = items.length ? items[0].i : -1;
   showPv(act, false);
@@ -1620,7 +1708,7 @@ function fit() {
   }
 }
 addEventListener("resize", fit); document.fonts?.ready.then(() => { stack(); fit(); });
-$("grid").addEventListener("click", e => { const t = e.target.closest(".tile[data-i]"); if (t) openSheet(+t.dataset.i, t); });
+$("grid").addEventListener("click", e => { const t = e.target.closest(".tile[data-i]"); if (t && plain(e)) { e.preventDefault(); openSheet(+t.dataset.i, t); } });
 
 /* Index: rows outside the active category step back to the muted colour. */
 function syncIndex() {
@@ -1628,22 +1716,31 @@ function syncIndex() {
 }
 function renderIndex() {
   $("list").innerHTML = WORKS.map((w, i) => `
-    <button class="irow g12" type="button" data-i="${i}" data-img="${coverSrc(w)}">
+    <a class="irow g12" href="${href(SLUGS[i])}" draggable="false" data-i="${i}" data-img="${coverSrc(w)}">
       <span class="c-no mono m"><span class="num">${pad(i + 1)}</span><span class="c-code">${w.code}</span></span>
       <span class="c-t">${w.t}</span><span class="c-c m">${w.c}</span><span class="c-n m num">${pad(nImgs(w))}</span><span class="c-y m">${w.y}</span>
-    </button>`).join("");
+    </a>`).join("");
   $("list").querySelectorAll(".irow").forEach(row => {
-    row.onclick = () => openSheet(+row.dataset.i, row);
+    row.onclick = e => { if (plain(e)) { e.preventDefault(); openSheet(+row.dataset.i, row); } };
     row.addEventListener("mouseenter", () => { peek.src = row.dataset.img; peek.classList.add("on"); });
     row.addEventListener("mouseleave", () => peek.classList.remove("on"));
   });
   syncIndex();
 }
+// The hover picture trails the pointer a little instead of being pinned to it; it starts where the pointer is.
 const peek = $("peek");
+let pkx = 0, pky = 0, pktx = 0, pkty = 0, pkRaf = 0, pkNew = true;
+function pkStep() {
+  pkRaf = 0; pkx += (pktx - pkx) * 0.22; pky += (pkty - pky) * 0.22;
+  peek.style.transform = `translate(${pkx.toFixed(1)}px, ${pky.toFixed(1)}px)`;
+  if (peek.classList.contains("on") && Math.abs(pktx - pkx) + Math.abs(pkty - pky) > 0.3) pkRaf = requestAnimationFrame(pkStep);
+}
 addEventListener("mousemove", e => {
-  if (!peek.classList.contains("on")) return;
-  const x = Math.min(e.clientX + 24, innerWidth - 296), y = Math.min(e.clientY - 40, innerHeight - (peek.offsetHeight || 190) - 16);
-  peek.style.transform = `translate(${x}px, ${Math.max(8, y)}px)`;
+  if (!peek.classList.contains("on")) { pkNew = true; return; }
+  pktx = Math.min(e.clientX + 24, innerWidth - 296);
+  pkty = Math.max(8, Math.min(e.clientY - 40, innerHeight - (peek.offsetHeight || 190) - 16));
+  if (pkNew || reduce) { pkx = pktx; pky = pkty; pkNew = false; }
+  if (!pkRaf) pkRaf = requestAnimationFrame(pkStep);
 });
 
 /* Project sheet */
@@ -1658,11 +1755,12 @@ const esc = t => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(
    ratio); it starts on column 1 (w 12) or on column 4 with the text (w 9), and snap() narrows it by whole
    columns when it would be taller than the screen. */
 let nFig = 0;
-function figure([f, iw, ih, cap, alt, ln, vid]) {
+function figure([f, iw, ih, cap, alt, ln, vid], sizes) {
   const first = nFig++ === 0;
+  const set = hasSmall(iw) ? ` srcset="img/${f}-${SMALL}.jpg ${SMALL}w, img/${f}.jpg ${iw}w" sizes="${sizes || "100vw"}"` : "";
   const st = `--ar:${(iw / ih).toFixed(4)};--iw:${iw}px`;
   if (vid) return `<figure${iw / ih < 0.8 ? ' class="tall"' : ""} style="${st}"><div class="vid${reduce ? " off" : ""}"><video muted loop playsinline preload="none" poster="img/${f}.jpg" width="${iw}" height="${ih}" aria-label="${esc(alt || cap)}"><source src="img/${f}.webm" type="video/webm"><source src="img/${f}.mp4" type="video/mp4"></video><button class="pill vbtn" type="button">${reduce ? "Play" : "Pause"}</button></div><figcaption>${esc(cap)}</figcaption></figure>`;
-  return `<figure${ln && iw / ih < 0.8 ? ' class="tall"' : ""} style="${st}"><img${ln ? ' class="ln"' : ""} src="img/${f}.jpg" alt="${esc(alt ?? cap)}" width="${iw}" height="${ih}" decoding="async"${first ? ' fetchpriority="high"' : ' loading="lazy"'}><figcaption>${esc(cap)}</figcaption></figure>`;
+  return `<figure${ln && iw / ih < 0.8 ? ' class="tall"' : ""} style="${st}"><span class="im${ln ? " ln" : ""}"><img${ln ? ' class="ln"' : ""} src="img/${f}.jpg"${set} alt="${esc(alt ?? cap)}" width="${iw}" height="${ih}" decoding="async"${first ? ' fetchpriority="high"' : ' loading="lazy"'}></span><figcaption>${esc(cap)}</figcaption></figure>`;
 }
 /* Loops play while at least a third of them is on screen and stop when the sheet closes or scrolls past.
    With reduced motion they wait on their poster until the pill starts them; a paused loop stays paused. */
@@ -1683,7 +1781,11 @@ document.addEventListener("click", e => {
 function row({ f, w = 12 }) {
   const sum = f.reduce((s, [, iw, ih]) => s + iw / ih, 0), s = w === 12 ? 1 : 13 - w;
   const mh = Math.min(...f.map(x => x[2]));
-  const figs = f.length === 4 ? `<div class="pr">${f.slice(0, 2).map(figure).join("")}</div><div class="pr">${f.slice(2).map(figure).join("")}</div>` : f.map(figure).join("");
+  // How wide a figure is shown, for the browser to pick a file: its share of the row on desktops and tablets;
+  // on phones the whole width, or its share of a pair.
+  const vw = x => `${Math.max(1, Math.round(x))}vw`, ar = ([, iw, ih]) => iw / ih;
+  const fig = grp => x => figure(x, `(min-width: 861px) ${vw(w / 12 * ar(x) / sum * 100)}, (min-width: 600px) ${vw(ar(x) / sum * 100)}, ${vw(ar(x) / grp.reduce((s, y) => s + ar(y), 0) * 100)}`);
+  const figs = f.length === 4 ? `<div class="pr">${f.slice(0, 2).map(fig(f.slice(0, 2))).join("")}</div><div class="pr">${f.slice(2).map(fig(f.slice(2))).join("")}</div>` : f.map(x => fig([x])(x)).join("");
   return `<div class="s-row r${f.length}" data-s="${s}" data-k="${w}" data-sum="${sum.toFixed(4)}" data-mh="${mh}" data-n="${f.length - 1}" style="--sum:${sum.toFixed(3)};--n:${f.length - 1};grid-column:${s} / span ${w}">${figs}</div>`;
 }
 /* Keeps every row on whole grid columns: a row that would be taller than the screen gives up a column at a
@@ -1706,7 +1808,7 @@ function snap() {
 function longForm(w) {
   let h = w.chapters.map(ch => {
     const id = `ch-${ch.n}`;
-    const facts = ch.facts && ch.facts.length ? `<dl class="s-facts mono">${ch.facts.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>` : "";
+    const facts = ch.facts && ch.facts.length ? `<dl class="s-facts">${ch.facts.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>` : "";
     const flow = ch.imgs.map(r => typeof r === "number" ? `<p class="s-p">${esc(ch.text[r])}</p>` : row(r)).join("");
     return `<section class="s-ch g12" id="${id}" aria-labelledby="${id}-t" data-n="${ch.n}" data-t="${esc(ch.title)}">
       <h3 id="${id}-t" tabindex="-1"><span class="mono m num">${ch.n}</span><span>${esc(ch.title)}</span></h3>
@@ -1751,6 +1853,9 @@ function fill(i) {
   $("s-imgs").innerHTML = html;
   $("s-foot").hidden = thin || !many;
   $("s-fcode").textContent = nxt.code; $("s-ft").textContent = nxt.t;
+  $("s-fs").textContent = nxt.s || ""; $("s-fs").hidden = !nxt.s;
+  $("s-fi").src = coverSrc(nxt);
+  fx(sheet);
   [$("s-prev"), $("s-next")].forEach(b => b.disabled = !many);
   sheet.scrollTop = 0;
   // A smooth scroll still running in the sheet (a Contents jump, Space or Page Down) would carry the next
@@ -1759,7 +1864,7 @@ function fill(i) {
   const pin = () => { if (sheet.hidden || cur !== i) return; if (sheet.scrollTop) { sheet.scrollTop = 0; still = 0; } else still++; if (++hold < 30 && still < 3) requestAnimationFrame(pin); };
   requestAnimationFrame(pin);
   chs = [...$("s-imgs").querySelectorAll(".s-ch")]; chOn = null; $("s-chap").classList.remove("on"); $("s-chn").textContent = $("s-cht").textContent = "";
-  if (!sheet.hidden) { snap(); syncChap(); wireVids(); }
+  if (!sheet.hidden) { snap(); syncChap(); wireVids(); arrive(sheet.querySelector(".s-body")); }
 }
 /* Chapter in view: the last chapter whose title has passed a reading line a quarter of the way down the
    screen. The bar's pill names it and the menu marks it; the pill stays away over the opening spread and on
@@ -1817,19 +1922,22 @@ $("s-tocl").addEventListener("click", e => { const b = e.target.closest("button[
 function step(d) {
   if (walk.length < 2) return;
   const list = walk, k = list.findIndex(x => x.i === cur); fill(list[(k + d + list.length) % list.length].i);
+  addr(SLUGS[cur], "replace");
   // The focused end link can be replaced or hidden by fill(); keep focus inside the dialog.
   if (!sheet.contains(document.activeElement) || !document.activeElement.getClientRects().length) $("s-close").focus({ preventScroll: true });
 }
-function openSheet(i, from) {
-  opener = from || document.activeElement;
+// quiet: the address already names this work (the page was opened on it, or Back or Forward led here).
+function openSheet(i, from, quiet) {
+  opener = from || (quiet && $("grid").querySelector(`.tile[data-i="${i}"]`)) || document.activeElement;
   const v = visible(); walk = v.some(w => w.i === i) ? v : WORKS.map((w, j) => ({ ...w, i: j }));
   fill(i);
   sheet.hidden = false; sheet.scrollTop = 0; document.documentElement.classList.add("lock");
   bg.forEach(el => el.inert = true); peek.classList.remove("on");
-  snap(); syncChap(); wireVids();
+  snap(); syncChap(); wireVids(); arrive(sheet.querySelector(".s-body"));
+  addr(SLUGS[i], quiet === true ? "" : "push");
   $("s-close").focus({ preventScroll: true });
 }
-function closeSheet() {
+function closeSheet(quiet) {
   chMenu(false); sheet.hidden = true; document.documentElement.classList.remove("lock");
   vio?.disconnect(); sheet.querySelectorAll(".vid video").forEach(v => v.pause());
   bg.forEach(el => el.inert = false);
@@ -1840,8 +1948,9 @@ function closeSheet() {
   else if (visible().some(w => w.i === last)) { act = last; showPv(last, false); }
   cur = -1; rest = true;
   if (opener && opener.isConnected) opener.focus({ preventScroll: true });
+  if (quiet !== true) { home(); reveal(); }
 }
-$("s-close").onclick = closeSheet;
+$("s-close").onclick = () => closeSheet();
 $("s-prev").onclick = () => step(-1);
 $("s-next").onclick = () => step(1);
 $("s-foot").onclick = () => { step(1); $("s-close").focus({ preventScroll: true }); };
@@ -1881,21 +1990,41 @@ const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 /* About: opened from About in the header and from the Information block; Esc or Close returns to where it was opened. */
 const ab = $("ab"); let abFrom = null;
-function openAbout(from) {
-  if (!sheet.hidden) closeSheet();
-  abFrom = from || document.activeElement;
+function openAbout(from, quiet) {
+  if (!sheet.hidden) closeSheet(true);
+  abFrom = from || (quiet === true && abLinks[0]) || document.activeElement;
   ab.hidden = false; ab.scrollTop = 0; document.documentElement.classList.add("lock");
   bg.forEach(el => el.inert = true); peek.classList.remove("on");
+  arrive(ab.querySelector(".s-body"));
+  addr("about", quiet === true ? "" : "push");
   $("ab-close").focus({ preventScroll: true });
 }
-function closeAbout() {
+function closeAbout(quiet) {
   ab.hidden = true; document.documentElement.classList.remove("lock");
   bg.forEach(el => el.inert = false);
   if (abFrom && abFrom.isConnected) abFrom.focus({ preventScroll: true });
+  if (quiet !== true) { home(); reveal(); }
 }
-document.querySelectorAll('a[href="#about"]').forEach(a => a.addEventListener("click", e => { e.preventDefault(); openAbout(a); }));
+const abLinks = [...document.querySelectorAll('a[href="#about"]')];
+abLinks.forEach(a => { a.href = href("about"); a.addEventListener("click", e => { if (plain(e)) { e.preventDefault(); openAbout(a); } }); });
+/* A link to a place on this page scrolls there and leaves the address as it is; focus follows, so Tab carries on
+   from that place. */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  const id = a.getAttribute("href").slice(1), t = id && $(id); if (!t) return;
+  a.addEventListener("click", e => {
+    if (!plain(e)) return; e.preventDefault();
+    if (id === "top") { scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" }); return; }
+    t.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" }); t.tabIndex = -1; t.focus({ preventScroll: true });
+  });
+});
+// An address that arrives naming a place on the page (#index) is tidied once the page has gone there.
+const tidy = () => { if (location.hash && (PATHS || !location.hash.startsWith("#/"))) try { history.replaceState(history.state, "", location.pathname + location.search); } catch (e) {} };
+addEventListener("hashchange", tidy);
+if (document.readyState === "complete") tidy(); else addEventListener("load", () => setTimeout(tidy, 0));
+// A cover or an Index row also opens with the Space bar, as a button would.
+document.addEventListener("keydown", e => { if (e.key === " " && e.target.matches && e.target.matches("a.tile, a.irow")) { e.preventDefault(); e.target.click(); } });
 $("ab-more").onclick = e => openAbout(e.currentTarget);
-$("ab-close").onclick = closeAbout;
+$("ab-close").onclick = () => closeAbout();
 ab.querySelector(".s-toc ol").addEventListener("click", e => {
   const b = e.target.closest("button[data-a]"); if (!b) return;
   const c = $("ab-" + b.dataset.a), bar = ab.querySelector(".s-bar");
@@ -1908,8 +2037,56 @@ ab.addEventListener("keydown", e => {
   if (e.shiftKey ? i <= 0 : (i === -1 || i === f.length - 1)) { e.preventDefault(); (e.shiftKey ? f[f.length - 1] : f[0]).focus(); }
 });
 
-renderGrid(); renderIndex();
-</script>
+/* The address follows what is open. Opening adds a step to the browser's history, so Back closes it; turning to
+   the next project only renames the step, so Back still leads out to the works. */
+let own = !!(history.state && history.state.sw), leaving = false, backY = 0;
+const titleOf = r => { const i = SLUGS.indexOf(r); return i >= 0 ? `${WORKS[i].t} · ${SITE}` : r === "about" ? `About · ${SITE}` : HOME; };
+// The step is made first and named after, so that each step keeps its own title in the browser's history.
+function addr(r, how) {
+  try {
+    if (how === "push" && !leaving) { history.pushState({ sw: 1 }, "", href(r)); own = true; }
+    else if (how === "replace" && route() !== r) history.replaceState(history.state, "", href(r));
+  } catch (e) {}
+  document.title = titleOf(r);
+}
+// Closing steps back when the step was added here; a page opened straight on a project just takes the home address.
+function home() {
+  if (leaving) return;
+  if (!own) { addr("", "replace"); return; }
+  own = false; leaving = true; backY = scrollY;
+  try { history.back(); } catch (e) { leaving = false; addr("", "replace"); return; }
+  // Should the step back never arrive, the address is put right anyway.
+  setTimeout(() => { if (leaving) { leaving = false; if (sheet.hidden && ab.hidden) addr("", "replace"); } }, 1500);
+}
+function show(r) {
+  const i = SLUGS.indexOf(r);
+  if (i >= 0) {
+    if (!ab.hidden) closeAbout(true);
+    if (sheet.hidden) openSheet(i, null, true);
+    else if (cur !== i) { if (!walk.some(w => w.i === i)) walk = WORKS.map((w, j) => ({ ...w, i: j })); fill(i); addr(r, ""); }
+  } else if (r === "about") {
+    if (ab.hidden) openAbout(null, true);
+  } else {
+    const was = !sheet.hidden || !ab.hidden;
+    if (!sheet.hidden) closeSheet(true);
+    if (!ab.hidden) closeAbout(true);
+    if (was) reveal();
+    addr("", r ? "replace" : "");
+  }
+}
+addEventListener("popstate", () => {
+  const was = leaving; leaving = false;
+  own = !!(history.state && history.state.sw);
+  const r = route(), open = !sheet.hidden ? SLUGS[cur] : !ab.hidden ? "about" : "";
+  // After a step back made by Close, the page stays where it was.
+  if (was) { const y = backY; requestAnimationFrame(() => { if (Math.abs(scrollY - y) > 1) scrollTo({ top: y, behavior: "instant" }); }); }
+  // Something was opened again before the step back arrived: it gets its step again.
+  if (was && !r && open) { document.title = HOME; addr(open, "push"); return; }
+  hush = true; try { show(r); } finally { hush = false; }
+});
 
+renderGrid(); renderIndex();
+try { if (route()) show(route()); } finally { document.documentElement.removeAttribute("data-deep"); }
+</script>
 </body>
 </html>
